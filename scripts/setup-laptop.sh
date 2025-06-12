@@ -74,38 +74,7 @@ cleanup_previous() {
 
 # Setup principale
 main_setup() {
-    # 0. Setup SSH se necessario per repository privato
-    if [[ ! -f ~/.ssh/id_ed25519 ]]; then
-        echo ""
-        echo "🔑 SETUP CHIAVE SSH"
-        echo "=================="
-        echo "Genero chiave SSH per accesso GitHub..."
-        
-        ssh-keygen -t ed25519 -C "$(whoami)@$(hostname)" -f ~/.ssh/id_ed25519 -N ""
-        
-        # Avvia ssh-agent e aggiungi chiave
-        eval "$(ssh-agent -s)"
-        ssh-add ~/.ssh/id_ed25519
-        
-        echo ""
-        echo -e "${YELLOW}📋 AGGIUNGI QUESTA CHIAVE AL TUO ACCOUNT GITHUB:${NC}"
-        echo "   URL: https://github.com/settings/keys"
-        echo "   Nome: Laptop-$(hostname)-$(date +%Y%m%d)"
-        echo ""
-        echo "🔑 CHIAVE SSH:"
-        echo "─────────────────────────────────────────────────"
-        cat ~/.ssh/id_ed25519.pub
-        echo "─────────────────────────────────────────────────"
-        echo ""
-        echo "⏳ Premi ENTER dopo aver aggiunto la chiave..."
-        read
-        
-        # Test connessione
-        echo "🔗 Test connessione GitHub..."
-        ssh -T git@github.com 2>&1 | head -1
-    fi
-
-    # 1. Clona repository se non esiste
+    # 1. Clona repository se non esiste (usa HTTPS - più veloce)
     if [[ ! -d ~/claude-workspace ]]; then
         echo ""
         echo "📥 Clonazione repository..."
@@ -122,10 +91,6 @@ main_setup() {
         cd ~/claude-workspace
         git pull origin main
     fi
-    
-    # 2. Switcha a SSH per operazioni future
-    cd ~/claude-workspace
-    git remote set-url origin git@github.com:null-runner/claude-workspace.git
     
     # 2. Crea sistema di controllo locale
     echo ""
