@@ -1,0 +1,35 @@
+{
+  "version": "1.0",
+  "workspace_id": "claude-workspace-nullrunner",
+  "devices": {
+    "NEURAL-X": {
+      "type": "desktop",
+      "last_seen": "2025-06-13T00:58:00Z",
+      "active": true
+    }
+  },
+  "current_session": {
+    "started_at": "2025-06-13T00:00:00Z",
+    "device": "NEURAL-X",
+    "last_activity": "2025-06-13T00:58:00Z",
+    "active_project": null,
+    "working_directory": "~/claude-workspace",
+    "last_command": "sistema setup e sync implementato"
+  },
+  "recent_projects": [],
+  "session_history": [],
+  "context": {
+    "last_conversation_topic": "Implementazione sistema di memoria per Claude Workspace",
+    "current_goal": "Sistema multi-device completamente sincronizzato",
+    "next_steps": [
+      "Implementare sistema di memoria persistente",
+      "Testare continuità tra sessioni",
+      "Verificare sync cross-device"
+    ]
+  },
+  "settings": {
+    "auto_save_interval": 300,
+    "max_history_days": 30,
+    "context_retention": "detailed"
+  }
+}

@@ -31,6 +31,11 @@ do_sync() {
     if [[ -n $(git status --porcelain) ]]; then
         echo "[$(date)] Modifiche rilevate, sincronizzazione in corso..." >> "$LOG_FILE"
         
+        # Auto-save memoria prima del sync
+        if [[ -f "$WORKSPACE_DIR/scripts/claude-save.sh" ]]; then
+            "$WORKSPACE_DIR/scripts/claude-save.sh" "Auto-sync da $(hostname)" >/dev/null 2>&1
+        fi
+        
         # Aggiungi tutto
         git add -A
         
