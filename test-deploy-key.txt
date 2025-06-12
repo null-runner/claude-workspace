@@ -1,1 +1,0 @@
-Test rimozione vecchia deploy key - Fri Jun 13 00:18:58 CEST 2025
