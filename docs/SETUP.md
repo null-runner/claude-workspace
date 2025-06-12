@@ -52,6 +52,27 @@ Questa guida copre il setup completo del sistema Claude Workspace sia per il PC 
    Permissions: OK
    ```
 
+5. **Inizializzare sistema memoria intelligente**:
+   ```bash
+   # Crea struttura memoria
+   mkdir -p ~/claude-workspace/.claude/memory/projects
+   
+   # Inizializza memoria globale workspace
+   claude-save "Sistema Claude Workspace inizializzato"
+   
+   # Verifica funzionamento
+   claude-resume
+   ```
+
+   Output atteso:
+   ```
+   🧠 MEMORIA WORKSPACE
+   ====================
+   📍 ULTIMA SESSIONE:
+      Quando: Pochi secondi fa (hostname)
+      Ultima nota: Sistema Claude Workspace inizializzato
+   ```
+
 ### Configurazione SSH
 
 1. **Generare chiavi SSH (se non esistenti)**:
@@ -128,6 +149,22 @@ Questa guida copre il setup completo del sistema Claude Workspace sia per il PC 
    ~/claude-workspace/scripts/sync-now.sh
    ```
 
+6. **Inizializzare memoria sul laptop**:
+   ```bash
+   # Dopo primo sync, la memoria dovrebbe già essere sincronizzata
+   # Verifica funzionamento
+   claude-resume
+   
+   # Se non funziona, inizializza manualmente
+   claude-save "Setup laptop completato"
+   
+   # Test memoria per-progetto
+   cd ~/claude-workspace/projects/active
+   mkdir test-project
+   cd test-project
+   claude-project-memory save "Test progetto inizializzato"
+   ```
+
 ### Configurazione Sync Automatico
 
 1. **Abilitare sync automatico**:
@@ -151,6 +188,46 @@ Questa guida copre il setup completo del sistema Claude Workspace sia per il PC 
    ```
 
 ## Troubleshooting Comune
+
+### Problema: Sistema memoria non funziona
+
+**Sintomi**: Comandi `claude-save` o `claude-project-memory` non funzionano
+
+**Soluzioni**:
+```bash
+# Verifica esistenza directory memoria
+ls -la ~/claude-workspace/.claude/memory/
+
+# Se non esiste, crea manualmente
+mkdir -p ~/claude-workspace/.claude/memory/projects
+
+# Verifica permessi
+chmod 700 ~/claude-workspace/.claude/memory
+chmod 755 ~/claude-workspace/.claude/memory/projects
+
+# Test script memoria
+which claude-save
+ls -la ~/claude-workspace/scripts/claude-*.sh
+
+# Se mancano, aggiungi al PATH o usa path completo
+~/claude-workspace/scripts/claude-save.sh "Test memoria"
+```
+
+### Problema: Memoria non sincronizza tra dispositivi
+
+**Causa**: Directory `.claude/memory/` non inclusa nel sync
+
+**Soluzione**:
+```bash
+# Verifica file .rsync-exclude
+cat ~/claude-workspace/.rsync-exclude | grep -v "^#" | grep "claude"
+
+# Se .claude è escluso, rimuovilo
+sed -i '/\.claude/d' ~/claude-workspace/.rsync-exclude
+
+# Forza sync memoria
+rsync -avz ~/claude-workspace/.claude/ nullrunner@192.168.1.106:~/claude-workspace/.claude/
+```
 
 ### Problema: "Permission denied" durante SSH
 
@@ -263,6 +340,9 @@ Aggiungere a crontab sul PC fisso:
 - [ ] SSH server attivo
 - [ ] Controllo accessi configurato
 - [ ] Log directory scrivibile
+- [ ] Sistema memoria inizializzato
+- [ ] Comandi claude-save e claude-resume funzionanti
+- [ ] Directory .claude/memory/ creata con permessi corretti
 
 ### Checklist Laptop
 - [ ] SSH key configurata
@@ -270,6 +350,9 @@ Aggiungere a crontab sul PC fisso:
 - [ ] Scripts di sync funzionanti
 - [ ] Sync automatico configurato (opzionale)
 - [ ] Primo sync completato con successo
+- [ ] Memoria sincronizzata dal PC fisso
+- [ ] Comandi memoria funzionanti (claude-save, claude-project-memory)
+- [ ] Test progetto con memoria completato
 
 ## Comandi Utili per Debug
 
@@ -290,4 +373,23 @@ tail -f /var/log/auth.log  # Sul PC fisso
 
 # Monitorare sync in tempo reale
 watch -n 1 'ls -la ~/claude-workspace/.sync.lock; tail -5 ~/claude-workspace/logs/sync.log'
+
+# Debug sistema memoria
+# Verifica struttura memoria
+find ~/claude-workspace/.claude/memory -type f -name "*.json" | head -10
+
+# Test comandi memoria
+claude-save "Test sistema memoria" && claude-resume
+
+# Verifica dimensione memoria
+du -sh ~/claude-workspace/.claude/memory/
+
+# Lista progetti con memoria
+claude-project-memory list
+
+# Statistiche memoria
+claude-memory-cleaner stats
+
+# Test sincronizzazione memoria cross-device
+rsync -avz --dry-run ~/claude-workspace/.claude/ nullrunner@192.168.1.106:~/claude-workspace/.claude/
 ```

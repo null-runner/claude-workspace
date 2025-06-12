@@ -4,27 +4,38 @@
   "devices": {
     "NEURAL-X": {
       "type": "desktop",
-      "last_seen": "2025-06-13T00:58:00Z",
+      "last_seen": "2025-06-12T23:10:51Z",
       "active": true
     }
   },
   "current_session": {
-    "started_at": "2025-06-13T00:00:00Z",
+    "started_at": "2025-06-12T23:10:51Z",
     "device": "NEURAL-X",
-    "last_activity": "2025-06-13T00:58:00Z",
+    "last_activity": "2025-06-12T23:10:51Z",
     "active_project": null,
     "working_directory": "~/claude-workspace",
-    "last_command": "sistema setup e sync implementato"
+    "last_command": "claude-save",
+    "session_note": "Test implementazione sistema memoria v2"
   },
   "recent_projects": [],
-  "session_history": [],
+  "session_history": [
+    {
+      "started_at": "2025-06-13T00:00:00Z",
+      "device": "NEURAL-X",
+      "last_activity": "2025-06-13T00:58:00Z",
+      "active_project": null,
+      "working_directory": "~/claude-workspace",
+      "last_command": "sistema setup e sync implementato",
+      "ended_at": "2025-06-12T23:10:51Z"
+    }
+  ],
   "context": {
-    "last_conversation_topic": "Implementazione sistema di memoria per Claude Workspace",
-    "current_goal": "Sistema multi-device completamente sincronizzato",
+    "last_conversation_topic": "Aggiornamento obiettivi",
+    "current_goal": "Sistema memoria Claude implementato e testato",
     "next_steps": [
-      "Implementare sistema di memoria persistente",
-      "Testare continuità tra sessioni",
-      "Verificare sync cross-device"
+      "Testare su laptop",
+      "Documentare funzionalit\u00e0",
+      "Creare primo progetto reale"
     ]
   },
   "settings": {

@@ -1115,3 +1115,10 @@ To github.com:null-runner/claude-workspace.git
    55a8bc1..6f571eb  main -> main
 [Fri Jun 13 00:59:06 CEST 2025] ✅ Sync completato con successo
 [Fri Jun 13 01:10:51 CEST 2025] Sessione salvata: Test implementazione sistema memoria v2
+[Fri Jun 13 01:38:13 CEST 2025] Sessione salvata: Test sistema memoria completo
+[Fri Jun 13 01:38:20 CEST 2025] Evento: CREATE,ISDIR su /home/nullrunner/claude-workspace/projects/test
+[Fri Jun 13 01:38:22 CEST 2025] Pulling da remoto...
+From github.com:null-runner/claude-workspace
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[Fri Jun 13 01:38:23 CEST 2025] Modifiche rilevate, sincronizzazione in corso...

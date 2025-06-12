@@ -36,6 +36,19 @@ do_sync() {
             "$WORKSPACE_DIR/scripts/claude-save.sh" "Auto-sync da $(hostname)" >/dev/null 2>&1
         fi
         
+        # Pulizia intelligente memoria (una volta al giorno)
+        local last_cleanup_file="$WORKSPACE_DIR/.claude/memory/.last_cleanup"
+        local today=$(date +%Y-%m-%d)
+        
+        if [[ ! -f "$last_cleanup_file" ]] || [[ "$(cat "$last_cleanup_file" 2>/dev/null)" != "$today" ]]; then
+            if [[ -f "$WORKSPACE_DIR/scripts/claude-memory-cleaner.sh" ]]; then
+                echo "[$(date)] Esecuzione pulizia intelligente memoria..." >> "$LOG_FILE"
+                "$WORKSPACE_DIR/scripts/claude-memory-cleaner.sh" auto >/dev/null 2>&1
+                echo "$today" > "$last_cleanup_file"
+                echo "[$(date)] Pulizia memoria completata" >> "$LOG_FILE"
+            fi
+        fi
+        
         # Aggiungi tutto
         git add -A
         

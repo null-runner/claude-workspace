@@ -185,6 +185,19 @@ gpg -c sensitive-file.txt
 gpg -d sensitive-file.txt.gpg
 ```
 
+**Protezione memoria sistema**:
+```bash
+# La memoria può contenere informazioni sensibili
+# Escludere dal sync se necessario
+echo ".claude/memory/projects/sensitive-project_*.json" >> .rsync-exclude
+
+# Backup criptato della memoria
+tar -czf - .claude/memory/ | gpg -c > memory-backup-$(date +%Y%m%d).tar.gz.gpg
+
+# Verificare contenuto memoria per informazioni sensibili
+grep -r "password\|secret\|key\|token" .claude/memory/ 2>/dev/null || echo "Nessun dato sensibile trovato"
+```
+
 ### 4. Sicurezza di rete
 
 **Firewall** (sul PC fisso):
@@ -208,12 +221,110 @@ ClientAliveInterval 300
 ClientAliveCountMax 2
 ```
 
-### 5. Backup e recovery
+### 5. Sicurezza Sistema Memoria Intelligente
+
+Il sistema di memoria può contenere informazioni sensibili sui progetti e richiede attenzione particolare.
+
+**Rischi potenziali**:
+- Informazioni di progetto sensibili salvate in memoria
+- Credenziali o token accidentalmente salvati in note
+- Storico sessioni con dati riservati
+- Sincronizzazione memoria tra dispositivi non sicuri
+
+**Mitigazioni**:
+
+**Controllo contenuto memoria**:
+```bash
+# Audit regolare per dati sensibili
+claude-memory-cleaner stats | grep "sensitive patterns"
+
+# Verifica manuale contenuto
+find .claude/memory -name "*.json" -exec grep -l "password\|secret\|token\|key" {} \; 2>/dev/null
+
+# Pulizia mirata se trovati dati sensibili
+claude-memory-cleaner project active/sensitive-project --sanitize
+```
+
+**Configurazione sicurezza memoria**:
+```bash
+# Escludere progetti sensibili da sync automatico
+cat >> .rsync-exclude << EOF
+.claude/memory/projects/*confidential*.json
+.claude/memory/projects/*secret*.json
+.claude/memory/projects/*private*.json
+EOF
+
+# Configurare retention limitata per progetti sensibili
+# In .claude/memory/workspace-memory.json
+{
+  "settings": {
+    "sensitive_projects": ["confidential-client", "secret-research"],
+    "max_retention_days": 7,
+    "auto_sanitize": true
+  }
+}
+```
+
+**Backup sicuro memoria**:
+```bash
+# Backup criptato completo
+tar -czf - .claude/memory/ | gpg --cipher-algo AES256 -c > \
+    ~/secure-backups/memory-backup-$(date +%Y%m%d).tar.gz.gpg
+
+# Backup selettivo (solo progetti non sensibili)
+tar -czf - .claude/memory/workspace-memory.json \
+    $(find .claude/memory/projects -name "*.json" | grep -v -E "confidential|secret|private") | \
+    gpg -c > memory-safe-backup-$(date +%Y%m%d).tar.gz.gpg
+```
+
+**Pulizia automatica sensibili**:
+```bash
+# Script di pulizia automatica da aggiungere a cron
+#!/bin/bash
+# ~/claude-workspace/scripts/memory-security-cleanup.sh
+
+# Pattern sensibili da rimuovere automaticamente
+SENSITIVE_PATTERNS=(
+    "password"
+    "secret"
+    "token"
+    "api_key"
+    "private_key"
+    "credential"
+)
+
+for pattern in "${SENSITIVE_PATTERNS[@]}"; do
+    find .claude/memory -name "*.json" -exec sed -i "/$pattern/d" {} \; 2>/dev/null
+done
+
+echo "$(date): Memory security cleanup completed" >> logs/security.log
+```
+
+**Controllo accesso memoria**:
+```bash
+# Permessi restrittivi su directory memoria
+chmod 700 .claude/memory
+chmod 600 .claude/memory/workspace-memory.json
+chmod 600 .claude/memory/projects/*.json
+
+# Verifica permessi
+find .claude/memory -type f ! -perm 600 -ls
+find .claude/memory -type d ! -perm 700 -ls
+```
+
+### 6. Backup e recovery
 
 **Backup delle configurazioni**:
 ```bash
-# Backup settimanale
+# Backup settimanale completo (include memoria)
 tar -czf ~/backups/claude-config-$(date +%Y%m%d).tar.gz \
+    ~/.ssh/authorized_keys \
+    ~/claude-workspace/configs/ \
+    ~/claude-workspace/scripts/ \
+    ~/claude-workspace/.claude/memory/
+
+# Backup solo configurazioni (senza memoria)
+tar -czf ~/backups/claude-config-minimal-$(date +%Y%m%d).tar.gz \
     ~/.ssh/authorized_keys \
     ~/claude-workspace/configs/ \
     ~/claude-workspace/scripts/
@@ -223,7 +334,9 @@ tar -czf ~/backups/claude-config-$(date +%Y%m%d).tar.gz \
 1. Ripristinare backup configurazioni
 2. Verificare chiavi SSH
 3. Controllare log per attività sospette
-4. Re-sincronizzare progetti
+4. Verificare integrità memoria sistema
+5. Re-sincronizzare progetti
+6. Testare comandi memoria per funzionamento
 
 ## Gestione emergenze
 
@@ -282,17 +395,22 @@ tar -czf ~/emergency-backup-$(date +%Y%m%d-%H%M%S).tar.gz ~/claude-workspace/
 ### Giornaliera
 - [ ] Controllare log accessi per anomalie
 - [ ] Verificare sync completati con successo
+- [ ] Verificare dimensione memoria sistema (< 10MB)
 
 ### Settimanale
-- [ ] Backup configurazioni
+- [ ] Backup configurazioni (include memoria)
 - [ ] Review dispositivi autorizzati
 - [ ] Controllare spazio disco
+- [ ] Audit contenuto memoria per dati sensibili
+- [ ] Testare recovery memoria da backup
 
 ### Mensile
 - [ ] Audit completo dei log
 - [ ] Verificare tutti i dispositivi autorizzati
 - [ ] Testare procedure di recovery
 - [ ] Aggiornare sistema operativo e SSH
+- [ ] Pulizia completa memoria intelligente
+- [ ] Verifica consistenza memoria cross-device
 
 ### Semestrale
 - [ ] Rotazione chiavi SSH
@@ -324,4 +442,25 @@ sudo tcpdump -i any port 22 -n
 # Verificare integrità con checksum
 find ~/claude-workspace -type f -exec md5sum {} \; > checksums.txt
 md5sum -c checksums.txt
+
+# Comandi sicurezza memoria sistema
+# Verificare dimensione memoria
+du -sh .claude/memory/
+
+# Audit contenuto memoria per dati sensibili
+grep -r "password\|secret\|token\|key\|credential" .claude/memory/ 2>/dev/null
+
+# Backup criptato memoria
+tar -czf - .claude/memory/ | gpg -c > memory-secure-$(date +%Y%m%d).tar.gz.gpg
+
+# Statistiche sicurezza memoria
+claude-memory-cleaner stats | grep -E "size|sensitive|projects"
+
+# Test recovery memoria
+cp -r .claude/memory .claude/memory.test.backup
+rm -rf .claude/memory
+cp -r .claude/memory.test.backup .claude/memory
+
+# Verifica permessi memoria
+find .claude/memory -type f ! -perm 600 -o -type d ! -perm 700
 ```

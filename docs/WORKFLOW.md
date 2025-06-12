@@ -35,6 +35,9 @@ cd ~/claude-workspace/projects/sandbox  # Per esperimenti
 mkdir my-new-project
 cd my-new-project
 
+# Inizializzare memoria progetto
+claude-project-memory save "Nuovo progetto inizializzato"
+
 # Inizializzare struttura base
 mkdir -p src tests docs data scripts
 touch README.md requirements.txt .gitignore
@@ -63,7 +66,14 @@ python src/main.py
 - [ ] Documentazione
 EOF
 
-# Sincronizzare immediatamente
+# Impostare obiettivi iniziali
+claude-project-memory todo add "Setup iniziale"
+claude-project-memory todo add "Implementazione core"
+claude-project-memory todo add "Testing"
+claude-project-memory todo add "Documentazione"
+
+# Salvare stato e sincronizzare
+claude-save "Creato nuovo progetto: my-new-project"
 ~/claude-workspace/scripts/sync-now.sh
 ```
 
@@ -93,18 +103,32 @@ Ideale quando inizi a lavorare fuori casa e vuoi continuare sul PC fisso.
 ```bash
 # 1. Sul laptop - iniziare sviluppo
 cd ~/claude-workspace/projects/active/my-project
+
+# Riprende contesto se esistente
+claude-project-memory resume
+
 # ... sviluppo codice ...
+# Auto-save automatico durante modifiche files
 
 # 2. Commit locale (opzionale ma consigliato)
 git add .
 git commit -m "WIP: feature implementation"
 
-# 3. Sincronizzare con desktop
+# 3. Salvare stato e sincronizzare con desktop
+claude-project-memory save "Implementata feature X, prossimo: testing"
+claude-save "Continuo sviluppo my-project su desktop"
 ~/claude-workspace/scripts/sync-now.sh
 
 # 4. Sul desktop - continuare sviluppo
+# Riprende contesto generale
+claude-resume
+
 cd ~/claude-workspace/projects/active/my-project
-# ... continuare sviluppo ...
+
+# Riprende contesto progetto specifico
+claude-project-memory resume
+
+# ... continuare sviluppo con piena continuità ...
 
 # 5. Sincronizzare di nuovo se torni al laptop
 # Dal laptop:
@@ -118,14 +142,26 @@ Quando il lavoro principale è sul desktop ma vuoi portarti il codice.
 ```bash
 # 1. Sul desktop - sviluppo principale
 cd ~/claude-workspace/projects/active/big-project
+
+# Riprende lavoro precedente
+claude-project-memory resume
+
 # ... sviluppo intensivo ...
+# Salva progressi importanti
+claude-project-memory save "Completato modulo autenticazione"
 
 # 2. Dal laptop - sincronizzare prima di uscire
 ~/claude-workspace/scripts/sync-now.sh
 
 # 3. Sul laptop - lavorare offline
 cd ~/claude-workspace/projects/active/big-project
+
+# Riprende contesto sincronizzato
+claude-project-memory resume
+
 # ... modifiche e fix ...
+# Salva anche offline
+claude-project-memory save "Fix bug validazione form"
 
 # 4. Quando torni online - sincronizzare
 ~/claude-workspace/scripts/sync-now.sh
@@ -138,6 +174,9 @@ Ottimizzato per sessioni di pair programming con Claude AI.
 ```bash
 # 1. Preparare il progetto per Claude
 cd ~/claude-workspace/projects/active/ai-assisted-project
+
+# Inizializza memoria per sessione AI
+claude-project-memory save "Inizio sessione con Claude AI"
 
 # 2. Creare context file per Claude
 cat > .claude-context.md << EOF
@@ -159,11 +198,28 @@ EOF
 # 3. Sviluppare con Claude
 # ... sessione di coding ...
 
-# 4. Sincronizzare dopo la sessione
+# Durante la sessione, traccia progressi
+claude-project-memory todo add "Implementare endpoint /login"
+claude-project-memory todo add "Aggiungere validazione JWT"
+
+# Completa task man mano
+claude-project-memory todo done 1
+
+# 4. Salvare sessione e sincronizzare
+claude-project-memory save "Sessione Claude completata: implementato sistema auth"
+claude-save "Prossima sessione: implementare dashboard"
 ~/claude-workspace/scripts/sync-now.sh
 
 # 5. Sul desktop - review del codice
+# Riprende contesto
+claude-resume
+
 cd ~/claude-workspace/projects/active/ai-assisted-project
+
+# Vede stato progetto
+claude-project-memory resume
+
+# Review del codice
 git diff
 ```
 
@@ -630,3 +686,242 @@ rsync -avz --include="*.py" --include="*.js" --include="*/" --exclude="*" \
     ~/claude-workspace/projects/big-project/ \
     nullrunner@192.168.1.106:~/claude-workspace/projects/big-project/
 ```
+
+## Workflow con Sistema Memoria Intelligente
+
+### Workflow Completo con Memoria
+
+La combinazione di sincronizzazione e memoria intelligente offre continuità perfetta tra dispositivi e sessioni.
+
+#### Scenario 1: Progetto Long-Running
+
+```bash
+# === GIORNO 1 - Sul laptop ===
+cd ~/claude-workspace/projects/active/ecommerce-app
+
+# Inizializza progetto con memoria
+claude-project-memory save "Nuovo progetto e-commerce" "Setup architettura"
+claude-project-memory todo add "Creare modelli database"
+claude-project-memory todo add "Implementare API prodotti"
+claude-project-memory todo add "Creare frontend React"
+
+# Lavora su database
+# ... implementazione modelli ...
+claude-project-memory todo done 1
+claude-project-memory save "Modelli database completati" "Prossimo: API prodotti"
+
+# Fine giornata
+claude-save "Domani: continuare API prodotti"
+~/claude-workspace/scripts/sync-now.sh
+
+# === GIORNO 2 - Sul desktop ===
+# Riprende tutto il contesto
+claude-resume
+# Output: "Domani: continuare API prodotti"
+
+cd ~/claude-workspace/projects/active/ecommerce-app
+claude-project-memory resume
+# Output: Progetto ecommerce-app, ultimo task: "Prossimo: API prodotti", TODO rimanenti...
+
+# Continua lavoro senza perdere nulla
+# ... implementazione API ...
+claude-project-memory todo done 2
+claude-project-memory save "API prodotti completata" "Iniziare frontend"
+
+# === SETTIMANA DOPO - Sul laptop ===
+cd ~/claude-workspace/projects/active/ecommerce-app
+claude-project-memory resume
+# Vede immediatamente stato progetto, anche dopo settimane!
+```
+
+#### Scenario 2: Multipli Progetti Attivi
+
+```bash
+# Gestire più progetti con memoria separata
+
+# === Progetto Web App ===
+cd ~/claude-workspace/projects/active/web-app
+claude-project-memory save "Bug fix autenticazione" "Testing login flow"
+
+# === Switcha a Data Analysis ===
+cd ~/claude-workspace/projects/active/data-analysis
+claude-project-memory save "Dataset pulito" "Iniziare feature engineering"
+
+# === Switcha a API Project ===
+cd ~/claude-workspace/projects/sandbox/new-api
+claude-project-memory save "Proof of concept GraphQL" "Decidere se procedere"
+
+# === Riprende Web App dopo giorni ===
+cd ~/claude-workspace/projects/active/web-app
+claude-project-memory resume
+# Vede immediatamente: "Bug fix autenticazione", "Testing login flow"
+```
+
+#### Scenario 3: Sessioni Collaborative con AI
+
+```bash
+# === Preparazione Sessione AI ===
+cd ~/claude-workspace/projects/active/ml-project
+claude-project-memory save "Preparazione per sessione AI" "Ottimizzare modello"
+
+# Imposta contesto specifico per AI
+claude-project-memory todo add "Sperimentare hyperparameter tuning"  
+claude-project-memory todo add "Implementare cross-validation"
+claude-project-memory todo add "Analizzare feature importance"
+
+# === Durante Sessione con Claude ===
+# ... pair programming con AI ...
+# Claude può vedere automaticamente il contesto via memoria
+claude-project-memory todo done 1  # Completato tuning
+claude-project-memory save "Hyperparameter ottimizzati" "Implementare CV"
+
+# === Dopo Sessione ===
+claude-project-memory save "Sessione AI completata: modello migliorato del 15%"
+claude-save "Prossima sessione AI: deploy del modello"
+
+# === Sessione Successiva ===
+claude-resume  # Claude vede: "Prossima sessione AI: deploy del modello"
+claude-project-memory resume  # Contesto specifico: modello ottimizzato, TODO rimanenti
+```
+
+### Integrazione Avanzata Memoria + Sync
+
+#### Auto-save Intelligente
+
+Il sistema salva automaticamente durante le modifiche ai file:
+
+```bash
+# Configura monitoring automatico
+~/claude-workspace/scripts/auto-sync.sh enable
+
+# Ora ogni modifica ai file attiva:
+# 1. Auto-save memoria progetto (se in directory progetto)
+# 2. Sync cross-device dopo 30 secondi di inattività
+# 3. Pulizia memoria intelligente (se necessario)
+```
+
+#### Gestione Memoria Multi-Device
+
+```bash
+# === Sul laptop ===
+claude-project-memory save "Implementazione mobile-first" "Testing responsive"
+# Auto-sync porta la memoria al desktop
+
+# === Sul desktop (dopo sync automatico) ===
+claude-project-memory resume
+# Vede immediatamente: "Implementazione mobile-first", "Testing responsive"
+# File attivi sincronizzati, TODO aggiornati
+```
+
+#### Backup e Recovery Memoria
+
+```bash
+# Backup automatico memoria importante
+cp -r .claude/memory .claude/memory.backup.$(date +%Y%m%d)
+
+# Recovery da corruzioni
+if claude-project-memory resume 2>/dev/null; then
+    echo "Memoria OK"
+else
+    echo "Memoria corrotta, ripristino backup"
+    cp -r .claude/memory.backup.20231201 .claude/memory
+fi
+```
+
+### Best Practices Memoria + Workflow
+
+#### 1. Note Strategiche
+
+```bash
+# Note di stato per continuità
+claude-project-memory save "API funziona ma lenta" "Ottimizzare query DB"
+
+# Note tecniche per setup complessi  
+claude-project-memory save "Docker setup: port 3000->8080" "Variabili ENV configurare"
+
+# Note decisionali per revisione
+claude-project-memory save "Scelto PostgreSQL vs MongoDB" "Performance migliori per relazioni"
+```
+
+#### 2. TODO Management
+
+```bash
+# TODO granulari per tracking preciso
+claude-project-memory todo add "Fix validazione email regex"
+claude-project-memory todo add "Aggiungere test case edge cases"
+claude-project-memory todo add "Documentare API endpoint /users"
+
+# Categorizzazione TODO
+claude-project-memory todo add "BUG: Login non funziona su Safari"
+claude-project-memory todo add "FEATURE: Implementare dark mode"
+claude-project-memory todo add "PERFORMANCE: Ottimizzare query dashboard"
+```
+
+#### 3. Milestone Tracking
+
+```bash
+# Imposta obiettivi chiari
+claude-project-memory save "MILESTONE: MVP pronto per demo" "Mancano solo test"
+
+# Tracking progressi
+claude-project-memory save "PROGRESS: 80% milestone completato" "Rimangono test e deploy"
+
+# Celebra achievements
+claude-project-memory save "🎉 MILESTONE RAGGIUNTO: MVP demo success!" "Prossimo: feedback utenti"
+```
+
+#### 4. Cross-Project Insights
+
+```bash
+# Vedere pattern tra progetti
+claude-memory-cleaner stats  # Mostra statistiche aggregate
+
+# Lista progetti per tipo di attività
+claude-project-memory list | grep -E "(active|production)" 
+
+# Trova progetti con TODO specifici
+for f in .claude/memory/projects/*.json; do
+    if grep -q "authentication" "$f" 2>/dev/null; then
+        echo "Auth TODO in: $(basename "$f" .json | tr '_' '/')"
+    fi
+done
+```
+
+### Troubleshooting Memoria + Workflow
+
+#### Problemi Sincronizzazione Memoria
+
+```bash
+# Verifica consistenza memoria cross-device
+claude-project-memory resume | head -5  # Sul laptop
+# Confronta con stesso output su desktop
+
+# Forza re-sync memoria
+rsync -avz .claude/memory/ nullrunner@192.168.1.106:~/claude-workspace/.claude/memory/
+```
+
+#### Performance con Memoria Grande
+
+```bash
+# Statistiche memoria
+claude-memory-cleaner stats
+
+# Pulizia preventiva prima di problemi
+if [ $(du -s .claude/memory | cut -f1) -gt 10000 ]; then
+    claude-memory-cleaner auto
+fi
+```
+
+#### Recovery da Stati Inconsistenti
+
+```bash
+# Se memoria mostra stato sbagliato
+claude-project-memory save "Reset stato: ricominciando da file correnti"
+
+# Se TODO non sincronizzati
+claude-project-memory todo list | grep "pending" | wc -l  # Conta TODO attivi
+# Se numero sembra sbagliato, reset TODO
+# Backup, poi rimuovi e ricrea
+```
+
+La combinazione di memoria intelligente e sincronizzazione offre un'esperienza di sviluppo fluida e continua tra dispositivi e sessioni, mantenendo sempre il contesto senza perdere informazioni importanti.
