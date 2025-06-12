@@ -79,7 +79,7 @@ main_setup() {
         echo ""
         echo "📥 Clonazione repository..."
         cd ~
-        git clone git@github.com:null-runner/claude-workspace.git
+        git clone https://github.com/null-runner/claude-workspace.git
         
         if [[ $? -ne 0 ]]; then
             echo -e "${RED}❌ Errore clonazione. Verifica di avere accesso al repository.${NC}"
