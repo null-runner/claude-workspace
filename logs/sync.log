@@ -1369,3 +1369,24 @@ From github.com:null-runner/claude-workspace
  * branch            main       -> FETCH_HEAD
 Already up to date.
 [Fri Jun 13 01:59:16 CEST 2025] Modifiche rilevate, sincronizzazione in corso...
+[main 72b3ed0] Auto-sync: 11 modifiche da NEURAL-X - 2025-06-13_01:59:16
+ 11 files changed, 11 insertions(+), 3646 deletions(-)
+ delete mode 100644 projects/test/memory-test/README.md
+ delete mode 100644 projects/test/memory-test/README_IT.md
+ delete mode 100644 projects/test/memory-test/docs/MEMORY-SYSTEM.md
+ delete mode 100644 projects/test/memory-test/docs/MEMORY-SYSTEM_IT.md
+ delete mode 100644 projects/test/memory-test/docs/SECURITY.md
+ delete mode 100644 projects/test/memory-test/docs/SECURITY_IT.md
+ delete mode 100644 projects/test/memory-test/docs/SETUP.md
+ delete mode 100644 projects/test/memory-test/docs/SETUP_IT.md
+ delete mode 100644 projects/test/memory-test/docs/WORKFLOW.md
+ delete mode 100644 projects/test/memory-test/docs/WORKFLOW_IT.md
+To github.com:null-runner/claude-workspace.git
+   cbd8dc4..72b3ed0  main -> main
+[Fri Jun 13 01:59:18 CEST 2025] ✅ Sync completato con successo
+[Fri Jun 13 01:59:18 CEST 2025] Evento: DELETE su /home/nullrunner/claude-workspace/projects/test/memory-test/README_IT.md
+[Fri Jun 13 01:59:20 CEST 2025] Pulling da remoto...
+From github.com:null-runner/claude-workspace
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[Fri Jun 13 01:59:21 CEST 2025] Modifiche rilevate, sincronizzazione in corso...
