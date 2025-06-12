@@ -86,3 +86,13 @@ From github.com:null-runner/claude-workspace
  * branch            main       -> FETCH_HEAD
 Already up to date.
 [Fri Jun 13 00:43:48 CEST 2025] Modifiche rilevate, sincronizzazione in corso...
+[main d5b0397] Auto-sync: 3 modifiche da NEURAL-X - 2025-06-13_00:43:48
+ 3 files changed, 251 insertions(+)
+ create mode 100755 laptop-standalone-setup.sh
+ create mode 100644 quick-laptop-setup.txt
+To github.com:null-runner/claude-workspace.git
+   8e404e5..d5b0397  main -> main
+[Fri Jun 13 00:43:50 CEST 2025] ✅ Sync completato con successo
+[Fri Jun 13 00:43:50 CEST 2025] Monitoring attivo su /home/nullrunner/claude-workspace/projects
+Setting up watches.  Beware: since -r was given, this may take a while!
+Watches established.
