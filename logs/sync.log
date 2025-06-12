@@ -365,3 +365,8 @@ To github.com:null-runner/claude-workspace.git
    20c0cc5..3ee8580  main -> main
 [Fri Jun 13 00:52:42 CEST 2025] ✅ Sync completato con successo
 [Fri Jun 13 00:52:42 CEST 2025] Evento: DELETE su /home/nullrunner/claude-workspace/projects/sandbox/sandbox-test-progetto/.claude/project.json
+[Fri Jun 13 00:52:44 CEST 2025] Pulling da remoto...
+From github.com:null-runner/claude-workspace
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[Fri Jun 13 00:52:46 CEST 2025] Modifiche rilevate, sincronizzazione in corso...
