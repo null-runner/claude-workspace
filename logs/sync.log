@@ -2,3 +2,81 @@
 [Fri Jun 13 00:11:35 CEST 2025] Pulling da remoto...
 fatal: could not read Username for 'https://github.com': No such device or address
 [Fri Jun 13 00:11:35 CEST 2025] Modifiche rilevate, sincronizzazione in corso...
+warning: adding embedded git repository: projects/active/test-python
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint: 
+hint: 	git submodule add <url> projects/active/test-python
+hint: 
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint: 
+hint: 	git rm --cached projects/active/test-python
+hint: 
+hint: See "git help submodule" for more information.
+warning: adding embedded git repository: projects/sandbox/sandbox-test-progetto
+warning: adding embedded git repository: projects/sandbox/sandbox-test-sandbox
+[main 0cde848] Auto-sync: 56 modifiche da NEURAL-X - 2025-06-13_00:11:35
+ 56 files changed, 7708 insertions(+)
+ create mode 100644 SANDBOX-SETUP-COMPLETE.md
+ create mode 100644 docs/SANDBOX-SYSTEM.md
+ create mode 100644 docs/SECURITY.md
+ create mode 100644 docs/SETUP.md
+ create mode 100644 docs/WORKFLOW.md
+ create mode 100644 logs/cleanup/cleanup-20250613-000444.log
+ create mode 100644 logs/cron-setup.log
+ create mode 100644 logs/project-creation.log
+ create mode 100644 logs/sync.log
+ create mode 160000 projects/active/test-python
+ create mode 160000 projects/sandbox/sandbox-test-progetto
+ create mode 160000 projects/sandbox/sandbox-test-sandbox
+ create mode 100755 scripts/auto-sync.sh
+ create mode 100755 scripts/claude-archive.sh
+ create mode 100755 scripts/claude-disable.sh
+ create mode 100755 scripts/claude-enable.sh
+ create mode 100755 scripts/claude-list.sh
+ create mode 100755 scripts/claude-new.sh
+ create mode 100755 scripts/claude-status.sh
+ create mode 100755 scripts/cleanup-sandbox.sh
+ create mode 100755 scripts/laptop-quick-setup.sh
+ create mode 100755 scripts/setup-cron.sh
+ create mode 100755 scripts/setup-laptop.sh
+ create mode 100755 scripts/setup-sandbox-complete.sh
+ create mode 100755 scripts/sync-now.sh
+ create mode 100644 templates/nodejs-api/.env.example
+ create mode 100644 templates/nodejs-api/.template-info
+ create mode 100644 templates/nodejs-api/package.json
+ create mode 100644 templates/nodejs-api/src/controllers/exampleController.js
+ create mode 100644 templates/nodejs-api/src/index.js
+ create mode 100644 templates/nodejs-api/src/routes/api.js
+ create mode 100644 templates/python-basic/.env.example
+ create mode 100644 templates/python-basic/.template-info
+ create mode 100644 templates/python-basic/Makefile
+ create mode 100644 templates/python-basic/requirements.txt
+ create mode 100644 templates/python-basic/src/__init__.py
+ create mode 100644 templates/python-basic/src/main.py
+ create mode 100644 templates/python-basic/tests/test_main.py
+ create mode 100644 templates/react-app/.template-info
+ create mode 100644 templates/react-app/index.html
+ create mode 100644 templates/react-app/package.json
+ create mode 100644 templates/react-app/src/App.css
+ create mode 100644 templates/react-app/src/App.jsx
+ create mode 100644 templates/react-app/src/components/Counter.css
+ create mode 100644 templates/react-app/src/components/Counter.jsx
+ create mode 100644 templates/react-app/src/components/Navigation.css
+ create mode 100644 templates/react-app/src/components/Navigation.jsx
+ create mode 100644 templates/react-app/src/index.css
+ create mode 100644 templates/react-app/src/main.jsx
+ create mode 100644 templates/react-app/src/pages/About.css
+ create mode 100644 templates/react-app/src/pages/About.jsx
+ create mode 100644 templates/react-app/src/pages/Home.css
+ create mode 100644 templates/react-app/src/pages/Home.jsx
+ create mode 100644 templates/react-app/src/pages/NotFound.css
+ create mode 100644 templates/react-app/src/pages/NotFound.jsx
+fatal: could not read Username for 'https://github.com': No such device or address
+[Fri Jun 13 00:11:36 CEST 2025] ❌ Errore durante il push
+[Fri Jun 13 00:11:36 CEST 2025] Monitoring attivo su /home/nullrunner/claude-workspace/projects
+Setting up watches.  Beware: since -r was given, this may take a while!
+Watches established.
