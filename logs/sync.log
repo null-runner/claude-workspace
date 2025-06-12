@@ -1159,3 +1159,17 @@ From github.com:null-runner/claude-workspace
  * branch            main       -> FETCH_HEAD
 Already up to date.
 [Fri Jun 13 01:49:18 CEST 2025] Modifiche rilevate, sincronizzazione in corso...
+[main 7015eb7] Auto-sync: 4 modifiche da NEURAL-X - 2025-06-13_01:49:18
+ 4 files changed, 351 insertions(+)
+ create mode 100644 projects/test/memory-test/README.md
+ create mode 100644 scripts/claude-autostart.sh
+ create mode 100644 scripts/setup-autostart.sh
+To github.com:null-runner/claude-workspace.git
+   b393140..7015eb7  main -> main
+[Fri Jun 13 01:49:20 CEST 2025] ✅ Sync completato con successo
+[Fri Jun 13 01:49:44 CEST 2025] Evento: CREATE su /home/nullrunner/claude-workspace/projects/test/memory-test/README_IT.md
+[Fri Jun 13 01:49:46 CEST 2025] Pulling da remoto...
+From github.com:null-runner/claude-workspace
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[Fri Jun 13 01:49:48 CEST 2025] Modifiche rilevate, sincronizzazione in corso...
