@@ -80,3 +80,9 @@ fatal: could not read Username for 'https://github.com': No such device or addre
 [Fri Jun 13 00:11:36 CEST 2025] Monitoring attivo su /home/nullrunner/claude-workspace/projects
 Setting up watches.  Beware: since -r was given, this may take a while!
 Watches established.
+[Fri Jun 13 00:43:46 CEST 2025] Auto-sync avviato su NEURAL-X
+[Fri Jun 13 00:43:46 CEST 2025] Pulling da remoto...
+From github.com:null-runner/claude-workspace
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[Fri Jun 13 00:43:48 CEST 2025] Modifiche rilevate, sincronizzazione in corso...
