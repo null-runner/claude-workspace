@@ -25,3 +25,10 @@
 [2025-06-13 00:11:19] INFO: Applicando template Python...
 [2025-06-13 00:11:19] Template Python applicato con successo
 [2025-06-13 00:11:19] Progetto 'sandbox-test-progetto' creato con successo!
+[2025-06-13 00:50:21] INFO: Creando progetto: sandbox-final-test
+[2025-06-13 00:50:21] INFO: Template: python-basic
+[2025-06-13 00:50:21] INFO: Tipo: sandbox
+[2025-06-13 00:50:21] INFO: Path: /home/nullrunner/claude-workspace/projects/sandbox/sandbox-final-test
+[2025-06-13 00:50:21] INFO: Applicando template Python...
+[2025-06-13 00:50:21] Template Python applicato con successo
+[2025-06-13 00:50:21] Progetto 'sandbox-final-test' creato con successo!
