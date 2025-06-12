@@ -49,13 +49,17 @@ import json
 import os
 from datetime import datetime
 
+project_name = "$project_name"
+project_type = "$project_type" 
+project_id = "$project_id"
+
 project_memory = {
     "project_info": {
-        "name": "$project_name",
-        "type": "$project_type",
-        "id": "$project_id",
+        "name": project_name,
+        "type": project_type,
+        "id": project_id,
         "created_at": datetime.utcnow().isoformat() + "Z",
-        "path": "~/claude-workspace/projects/$project_id"
+        "path": f"~/claude-workspace/projects/{project_id}"
     },
     "current_context": {
         "last_activity": None,
@@ -90,7 +94,7 @@ os.makedirs("$PROJECT_MEMORY_DIR", exist_ok=True)
 with open("$project_memory_file", "w") as f:
     json.dump(project_memory, f, indent=2)
 
-print("✅ Memoria progetto inizializzata: $project_name")
+print(f"✅ Memoria progetto inizializzata: {project_name}")
 EOF
     fi
     
@@ -470,8 +474,8 @@ case "$1" in
         if [[ -d "$PROJECT_MEMORY_DIR" ]]; then
             for file in "$PROJECT_MEMORY_DIR"/*.json; do
                 if [[ -f "$file" ]]; then
-                    local basename=$(basename "$file" .json)
-                    local project_id=${basename//_/\/}
+                    basename=$(basename "$file" .json)
+                    project_id=${basename//_/\/}
                     echo "   - $project_id"
                 fi
             done

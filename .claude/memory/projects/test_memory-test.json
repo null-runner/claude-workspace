@@ -7,12 +7,29 @@
     "path": "~/claude-workspace/projects/test/memory-test"
   },
   "current_context": {
-    "last_activity": null,
-    "current_task": null,
+    "last_activity": "2025-06-12T23:40:18Z",
+    "current_task": "Implementazione test",
     "active_files": [],
-    "notes": [],
-    "todo": [],
-    "completed": []
+    "notes": [
+      {
+        "timestamp": "2025-06-12T23:40:18Z",
+        "device": "NEURAL-X",
+        "content": "Test progetto memoria"
+      }
+    ],
+    "todo": [
+      {
+        "id": 1,
+        "description": "Test TODO memoria",
+        "status": "pending",
+        "created_at": "2025-06-12T23:40:25.293835Z",
+        "device": "NEURAL-X"
+      }
+    ],
+    "completed": [],
+    "device": "NEURAL-X",
+    "working_directory": "~/claude-workspace/projects/test/memory-test",
+    "last_save_note": "Test progetto memoria"
   },
   "session_history": [],
   "technical_notes": {
