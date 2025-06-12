@@ -1,0 +1,127 @@
+.about {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.about-hero h1 {
+  color: #646cff;
+  margin-bottom: 1rem;
+}
+
+.about-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.about-section h2 {
+  color: #646cff;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #646cff;
+  padding-bottom: 0.5rem;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.tech-item {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #646cff;
+}
+
+.tech-item h3 {
+  color: #646cff;
+  margin-bottom: 0.5rem;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+}
+
+.features-list li {
+  background: #f8f9fa;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  border-left: 4px solid #646cff;
+  position: relative;
+  padding-left: 2rem;
+}
+
+.features-list li::before {
+  content: "✓";
+  color: #646cff;
+  font-weight: bold;
+  position: absolute;
+  left: 0.5rem;
+}
+
+.dev-info {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.dev-info ul {
+  margin-top: 1rem;
+}
+
+.getting-started pre {
+  background: #1a1a1a;
+  color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.getting-started code {
+  font-family: 'Courier New', monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  .about-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .tech-item,
+  .features-list li,
+  .dev-info {
+    background: #1a1a1a;
+    color: rgba(255, 255, 255, 0.87);
+  }
+  
+  .getting-started pre {
+    background: #2a2a2a;
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-content {
+    gap: 2rem;
+  }
+  
+  .tech-item,
+  .dev-info {
+    padding: 1rem;
+  }
+}

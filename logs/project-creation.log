@@ -1,0 +1,27 @@
+[2025-06-13 00:04:00] INFO: Creando progetto: test-python
+[2025-06-13 00:04:00] INFO: Template: empty
+[2025-06-13 00:04:00] INFO: Tipo: active
+[2025-06-13 00:04:00] INFO: Path: /home/nullrunner/claude-workspace/projects/active/test-python
+[2025-06-13 00:04:00] INFO: Creato progetto vuoto con struttura base
+[2025-06-13 00:04:00] Progetto 'test-python' creato con successo!
+[2025-06-13 00:04:27] INFO: Creando progetto: test-python
+[2025-06-13 00:04:27] INFO: Template: python-basic
+[2025-06-13 00:04:27] INFO: Tipo: active
+[2025-06-13 00:04:27] INFO: Path: /home/nullrunner/claude-workspace/projects/active/test-python
+[2025-06-13 00:04:27] INFO: Applicando template Python...
+[2025-06-13 00:04:27] Template Python applicato con successo
+[2025-06-13 00:04:27] Progetto 'test-python' creato con successo!
+[2025-06-13 00:04:50] INFO: Creando progetto: sandbox-test-sandbox
+[2025-06-13 00:04:50] INFO: Template: react-app
+[2025-06-13 00:04:50] INFO: Tipo: sandbox
+[2025-06-13 00:04:50] INFO: Path: /home/nullrunner/claude-workspace/projects/sandbox/sandbox-test-sandbox
+[2025-06-13 00:04:50] INFO: Applicando template React con Vite...
+[2025-06-13 00:04:50] Template React applicato con successo
+[2025-06-13 00:04:50] Progetto 'sandbox-test-sandbox' creato con successo!
+[2025-06-13 00:11:19] INFO: Creando progetto: sandbox-test-progetto
+[2025-06-13 00:11:19] INFO: Template: python-basic
+[2025-06-13 00:11:19] INFO: Tipo: sandbox
+[2025-06-13 00:11:19] INFO: Path: /home/nullrunner/claude-workspace/projects/sandbox/sandbox-test-progetto
+[2025-06-13 00:11:19] INFO: Applicando template Python...
+[2025-06-13 00:11:19] Template Python applicato con successo
+[2025-06-13 00:11:19] Progetto 'sandbox-test-progetto' creato con successo!

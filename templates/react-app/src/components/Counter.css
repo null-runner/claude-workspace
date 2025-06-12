@@ -1,0 +1,43 @@
+.counter {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.counter h3 {
+  color: #646cff;
+  margin-bottom: 1rem;
+}
+
+.counter-display {
+  margin: 2rem 0;
+}
+
+.count-value {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #646cff;
+}
+
+.counter-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter-controls .btn {
+  min-width: 50px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .counter {
+    background: #1a1a1a;
+    color: rgba(255, 255, 255, 0.87);
+  }
+}
