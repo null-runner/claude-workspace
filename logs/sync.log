@@ -436,3 +436,14 @@ From github.com:null-runner/claude-workspace
  * branch            main       -> FETCH_HEAD
 Already up to date.
 [Fri Jun 13 00:53:18 CEST 2025] Modifiche rilevate, sincronizzazione in corso...
+[main edc5b75] Auto-sync: 1 modifiche da NEURAL-X - 2025-06-13_00:53:18
+ 1 file changed, 11 insertions(+)
+To github.com:null-runner/claude-workspace.git
+   25a4fd7..edc5b75  main -> main
+[Fri Jun 13 00:53:19 CEST 2025] ✅ Sync completato con successo
+[Fri Jun 13 00:53:19 CEST 2025] Evento: DELETE,ISDIR su /home/nullrunner/claude-workspace/projects/sandbox/sandbox-test-progetto/tests
+[Fri Jun 13 00:53:21 CEST 2025] Pulling da remoto...
+From github.com:null-runner/claude-workspace
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[Fri Jun 13 00:53:23 CEST 2025] Modifiche rilevate, sincronizzazione in corso...
