@@ -106,3 +106,29 @@ Fast-forward
  test-sync-laptop.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 [Fri Jun 13 00:50:25 CEST 2025] Modifiche rilevate, sincronizzazione in corso...
+warning: adding embedded git repository: projects/sandbox/sandbox-final-test
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint: 
+hint: 	git submodule add <url> projects/sandbox/sandbox-final-test
+hint: 
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint: 
+hint: 	git rm --cached projects/sandbox/sandbox-final-test
+hint: 
+hint: See "git help submodule" for more information.
+[main 3005fa5] Auto-sync: 3 modifiche da NEURAL-X - 2025-06-13_00:50:25
+ 3 files changed, 18 insertions(+)
+ create mode 160000 projects/sandbox/sandbox-final-test
+To github.com:null-runner/claude-workspace.git
+   bc50f1a..3005fa5  main -> main
+[Fri Jun 13 00:50:27 CEST 2025] ✅ Sync completato con successo
+[Fri Jun 13 00:50:27 CEST 2025] Evento: CREATE,ISDIR su /home/nullrunner/claude-workspace/projects/sandbox/sandbox-final-test/docs
+[Fri Jun 13 00:50:29 CEST 2025] Pulling da remoto...
+From github.com:null-runner/claude-workspace
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[Fri Jun 13 00:50:31 CEST 2025] Modifiche rilevate, sincronizzazione in corso...
