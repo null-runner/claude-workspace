@@ -67,6 +67,10 @@ recovery_check() {
             # Exit normale - pulizia semplice
             echo -e "${GREEN}✅ Sessione precedente chiusa correttamente${NC}"
             rm -f "$crash_indicator" "$exit_type_file"
+        elif [[ "$exit_type" == "normal_exit" ]]; then
+            # Exit normale (comando exit diretto) - non è un crash
+            echo -e "${GREEN}✅ Sessione precedente chiusa normalmente${NC}"
+            rm -f "$crash_indicator" "$exit_type_file"
         else
             # Crash reale - recovery necessario
             echo -e "${YELLOW}🚨 Recovery necessario: rilevato crash sessione precedente${NC}"
