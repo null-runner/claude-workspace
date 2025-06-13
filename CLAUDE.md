@@ -1,5 +1,7 @@
 # Claude Workspace
 
+<!-- CLAUDE.MD deve essere MINIMAL - solo direttive essenziali, niente commenti inutili -->
+
 ## Controllo Iniziale (OBBLIGATORIO)
 All'inizio di OGNI conversazione - tono amichevole "vediamo dove eravamo rimasti":
 1. `./scripts/claude-startup.sh` - avvia sistema completamente autonomo
@@ -37,8 +39,6 @@ All'inizio di OGNI conversazione - tono amichevole "vediamo dove eravamo rimasti
 🤖 Generated with Claude Workspace (by null-runner)
 Co-Authored-By: Claude <noreply@anthropic.com>
 ```
-
-**REGOLA ORO**: Meglio 10 commit "micro" che perdere il lavoro!
 
 ## Sistema Autonomo
 Il workspace ora è **completamente autonomo** con sync automatico:
