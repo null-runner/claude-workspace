@@ -7,6 +7,9 @@ MEMORY_DIR="$WORKSPACE_DIR/.claude/memory"
 CONTEXT_FILE="$MEMORY_DIR/enhanced-context.json"
 CONTEXT_BACKUP="$MEMORY_DIR/enhanced-context.json.backup"
 
+# Source JSON safe operations
+source "$WORKSPACE_DIR/scripts/json-safe-operations.sh"
+
 # Colori
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
@@ -25,12 +28,10 @@ save_context() {
     local open_issues="${3:-}"
     local next_actions="${4:-}"
     
-    # Check if we should use coordinator (unless already in coordinator mode)
-    if [[ -z "$MEMORY_COORD_MODE" ]]; then
-        echo -e "${YELLOW}💾 Requesting coordinated save...${NC}"
-        "$WORKSPACE_DIR/scripts/claude-memory-coordinator.sh" request-save simplified "claude-simplified-memory" normal "$save_reason" "$conversation_summary" "$open_issues" "$next_actions"
-        return $?
-    fi
+    # Always use coordinator for saves (coordinator handles coordination internally)
+    echo -e "${YELLOW}💾 Using unified memory coordinator...${NC}"
+    "$WORKSPACE_DIR/scripts/claude-memory-coordinator.sh" save simplified "$save_reason" "$conversation_summary" "$open_issues" "$next_actions"
+    return $?
     
     echo -e "${YELLOW}💾 Saving simplified context...${NC}"
     
@@ -511,14 +512,11 @@ EOF
 
 # Funzione per caricare context
 load_context() {
-    if [[ ! -f "$CONTEXT_FILE" ]]; then
-        echo -e "${YELLOW}⚠️  No saved context found${NC}"
-        return 1
-    fi
+    echo -e "${CYAN}🧠 Loading unified context...${NC}"
     
-    echo -e "${CYAN}🧠 Loading context...${NC}"
-    
-    export CONTEXT_FILE
+    # Use coordinator for loading
+    "$WORKSPACE_DIR/scripts/claude-memory-coordinator.sh" load
+    return $?
     
     python3 << 'EOF'
 import json
@@ -634,14 +632,9 @@ auto_save_context() {
     if [[ "$decision" == "SAVE" ]]; then
         echo -e "${GREEN}🤖 Auto-saving context: $reason${NC}"
         
-        # Use coordinator for auto-save with higher priority
-        if [[ -z "$MEMORY_COORD_MODE" ]]; then
-            "$WORKSPACE_DIR/scripts/claude-memory-coordinator.sh" request-save simplified "claude-simplified-memory-auto" high "$reason"
-            return $?
-        else
-            save_context "$reason"
-            return $?
-        fi
+        # Use coordinator for auto-save
+        "$WORKSPACE_DIR/scripts/claude-memory-coordinator.sh" save auto "$reason"
+        return $?
     else
         echo -e "${BLUE}ℹ️  Context save skipped: $reason${NC}"
         return 1

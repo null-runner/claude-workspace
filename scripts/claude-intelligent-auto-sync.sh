@@ -7,6 +7,7 @@ WORKSPACE_DIR="$HOME/claude-workspace"
 SYNC_LOG="$WORKSPACE_DIR/logs/intelligent-sync.log"
 FILTER_SCRIPT="$WORKSPACE_DIR/scripts/claude-smart-sync-filter.sh"
 SYNC_SCRIPT="$WORKSPACE_DIR/scripts/claude-robust-sync.sh"
+LOCK_SCRIPT="$WORKSPACE_DIR/scripts/claude-sync-lock.sh"
 
 # Configuration
 IMMEDIATE_SYNC_PATTERNS=(
@@ -31,6 +32,14 @@ NC='\033[0m'
 # Setup
 mkdir -p "$(dirname "$SYNC_LOG")"
 touch "$SYNC_LOG"
+
+# Source shared locking mechanism
+if [[ -f "$LOCK_SCRIPT" ]]; then
+    source "$LOCK_SCRIPT"
+else
+    log_sync "ERROR" "Sync lock script not found: $LOCK_SCRIPT"
+    exit 1
+fi
 
 # Logging
 log_sync() {
@@ -61,20 +70,42 @@ is_high_priority() {
     return 1
 }
 
-# Execute sync with proper locking and error handling
+# Execute sync with proper coordination
 execute_sync() {
     local sync_type="$1"
     local files_info="$2"
     
     log_sync "SYNC" "Starting $sync_type sync: $files_info"
     
-    # Use robust sync script for actual sync operation
-    if "$SYNC_SCRIPT" sync; then
-        log_sync "SYNC" "$sync_type sync completed successfully"
-        return 0
+    # Coordinate with memory system before sync
+    local memory_coordinator="$WORKSPACE_DIR/scripts/claude-memory-coordinator.sh"
+    if [[ -x "$memory_coordinator" ]]; then
+        # Request coordinated auto-save before sync
+        "$memory_coordinator" save auto "pre-sync-auto-save" >/dev/null 2>&1
+    fi
+    
+    # Use sync coordinator for all sync operations to prevent conflicts
+    local coordinator_script="$WORKSPACE_DIR/scripts/claude-sync-coordinator.sh"
+    
+    if [[ -x "$coordinator_script" ]]; then
+        # Request coordinated sync through the coordinator
+        if "$coordinator_script" request-sync intelligent-auto "intelligent-auto-sync" "normal" "Auto-sync: $files_info"; then
+            log_sync "SYNC" "$sync_type sync completed successfully"
+            return 0
+        else
+            log_sync "ERROR" "$sync_type sync failed"
+            return 1
+        fi
     else
-        log_sync "ERROR" "$sync_type sync failed"
-        return 1
+        # Fallback to robust sync if coordinator not available
+        log_sync "WARN" "Sync coordinator not available, falling back to robust sync"
+        if "$SYNC_SCRIPT" sync; then
+            log_sync "SYNC" "$sync_type sync completed successfully (fallback)"
+            return 0
+        else
+            log_sync "ERROR" "$sync_type sync failed (fallback)"
+            return 1
+        fi
     fi
 }
 
@@ -195,6 +226,11 @@ start_intelligent_sync() {
         exit 1
     fi
     
+    if [[ ! -x "$LOCK_SCRIPT" ]]; then
+        log_sync "ERROR" "Sync lock script not found or not executable: $LOCK_SCRIPT"
+        exit 1
+    fi
+    
     # Start background processes
     periodic_batch_sync &
     local batch_sync_pid=$!
@@ -206,6 +242,8 @@ start_intelligent_sync() {
     cleanup() {
         log_sync "INFO" "Shutting down intelligent sync daemon"
         kill $batch_sync_pid $health_monitor_pid 2>/dev/null
+        # Don't release lock here as we don't hold it in this daemon
+        # Individual sync operations handle their own locking
         exit 0
     }
     trap cleanup SIGINT SIGTERM EXIT

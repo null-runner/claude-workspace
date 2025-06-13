@@ -243,24 +243,11 @@ smart_exit_prompt() {
                 # Marca exit come graceful anche senza salvataggio
                 mark_graceful_exit
                 echo -e "${GREEN}👋 Goodbye! Session not saved.${NC}"
-                echo ""
-                echo -e "${YELLOW}🚪 Terminare Claude Code? [Y/n]: ${NC}\c"
-                read -r terminate_response
-                if [[ "$terminate_response" =~ ^[Nn] ]]; then
-                    echo -e "${BLUE}💡 Sessione mantenuta aperta${NC}"
-                    return 0
-                else
-                    echo -e "${RED}👋 Terminating Claude Code...${NC}"
-                    claude_pid=$(pgrep -x "claude")
-                    if [[ -n "$claude_pid" ]]; then
-                        echo -e "${RED}🔥 Found Claude Code PID: $claude_pid${NC}"
-                        echo -e "${RED}🔥 Killing Claude process...${NC}"
-                        kill "$claude_pid" 2>/dev/null || kill -9 "$claude_pid" 2>/dev/null
-                        echo -e "${GREEN}✅ Claude Code terminated successfully!${NC}"
-                    else
-                        echo -e "${YELLOW}⚠️  Claude process not found - already terminated?${NC}"
-                    fi
+                
+                if terminate_claude_code; then
                     exit 0
+                else
+                    return 0
                 fi
             fi
             ;;
@@ -308,24 +295,11 @@ prompt_save_session() {
             # Marca exit come graceful anche senza salvataggio
             mark_graceful_exit
             echo -e "${GREEN}👋 Goodbye! Session not saved.${NC}"
-            echo ""
-            echo -e "${YELLOW}🚪 Terminare Claude Code? [Y/n]: ${NC}\c"
-            read -r terminate_response
-            if [[ "$terminate_response" =~ ^[Nn] ]]; then
-                echo -e "${BLUE}💡 Sessione mantenuta aperta${NC}"
-                return 0
-            else
-                echo -e "${RED}👋 Terminating Claude Code...${NC}"
-                claude_pid=$(pgrep -x "claude")
-                if [[ -n "$claude_pid" ]]; then
-                    echo -e "${RED}🔥 Found Claude Code PID: $claude_pid${NC}"
-                    echo -e "${RED}🔥 Killing Claude process...${NC}"
-                    kill "$claude_pid" 2>/dev/null || kill -9 "$claude_pid" 2>/dev/null
-                    echo -e "${GREEN}✅ Claude Code terminated successfully!${NC}"
-                else
-                    echo -e "${YELLOW}⚠️  Claude process not found - already terminated?${NC}"
-                fi
+            
+            if terminate_claude_code; then
                 exit 0
+            else
+                return 0
             fi
             ;;
         *)
@@ -333,6 +307,147 @@ prompt_save_session() {
             prompt_save_session "$priority"
             ;;
     esac
+}
+
+# Termina Claude Code in modo sicuro con validazione avanzata
+terminate_claude_code() {
+    local prompt_text="${1:-🚪 Terminare Claude Code? [Y/n]: }"
+    
+    echo ""
+    echo -e "${YELLOW}$prompt_text${NC}\c"
+    read -r terminate_response
+    
+    if [[ "$terminate_response" =~ ^[Nn] ]]; then
+        echo -e "${BLUE}💡 Sessione mantenuta aperta${NC}"
+        return 1  # Don't terminate
+    else
+        echo -e "${RED}👋 Terminating Claude Code...${NC}"
+        
+        # Enhanced Claude process detection with validation
+        local claude_pids=()
+        local validated_pids=()
+        
+        # Method 1: Direct process name matching
+        mapfile -t claude_pids < <(pgrep -x "claude" 2>/dev/null)
+        
+        # Method 2: Fuzzy matching for claude-related processes
+        if [[ ${#claude_pids[@]} -eq 0 ]]; then
+            echo -e "${CYAN}🔍 Trying fuzzy process detection...${NC}"
+            mapfile -t claude_pids < <(pgrep -i "claude" 2>/dev/null)
+        fi
+        
+        # Method 3: Search by command line arguments
+        if [[ ${#claude_pids[@]} -eq 0 ]]; then
+            echo -e "${CYAN}🔍 Searching by command line...${NC}"
+            mapfile -t claude_pids < <(pgrep -f "claude" 2>/dev/null)
+        fi
+        
+        if [[ ${#claude_pids[@]} -eq 0 ]]; then
+            echo -e "${YELLOW}⚠️  No Claude processes found - already terminated?${NC}"
+            return 0
+        fi
+        
+        echo -e "${CYAN}🔍 Found ${#claude_pids[@]} potential Claude process(es)${NC}"
+        
+        # Validate each process before termination
+        for claude_pid in "${claude_pids[@]}"; do
+            if validate_claude_process "$claude_pid"; then
+                validated_pids+=("$claude_pid")
+            fi
+        done
+        
+        if [[ ${#validated_pids[@]} -eq 0 ]]; then
+            echo -e "${YELLOW}⚠️  No valid Claude processes found after validation${NC}"
+            return 0
+        fi
+        
+        echo -e "${GREEN}✅ Validated ${#validated_pids[@]} Claude process(es) for termination${NC}"
+        
+        # Terminate each validated Claude instance
+        for claude_pid in "${validated_pids[@]}"; do
+            echo -e "${RED}🔥 Terminating Claude Code PID: $claude_pid${NC}"
+            
+            # Try graceful shutdown first (SIGTERM)
+            if kill -TERM "$claude_pid" 2>/dev/null; then
+                echo -e "${YELLOW}⏳ Waiting for graceful shutdown...${NC}"
+                
+                # Wait up to 5 seconds for graceful shutdown
+                local countdown=5
+                while [[ $countdown -gt 0 ]] && kill -0 "$claude_pid" 2>/dev/null; do
+                    printf "."
+                    sleep 1
+                    ((countdown--))
+                done
+                echo ""
+                
+                # Force kill if still running
+                if kill -0 "$claude_pid" 2>/dev/null; then
+                    echo -e "${RED}🔥 Graceful shutdown failed, force killing...${NC}"
+                    kill -KILL "$claude_pid" 2>/dev/null
+                    sleep 1
+                    
+                    # Final check
+                    if kill -0 "$claude_pid" 2>/dev/null; then
+                        echo -e "${RED}❌ Failed to terminate PID $claude_pid${NC}"
+                    else
+                        echo -e "${GREEN}✅ Process $claude_pid terminated (forced)${NC}"
+                    fi
+                else
+                    echo -e "${GREEN}✅ Process $claude_pid terminated gracefully${NC}"
+                fi
+            else
+                echo -e "${RED}❌ Failed to send SIGTERM to PID $claude_pid${NC}"
+                # Try direct SIGKILL as last resort
+                if kill -KILL "$claude_pid" 2>/dev/null; then
+                    echo -e "${YELLOW}⚠️  Used SIGKILL as last resort${NC}"
+                else
+                    echo -e "${RED}❌ Complete failure to terminate PID $claude_pid${NC}"
+                fi
+            fi
+        done
+        
+        echo -e "${GREEN}✅ Claude Code termination process completed!${NC}"
+        return 0
+    fi
+}
+
+# Validate if a PID is actually a Claude process
+validate_claude_process() {
+    local pid="$1"
+    
+    # Check if PID exists and is accessible
+    if ! kill -0 "$pid" 2>/dev/null; then
+        echo -e "${YELLOW}⚠️  PID $pid not accessible or doesn't exist${NC}"
+        return 1
+    fi
+    
+    # Check process ownership (should be owned by current user)
+    local process_owner=$(ps -o uid= -p "$pid" 2>/dev/null | tr -d ' ')
+    local current_uid=$(id -u)
+    
+    if [[ -z "$process_owner" ]]; then
+        echo -e "${YELLOW}⚠️  PID $pid: unable to determine process owner${NC}"
+        return 1
+    fi
+    
+    if [[ "$process_owner" != "$current_uid" ]]; then
+        echo -e "${YELLOW}⚠️  PID $pid owned by different user (UID: $process_owner vs $current_uid)${NC}"
+        return 1
+    fi
+    
+    # Get process command and details
+    local process_cmd=$(ps -o comm= -p "$pid" 2>/dev/null)
+    local process_args=$(ps -o args= -p "$pid" 2>/dev/null)
+    
+    # Validate it's actually Claude-related
+    if [[ "$process_cmd" =~ ^claude$ ]] || [[ "$process_args" =~ claude.*code ]] || [[ "$process_args" =~ ^claude ]]; then
+        echo -e "${GREEN}✅ PID $pid validated as Claude process: $process_cmd${NC}"
+        return 0
+    else
+        echo -e "${YELLOW}⚠️  PID $pid doesn't appear to be Claude process: $process_cmd${NC}"
+        echo -e "${YELLOW}    Args: $process_args${NC}"
+        return 1
+    fi
 }
 
 # Genera nota automatica intelligente
@@ -451,24 +566,10 @@ save_session() {
         echo -e "${GREEN}👋 Goodbye!${NC}"
     fi
     
-    echo ""
-    echo -e "${YELLOW}🚪 Terminare Claude Code? [Y/n]: ${NC}\c"
-    read -r terminate_response
-    if [[ "$terminate_response" =~ ^[Nn] ]]; then
-        echo -e "${BLUE}💡 Sessione mantenuta aperta${NC}"
-        return 0
-    else
-        echo -e "${RED}👋 Terminating Claude Code...${NC}"
-        claude_pid=$(pgrep -x "claude")
-        if [[ -n "$claude_pid" ]]; then
-            echo -e "${RED}🔥 Found Claude Code PID: $claude_pid${NC}"
-            echo -e "${RED}🔥 Killing Claude process...${NC}"
-            kill "$claude_pid" 2>/dev/null || kill -9 "$claude_pid" 2>/dev/null
-            echo -e "${GREEN}✅ Claude Code terminated successfully!${NC}"
-        else
-            echo -e "${YELLOW}⚠️  Claude process not found - already terminated?${NC}"
-        fi
+    if terminate_claude_code; then
         exit 0
+    else
+        return 0
     fi
 }
 
@@ -516,26 +617,11 @@ case "${1:-}" in
             mark_graceful_exit
             echo -e "${GREEN}✅ Exit type marked as graceful${NC}"
             echo -e "${GREEN}✅ Graceful exit operations completed!${NC}"
-            echo ""
-            # Ritorna al cexit per la terminazione controllata
-            echo -e "${YELLOW}🚪 Terminare Claude Code? [Y/n]: ${NC}\c"
-            read -r terminate_response
-            if [[ "$terminate_response" =~ ^[Nn] ]]; then
-                echo -e "${BLUE}💡 Sessione mantenuta aperta${NC}"
-                return 0
-            else
-                echo -e "${RED}👋 Terminating Claude Code...${NC}"
-                # Trova e termina il processo Claude Code
-                claude_pid=$(pgrep -x "claude")
-                if [[ -n "$claude_pid" ]]; then
-                    echo -e "${RED}🔥 Found Claude Code PID: $claude_pid${NC}"
-                    echo -e "${RED}🔥 Killing Claude process...${NC}"
-                    kill "$claude_pid" 2>/dev/null || kill -9 "$claude_pid" 2>/dev/null
-                    echo -e "${GREEN}✅ Claude Code terminated successfully!${NC}"
-                else
-                    echo -e "${YELLOW}⚠️  Claude process not found - already terminated?${NC}"
-                fi
+            
+            if terminate_claude_code; then
                 exit 0
+            else
+                return 0
             fi
         fi
         ;;

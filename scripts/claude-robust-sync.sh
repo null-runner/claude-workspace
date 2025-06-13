@@ -5,7 +5,7 @@
 WORKSPACE_DIR="$HOME/claude-workspace"
 SYNC_STATE_DIR="$WORKSPACE_DIR/.claude/sync"
 LOG_FILE="$WORKSPACE_DIR/logs/robust-sync.log"
-LOCK_FILE="$SYNC_STATE_DIR/sync.lock"
+LOCK_SCRIPT="$WORKSPACE_DIR/scripts/claude-sync-lock.sh"
 
 # Security and robustness configuration
 MAX_COMMITS_PER_HOUR=10
@@ -24,6 +24,14 @@ NC='\033[0m'
 # Setup
 mkdir -p "$SYNC_STATE_DIR" "$(dirname "$LOG_FILE")"
 touch "$LOG_FILE"
+
+# Source shared locking mechanism
+if [[ -f "$LOCK_SCRIPT" ]]; then
+    source "$LOCK_SCRIPT"
+else
+    echo -e "${RED}ERROR: Sync lock script not found: $LOCK_SCRIPT${NC}" >&2
+    exit 1
+fi
 
 # Secure logging with rotation
 log_secure() {
@@ -45,39 +53,19 @@ log_secure() {
     fi
 }
 
-# Acquire exclusive lock with timeout
+# Backward compatibility wrapper for acquire_lock
 acquire_lock() {
     local timeout=${1:-30}
-    local count=0
-    
-    while [[ -f "$LOCK_FILE" ]] && [[ $count -lt $timeout ]]; do
-        if ! kill -0 "$(cat "$LOCK_FILE" 2>/dev/null)" 2>/dev/null; then
-            log_secure "INFO" "Removing stale lock file"
-            rm -f "$LOCK_FILE"
-            break
-        fi
-        sleep 1
-        ((count++))
-    done
-    
-    if [[ -f "$LOCK_FILE" ]]; then
-        log_secure "ERROR" "Could not acquire sync lock after ${timeout}s"
-        return 1
-    fi
-    
-    echo $$ > "$LOCK_FILE"
-    return 0
+    acquire_sync_lock "$timeout" "robust-sync"
 }
 
-# Release lock
+# Backward compatibility wrapper for release_lock
 release_lock() {
-    if [[ -f "$LOCK_FILE" ]] && [[ "$(cat "$LOCK_FILE")" == "$$" ]]; then
-        rm -f "$LOCK_FILE"
-    fi
+    release_sync_lock "robust-sync"
 }
 
 # Trap to ensure lock cleanup
-trap 'release_lock; exit' EXIT INT TERM
+trap 'release_sync_lock "robust-sync"; exit' EXIT INT TERM
 
 # Rate limiting check
 check_rate_limits() {
@@ -207,7 +195,10 @@ sync_project_files() {
     
     # Create focused commit message
     local files_changed=$(git diff --cached --name-only | head -5 | tr '\n' ' ')
+    # Set env var to skip auto-push hook
+    export CLAUDE_SYNC_ACTIVE=1
     git commit -m "🚀 Project sync: $changes files ($files_changed...)"
+    unset CLAUDE_SYNC_ACTIVE
     
     return $?
 }
@@ -240,8 +231,10 @@ sync_workspace_files() {
     # Add workspace files (excluding autonomous system files)
     git add scripts/ docs/ templates/ CLAUDE.md README.md *.md 2>/dev/null || true
     
-    # Commit workspace changes
+    # Commit workspace changes (set env var to skip auto-push hook)
+    export CLAUDE_SYNC_ACTIVE=1
     git commit -m "🔧 Workspace sync: $workspace_changes changes ($(date '+%H:%M'))"
+    unset CLAUDE_SYNC_ACTIVE
     
     echo "$now" > "$last_workspace_sync"
     return $?
@@ -251,66 +244,94 @@ sync_workspace_files() {
 perform_robust_sync() {
     log_secure "INFO" "Starting robust sync process"
     
-    # Acquire exclusive lock
-    if ! acquire_lock 30; then
-        return 1
-    fi
+    # Check if coordinator is available
+    local coordinator_script="$WORKSPACE_DIR/scripts/claude-sync-coordinator.sh"
     
-    # Pre-sync health checks
-    if ! pre_sync_health_check; then
-        log_secure "ERROR" "Pre-sync health check failed"
-        return 1
-    fi
-    
-    # Rate limiting
-    if ! check_rate_limits; then
-        return 1
-    fi
-    
-    # Cooldown check
-    if ! check_sync_cooldown; then
-        return 0  # Not an error, just waiting
-    fi
-    
-    cd "$WORKSPACE_DIR" || {
-        log_secure "CRITICAL" "Cannot access workspace directory"
-        return 1
-    }
-    
-    # Pull first with retry
-    if ! git_operation_with_retry "pull" $MAX_RETRY_ATTEMPTS; then
-        log_secure "ERROR" "Failed to pull from remote"
-        return 1
-    fi
-    
-    # Sync project files (immediate priority)
-    local project_sync_needed=false
-    if sync_project_files; then
-        project_sync_needed=true
-        log_secure "INFO" "Project files staged for sync"
-    fi
-    
-    # Sync workspace files (batch)
-    local workspace_sync_needed=false  
-    if sync_workspace_files; then
-        workspace_sync_needed=true
-        log_secure "INFO" "Workspace files staged for sync"
-    fi
-    
-    # Push if we have changes
-    if [[ "$project_sync_needed" == true ]] || [[ "$workspace_sync_needed" == true ]]; then
-        if git_operation_with_retry "push" $MAX_RETRY_ATTEMPTS; then
-            log_secure "INFO" "Sync completed successfully"
-            echo $(date +%s) > "$SYNC_STATE_DIR/last_sync"
+    if [[ -x "$coordinator_script" ]] && [[ -z "$MEMORY_COORD_MODE" ]]; then
+        log_secure "INFO" "Using sync coordinator for robust sync"
+        
+        # Request coordinated sync through the coordinator
+        if "$coordinator_script" request-sync robust "robust-sync" "high" "Robust sync operation"; then
+            log_secure "INFO" "Coordinated robust sync completed successfully"
+            return 0
         else
-            log_secure "ERROR" "Failed to push changes"
+            log_secure "ERROR" "Coordinated robust sync failed"
             return 1
         fi
     else
-        log_secure "INFO" "No changes to sync"
+        # Original robust sync logic (fallback or when called by coordinator)
+        if [[ -n "$MEMORY_COORD_MODE" ]]; then
+            log_secure "INFO" "Running in coordinator mode - executing direct sync"
+        else
+            log_secure "WARN" "Sync coordinator not available, using direct mode"
+        fi
+        
+        # Acquire exclusive lock
+        if ! acquire_lock 30; then
+            return 1
+        fi
+        
+        # Pre-sync health checks
+        if ! pre_sync_health_check; then
+            log_secure "ERROR" "Pre-sync health check failed"
+            return 1
+        fi
+        
+        # Rate limiting
+        if ! check_rate_limits; then
+            return 1
+        fi
+        
+        # Cooldown check
+        if ! check_sync_cooldown; then
+            return 0  # Not an error, just waiting
+        fi
+        
+        cd "$WORKSPACE_DIR" || {
+            log_secure "CRITICAL" "Cannot access workspace directory"
+            return 1
+        }
+        
+        # Pull first with retry
+        if ! git_operation_with_retry "pull" $MAX_RETRY_ATTEMPTS; then
+            log_secure "ERROR" "Failed to pull from remote"
+            return 1
+        fi
+        
+        # Sync project files (immediate priority)
+        local project_sync_needed=false
+        if sync_project_files; then
+            project_sync_needed=true
+            log_secure "INFO" "Project files staged for sync"
+        fi
+        
+        # Sync workspace files (batch)
+        local workspace_sync_needed=false  
+        if sync_workspace_files; then
+            workspace_sync_needed=true
+            log_secure "INFO" "Workspace files staged for sync"
+        fi
+        
+        # Push if we have changes
+        if [[ "$project_sync_needed" == true ]] || [[ "$workspace_sync_needed" == true ]]; then
+            if git_operation_with_retry "push" $MAX_RETRY_ATTEMPTS; then
+                log_secure "INFO" "Sync completed successfully"
+                echo $(date +%s) > "$SYNC_STATE_DIR/last_sync"
+            else
+                log_secure "ERROR" "Failed to push changes"
+                return 1
+            fi
+        else
+            log_secure "INFO" "No changes to sync"
+        fi
+        
+        # Rotate logs periodically
+        if [[ $((RANDOM % 10)) -eq 0 ]]; then
+            "$WORKSPACE_DIR/scripts/claude-log-rotator.sh" rotate >/dev/null 2>&1 &
+        fi
+        
+        return 0
     fi
-    
-    return 0
 }
 
 # Monitoring mode
@@ -367,7 +388,8 @@ case "${1:-monitor}" in
         ;;
     "status")
         echo -e "${GREEN}Robust Sync Status:${NC}"
-        echo "Lock file: $(test -f "$LOCK_FILE" && echo "LOCKED" || echo "FREE")"
+        echo -n "Lock status: "
+        show_lock_status
         echo "Last sync: $(test -f "$SYNC_STATE_DIR/last_sync" && date -d "@$(cat "$SYNC_STATE_DIR/last_sync")" || echo "NEVER")"
         echo "Commits last hour: $(git log --since="1 hour ago" --grep="Auto-sync\|Project sync\|Workspace sync" --oneline 2>/dev/null | wc -l)"
         echo "Repository health: $(git fsck --no-progress --quiet 2>/dev/null && echo "OK" || echo "ISSUES")"

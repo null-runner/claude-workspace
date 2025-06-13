@@ -6,6 +6,7 @@ WORKSPACE_DIR="$HOME/claude-workspace"
 SYNC_DIR="$WORKSPACE_DIR/.claude/sync"
 CONFIG_FILE="$SYNC_DIR/config.json"
 STATE_DIR="$SYNC_DIR/state"
+LOCK_SCRIPT="$WORKSPACE_DIR/scripts/claude-sync-lock.sh"
 
 # Colori
 GREEN='\033[0;32m'
@@ -17,6 +18,14 @@ NC='\033[0m'
 
 # Setup directories
 mkdir -p "$SYNC_DIR" "$STATE_DIR" "$STATE_DIR/dir-timestamps"
+
+# Source shared locking mechanism
+if [[ -f "$LOCK_SCRIPT" ]]; then
+    source "$LOCK_SCRIPT"
+else
+    echo -e "${RED}ERROR: Sync lock script not found: $LOCK_SCRIPT${NC}" >&2
+    exit 1
+fi
 
 # Load configuration
 load_config() {
@@ -85,54 +94,93 @@ trigger_sync() {
     
     cd "$WORKSPACE_DIR"
     
-    # Rate limiting
-    if ! check_rate_limit; then
-        return 1
-    fi
+    # Use sync coordinator for all sync operations to prevent conflicts
+    local coordinator_script="$WORKSPACE_DIR/scripts/claude-sync-coordinator.sh"
     
-    log_sync "Triggering sync: $reason"
-    
-    # Check if there are changes to sync
-    if [[ -z $(git status --porcelain) ]]; then
-        log_sync "No changes to sync"
-        return 0
-    fi
-    
-    # Create list of files to sync (exclude system noise)
-    local files_to_sync=""
-    
-    # Always include user files
-    git add scripts/ docs/ CLAUDE.md projects/ 2>/dev/null
-    
-    # Include important system files
-    git add .claude/memory/enhanced-context.json 2>/dev/null
-    git add .claude/memory/workspace-memory.json 2>/dev/null
-    git add .claude/memory/current-session-context.json 2>/dev/null
-    git add .claude/intelligence/auto-learnings.json 2>/dev/null
-    git add .claude/intelligence/auto-decisions.json 2>/dev/null
-    git add .claude/decisions/ 2>/dev/null
-    git add .claude/settings.local.json 2>/dev/null
-    
-    # Check if anything was actually staged
-    if git diff --cached --quiet; then
-        log_sync "No meaningful changes to sync"
-        return 0
-    fi
-    
-    # Create smart commit message
-    local files_changed=$(git diff --cached --name-only | wc -l)
-    local commit_msg="🔄 Smart sync: $reason ($files_changed files)"
-    
-    # Commit and push
-    if git commit -m "$commit_msg"; then
-        if git push origin main; then
-            log_sync "✅ Sync successful: $files_changed files"
+    if [[ -x "$coordinator_script" ]]; then
+        log_sync "Requesting coordinated sync: $reason"
+        
+        # Request coordinated sync through the coordinator
+        if "$coordinator_script" request-sync smart "smart-sync" "normal" "$reason"; then
+            log_sync "✅ Coordinated sync successful: $reason"
             record_sync "$reason"
+            return 0
         else
-            log_sync "❌ Push failed for: $reason"
+            log_sync "❌ Coordinated sync failed: $reason"
+            return 1
         fi
     else
-        log_sync "❌ Commit failed for: $reason"
+        # Fallback to original sync logic if coordinator not available
+        log_sync "⚠️  Sync coordinator not available, using fallback mode"
+        
+        # Rate limiting
+        if ! check_rate_limit; then
+            return 1
+        fi
+        
+        # Acquire sync lock to prevent conflicts
+        if ! acquire_sync_lock 30 "smart-sync"; then
+            log_sync "Could not acquire sync lock, skipping: $reason"
+            return 1
+        fi
+        
+        # Setup cleanup trap
+        setup_lock_cleanup "smart-sync"
+        
+        log_sync "Triggering sync: $reason"
+        
+        # Check if there are changes to sync
+        if [[ -z $(git status --porcelain) ]]; then
+            log_sync "No changes to sync"
+            return 0
+        fi
+        
+        # Create list of files to sync (exclude system noise)
+        local files_to_sync=""
+        
+        # Always include user files
+        git add scripts/ docs/ CLAUDE.md projects/ 2>/dev/null
+        
+        # Include important system files
+        git add .claude/memory/enhanced-context.json 2>/dev/null
+        git add .claude/memory/workspace-memory.json 2>/dev/null
+        git add .claude/memory/current-session-context.json 2>/dev/null
+        git add .claude/intelligence/auto-learnings.json 2>/dev/null
+        git add .claude/intelligence/auto-decisions.json 2>/dev/null
+        git add .claude/decisions/ 2>/dev/null
+        git add .claude/settings.local.json 2>/dev/null
+        
+        # Check if anything was actually staged
+        if git diff --cached --quiet; then
+            log_sync "No meaningful changes to sync"
+            return 0
+        fi
+        
+        # Create smart commit message
+        local files_changed=$(git diff --cached --name-only | wc -l)
+        local commit_msg="🔄 Smart sync: $reason ($files_changed files)"
+        
+        # Commit and push
+        # Set env var to skip auto-push hook
+        export CLAUDE_SYNC_ACTIVE=1
+        if git commit -m "$commit_msg"; then
+            unset CLAUDE_SYNC_ACTIVE
+            if git push origin main; then
+                log_sync "✅ Sync successful: $files_changed files"
+                record_sync "$reason"
+                release_sync_lock "smart-sync"
+                return 0
+            else
+                log_sync "❌ Push failed for: $reason"
+                release_sync_lock "smart-sync"
+                return 1
+            fi
+        else
+            log_sync "❌ Commit failed for: $reason"
+            unset CLAUDE_SYNC_ACTIVE
+            release_sync_lock "smart-sync"
+            return 1
+        fi
     fi
 }
 
@@ -381,7 +429,19 @@ stop_service() {
 force_sync() {
     local reason="${1:-Manual sync request}"
     load_config  # Load config before sync
-    trigger_sync "$reason"
+    
+    # Check if sync is already running
+    if is_sync_locked; then
+        echo -e "${YELLOW}Sync already in progress, waiting...${NC}"
+        if wait_for_lock_release 60; then
+            trigger_sync "$reason"
+        else
+            echo -e "${RED}Timeout waiting for sync to complete${NC}"
+            return 1
+        fi
+    else
+        trigger_sync "$reason"
+    fi
 }
 
 # Main command handling

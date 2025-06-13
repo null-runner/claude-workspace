@@ -121,6 +121,19 @@ EOF
 
 # Funzione per salvare sessione enhanced
 save_enhanced_session() {
+    # Check if we should use coordinator (unless already in coordinator mode)
+    if [[ -z "$MEMORY_COORD_MODE" ]]; then
+        echo -e "${YELLOW}🚀 Requesting coordinated enhanced save...${NC}"
+        local coord_params=""
+        if [[ -n "$SESSION_NOTE" ]]; then coord_params+="$SESSION_NOTE "; fi
+        if [[ -n "$CONVERSATION_SUMMARY" ]]; then coord_params+="$CONVERSATION_SUMMARY "; fi
+        if [[ -n "$INCOMPLETE_TASKS" ]]; then coord_params+="$INCOMPLETE_TASKS "; fi
+        if [[ -n "$NEXT_STEPS" ]]; then coord_params+="$NEXT_STEPS"; fi
+        
+        "$HOME/claude-workspace/scripts/claude-memory-coordinator.sh" request-save enhanced "claude-enhanced-save" normal $coord_params
+        return $?
+    fi
+    
     local timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
     local hostname=$(hostname)
     local active_project=$(detect_active_project)
@@ -243,7 +256,14 @@ EOF
 
 # Funzione per caricare ultima sessione
 load_last_session() {
-    if [[ -f "$SESSION_CONTEXT_FILE" ]]; then
+    echo -e "${YELLOW}📖 Loading unified session context...${NC}"
+    
+    # Use coordinator for loading
+    "$HOME/claude-workspace/scripts/claude-memory-coordinator.sh" load
+    return $?
+    
+    # Legacy code (kept for reference)
+    if false && [[ -f "$SESSION_CONTEXT_FILE" ]]; then
         echo -e "${YELLOW}📖 Ultima sessione salvata:${NC}"
         python3 << EOF
 import json
@@ -311,6 +331,12 @@ fi
 # Carica ultima sessione
 if [[ "$1" == "--load" || "$1" == "-l" ]]; then
     load_last_session
+    exit 0
+fi
+
+# Mostra status del sistema unificato
+if [[ "$1" == "--status" || "$1" == "-s" ]]; then
+    "$HOME/claude-workspace/scripts/claude-memory-coordinator.sh" status
     exit 0
 fi
 

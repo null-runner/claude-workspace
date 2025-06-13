@@ -1,0 +1,29 @@
+[2025-06-14 01:33:53] [API] Sync request: manual from test-sync (priority: high)
+[2025-06-14 01:33:53] [INFO] Rate limit check: ALLOW: 3/12 syncs this hour
+[2025-06-14 01:33:53] [LOCK] Coordination lock acquired by test-sync (PID: 60756)
+[2025-06-14 01:33:53] [EXEC] Executing manual sync immediately
+[2025-06-14 01:33:53] [SYNC] Executing sync operation: {
+    "operation": "manual",
+    "caller": "test-sync",
+    "priority": "high",
+    "reason": "Testing coordinator",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:33:53Z",
+    "status": "executing"
+}
+[2025-06-14 01:33:53] [ERROR] manual sync failed
+[2025-06-14 01:33:53] [LOCK] Coordination lock released by test-sync (PID: 60756)
+[2025-06-14 01:33:53] [WARN] No coordination lock file found for release by test-sync
+[2025-06-14 01:34:04] [API] Sync request: manual from test-sync (priority: high)
+[2025-06-14 01:34:04] [INFO] Rate limit check: ALLOW: 4/12 syncs this hour
+[2025-06-14 01:34:04] [LOCK] Coordination lock acquired by test-sync (PID: 60834)
+[2025-06-14 01:34:04] [EXEC] Executing manual sync immediately
+[2025-06-14 01:34:04] [SYNC] Executing sync operation: {
+    "operation": "manual",
+    "caller": "test-sync",
+    "priority": "high",
+    "reason": "Testing coordinator fix",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:34:04Z",
+    "status": "executing"
+}
