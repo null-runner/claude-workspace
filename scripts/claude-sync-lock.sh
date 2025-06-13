@@ -114,8 +114,10 @@ setup_lock_cleanup() {
     trap "release_sync_lock '$caller'; exit" EXIT INT TERM
 }
 
-# Command line interface
-case "${1:-}" in
+# Only execute CLI if not being sourced
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]] || [[ "${1:-}" != "source-mode" ]]; then
+    # Command line interface
+    case "${1:-}" in
     "acquire")
         acquire_sync_lock "${2:-30}" "${3:-CLI}"
         ;;

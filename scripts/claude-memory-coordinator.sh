@@ -1103,7 +1103,7 @@ unified_context_load() {
         return 1
     fi
     
-    export UNIFIED_CONTEXT
+    export UNIFIED_CONTEXT WORKSPACE_DIR
     
     python3 << 'EOF'
 import json

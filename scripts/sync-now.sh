@@ -11,9 +11,13 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-# Source shared locking mechanism
+# Source shared locking mechanism with detection
 if [[ -f "$LOCK_SCRIPT" ]]; then
-    source "$LOCK_SCRIPT"
+    # Temporarily override arguments to prevent lock script from executing its CLI
+    ORIGINAL_ARGS=("$@")
+    set -- "source-mode"
+    source "$LOCK_SCRIPT" >/dev/null 2>&1 || true
+    set -- "${ORIGINAL_ARGS[@]}"
 else
     echo -e "${RED}ERROR: Sync lock script not found: $LOCK_SCRIPT${NC}" >&2
     exit 1
