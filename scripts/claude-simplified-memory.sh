@@ -94,6 +94,183 @@ def get_git_status():
             "is_git_repo": False
         }
 
+def extract_todo_comments():
+    """Extract TODO/FIXME/BUG comments from project files"""
+    try:
+        workspace_dir = os.environ.get('WORKSPACE_DIR')
+        if not workspace_dir:
+            return []
+            
+        current_project = get_current_project()
+        if not current_project:
+            return []
+            
+        # Determine search path based on project type
+        if current_project.get("type") == "meta":
+            # For workspace development, search in scripts and docs
+            search_paths = [
+                os.path.join(workspace_dir, "scripts"),
+                os.path.join(workspace_dir, "docs"),
+                os.path.join(workspace_dir, "CLAUDE.md"),
+                os.path.join(workspace_dir, "README.md")
+            ]
+        else:
+            # For regular projects, search in project directory
+            project_path = current_project.get("path", "")
+            if project_path and os.path.exists(project_path):
+                search_paths = [project_path]
+            else:
+                return []
+        
+        todos = []
+        todo_patterns = ["TODO", "FIXME", "BUG", "HACK", "NOTE", "IMPORTANT"]
+        
+        for search_path in search_paths:
+            if not os.path.exists(search_path):
+                continue
+                
+            if os.path.isfile(search_path):
+                # Single file
+                todos.extend(_extract_from_file(search_path, todo_patterns))
+            else:
+                # Directory - search recursively
+                for root, dirs, files in os.walk(search_path):
+                    # Skip hidden directories and .claude
+                    dirs[:] = [d for d in dirs if not d.startswith('.')]
+                    
+                    for file in files:
+                        if file.endswith(('.sh', '.py', '.js', '.md', '.txt', '.json')):
+                            file_path = os.path.join(root, file)
+                            todos.extend(_extract_from_file(file_path, todo_patterns))
+        
+        # Limit to most recent/relevant 5 TODOs
+        return todos[:5]
+        
+    except Exception as e:
+        return []
+
+def _extract_from_file(file_path, patterns):
+    """Extract TODO comments from a single file"""
+    todos = []
+    try:
+        with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+            lines = f.readlines()
+            
+        for i, line in enumerate(lines):
+            line = line.strip()
+            for pattern in patterns:
+                if pattern.lower() in line.lower():
+                    # Extract the TODO text
+                    todo_text = line
+                    # Remove comment markers
+                    todo_text = todo_text.replace('#', '').replace('//', '').replace('/*', '').replace('*/', '').strip()
+                    
+                    # Clean up the text
+                    if len(todo_text) > 100:
+                        todo_text = todo_text[:100] + "..."
+                    
+                    relative_path = os.path.relpath(file_path, os.environ.get('WORKSPACE_DIR', '/'))
+                    
+                    todos.append({
+                        "text": todo_text,
+                        "file": relative_path,
+                        "line": i + 1,
+                        "type": pattern.lower()
+                    })
+                    break  # Only one TODO per line
+    except:
+        pass
+    
+    return todos
+
+def generate_next_actions():
+    """Generate smart next actions from git commits and project state"""
+    try:
+        workspace_dir = os.environ.get('WORKSPACE_DIR')
+        if not workspace_dir:
+            return []
+            
+        next_actions = []
+        
+        # Analyze recent commits for patterns
+        try:
+            result = subprocess.run(['git', 'log', '--oneline', '-5'], 
+                                  capture_output=True, text=True, cwd=workspace_dir)
+            if result.returncode == 0:
+                commits = result.stdout.strip().split('\n')
+                
+                # Analyze commit patterns
+                has_fixes = any('fix' in commit.lower() or 'bug' in commit.lower() for commit in commits)
+                has_features = any('feat' in commit.lower() or 'add' in commit.lower() for commit in commits)
+                has_docs = any('doc' in commit.lower() or 'readme' in commit.lower() for commit in commits)
+                has_tests = any('test' in commit.lower() for commit in commits)
+                
+                # Generate contextual next actions
+                if has_fixes:
+                    next_actions.append("Verify fixes are working correctly")
+                    next_actions.append("Add tests for recently fixed issues")
+                
+                if has_features:
+                    next_actions.append("Test new features thoroughly")
+                    next_actions.append("Update documentation for new features")
+                
+                # Look for incomplete work indicators in recent commits
+                for commit in commits:
+                    if 'wip' in commit.lower() or 'progress' in commit.lower():
+                        next_actions.append("Continue work on: " + commit.split(' ', 1)[1][:50])
+                    elif 'partial' in commit.lower():
+                        next_actions.append("Complete partial implementation")
+        except:
+            pass
+        
+        # Check git status for pending work
+        try:
+            result = subprocess.run(['git', 'status', '--porcelain'], 
+                                  capture_output=True, text=True, cwd=workspace_dir)
+            if result.returncode == 0 and result.stdout.strip():
+                modified_files = result.stdout.strip().split('\n')
+                
+                # Analyze modified files
+                script_changes = any('.sh' in line for line in modified_files)
+                doc_changes = any('.md' in line for line in modified_files)
+                config_changes = any('CLAUDE.md' in line or '.json' in line for line in modified_files)
+                
+                if script_changes:
+                    next_actions.append("Test modified scripts for functionality")
+                
+                if doc_changes:
+                    next_actions.append("Review documentation changes")
+                
+                if config_changes:
+                    next_actions.append("Validate configuration changes")
+                
+                # General action for uncommitted changes
+                if len(modified_files) > 0:
+                    next_actions.append(f"Commit current changes ({len(modified_files)} files modified)")
+        except:
+            pass
+        
+        # Project-specific next actions
+        current_project = get_current_project()
+        if current_project:
+            project_type = current_project.get("type")
+            
+            if project_type == "meta":
+                meta_context = current_project.get("meta_context", "")
+                if "script_development" in meta_context:
+                    next_actions.append("Test script changes thoroughly")
+                elif "documentation" in meta_context:
+                    next_actions.append("Review and proofread documentation")
+                elif "system_configuration" in meta_context:
+                    next_actions.append("Verify system configuration changes")
+        
+        # Remove duplicates and limit to 5 most relevant
+        unique_actions = list(dict.fromkeys(next_actions))
+        return unique_actions[:5]
+        
+    except Exception as e:
+        return []
+
 def get_intelligence_insights():
     """Extract intelligence insights for context enrichment"""
     try:
@@ -237,6 +414,21 @@ next_actions_str = os.environ.get('next_actions', '')
 # Parse arrays
 open_issues = parse_env_arrays('open_issues') if open_issues_str else []
 next_actions = parse_env_arrays('next_actions') if next_actions_str else []
+
+# Auto-populate open_issues from TODO comments if not provided
+if not open_issues:
+    todo_comments = extract_todo_comments()
+    if todo_comments:
+        open_issues = [
+            f"{todo['type'].upper()}: {todo['text']} ({todo['file']}:{todo['line']})"
+            for todo in todo_comments
+        ]
+
+# Auto-populate next_actions if not provided
+if not next_actions:
+    auto_next_actions = generate_next_actions()
+    if auto_next_actions:
+        next_actions = auto_next_actions
 
 # Get intelligence insights
 intelligence_insights = get_intelligence_insights()
