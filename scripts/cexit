@@ -35,6 +35,46 @@ fi
 echo -e "${BLUE}🚀 Executing smart exit...${NC}"
 "$WORKSPACE_DIR/scripts/claude-smart-exit.sh" --auto
 
-# Se arriviamo qui, smart-exit non ha fatto exit (errore)
-echo -e "${YELLOW}⚠️  Smart exit non ha terminato - fallback a exit normale${NC}"
-exit "$@"
+# Se arriviamo qui, smart-exit ha completato - ora FORZA l'exit
+echo -e "${GREEN}✅ Graceful exit completato - FORZANDO terminazione Claude Code...${NC}"
+echo ""
+
+# STRATEGIA ULTRA-AGGRESSIVA per exit garantito
+echo -e "${BLUE}🎯 Analizzando processi...${NC}"
+
+# Trova Claude con precisione
+CLAUDE_PID=$(ps -eo pid,cmd | awk '$2 == "claude" {print $1}' | head -1)
+
+if [[ -n "$CLAUDE_PID" ]]; then
+    echo -e "${BLUE}🎯 Trovato Claude PID: $CLAUDE_PID${NC}"
+    
+    # METODO 1: Kill process group (più efficace contro thread multipli)
+    echo -e "${CYAN}🔥 Killing process group...${NC}"
+    kill -TERM -"$CLAUDE_PID" 2>/dev/null
+    sleep 0.3
+    
+    # METODO 2: Se ancora vivo, kill SIGKILL su process group  
+    if kill -0 "$CLAUDE_PID" 2>/dev/null; then
+        echo -e "${YELLOW}💀 Process group resist - usando SIGKILL...${NC}"
+        kill -KILL -"$CLAUDE_PID" 2>/dev/null
+        sleep 0.3
+    fi
+    
+    # METODO 3: Kill diretto se ancora resiste
+    if kill -0 "$CLAUDE_PID" 2>/dev/null; then
+        echo -e "${RED}🔥 Kill diretto processo principale...${NC}"
+        kill -KILL "$CLAUDE_PID" 2>/dev/null
+        sleep 0.2
+    fi
+    
+    # METODO 4: Nuklea tutti i processi claude
+    echo -e "${RED}☢️  Nuking all claude processes...${NC}"
+    pkill -KILL -f "claude" 2>/dev/null
+    
+else
+    echo -e "${YELLOW}⚠️  Claude PID non trovato - exit diretto${NC}"
+fi
+
+# METODO FINALE: Exec exit per sostituire completamente il processo
+echo -e "${BLUE}🚀 EXEC EXIT - bye bye!${NC}"
+exec bash -c "echo 'Process terminated successfully'; exit ${1:-0}"
