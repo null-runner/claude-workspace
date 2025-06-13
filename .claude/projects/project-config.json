@@ -3,12 +3,21 @@
   "projects": {
     "test-project": {
       "name": "test-project",
-      "current_stage": "external",
+      "current_stage": "public",
       "external_repo": "https://github.com/user/test-project.git",
-      "description": "Graduated from production",
+      "description": "Migrated to new 4-stage system",
       "created_at": "2025-06-13T23:37:56.788448",
-      "updated_at": "2025-06-13T23:38:55.908553",
-      "workspace_path": "/home/nullrunner/claude-workspace/projects/external/test-project"
+      "updated_at": "2025-06-14T00:19:20.000000",
+      "workspace_path": "/home/nullrunner/claude-workspace/projects/public/test-project"
+    },
+    "demo-4stage": {
+      "name": "demo-4stage",
+      "current_stage": "stable",
+      "external_repo": null,
+      "description": "Graduated from active",
+      "created_at": "2025-06-14T00:20:01.261706",
+      "updated_at": "2025-06-14T00:20:05.963603",
+      "workspace_path": "/home/nullrunner/claude-workspace/projects/stable/demo-4stage"
     }
   },
   "external_repos": {},
@@ -36,6 +45,22 @@
       "external_repo": "https://github.com/user/test-project.git",
       "timestamp": "2025-06-13T23:38:55.927711",
       "graduation_id": "grad-20250613-233855-test-project"
+    },
+    {
+      "project": "demo-4stage",
+      "from_stage": "sandbox",
+      "to_stage": "active",
+      "external_repo": null,
+      "timestamp": "2025-06-14T00:20:01.281468",
+      "graduation_id": "grad-20250614-002001-demo-4stage"
+    },
+    {
+      "project": "demo-4stage",
+      "from_stage": "active",
+      "to_stage": "stable",
+      "external_repo": null,
+      "timestamp": "2025-06-14T00:20:05.983560",
+      "graduation_id": "grad-20250614-002005-demo-4stage"
     }
   ]
 }

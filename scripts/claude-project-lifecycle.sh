@@ -14,8 +14,8 @@ CYAN='\033[0;36m'
 PURPLE='\033[0;35m'
 NC='\033[0m'
 
-# Setup
-mkdir -p "$PROJECTS_DIR"/{sandbox,active,production,external}
+# Setup - New 4-stage system
+mkdir -p "$PROJECTS_DIR"/{sandbox,active,stable,public}
 LIFECYCLE_LOG="$WORKSPACE_DIR/.claude/projects/lifecycle.log"
 PROJECT_CONFIG="$WORKSPACE_DIR/.claude/projects/project-config.json"
 
@@ -168,13 +168,25 @@ EOF
     echo -e "${GREEN}🎉 Project graduated successfully!${NC}"
     echo -e "${YELLOW}💡 Old version remains in $current_stage for backup${NC}"
     
-    # Show next steps
-    if [[ "$target_stage" == "external" ]]; then
+    # Show next steps based on target stage
+    if [[ "$target_stage" == "stable" ]]; then
         echo ""
-        echo -e "${PURPLE}🔗 Next steps for external deployment:${NC}"
-        echo -e "   1. Create external repository: $external_repo"
-        echo -e "   2. Run: claude-project-lifecycle sync $project_name"
-        echo -e "   3. Setup CI/CD pipeline in external repo"
+        echo -e "${PURPLE}🎯 Next steps for stable release:${NC}"
+        echo -e "   1. Test all features thoroughly"
+        echo -e "   2. Update documentation and README"
+        echo -e "   3. Consider: ready for users or business release"
+    elif [[ "$target_stage" == "public" ]]; then
+        echo ""
+        echo -e "${PURPLE}🌐 Next steps for public deployment:${NC}"
+        if [[ -n "$external_repo" ]]; then
+            echo -e "   1. Create external repository: $external_repo"
+            echo -e "   2. Run: claude-project-lifecycle sync $project_name"
+            echo -e "   3. Setup CI/CD pipeline and community features"
+        else
+            echo -e "   1. Consider adding external repository URL"
+            echo -e "   2. Prepare for API documentation"
+            echo -e "   3. Setup community guidelines"
+        fi
     fi
     
     return 0
@@ -196,14 +208,14 @@ sync_to_external() {
     
     if [[ -z "$external_repo" ]]; then
         echo -e "${RED}❌ No external repository configured for $project_name${NC}"
-        echo -e "${YELLOW}💡 Use: claude-project-lifecycle graduate $project_name external <repo-url>${NC}"
+        echo -e "${YELLOW}💡 Use: claude-project-lifecycle graduate $project_name public <repo-url>${NC}"
         return 1
     fi
     
-    local workspace_path="$PROJECTS_DIR/external/$project_name"
+    local workspace_path="$PROJECTS_DIR/public/$project_name"
     
     if [[ ! -d "$workspace_path" ]]; then
-        echo -e "${RED}❌ Project not found in external stage: $workspace_path${NC}"
+        echo -e "${RED}❌ Project not found in public stage: $workspace_path${NC}"
         return 1
     fi
     
@@ -299,11 +311,11 @@ for name, project in projects.items():
 stage_colors = {
     'sandbox': '\033[1;33m',     # Yellow
     'active': '\033[0;32m',      # Green  
-    'production': '\033[0;34m',  # Blue
-    'external': '\033[0;35m',    # Purple
+    'stable': '\033[0;34m',      # Blue
+    'public': '\033[0;35m',      # Purple
 }
 
-for stage in ['sandbox', 'active', 'production', 'external']:
+for stage in ['sandbox', 'active', 'stable', 'public']:
     if stage in stages:
         color = stage_colors.get(stage, '\033[0m')
         print(f"{color}🏷️  {stage.upper()}:\033[0m")
@@ -387,12 +399,13 @@ show_help() {
     echo "Stages:"
     echo -e "  ${YELLOW}sandbox${NC}     → Development and experimentation"
     echo -e "  ${GREEN}active${NC}      → Active development"
-    echo -e "  ${BLUE}production${NC}  → Production-ready code"
-    echo -e "  ${PURPLE}external${NC}    → External repository deployment"
+    echo -e "  ${BLUE}stable${NC}      → Ready for users, business-ready"
+    echo -e "  ${PURPLE}public${NC}      → External repository, API, community"
     echo ""
     echo "Examples:"
     echo "  claude-project-lifecycle graduate my-app active"
-    echo "  claude-project-lifecycle graduate my-app external git@github.com:user/my-app.git"
+    echo "  claude-project-lifecycle graduate my-app stable"
+    echo "  claude-project-lifecycle graduate my-app public git@github.com:user/my-app.git"
     echo "  claude-project-lifecycle sync my-app"
 }
 
@@ -464,7 +477,7 @@ case "${1:-}" in
         
         # Fallback to directory detection if not in config
         if [[ -z "$current_stage" ]]; then
-            for stage in sandbox active production external; do
+            for stage in sandbox active stable public; do
                 if [[ -d "$PROJECTS_DIR/$stage/$project_name" ]]; then
                     current_stage="$stage"
                     break
