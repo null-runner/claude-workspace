@@ -140,3 +140,11 @@ To github.com:null-runner/claude-workspace.git
    e2ef70e..3eef350  HEAD -> main
 [2025-06-14 01:38:08] [SUCCESS] ✅ Auto-push completed successfully
 [2025-06-14 01:38:08] [SUCCESS] Commit 3eef350184cbdfc82f1305150a0e67f0fc58a096 pushed to remote
+[2025-06-14 01:38:24] [INFO] Post-commit hook triggered for c5ed7408198fc857fa178f1862503b216f3e6b00
+[2025-06-14 01:38:24] [INFO] Changed files: .claude/logs/auto-push.log
+[2025-06-14 01:38:24] [INFO] Repository whitelisted for auto-push: null-runner/claude-workspace
+[2025-06-14 01:38:24] [INFO] Attempting auto-push to origin...
+To github.com:null-runner/claude-workspace.git
+   3eef350..c5ed740  HEAD -> main
+[2025-06-14 01:38:25] [SUCCESS] ✅ Auto-push completed successfully
+[2025-06-14 01:38:25] [SUCCESS] Commit c5ed7408198fc857fa178f1862503b216f3e6b00 pushed to remote
