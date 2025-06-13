@@ -64,10 +64,42 @@ docs/
 - Per salvare memoria: `./scripts/memory.sh save "descrizione"`
 - Per vedere progetti attivi: `ls projects/active/`
 
+## Regole per Commit e Push
+
+⚠️ **CRITICO**: Ogni commit DEVE essere seguito IMMEDIATAMENTE da push!
+
+### Procedura Obbligatoria:
+1. `git add .` (o file specifici)
+2. `git commit -m "messaggio"`
+3. `git push` **IMMEDIATAMENTE**
+
+### Formato Commit:
+```bash
+git commit -m "$(cat <<'EOF'
+🔥 Titolo descrittivo del cambiamento
+
+- Punto 1 delle modifiche
+- Punto 2 delle modifiche
+- Punto 3 delle modifiche
+
+🤖 Generated with [Claude Code](https://claude.ai/code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)" && git push
+```
+
+### Perché è Critico:
+- Il sistema di sync automatico si basa sui commit su GitHub
+- Commit solo locali rompono la sincronizzazione
+- Altri device non vedono le modifiche
+- Il workspace diventa inconsistente
+
 ## Note Importanti
 
-- Il sistema fa sync automatico ogni 5 minuti
+- Il sistema fa sync automatico ogni 5 minuti **DA GITHUB**
 - I file di memoria sono in `.memory/` con timestamp
 - I log di sync sono in `logs/sync.log`
 - Documentazione sempre bilingue (EN/IT)
 - README deve rimanere sotto 200 righe e essere friendly
+- **SEMPRE committare E pushare insieme**
