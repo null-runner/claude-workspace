@@ -1,8 +1,18 @@
 # Claude Workspace
 
+## Controllo Iniziale (OBBLIGATORIO)
+All'inizio di OGNI conversazione:
+1. `git status` - file modificati
+2. Leggi `.memory/` più recente 
+3. Controlla `logs/sync.log` ultimo sync
+4. `ls projects/active/` progetti attivi
+5. Riassumi situazione + suggerisci azioni
+
 ## CRITICO: Commit
 `git commit -m "msg" && git push` - SEMPRE pushare!  
 Co-Authored-By: nullrunner <nullrunner@users.noreply.github.com>
 
-## Info
-- Bilingue EN/IT, README max 200 righe, sezione neofiti
+## Regole
+- Bilingue EN/IT sempre
+- README max 200 righe + sezione neofiti  
+- Usare TodoWrite per task complessi
