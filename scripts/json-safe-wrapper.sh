@@ -11,6 +11,12 @@ if [[ -z "$JSON_SAFE_WRAPPER_LOADED" ]]; then
     # Source the main safe operations
     if [[ -f "$WORKSPACE_DIR/scripts/json-safe-operations.sh" ]]; then
         source "$WORKSPACE_DIR/scripts/json-safe-operations.sh"
+        # Check if safe operations are actually available
+        if check_safe_json_available >/dev/null 2>&1; then
+            export JSON_SAFE_AVAILABLE=true
+        else
+            export JSON_SAFE_AVAILABLE=false
+        fi
     else
         echo "Warning: json-safe-operations.sh not found, falling back to unsafe operations" >&2
         export JSON_SAFE_AVAILABLE=false
@@ -24,17 +30,17 @@ if [[ -z "$JSON_SAFE_WRAPPER_LOADED" ]]; then
         shift
         local jq_args="$@"
         
-        if [[ -n "$JSON_SAFE_AVAILABLE" ]] && [[ "$JSON_SAFE_AVAILABLE" != "false" ]]; then
+        if [[ "$JSON_SAFE_AVAILABLE" == "true" ]]; then
             # Use safe operations
             local data=$(safe_json_read "$file" "{}")
             if [[ $? -eq 0 ]]; then
-                echo "$data" | jq "$jq_args"
+                echo "$data" | jq $jq_args
             else
                 return 1
             fi
         else
             # Fall back to regular jq
-            jq "$jq_args" "$file"
+            jq $jq_args "$file"
         fi
     }
     
