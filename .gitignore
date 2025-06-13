@@ -6,9 +6,22 @@
 .claude/autonomous/*.pid
 .claude/activity/activity.log
 .claude/intelligence/extraction.log
+.claude/intelligence/auto-decisions.json
 .claude/sync/smart-sync.log
 .claude/sync/smart-sync-output.log
 .claude/sync/sync-timestamps.log
+
+# Auto-memory system files
+.claude/auto-memory/auto-memory.log
+.claude/auto-memory/emergency_recovery_needed
+
+# Memory system files
+.claude/memory/current-session-context.json
+.claude/memory/enhanced-context.json
+.claude/memory/enhanced-sessions.json
+
+# Sync logs
+logs/sync.log
 
 # Backup files
 *.backup

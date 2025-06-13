@@ -10,6 +10,8 @@ All'inizio di OGNI conversazione - tono amichevole "vediamo dove eravamo rimasti
    - 🚨 **Issues**: eventuali problemi rilevati automaticamente  
    - 🎯 **Next**: azioni suggerite dal sistema intelligente
 
+**Nota**: File di sistema (.claude/*, logs/*) sono automaticamente ignorati dal git e NON sono errori.
+
 ## CRITICO: Commit
 SEMPRE usare DUE comandi bash consecutivi:
 1. `git commit -m "msg"`
