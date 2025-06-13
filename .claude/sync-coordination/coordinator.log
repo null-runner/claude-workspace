@@ -43,3 +43,6 @@
     "timestamp": "2025-06-13T23:34:46Z",
     "status": "executing"
 }
+[2025-06-14 01:34:49] [SYNC] manual sync completed successfully
+[2025-06-14 01:34:49] [LOCK] Coordination lock released by sync-now (PID: 61456)
+[2025-06-14 01:34:49] [WARN] No coordination lock file found for release by sync-now

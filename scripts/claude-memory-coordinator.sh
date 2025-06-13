@@ -568,6 +568,8 @@ show_status() {
     echo ""
     echo -e "${BLUE}📋 Operation Queue:${NC}"
     
+    export OPERATION_QUEUE
+    
     python3 << 'EOF'
 import json
 import os

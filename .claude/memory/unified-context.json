@@ -1,8 +1,8 @@
 {
   "context_version": "unified-v1",
-  "timestamp": "2025-06-14T01:34:41.179700Z",
-  "save_type": "enhanced",
-  "caller": "claude-enhanced-save",
+  "timestamp": "2025-06-14T01:35:40.492352Z",
+  "save_type": "auto",
+  "caller": "claude-memory-coordinator",
   "device": "NEURAL-X",
   "working_directory": "/home/nullrunner/claude-workspace",
   "current_project": {
@@ -21,16 +21,16 @@
     "dirty_files": [
       "M .claude/logs/auto-push.log",
       " M .claude/memory-coordination/coordinator.log",
+      " M .claude/memory-coordination/health-status.json",
       " M .claude/sync-coordination/coordinator-state.json",
       " M .claude/sync-coordination/coordinator.log",
       " D .claude/sync-coordination/sync-coordinator.lock",
-      " M scripts/claude-sync-lock.sh",
-      "?? .claude/memory-coordination/health-status.json",
+      " M scripts/claude-memory-coordinator.sh",
       "?? .claude/memory-coordination/memory-coordinator.lock",
-      "?? .claude/memory/intelligence-cache.json",
-      "?? .claude/memory/session-history.json"
+      "?? .claude/memory-coordination/operation-queue.json",
+      "?? scripts/claude-sync-daemon.sh"
     ],
-    "last_commit": "6f1575f 🔄 Smart sync: Milestone commit: Coordinated sync: Testing coordinator fix (3 files)",
+    "last_commit": "00a1738 Coordinated sync: Manual sync request",
     "is_git_repo": true
   },
   "intelligence_insights": {
@@ -45,67 +45,67 @@
     ],
     "recent_decisions": [
       {
-        "title": "Added documentation: README.md",
-        "category": "process",
-        "impact": "low",
-        "source": "file_pattern_analysis",
-        "timestamp": "2025-06-14T00:20:38.043023Z"
-      },
-      {
-        "title": "🔧 Fix: cexit graceful flow - rimuovi exit prematuri",
-        "category": "general",
-        "impact": "medium",
-        "source": "git_commit",
-        "timestamp": "2025-06-14T00:35:38.136766Z"
-      },
-      {
-        "title": "🔧 Fix: Claude process detection in cexit",
-        "category": "general",
-        "impact": "medium",
-        "source": "git_commit",
-        "timestamp": "2025-06-14T00:35:38.136781Z"
-      },
-      {
-        "title": "🔧 Fix: cexit termination con confirmation prompt",
-        "category": "general",
-        "impact": "medium",
-        "source": "git_commit",
-        "timestamp": "2025-06-14T00:35:38.136785Z"
-      },
-      {
-        "title": "🚀 Feat: 4-Stage System Implementation - COMPLETATA ✅",
-        "category": "general",
-        "impact": "medium",
-        "source": "git_commit",
-        "timestamp": "2025-06-14T00:35:38.136787Z"
-      },
-      {
-        "title": "Added new workspace tool: claude-project-mode.sh",
+        "title": "Added new workspace tool: claude-memory-coordinator.sh",
         "category": "tool",
         "impact": "low",
         "source": "file_pattern_analysis",
-        "timestamp": "2025-06-14T01:05:38.618491Z"
+        "timestamp": "2025-06-14T01:35:38.932328Z"
       },
       {
-        "title": "Added new workspace tool: sync-now.sh",
+        "title": "Added new workspace tool: claude-sync-daemon.sh",
         "category": "tool",
         "impact": "low",
         "source": "file_pattern_analysis",
-        "timestamp": "2025-06-14T01:20:38.770653Z"
+        "timestamp": "2025-06-14T01:35:38.932330Z"
       },
       {
-        "title": "Added new workspace tool: claude-log-rotator.sh",
+        "title": "Added new workspace tool: claude-enhanced-save.sh",
         "category": "tool",
         "impact": "low",
         "source": "file_pattern_analysis",
-        "timestamp": "2025-06-14T01:20:38.770674Z"
+        "timestamp": "2025-06-14T01:35:38.932332Z"
+      },
+      {
+        "title": "Added new workspace tool: json-safe-operations.sh",
+        "category": "tool",
+        "impact": "low",
+        "source": "file_pattern_analysis",
+        "timestamp": "2025-06-14T01:35:38.932333Z"
+      },
+      {
+        "title": "Added new workspace tool: test-json-locking.sh",
+        "category": "tool",
+        "impact": "low",
+        "source": "file_pattern_analysis",
+        "timestamp": "2025-06-14T01:35:38.932337Z"
+      },
+      {
+        "title": "Added new workspace tool: claude-sync-coordinator.sh",
+        "category": "tool",
+        "impact": "low",
+        "source": "file_pattern_analysis",
+        "timestamp": "2025-06-14T01:35:38.932339Z"
+      },
+      {
+        "title": "Added new workspace tool: claude-sync-lock.sh",
+        "category": "tool",
+        "impact": "low",
+        "source": "file_pattern_analysis",
+        "timestamp": "2025-06-14T01:35:38.932341Z"
+      },
+      {
+        "title": "Added new workspace tool: claude-backup-cleaner.sh",
+        "category": "tool",
+        "impact": "low",
+        "source": "file_pattern_analysis",
+        "timestamp": "2025-06-14T01:35:38.932345Z"
       }
     ],
-    "current_focus": "general_focused_development",
-    "extraction_timestamp": "2025-06-14T01:34:41.207568Z"
+    "current_focus": "tool_focused_development",
+    "extraction_timestamp": "2025-06-14T01:35:40.522049Z"
   },
-  "conversation_summary": "testing",
-  "session_note": "Unified",
+  "conversation_summary": "git_dirty",
+  "session_note": "git_dirty",
   "save_reason": "manual",
   "open_issues": [
     "BUG: Handle blocked files (log for debugging) (scripts/claude-intelligent-auto-sync.sh:152)",
@@ -116,14 +116,10 @@
   ],
   "next_actions": [
     "Verify recent fixes are working correctly",
-    "Commit current changes (11 files modified)",
+    "Commit current changes (12 files modified)",
     "Test workspace script changes",
     "Update documentation if needed"
   ],
-  "incomplete_tasks": [
-    "System"
-  ],
-  "next_steps": [
-    "consolidation"
-  ]
+  "incomplete_tasks": [],
+  "next_steps": []
 }

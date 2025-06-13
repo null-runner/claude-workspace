@@ -40,3 +40,11 @@
 [2025-06-14 01:34:41] [WARN] No lock file found for release by claude-memory-coordinator.sh
 [2025-06-14 01:34:44] [LOAD] Loading unified context
 [2025-06-14 01:34:44] [WARN] No lock file found for release by claude-memory-coordinator.sh
+[2025-06-14 01:34:48] [WARN] No lock file found for release by claude-memory-coordinator.sh
+[2025-06-14 01:34:57] [WARN] No lock file found for release by claude-memory-coordinator.sh
+[2025-06-14 01:35:00] [WARN] No lock file found for release by claude-memory-coordinator.sh
+[2025-06-14 01:35:40] [LOCK] Lock acquired by manual-save (PID: 63924)
+[2025-06-14 01:35:40] [SAVE] Unified context save: auto from manual-save
+[2025-06-14 01:35:40] [SUCCESS] Unified context save completed: auto from manual-save
+[2025-06-14 01:35:40] [LOCK] Lock released by manual-save (PID: 63924)
+[2025-06-14 01:35:40] [WARN] No lock file found for release by claude-memory-coordinator.sh
