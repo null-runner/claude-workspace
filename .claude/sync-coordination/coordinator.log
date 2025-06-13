@@ -59,3 +59,86 @@
     "timestamp": "2025-06-13T23:36:52Z",
     "status": "executing"
 }
+[2025-06-14 01:36:55] [SYNC] manual sync completed successfully
+[2025-06-14 01:36:55] [LOCK] Coordination lock released by test-single (PID: 64588)
+[2025-06-14 01:36:55] [WARN] No coordination lock file found for release by test-single
+[2025-06-14 01:36:55] [API] Sync request: smart from test-concurrent-2 (priority: normal)
+[2025-06-14 01:36:55] [API] Sync request: smart from test-concurrent-1 (priority: normal)
+[2025-06-14 01:36:55] [API] Sync request: smart from test-concurrent-3 (priority: normal)
+[2025-06-14 01:36:55] [API] Sync request: smart from test-concurrent-4 (priority: normal)
+[2025-06-14 01:36:55] [API] Sync request: smart from test-concurrent-5 (priority: normal)
+[2025-06-14 01:36:55] [INFO] Rate limit check: ALLOW: 9/12 syncs this hour
+[2025-06-14 01:36:55] [INFO] Rate limit check: ALLOW: 10/12 syncs this hour
+[2025-06-14 01:36:55] [INFO] Rate limit check: ALLOW: 11/12 syncs this hour
+[2025-06-14 01:36:55] [LOCK] Coordination lock acquired by test-concurrent-2 (PID: 64712)
+[2025-06-14 01:36:55] [EXEC] Executing smart sync immediately
+[2025-06-14 01:36:55] [INFO] Rate limit check: ALLOW: 12/12 syncs this hour
+[2025-06-14 01:36:55] [WARN] Sync request denied due to rate limiting: DENY: Rate limit exceeded (12/12 syncs this hour)
+[2025-06-14 01:36:55] [SYNC] Executing sync operation: {
+    "operation": "smart",
+    "caller": "test-concurrent-2",
+    "priority": "normal",
+    "reason": "Concurrent test 2",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:36:55Z",
+    "status": "executing"
+}
+[2025-06-14 01:36:55] [ERROR] smart sync failed
+[2025-06-14 01:36:55] [LOCK] Coordination lock released by test-concurrent-2 (PID: 64712)
+[2025-06-14 01:36:55] [WARN] No coordination lock file found for release by test-concurrent-2
+[2025-06-14 01:36:56] [LOCK] Coordination lock acquired by test-concurrent-3 (PID: 64715)
+[2025-06-14 01:36:56] [EXEC] Executing smart sync immediately
+[2025-06-14 01:36:56] [SYNC] Executing sync operation: {
+    "operation": "smart",
+    "caller": "test-concurrent-3",
+    "priority": "normal",
+    "reason": "Concurrent test 3",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:36:56Z",
+    "status": "executing"
+}
+[2025-06-14 01:36:56] [ERROR] smart sync failed
+[2025-06-14 01:36:56] [LOCK] Coordination lock released by test-concurrent-3 (PID: 64715)
+[2025-06-14 01:36:56] [WARN] No coordination lock file found for release by test-concurrent-3
+[2025-06-14 01:36:56] [LOCK] Coordination lock acquired by test-concurrent-4 (PID: 64718)
+[2025-06-14 01:36:56] [EXEC] Executing smart sync immediately
+[2025-06-14 01:36:56] [SYNC] Executing sync operation: {
+    "operation": "smart",
+    "caller": "test-concurrent-4",
+    "priority": "normal",
+    "reason": "Concurrent test 4",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:36:56Z",
+    "status": "executing"
+}
+[2025-06-14 01:36:56] [ERROR] smart sync failed
+[2025-06-14 01:36:56] [LOCK] Coordination lock released by test-concurrent-4 (PID: 64718)
+[2025-06-14 01:36:56] [WARN] No coordination lock file found for release by test-concurrent-4
+[2025-06-14 01:36:57] [LOCK] Coordination lock acquired by test-concurrent-1 (PID: 64710)
+[2025-06-14 01:36:57] [EXEC] Executing smart sync immediately
+[2025-06-14 01:36:57] [SYNC] Executing sync operation: {
+    "operation": "smart",
+    "caller": "test-concurrent-1",
+    "priority": "normal",
+    "reason": "Concurrent test 1",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:36:57Z",
+    "status": "executing"
+}
+[2025-06-14 01:36:57] [ERROR] smart sync failed
+[2025-06-14 01:36:57] [LOCK] Coordination lock released by test-concurrent-1 (PID: 64710)
+[2025-06-14 01:36:57] [WARN] No coordination lock file found for release by test-concurrent-1
+[2025-06-14 01:37:02] [LOCK] Coordination lock acquired by process-command (PID: 65045)
+[2025-06-14 01:37:02] [QUEUE] Processing sync operation queue
+[2025-06-14 01:37:02] [LOCK] Coordination lock released by process-command (PID: 65045)
+[2025-06-14 01:37:02] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 01:37:02] [API] Sync request: manual from rate-test-1 (priority: low)
+[2025-06-14 01:37:02] [WARN] Sync request denied due to rate limiting: DENY: Rate limit exceeded (12/12 syncs this hour)
+[2025-06-14 01:37:02] [API] Sync request: manual from rate-test-2 (priority: low)
+[2025-06-14 01:37:02] [WARN] Sync request denied due to rate limiting: DENY: Rate limit exceeded (12/12 syncs this hour)
+[2025-06-14 01:37:02] [API] Sync request: manual from rate-test-3 (priority: low)
+[2025-06-14 01:37:02] [WARN] Sync request denied due to rate limiting: DENY: Rate limit exceeded (12/12 syncs this hour)
+[2025-06-14 01:37:02] [API] Sync request: manual from rate-test-4 (priority: low)
+[2025-06-14 01:37:02] [WARN] Sync request denied due to rate limiting: DENY: Rate limit exceeded (12/12 syncs this hour)
+[2025-06-14 01:37:02] [API] Sync request: manual from rate-test-5 (priority: low)
+[2025-06-14 01:37:03] [WARN] Sync request denied due to rate limiting: DENY: Rate limit exceeded (12/12 syncs this hour)
