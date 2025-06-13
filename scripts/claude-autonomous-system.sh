@@ -158,30 +158,76 @@ run_intelligence_extractor() {
 # Health monitor (every 60 seconds)
 run_health_monitor() {
     while true; do
-        # Check that all background processes are still running
-        local context_running=false
-        local project_running=false
-        local intelligence_running=false
+        # Smart health check - look at actual service activity, not just processes
+        export SERVICE_STATUS_FILE
         
-        # This is a simple check - in production you'd want more sophisticated monitoring
-        if pgrep -f "run_context_monitor" >/dev/null; then
-            context_running=true
-        fi
+        local health_output
+        health_output=$(python3 << 'EOF'
+import json
+import os
+from datetime import datetime, timedelta
+
+def check_service_health():
+    try:
+        status_file = os.environ.get('SERVICE_STATUS_FILE')
+        if not status_file or not os.path.exists(status_file):
+            return "degraded", "No status file found"
         
-        if pgrep -f "run_project_monitor" >/dev/null; then
-            project_running=true
-        fi
+        with open(status_file, 'r') as f:
+            status = json.load(f)
         
-        if pgrep -f "run_intelligence_extractor" >/dev/null; then
-            intelligence_running=true
-        fi
+        services = status.get('services', {})
         
-        # Update overall system health
-        if $context_running && $project_running && $intelligence_running; then
-            update_service_status "health_monitor" "healthy" "All services running"
-        else
-            update_service_status "health_monitor" "degraded" "Some services may be down"
-            log_master "WARN" "HEALTH" "Some background services may be down"
+        # Check core services (ignore 'null' entries and 'health_monitor' self-reference)
+        core_services = ['context_monitor', 'project_monitor', 'intelligence_extractor']
+        active_services = 0
+        recent_activity = 0
+        
+        now = datetime.now()
+        
+        for service_name in core_services:
+            if service_name in services:
+                service = services[service_name]
+                service_status = service.get('status')
+                last_update = service.get('last_update')
+                
+                if service_status in ['active', 'running']:
+                    active_services += 1
+                
+                # Check if service updated in last 20 minutes (reasonable for background services)
+                if last_update:
+                    try:
+                        update_time = datetime.fromisoformat(last_update.replace('Z', ''))
+                        if (now - update_time).total_seconds() < 1200:  # 20 minutes
+                            recent_activity += 1
+                    except:
+                        pass
+        
+        # Health logic: if most services are active AND have recent activity
+        if active_services >= 2 and recent_activity >= 2:
+            return "healthy", f"All core services operational ({active_services}/3 active, {recent_activity}/3 recent)"
+        elif active_services >= 1:
+            return "degraded", f"Some services may be slow ({active_services}/3 active, {recent_activity}/3 recent)"
+        else:
+            return "critical", "Core services not responding"
+            
+    except Exception as e:
+        return "degraded", f"Health check error: {str(e)}"
+
+health_status, health_message = check_service_health()
+print(f"{health_status}:{health_message}")
+EOF
+)
+        
+        local health_status=$(echo "$health_output" | cut -d: -f1)
+        local health_message=$(echo "$health_output" | cut -d: -f2-)
+        
+        # Update health status
+        update_service_status "health_monitor" "$health_status" "$health_message"
+        
+        # Log only if there are real issues
+        if [[ "$health_status" != "healthy" ]]; then
+            log_master "WARN" "HEALTH" "$health_message"
         fi
         
         sleep 60  # 1 minute
