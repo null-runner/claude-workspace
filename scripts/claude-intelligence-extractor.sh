@@ -360,6 +360,18 @@ def extract_error_pattern(error_line):
             'message': 'Network connectivity issues',
             'category': 'network'
         }
+    elif 'crash' in line_lower:
+        return {
+            'type': 'crash_issues',
+            'message': 'System crash/recovery issues',
+            'category': 'system'
+        }
+    elif 'errore' in line_lower:  # Italian error
+        return {
+            'type': 'general_errors',
+            'message': 'General error conditions',
+            'category': 'general'
+        }
     
     return None
 
@@ -415,6 +427,27 @@ def create_learning_from_pattern(pattern_type, occurrences):
             'solution': 'Increase timeouts or optimize operations',
             'prevention': 'Add progress indicators and timeout handling',
             'category': 'performance'
+        },
+        'crash_issues': {
+            'title': 'System Crash/Recovery Pattern',
+            'lesson': 'Recurring system crashes and emergency recoveries detected',
+            'solution': 'Investigate crash causes and improve stability',
+            'prevention': 'Add crash detection, auto-save, and graceful shutdown',
+            'category': 'system_stability'
+        },
+        'general_errors': {
+            'title': 'General Error Conditions Pattern',
+            'lesson': 'Recurring general error conditions affecting operations',
+            'solution': 'Add error handling and validation checks',
+            'prevention': 'Implement proper error logging and user feedback',
+            'category': 'error_handling'
+        },
+        'network_errors': {
+            'title': 'Network Connectivity Issues Pattern',
+            'lesson': 'Network operations failing repeatedly',
+            'solution': 'Add retry logic and offline mode support',
+            'prevention': 'Implement connection checks and fallback mechanisms',
+            'category': 'network'
         }
     }
     

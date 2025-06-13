@@ -28,7 +28,7 @@ log_detector() {
 
 # Rileva progetto corrente dalla directory
 detect_current_project() {
-    python3 << 'EOF'
+    WORKSPACE_DIR="$WORKSPACE_DIR" python3 << 'EOF'
 import os
 import json
 

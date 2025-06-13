@@ -152,7 +152,7 @@ run_project_monitor() {
         fi
         
         if [[ -f "$WORKSPACE_DIR/scripts/claude-auto-project-detector.sh" ]]; then
-            "$WORKSPACE_DIR/scripts/claude-auto-project-detector.sh" check >/dev/null 2>&1
+            WORKSPACE_DIR="$WORKSPACE_DIR" "$WORKSPACE_DIR/scripts/claude-auto-project-detector.sh" check >/dev/null 2>&1
             local result=$?
             
             if [[ $result -eq 0 ]]; then
