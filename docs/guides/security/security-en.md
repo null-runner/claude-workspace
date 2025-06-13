@@ -1,12 +1,12 @@
+**Language:** [🇺🇸 English](security-en.md) | [🇮🇹 Italiano](security-it.md)
+
 # Security - Claude Workspace
 
-[🇺🇸 English](security-en.md) | [🇮🇹 Italiano](security-it.md)
-
-This guide describes the security system implemented in Claude Workspace and best practices to keep it secure - designed with simplicity for hobby developers and personal projects.
+This guide describes the security system implemented in Claude Workspace and best practices to keep it secure.
 
 ## How Security Works
 
-Claude Workspace implements multiple security layers without the complexity of enterprise systems:
+The Claude Workspace system implements multiple security layers:
 
 ### 1. SSH Key-Based Authentication
 
@@ -466,13 +466,3 @@ cp -r .claude/memory.test.backup .claude/memory
 # Verify memory permissions
 find .claude/memory -type f ! -perm 600 -o -type d ! -perm 700
 ```
-
-## Security Philosophy for Hobby Developers
-
-This security system is designed to be:
-- **Simple to understand**: Clear documentation, minimal configuration
-- **Easy to maintain**: Automated monitoring, intelligent defaults
-- **Appropriate for personal use**: Balanced security without enterprise overhead
-- **Recoverable**: Clear recovery procedures, good backup practices
-
-Perfect for developers who want solid security for their personal projects without needing a cybersecurity degree! 🔒
