@@ -1,0 +1,236 @@
+{
+  "version": "2.0",
+  "workspace_id": "claude-workspace-enhanced",
+  "sessions": [
+    {
+      "id": "2025-06-13T14:39:12Z-NEURAL-X",
+      "timestamp": "2025-06-13T14:39:12Z",
+      "device": "NEURAL-X",
+      "working_directory": "~/claude-workspace",
+      "active_project": null,
+      "session_note": "Test finale sistema",
+      "conversation_summary": "Sistema enhanced save completato e testato",
+      "incomplete_tasks": [
+        "Fixare eventuali bug",
+        "Committare tutto"
+      ],
+      "next_steps": [
+        "Implementare altre features approvate"
+      ],
+      "modified_files": [
+        {
+          "path": "LAUDE.md",
+          "change_type": "modified",
+          "status": "M"
+        },
+        {
+          "path": "ogs/sync.log",
+          "change_type": "modified",
+          "status": "M"
+        },
+        {
+          "path": "cripts/auto-sync.sh",
+          "change_type": "modified",
+          "status": "M"
+        },
+        {
+          "path": "cripts/claude-status-bar.sh",
+          "change_type": "deleted",
+          "status": "D"
+        },
+        {
+          "path": "cripts/status",
+          "change_type": "deleted",
+          "status": "D"
+        },
+        {
+          "path": ".claude/memory/current-session-context.json",
+          "change_type": "untracked",
+          "status": "??"
+        },
+        {
+          "path": ".claude/memory/enhanced-sessions.json",
+          "change_type": "untracked",
+          "status": "??"
+        },
+        {
+          "path": ".claude/memory/enhanced-sessions.json.backup",
+          "change_type": "untracked",
+          "status": "??"
+        },
+        {
+          "path": "scripts/claude-enhanced-save.sh",
+          "change_type": "untracked",
+          "status": "??"
+        },
+        {
+          "path": "scripts/claude-session-manager.sh",
+          "change_type": "untracked",
+          "status": "??"
+        },
+        {
+          "path": "scripts/css",
+          "change_type": "untracked",
+          "status": "??"
+        }
+      ],
+      "git_status": {
+        "branch": "main",
+        "has_changes": true,
+        "last_commit": "bbfdd4f: \u2728 Add IDE-style status bar for Claude workspace"
+      },
+      "context": {
+        "todo_list_active": false,
+        "memory_system_active": true,
+        "projects_count": 0
+      }
+    },
+    {
+      "id": "2025-06-13T14:36:51Z-NEURAL-X",
+      "timestamp": "2025-06-13T14:36:51Z",
+      "device": "NEURAL-X",
+      "working_directory": "~/claude-workspace",
+      "active_project": null,
+      "session_note": "Test quick save con CSS alias",
+      "conversation_summary": "Session checkpoint",
+      "incomplete_tasks": [],
+      "next_steps": [],
+      "modified_files": [
+        {
+          "path": "LAUDE.md",
+          "change_type": "modified",
+          "status": "M"
+        },
+        {
+          "path": "ogs/sync.log",
+          "change_type": "modified",
+          "status": "M"
+        },
+        {
+          "path": "cripts/auto-sync.sh",
+          "change_type": "modified",
+          "status": "M"
+        },
+        {
+          "path": "cripts/claude-status-bar.sh",
+          "change_type": "deleted",
+          "status": "D"
+        },
+        {
+          "path": "cripts/status",
+          "change_type": "deleted",
+          "status": "D"
+        },
+        {
+          "path": ".claude/memory/current-session-context.json",
+          "change_type": "untracked",
+          "status": "??"
+        },
+        {
+          "path": ".claude/memory/enhanced-sessions.json",
+          "change_type": "untracked",
+          "status": "??"
+        },
+        {
+          "path": "scripts/claude-enhanced-save.sh",
+          "change_type": "untracked",
+          "status": "??"
+        },
+        {
+          "path": "scripts/claude-session-manager.sh",
+          "change_type": "untracked",
+          "status": "??"
+        },
+        {
+          "path": "scripts/css",
+          "change_type": "untracked",
+          "status": "??"
+        }
+      ],
+      "git_status": {
+        "branch": "main",
+        "has_changes": true,
+        "last_commit": "bbfdd4f: \u2728 Add IDE-style status bar for Claude workspace"
+      },
+      "context": {
+        "todo_list_active": false,
+        "memory_system_active": true,
+        "projects_count": 0
+      }
+    },
+    {
+      "id": "2025-06-13T14:19:45Z-NEURAL-X",
+      "timestamp": "2025-06-13T14:19:45Z",
+      "device": "NEURAL-X",
+      "working_directory": "~/claude-workspace",
+      "active_project": null,
+      "session_note": "Test sistema enhanced",
+      "conversation_summary": "Implementazione sistema enhanced session save",
+      "incomplete_tasks": [
+        "Testare funzionalit\u00e0",
+        "Integrare con auto-sync"
+      ],
+      "next_steps": [
+        "Committare codice",
+        "Documentare usage"
+      ],
+      "modified_files": [
+        {
+          "path": "LAUDE.md",
+          "change_type": "modified",
+          "status": "M"
+        },
+        {
+          "path": "ogs/sync.log",
+          "change_type": "modified",
+          "status": "M"
+        },
+        {
+          "path": "cripts/auto-sync.sh",
+          "change_type": "modified",
+          "status": "M"
+        },
+        {
+          "path": "cripts/claude-status-bar.sh",
+          "change_type": "deleted",
+          "status": "D"
+        },
+        {
+          "path": "cripts/status",
+          "change_type": "deleted",
+          "status": "D"
+        },
+        {
+          "path": "scripts/claude-enhanced-save.sh",
+          "change_type": "untracked",
+          "status": "??"
+        },
+        {
+          "path": "scripts/claude-session-manager.sh",
+          "change_type": "untracked",
+          "status": "??"
+        },
+        {
+          "path": "scripts/css",
+          "change_type": "untracked",
+          "status": "??"
+        }
+      ],
+      "git_status": {
+        "branch": "main",
+        "has_changes": true,
+        "last_commit": "bbfdd4f: \u2728 Add IDE-style status bar for Claude workspace"
+      },
+      "context": {
+        "todo_list_active": false,
+        "memory_system_active": true,
+        "projects_count": 0
+      }
+    }
+  ],
+  "settings": {
+    "max_sessions": 100,
+    "context_retention_days": 30,
+    "auto_context_capture": true
+  }
+}

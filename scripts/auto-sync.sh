@@ -31,9 +31,14 @@ do_sync() {
     if [[ -n $(git status --porcelain) ]]; then
         echo "[$(date)] Modifiche rilevate, sincronizzazione in corso..." >> "$LOG_FILE"
         
-        # Auto-save memoria prima del sync
+        # Auto-save memoria prima del sync (normale + enhanced)
         if [[ -f "$WORKSPACE_DIR/scripts/claude-save.sh" ]]; then
             "$WORKSPACE_DIR/scripts/claude-save.sh" "Auto-sync da $(hostname)" >/dev/null 2>&1
+        fi
+        
+        # Enhanced session save per context completo
+        if [[ -f "$WORKSPACE_DIR/scripts/claude-enhanced-save.sh" ]]; then
+            "$WORKSPACE_DIR/scripts/claude-enhanced-save.sh" "Auto-sync $(hostname)" "Auto-save before sync" >/dev/null 2>&1
         fi
         
         # Pulizia intelligente memoria (una volta al giorno)

@@ -1,12 +1,15 @@
 # Claude Workspace
 
 ## Controllo Iniziale (OBBLIGATORIO)
-All'inizio di OGNI conversazione:
+All'inizio di OGNI conversazione - tono amichevole "vediamo dove eravamo rimasti":
 1. `git status` - file modificati
 2. Leggi `.memory/` più recente 
 3. Controlla `logs/sync.log` ultimo sync
 4. `ls projects/active/` progetti attivi
-5. Riassumi situazione + suggerisci azioni
+5. **Recap veloce con colori ANSI:**
+   - 📊 **Stato**: file pending, memoria, ultimo sync
+   - 🚨 **Issues**: problemi da risolvere (se ci sono)
+   - 🎯 **Next**: 1-3 azioni concrete da fare subito
 
 ## CRITICO: Commit
 `git commit -m "msg" && git push` - SEMPRE pushare!  
