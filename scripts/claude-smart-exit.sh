@@ -444,16 +444,21 @@ case "${1:-}" in
             save_session "$auto_note"
         else
             echo -e "${YELLOW}💡 Insufficient activity for auto-save${NC}"
+            echo -e "${CYAN}🔄 Performing graceful exit operations...${NC}"
             
             # Still trigger smart sync on exit
             if [[ -f "$WORKSPACE_DIR/scripts/claude-smart-sync.sh" ]]; then
                 echo -e "${CYAN}🔄 Triggering exit sync...${NC}"
                 "$WORKSPACE_DIR/scripts/claude-smart-sync.sh" sync "Exit checkpoint (minimal activity)"
+                echo -e "${GREEN}✅ Smart sync completed${NC}"
             fi
             
             mark_graceful_exit
-            echo -e "${GREEN}👋 Goodbye!${NC}"
-            exit 0
+            echo -e "${GREEN}✅ Exit type marked as graceful${NC}"
+            echo -e "${GREEN}👋 Graceful exit operations completed!${NC}"
+            echo ""
+            # NON fare exit qui - torna al cexit per la terminazione forzata
+            return 0
         fi
         ;;
     "--analyze-only")
