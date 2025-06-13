@@ -110,6 +110,52 @@ cleanup_temp_files() {
     find "$WORKSPACE_DIR/.claude/auto-memory" -name "rate_limit_*" -mtime +1 -delete 2>/dev/null || true
 }
 
+# Installa exit hook per graceful exit automatico
+install_exit_hook() {
+    if [[ -f "$WORKSPACE_DIR/scripts/claude-exit-hook.sh" ]]; then
+        # Source lo script per rendere disponibili le funzioni
+        source "$WORKSPACE_DIR/scripts/claude-exit-hook.sh"
+        
+        # Installa l'hook senza output verbose
+        claude_exit() {
+            echo -e "${CYAN}🪝 Intercettato comando exit - avvio graceful exit...${NC}"
+            echo ""
+            
+            # Cambia alla directory workspace se non ci siamo già
+            if [[ "$(pwd)" != "$WORKSPACE_DIR" ]]; then
+                cd "$WORKSPACE_DIR" 2>/dev/null || {
+                    echo -e "${RED}❌ Errore: impossibile accedere a $WORKSPACE_DIR${NC}"
+                    echo -e "${YELLOW}💡 Proseguo con exit normale...${NC}"
+                    builtin exit "$@"
+                }
+            fi
+            
+            # Controlla se lo script smart-exit esiste
+            if [[ ! -f "$WORKSPACE_DIR/scripts/claude-smart-exit.sh" ]]; then
+                echo -e "${RED}❌ Smart-exit script non trovato${NC}"
+                echo -e "${YELLOW}💡 Proseguo con exit normale...${NC}"
+                builtin exit "$@"
+            fi
+            
+            # Esegui smart exit con modalità automatica
+            echo -e "${BLUE}🚀 Executing smart exit...${NC}"
+            "$WORKSPACE_DIR/scripts/claude-smart-exit.sh" --auto
+            
+            # Se arriviamo qui, smart-exit non ha fatto exit (errore)
+            echo -e "${YELLOW}⚠️  Smart exit non ha terminato - fallback a exit normale${NC}"
+            builtin exit "$@"
+        }
+        
+        # Crea alias che sostituisce il comando exit
+        alias exit='claude_exit'
+        export -f claude_exit
+        
+        echo -e "${GREEN}🪝 Exit hook installato - 'exit' ora esegue graceful exit automatico${NC}"
+    else
+        echo -e "${YELLOW}⚠️  Exit hook script non trovato${NC}"
+    fi
+}
+
 # Mostra status servizi
 show_services_status() {
     echo -e "${CYAN}🔧 SERVIZI CLAUDE WORKSPACE${NC}"
@@ -159,6 +205,9 @@ main_startup() {
     
     # 5. Start autonomous system
     start_autonomous_system
+    
+    # 6. Install exit hook for automatic graceful exit
+    install_exit_hook
     
     echo ""
 }
