@@ -82,6 +82,11 @@ extract_decisions_from_commits() {
     echo -e "${CYAN}🔍 Extracting decisions from git commits...${NC}"
     log_extraction "INFO" "Starting git commit analysis since: $since_time"
     
+    # Export variables BEFORE python call
+    export since_time="$since_time"
+    export AUTO_DECISIONS_FILE="$AUTO_DECISIONS_FILE"
+    export WORKSPACE_DIR="$WORKSPACE_DIR"
+    
     python3 << 'EOF'
 import subprocess
 import json
@@ -257,14 +262,16 @@ if new_count > 0:
             print(f"   • {decision['title']} ({decision['category']}, {decision['impact']} impact)")
 
 EOF
-    
-    export since_time AUTO_DECISIONS_FILE WORKSPACE_DIR
 }
 
 # Extract learnings from error patterns
 extract_learnings_from_logs() {
     echo -e "${CYAN}🧠 Extracting learnings from error patterns...${NC}"
     log_extraction "INFO" "Starting error pattern analysis"
+    
+    # Export variables BEFORE python call
+    export AUTO_LEARNINGS_FILE="$AUTO_LEARNINGS_FILE"
+    export WORKSPACE_DIR="$WORKSPACE_DIR"
     
     python3 << 'EOF'
 import os
@@ -483,8 +490,6 @@ if new_count > 0:
             print(f"   • {learning['title']} ({learning['occurrences']} occurrences)")
 
 EOF
-    
-    export AUTO_LEARNINGS_FILE WORKSPACE_DIR
 }
 
 # Extract insights from file creation patterns
@@ -493,6 +498,11 @@ extract_insights_from_file_patterns() {
     
     echo -e "${CYAN}📁 Analyzing file creation patterns...${NC}"
     log_extraction "INFO" "Starting file pattern analysis since: $since_time"
+    
+    # Export variables BEFORE python call
+    export AUTO_DECISIONS_FILE="$AUTO_DECISIONS_FILE"
+    export WORKSPACE_DIR="$WORKSPACE_DIR"
+    export since_minutes="${since_minutes:-15}"
     
     python3 << 'EOF'
 import os
@@ -663,8 +673,6 @@ if new_count > 0:
             print(f"   • {decision['title']}")
 
 EOF
-    
-    export AUTO_DECISIONS_FILE WORKSPACE_DIR since_minutes
 }
 
 # Run full extraction cycle
@@ -715,6 +723,10 @@ show_intelligence_summary() {
     echo -e "${PURPLE}🧠 INTELLIGENCE SUMMARY${NC}"
     echo ""
     
+    # Export variables BEFORE python call
+    export AUTO_DECISIONS_FILE="$AUTO_DECISIONS_FILE"
+    export AUTO_LEARNINGS_FILE="$AUTO_LEARNINGS_FILE"
+    
     python3 << 'EOF'
 import json
 import os
@@ -759,7 +771,6 @@ except Exception as e:
     print("📚 AUTO-EXTRACTED LEARNINGS: None found")
 
 EOF
-    export AUTO_DECISIONS_FILE AUTO_LEARNINGS_FILE
 }
 
 # Help
