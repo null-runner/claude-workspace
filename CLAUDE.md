@@ -13,6 +13,11 @@ All'inizio di OGNI conversazione:
 Co-Authored-By: nullrunner <nullrunner@users.noreply.github.com>
 
 ## Regole
-- Bilingue EN/IT sempre
-- README max 200 righe + sezione neofiti  
+- **Bilingue**: OGNI modifica doc in EN e IT 
+- README max 200 righe + sezione neofiti
 - Usare TodoWrite per task complessi
+
+## Comandi
+- Sync: `./scripts/sync.sh`
+- Memoria: `./scripts/memory.sh save "desc"`
+- Progetti: `ls projects/active/`
