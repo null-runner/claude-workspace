@@ -1,13 +1,13 @@
 {
-  "session_id": "2025-06-13T19:52:50.808202Z",
-  "timestamp": "2025-06-13T19:52:50.808211Z",
+  "session_id": "2025-06-13T19:58:13.442203Z",
+  "timestamp": "2025-06-13T19:58:13.442215Z",
   "device": "NEURAL-X",
   "working_directory": "/home/nullrunner/claude-workspace",
   "current_project": null,
   "git_status": {
     "branch": "main",
     "has_changes": true,
-    "dirty_files_count": 16,
+    "dirty_files_count": 17,
     "last_commit": "8b980ff Auto-sync: 15 modifiche da NEURAL-X - 2025-06-13_19:34:07",
     "is_git_repo": true
   },
