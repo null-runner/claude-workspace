@@ -156,4 +156,5 @@ if [[ "${BASH_SOURCE[0]}" == "${0}" ]] || [[ "${1:-}" != "source-mode" ]]; then
         echo "Use 'source $0' to import locking functions into another script."
         exit 1
         ;;
-esac
+    esac
+fi

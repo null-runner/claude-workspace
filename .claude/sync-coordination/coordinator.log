@@ -27,3 +27,19 @@
     "timestamp": "2025-06-13T23:34:04Z",
     "status": "executing"
 }
+[2025-06-14 01:34:07] [SYNC] manual sync completed successfully
+[2025-06-14 01:34:07] [LOCK] Coordination lock released by test-sync (PID: 60834)
+[2025-06-14 01:34:07] [WARN] No coordination lock file found for release by test-sync
+[2025-06-14 01:34:46] [API] Sync request: manual from sync-now (priority: high)
+[2025-06-14 01:34:46] [INFO] Rate limit check: ALLOW: 5/12 syncs this hour
+[2025-06-14 01:34:46] [LOCK] Coordination lock acquired by sync-now (PID: 61456)
+[2025-06-14 01:34:46] [EXEC] Executing manual sync immediately
+[2025-06-14 01:34:46] [SYNC] Executing sync operation: {
+    "operation": "manual",
+    "caller": "sync-now",
+    "priority": "high",
+    "reason": "Manual sync request",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:34:46Z",
+    "status": "executing"
+}

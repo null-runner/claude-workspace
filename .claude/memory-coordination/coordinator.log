@@ -18,3 +18,25 @@
 [2025-06-14 01:30:40] [EXEC] Executing simplified save immediately
 [2025-06-14 01:30:40] [LOCK] Lock released by claude-simplified-memory-auto (PID: 59965)
 [2025-06-14 01:30:40] [WARN] No lock file found for release by claude-memory-coordinator.sh
+[2025-06-14 01:34:14] [LOCK] Lock acquired by test (PID: 60987)
+[2025-06-14 01:34:14] [LOCK] Lock released by test (PID: 60987)
+[2025-06-14 01:34:14] [SAVE] Unified context save: test from test-script
+[2025-06-14 01:34:14] [SUCCESS] Unified context save completed: test from test-script
+[2025-06-14 01:34:14] [LOAD] Loading unified context
+[2025-06-14 01:34:14] [WARN] No lock file found for release by claude-memory-coordinator.sh
+[2025-06-14 01:34:22] [LOCK] Lock acquired by manual-save (PID: 61103)
+[2025-06-14 01:34:22] [SAVE] Unified context save: simplified from manual-save
+[2025-06-14 01:34:22] [SUCCESS] Unified context save completed: simplified from manual-save
+[2025-06-14 01:34:22] [LOCK] Lock released by manual-save (PID: 61103)
+[2025-06-14 01:34:22] [WARN] No lock file found for release by claude-memory-coordinator.sh
+[2025-06-14 01:34:25] [LOAD] Loading unified context
+[2025-06-14 01:34:26] [WARN] No lock file found for release by claude-memory-coordinator.sh
+[2025-06-14 01:34:35] [LOAD] Loading unified context
+[2025-06-14 01:34:35] [WARN] No lock file found for release by claude-memory-coordinator.sh
+[2025-06-14 01:34:41] [LOCK] Lock acquired by claude-enhanced-save (PID: 61347)
+[2025-06-14 01:34:41] [SAVE] Unified context save: enhanced from claude-enhanced-save
+[2025-06-14 01:34:41] [SUCCESS] Unified context save completed: enhanced from claude-enhanced-save
+[2025-06-14 01:34:41] [LOCK] Lock released by claude-enhanced-save (PID: 61347)
+[2025-06-14 01:34:41] [WARN] No lock file found for release by claude-memory-coordinator.sh
+[2025-06-14 01:34:44] [LOAD] Loading unified context
+[2025-06-14 01:34:44] [WARN] No lock file found for release by claude-memory-coordinator.sh

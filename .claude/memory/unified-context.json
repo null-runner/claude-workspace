@@ -1,0 +1,129 @@
+{
+  "context_version": "unified-v1",
+  "timestamp": "2025-06-14T01:34:41.179700Z",
+  "save_type": "enhanced",
+  "caller": "claude-enhanced-save",
+  "device": "NEURAL-X",
+  "working_directory": "/home/nullrunner/claude-workspace",
+  "current_project": {
+    "name": "claude-workspace-development",
+    "type": "meta",
+    "path": "/home/nullrunner/claude-workspace",
+    "relative_path": ".",
+    "depth": 0,
+    "full_path": "/home/nullrunner/claude-workspace",
+    "meta_context": "root_workspace_management"
+  },
+  "git_status": {
+    "branch": "main",
+    "has_changes": true,
+    "dirty_files_count": 11,
+    "dirty_files": [
+      "M .claude/logs/auto-push.log",
+      " M .claude/memory-coordination/coordinator.log",
+      " M .claude/sync-coordination/coordinator-state.json",
+      " M .claude/sync-coordination/coordinator.log",
+      " D .claude/sync-coordination/sync-coordinator.lock",
+      " M scripts/claude-sync-lock.sh",
+      "?? .claude/memory-coordination/health-status.json",
+      "?? .claude/memory-coordination/memory-coordinator.lock",
+      "?? .claude/memory/intelligence-cache.json",
+      "?? .claude/memory/session-history.json"
+    ],
+    "last_commit": "6f1575f 🔄 Smart sync: Milestone commit: Coordinated sync: Testing coordinator fix (3 files)",
+    "is_git_repo": true
+  },
+  "intelligence_insights": {
+    "recent_learnings": [
+      {
+        "title": "System Crash/Recovery Pattern",
+        "lesson": "Recurring system crashes and emergency recoveries detected",
+        "category": "system_stability",
+        "severity": "medium",
+        "timestamp": "2025-06-13T23:11:30.964435Z"
+      }
+    ],
+    "recent_decisions": [
+      {
+        "title": "Added documentation: README.md",
+        "category": "process",
+        "impact": "low",
+        "source": "file_pattern_analysis",
+        "timestamp": "2025-06-14T00:20:38.043023Z"
+      },
+      {
+        "title": "🔧 Fix: cexit graceful flow - rimuovi exit prematuri",
+        "category": "general",
+        "impact": "medium",
+        "source": "git_commit",
+        "timestamp": "2025-06-14T00:35:38.136766Z"
+      },
+      {
+        "title": "🔧 Fix: Claude process detection in cexit",
+        "category": "general",
+        "impact": "medium",
+        "source": "git_commit",
+        "timestamp": "2025-06-14T00:35:38.136781Z"
+      },
+      {
+        "title": "🔧 Fix: cexit termination con confirmation prompt",
+        "category": "general",
+        "impact": "medium",
+        "source": "git_commit",
+        "timestamp": "2025-06-14T00:35:38.136785Z"
+      },
+      {
+        "title": "🚀 Feat: 4-Stage System Implementation - COMPLETATA ✅",
+        "category": "general",
+        "impact": "medium",
+        "source": "git_commit",
+        "timestamp": "2025-06-14T00:35:38.136787Z"
+      },
+      {
+        "title": "Added new workspace tool: claude-project-mode.sh",
+        "category": "tool",
+        "impact": "low",
+        "source": "file_pattern_analysis",
+        "timestamp": "2025-06-14T01:05:38.618491Z"
+      },
+      {
+        "title": "Added new workspace tool: sync-now.sh",
+        "category": "tool",
+        "impact": "low",
+        "source": "file_pattern_analysis",
+        "timestamp": "2025-06-14T01:20:38.770653Z"
+      },
+      {
+        "title": "Added new workspace tool: claude-log-rotator.sh",
+        "category": "tool",
+        "impact": "low",
+        "source": "file_pattern_analysis",
+        "timestamp": "2025-06-14T01:20:38.770674Z"
+      }
+    ],
+    "current_focus": "general_focused_development",
+    "extraction_timestamp": "2025-06-14T01:34:41.207568Z"
+  },
+  "conversation_summary": "testing",
+  "session_note": "Unified",
+  "save_reason": "manual",
+  "open_issues": [
+    "BUG: Handle blocked files (log for debugging) (scripts/claude-intelligent-auto-sync.sh:152)",
+    "IMPORTANT: Pulizia intelligente memoria senza perdere informazioni importanti (scripts/claude-memory-cleaner.sh:3)",
+    "IMPORTANT: Estrai pattern e informazioni importanti dalle vecchie sessioni (scripts/claude-memory-cleaner.sh:46)",
+    "NOTE: important_notes = [s.get('note') for s in old_sessions if s.get('note') and len(... (scripts/claude-memory-cleaner.sh:51)",
+    "NOTE: \"important_notes\": important_notes[:3] (scripts/claude-memory-cleaner.sh:60)"
+  ],
+  "next_actions": [
+    "Verify recent fixes are working correctly",
+    "Commit current changes (11 files modified)",
+    "Test workspace script changes",
+    "Update documentation if needed"
+  ],
+  "incomplete_tasks": [
+    "System"
+  ],
+  "next_steps": [
+    "consolidation"
+  ]
+}

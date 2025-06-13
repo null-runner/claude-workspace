@@ -1,0 +1,71 @@
+{
+  "recent_learnings": [
+    {
+      "title": "System Crash/Recovery Pattern",
+      "lesson": "Recurring system crashes and emergency recoveries detected",
+      "category": "system_stability",
+      "severity": "medium",
+      "timestamp": "2025-06-13T23:11:30.964435Z"
+    }
+  ],
+  "recent_decisions": [
+    {
+      "title": "Added documentation: README.md",
+      "category": "process",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-14T00:20:38.043023Z"
+    },
+    {
+      "title": "🔧 Fix: cexit graceful flow - rimuovi exit prematuri",
+      "category": "general",
+      "impact": "medium",
+      "source": "git_commit",
+      "timestamp": "2025-06-14T00:35:38.136766Z"
+    },
+    {
+      "title": "🔧 Fix: Claude process detection in cexit",
+      "category": "general",
+      "impact": "medium",
+      "source": "git_commit",
+      "timestamp": "2025-06-14T00:35:38.136781Z"
+    },
+    {
+      "title": "🔧 Fix: cexit termination con confirmation prompt",
+      "category": "general",
+      "impact": "medium",
+      "source": "git_commit",
+      "timestamp": "2025-06-14T00:35:38.136785Z"
+    },
+    {
+      "title": "🚀 Feat: 4-Stage System Implementation - COMPLETATA ✅",
+      "category": "general",
+      "impact": "medium",
+      "source": "git_commit",
+      "timestamp": "2025-06-14T00:35:38.136787Z"
+    },
+    {
+      "title": "Added new workspace tool: claude-project-mode.sh",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-14T01:05:38.618491Z"
+    },
+    {
+      "title": "Added new workspace tool: sync-now.sh",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-14T01:20:38.770653Z"
+    },
+    {
+      "title": "Added new workspace tool: claude-log-rotator.sh",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-14T01:20:38.770674Z"
+    }
+  ],
+  "current_focus": "general_focused_development",
+  "extraction_timestamp": "2025-06-14T01:34:41.207568Z"
+}
