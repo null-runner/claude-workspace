@@ -48,8 +48,8 @@ if [[ "$confirm" =~ ^[Yy]$|^$ ]]; then
     echo -e "${CYAN}👋 Terminating Claude Code...${NC}"
     echo ""
     
-    # Trova il PID di Claude Code
-    CLAUDE_PID=$(pgrep -f "claude-code" | head -1)
+    # Trova il PID di Claude Code (cerca processo "claude" principale)
+    CLAUDE_PID=$(pgrep -x "claude" | head -1)
     
     if [[ -n "$CLAUDE_PID" ]]; then
         echo -e "${CYAN}🔥 Found Claude Code PID: $CLAUDE_PID${NC}"
