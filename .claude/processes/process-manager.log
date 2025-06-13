@@ -16,3 +16,20 @@
 [2025-06-14 01:46:56] [INFO] Process 71209 (bash) matches whitelist pattern: ^bash$
 [2025-06-14 01:46:56] [ERROR] SAFETY: PID 71209 (bash) is whitelisted and should NOT be killed!
 [2025-06-14 01:47:04] [INFO] PID 71301 validated: sleep
+[2025-06-14 01:47:41] [WARN] PID sleep not accessible or doesn't exist
+[2025-06-14 01:47:41] [ERROR] Process validation failed for PID sleep
+[2025-06-14 01:48:14] [INFO] PID 71975 validated: sleep
+[2025-06-14 01:48:14] [INFO] Attempting safe termination of PID 71975 (sleep)
+[2025-06-14 01:48:15] [INFO] Process 71975 terminated gracefully
+[2025-06-14 01:48:20] [WARN] PID 1 not accessible or doesn't exist
+[2025-06-14 01:49:02] [INFO] PID 63841 validated: sleep
+[2025-06-14 01:49:02] [INFO] PID 69552 validated: sleep
+[2025-06-14 01:49:02] [INFO] PID 72071 validated: sleep
+[2025-06-14 01:49:02] [INFO] PID 72091 validated: sleep
+[2025-06-14 01:49:02] [INFO] PID 72128 validated: sleep
+[2025-06-14 01:49:02] [INFO] PID 72129 validated: sleep
+[2025-06-14 01:49:02] [INFO] Process 72131 (bash) matches whitelist pattern: ^bash$
+[2025-06-14 01:49:02] [ERROR] SAFETY: PID 72131 (bash) is whitelisted and should NOT be killed!
+[2025-06-14 01:49:02] [WARN] PID 72162 doesn't match expected pattern '^bash$': claude-safe-pro | /bin/bash /home/nullrunner/claude-workspace/scripts/claude-safe-process.sh find sleep
+[2025-06-14 01:49:02] [INFO] PID 72163 validated: claude-process-
+[2025-06-14 01:49:02] [INFO] Found 7 valid processes for pattern ''

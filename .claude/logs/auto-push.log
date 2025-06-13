@@ -186,3 +186,25 @@ To github.com:null-runner/claude-workspace.git
    74c0fe5..5dd5220  HEAD -> main
 [2025-06-14 01:46:46] [SUCCESS] ✅ Auto-push completed successfully
 [2025-06-14 01:46:46] [SUCCESS] Commit 5dd52208b690e9f68de651fa8464c198829c8421 pushed to remote
+[2025-06-14 01:47:23] [INFO] Post-commit hook triggered for 5fbca062a67cfd03b269425f80d013cc064e4b18
+[2025-06-14 01:47:23] [INFO] Changed files: .claude/backup/cleanup-config.json
+.claude/backup/cleanup.log
+.claude/backup/last-cleanup.json
+.claude/logs/auto-push.log
+.claude/logs/exit-hook.log
+.claude/logs/last-rotation.json
+.claude/logs/log-rotation.log
+.claude/logs/rotation-config.json
+.claude/processes/process-manager.log
+.claude/processes/safe-processes.whitelist
+scripts/backup-cleanup
+scripts/cexit-safe
+scripts/claude-backup-cleaner.sh
+scripts/claude-smart-sync.sh
+scripts/log-cleanup
+[2025-06-14 01:47:23] [INFO] Repository whitelisted for auto-push: null-runner/claude-workspace
+[2025-06-14 01:47:23] [INFO] Attempting auto-push to origin...
+To github.com:null-runner/claude-workspace.git
+   5dd5220..5fbca06  HEAD -> main
+[2025-06-14 01:47:25] [SUCCESS] ✅ Auto-push completed successfully
+[2025-06-14 01:47:25] [SUCCESS] Commit 5fbca062a67cfd03b269425f80d013cc064e4b18 pushed to remote
