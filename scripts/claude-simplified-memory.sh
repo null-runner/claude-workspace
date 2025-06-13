@@ -25,6 +25,13 @@ save_context() {
     local open_issues="${3:-}"
     local next_actions="${4:-}"
     
+    # Check if we should use coordinator (unless already in coordinator mode)
+    if [[ -z "$MEMORY_COORD_MODE" ]]; then
+        echo -e "${YELLOW}💾 Requesting coordinated save...${NC}"
+        "$WORKSPACE_DIR/scripts/claude-memory-coordinator.sh" request-save simplified "claude-simplified-memory" normal "$save_reason" "$conversation_summary" "$open_issues" "$next_actions"
+        return $?
+    fi
+    
     echo -e "${YELLOW}💾 Saving simplified context...${NC}"
     
     # Backup del context precedente
@@ -38,8 +45,14 @@ save_context() {
     python3 << 'EOF'
 import json
 import os
+import sys
 import subprocess
 from datetime import datetime
+
+# Import safe JSON operations
+scripts_dir = os.path.join(os.environ.get('WORKSPACE_DIR', os.path.expanduser('~/claude-workspace')), 'scripts')
+sys.path.insert(0, scripts_dir)
+from safe_json_operations import safe_json_read, safe_json_write, SafeJSONError
 
 def get_git_status():
     """Get simplified git status"""
@@ -99,7 +112,10 @@ def extract_todo_comments():
     try:
         workspace_dir = os.environ.get('WORKSPACE_DIR')
         if not workspace_dir:
-            return []
+            # Fallback to default workspace directory
+            workspace_dir = os.path.expanduser('~/claude-workspace')
+            if not os.path.exists(workspace_dir):
+                return []
             
         current_project = get_current_project()
         if not current_project:
@@ -290,8 +306,8 @@ def get_intelligence_insights():
         # Load auto-learnings
         learnings_file = os.path.join(intelligence_dir, 'auto-learnings.json')
         if os.path.exists(learnings_file):
-            with open(learnings_file, 'r') as f:
-                learnings_data = json.load(f)
+            learnings_data = safe_json_read(learnings_file, {})
+            if learnings_data:
                 # Get most recent 3 learnings
                 recent_learnings = learnings_data.get('auto_learnings', [])[-3:]
                 insights["recent_learnings"] = [
@@ -307,8 +323,8 @@ def get_intelligence_insights():
         # Load auto-decisions
         decisions_file = os.path.join(intelligence_dir, 'auto-decisions.json')
         if os.path.exists(decisions_file):
-            with open(decisions_file, 'r') as f:
-                decisions_data = json.load(f)
+            decisions_data = safe_json_read(decisions_file, {})
+            if decisions_data:
                 # Get most recent 5 decisions
                 recent_decisions = decisions_data.get('auto_decisions', [])[-5:]
                 insights["recent_decisions"] = [
@@ -355,7 +371,10 @@ def get_current_project():
         
         workspace_dir = os.environ.get('WORKSPACE_DIR')
         if not workspace_dir:
-            return None
+            # Fallback to default workspace directory
+            workspace_dir = os.path.expanduser('~/claude-workspace')
+            if not os.path.exists(workspace_dir):
+                return None
             
         # Use the advanced project detector (detect command outputs JSON)
         result = subprocess.run([
@@ -468,10 +487,18 @@ context = {
     "context_version": "simplified-v1"
 }
 
-# Save context
+# Import safe JSON operations
+scripts_dir = os.path.join(os.environ.get('WORKSPACE_DIR', os.path.expanduser('~/claude-workspace')), 'scripts')
+sys.path.insert(0, scripts_dir)
+from safe_json_operations import safe_json_write, SafeJSONError
+
+# Save context using safe JSON operations
 context_file = os.environ.get('CONTEXT_FILE')
-with open(context_file, 'w') as f:
-    json.dump(context, f, indent=2)
+try:
+    safe_json_write(context_file, context, indent=2)
+except SafeJSONError as e:
+    print(f"❌ Error saving context: {e}")
+    sys.exit(1)
 
 print(f"✅ Context saved successfully")
 print(f"📁 Project: {context['current_project'] or 'None detected'}")
@@ -496,12 +523,19 @@ load_context() {
     python3 << 'EOF'
 import json
 import os
+import sys
 from datetime import datetime, timedelta
+
+# Import safe JSON operations
+scripts_dir = os.path.join(os.environ.get('WORKSPACE_DIR', os.path.expanduser('~/claude-workspace')), 'scripts')
+sys.path.insert(0, scripts_dir)
+from safe_json_operations import safe_json_read, SafeJSONError
 
 context_file = os.environ.get('CONTEXT_FILE')
 try:
-    with open(context_file, 'r') as f:
-        context = json.load(f)
+    context = safe_json_read(context_file)
+    if context is None:
+        raise SafeJSONError("Context file is empty or corrupted")
     
     print(f"📅 Last session: {context.get('timestamp', 'Unknown')}")
     print(f"💻 Device: {context.get('device', 'Unknown')}")
@@ -526,8 +560,10 @@ try:
         for action in context['next_actions']:
             print(f"   • {action}")
     
-except Exception as e:
+except SafeJSONError as e:
     print(f"❌ Error loading context: {e}")
+except Exception as e:
+    print(f"❌ Unexpected error loading context: {e}")
 
 EOF
 }
@@ -539,8 +575,14 @@ should_save_context() {
     python3 << 'EOF'
 import json
 import os
+import sys
 import subprocess
 from datetime import datetime, timedelta
+
+# Import safe JSON operations
+scripts_dir = os.path.join(os.environ.get('WORKSPACE_DIR', os.path.expanduser('~/claude-workspace')), 'scripts')
+sys.path.insert(0, scripts_dir)
+from safe_json_operations import safe_json_read, SafeJSONError
 
 def should_save():
     # Check git status
@@ -556,12 +598,13 @@ def should_save():
     context_file = os.environ.get('CONTEXT_FILE')
     if context_file and os.path.exists(context_file):
         try:
-            with open(context_file, 'r') as f:
-                context = json.load(f)
-            
-            last_save = datetime.fromisoformat(context['timestamp'].replace('Z', ''))
-            time_diff = datetime.now() - last_save
-            time_based_save = time_diff > timedelta(minutes=30)
+            context = safe_json_read(context_file)
+            if context is None:
+                time_based_save = True
+            else:
+                last_save = datetime.fromisoformat(context['timestamp'].replace('Z', ''))
+                time_diff = datetime.now() - last_save
+                time_based_save = time_diff > timedelta(minutes=30)
         except:
             time_based_save = True
     else:
@@ -590,8 +633,15 @@ auto_save_context() {
     
     if [[ "$decision" == "SAVE" ]]; then
         echo -e "${GREEN}🤖 Auto-saving context: $reason${NC}"
-        save_context "$reason"
-        return 0
+        
+        # Use coordinator for auto-save with higher priority
+        if [[ -z "$MEMORY_COORD_MODE" ]]; then
+            "$WORKSPACE_DIR/scripts/claude-memory-coordinator.sh" request-save simplified "claude-simplified-memory-auto" high "$reason"
+            return $?
+        else
+            save_context "$reason"
+            return $?
+        fi
     else
         echo -e "${BLUE}ℹ️  Context save skipped: $reason${NC}"
         return 1
@@ -609,13 +659,20 @@ migrate_from_old_format() {
         python3 << 'EOF'
 import json
 import os
+import sys
+
+# Import safe JSON operations
+scripts_dir = os.path.join(os.environ.get('WORKSPACE_DIR', os.path.expanduser('~/claude-workspace')), 'scripts')
+sys.path.insert(0, scripts_dir)
+from safe_json_operations import safe_json_read, safe_json_write, SafeJSONError
 
 old_file = os.environ.get('MEMORY_DIR') + '/current-session-context.json'
 new_file = os.environ.get('CONTEXT_FILE')
 
 try:
-    with open(old_file, 'r') as f:
-        old_context = json.load(f)
+    old_context = safe_json_read(old_file)
+    if old_context is None:
+        raise SafeJSONError("Old context file is empty")
     
     # Extract relevant info for simplified format
     new_context = {
@@ -638,8 +695,7 @@ try:
         "context_version": "simplified-v1"
     }
     
-    with open(new_file, 'w') as f:
-        json.dump(new_context, f, indent=2)
+    safe_json_write(new_file, new_context, indent=2)
     
     print("✅ Migration completed successfully")
     
