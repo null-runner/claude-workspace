@@ -164,6 +164,11 @@ check_milestone_commits() {
     local diff_stats=$(git diff HEAD~1 --stat | tail -1)
     local lines_changed=$(echo "$diff_stats" | grep -o '[0-9]\+ insertions\|[0-9]\+ deletions' | head -1 | grep -o '[0-9]\+' || echo "0")
     
+    # Skip smart sync's own commits to avoid loops
+    if [[ "$commit_message" =~ "Smart sync:" ]]; then
+        return 0
+    fi
+    
     # Check if milestone commit
     if [[ "$commit_message" =~ (add|implement|fix|complete|update|create|build) ]]; then
         # Check significance
