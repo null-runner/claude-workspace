@@ -1,0 +1,3 @@
+#!/bin/bash
+# Quick status bar - alias for rapid checking
+~/claude-workspace/scripts/claude-status-bar.sh "$@"

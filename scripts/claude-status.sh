@@ -7,6 +7,10 @@ echo "║      CLAUDE WORKSPACE STATUS         ║"
 echo "╚══════════════════════════════════════╝"
 echo ""
 
+# Status Bar compatta
+~/claude-workspace/scripts/claude-status-bar.sh
+echo ""
+
 # Verifica stato attivazione
 if [[ -f ~/.claude-access/ACTIVE ]]; then
     echo "🟢 STATO: ATTIVO"
