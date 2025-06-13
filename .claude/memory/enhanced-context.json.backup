@@ -1,14 +1,14 @@
 {
-  "session_id": "2025-06-13T19:26:02.837408Z",
-  "timestamp": "2025-06-13T19:26:02.837418Z",
+  "session_id": "2025-06-13T19:52:50.808202Z",
+  "timestamp": "2025-06-13T19:52:50.808211Z",
   "device": "NEURAL-X",
   "working_directory": "/home/nullrunner/claude-workspace",
   "current_project": null,
   "git_status": {
     "branch": "main",
     "has_changes": true,
-    "dirty_files_count": 27,
-    "last_commit": "9e015b5 \ud83c\udfe5 Fix health monitor false degraded alerts",
+    "dirty_files_count": 16,
+    "last_commit": "8b980ff Auto-sync: 15 modifiche da NEURAL-X - 2025-06-13_19:34:07",
     "is_git_repo": true
   },
   "conversation_summary": null,

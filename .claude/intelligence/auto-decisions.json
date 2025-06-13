@@ -187,13 +187,98 @@
         "path": "/home/nullrunner/claude-workspace/scripts/claude-smart-exit.sh",
         "creation_time": "2025-06-13T19:21:48.962462"
       }
+    },
+    {
+      "id": "auto-script-claude-migrate-to-robust-sync.sh-1749836850",
+      "title": "Added new workspace tool: claude-migrate-to-robust-sync.sh",
+      "decision": "Created new script 'claude-migrate-to-robust-sync.sh' for workspace automation",
+      "reasoning": "Auto-detected from script creation at 2025-06-13T19:46:14.751237",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-13T19:47:30.900819Z",
+      "auto_extracted": true,
+      "pattern_details": {
+        "type": "new_script",
+        "name": "claude-migrate-to-robust-sync.sh",
+        "path": "/home/nullrunner/claude-workspace/scripts/claude-migrate-to-robust-sync.sh",
+        "creation_time": "2025-06-13T19:46:14.751237"
+      }
+    },
+    {
+      "id": "auto-script-claude-robust-sync.sh-1749836850",
+      "title": "Added new workspace tool: claude-robust-sync.sh",
+      "decision": "Created new script 'claude-robust-sync.sh' for workspace automation",
+      "reasoning": "Auto-detected from script creation at 2025-06-13T19:44:51.555867",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-13T19:47:30.900831Z",
+      "auto_extracted": true,
+      "pattern_details": {
+        "type": "new_script",
+        "name": "claude-robust-sync.sh",
+        "path": "/home/nullrunner/claude-workspace/scripts/claude-robust-sync.sh",
+        "creation_time": "2025-06-13T19:44:51.555867"
+      }
+    },
+    {
+      "id": "auto-script-auto-sync-optimized.sh-1749836850",
+      "title": "Added new workspace tool: auto-sync-optimized.sh",
+      "decision": "Created new script 'auto-sync-optimized.sh' for workspace automation",
+      "reasoning": "Auto-detected from script creation at 2025-06-13T19:47:13.283854",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-13T19:47:30.900834Z",
+      "auto_extracted": true,
+      "pattern_details": {
+        "type": "new_script",
+        "name": "auto-sync-optimized.sh",
+        "path": "/home/nullrunner/claude-workspace/scripts/auto-sync-optimized.sh",
+        "creation_time": "2025-06-13T19:47:13.283854"
+      }
+    },
+    {
+      "id": "auto-script-sync-performance-benchmark.sh-1749836850",
+      "title": "Added new workspace tool: sync-performance-benchmark.sh",
+      "decision": "Created new script 'sync-performance-benchmark.sh' for workspace automation",
+      "reasoning": "Auto-detected from script creation at 2025-06-13T19:47:13.283854",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-13T19:47:30.900837Z",
+      "auto_extracted": true,
+      "pattern_details": {
+        "type": "new_script",
+        "name": "sync-performance-benchmark.sh",
+        "path": "/home/nullrunner/claude-workspace/scripts/sync-performance-benchmark.sh",
+        "creation_time": "2025-06-13T19:47:13.283854"
+      }
+    },
+    {
+      "id": "auto-docs-PERFORMANCE_ANALYSIS.md-1749836850",
+      "title": "Added documentation: PERFORMANCE_ANALYSIS.md",
+      "decision": "Created new documentation file 'PERFORMANCE_ANALYSIS.md'",
+      "reasoning": "Auto-detected from documentation creation at 2025-06-13T19:44:36.098848",
+      "category": "process",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-13T19:47:30.900840Z",
+      "auto_extracted": true,
+      "pattern_details": {
+        "type": "new_documentation",
+        "name": "PERFORMANCE_ANALYSIS.md",
+        "path": "docs/PERFORMANCE_ANALYSIS.md",
+        "creation_time": "2025-06-13T19:44:36.098848"
+      }
     }
   ],
   "extraction_stats": {
-    "total_extracted": 11,
+    "total_extracted": 16,
     "by_source": {
       "git_commits": 0,
-      "file_patterns": 11,
+      "file_patterns": 16,
       "project_creation": 0
     }
   }

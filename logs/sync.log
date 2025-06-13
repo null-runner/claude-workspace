@@ -1537,3 +1537,14 @@ Already up to date.
 [Fri Jun 13 19:34:07 CEST 2025] Enhanced session salvata: Auto-sync NEURAL-X
 [Fri Jun 13 19:34:07 CEST 2025] Esecuzione pulizia intelligente memoria...
 [Fri Jun 13 19:34:07 CEST 2025] Pulizia memoria completata
+[main 8b980ff] Auto-sync: 15 modifiche da NEURAL-X - 2025-06-13_19:34:07
+ 15 files changed, 1300 insertions(+), 97 deletions(-)
+ create mode 100644 .claude/auto-memory/emergency_recovery_needed
+ create mode 100644 .claude/memory/.last_cleanup
+ create mode 100644 .claude/memory/enhanced-context.json.backup
+ create mode 100644 .claude/memory/enhanced-sessions.json.backup
+ create mode 100644 .claude/memory/workspace-memory.json.backup
+To github.com:null-runner/claude-workspace.git
+   3b7cc98..8b980ff  main -> main
+[Fri Jun 13 19:34:09 CEST 2025] ✅ Sync completato con successo
+[Fri Jun 13 19:34:09 CEST 2025] Monitoring attivo su /home/nullrunner/claude-workspace/projects

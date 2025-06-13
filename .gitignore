@@ -1,0 +1,111 @@
+# Claude Workspace - Robust Security Gitignore
+# Protects autonomous system from sync loops while allowing necessary syncing
+
+# ===========================================
+# CRITICAL: Autonomous System Files (HIGH RISK)
+# These files change every 30-60 seconds and MUST NOT be synced
+# ===========================================
+
+# Real-time service status (updates every 30s)
+.claude/autonomous/service-status.json
+.claude/autonomous/*.log
+.claude/autonomous/*.pid
+
+# Dynamic session context (updates every 5min)
+.claude/memory/current-session-context.json
+.claude/memory/enhanced-context.json
+.claude/memory/enhanced-sessions.json
+.claude/memory/enhanced-sessions.json.backup
+.claude/memory/enhanced-context.json.backup
+
+# Activity tracking (continuous updates)
+.claude/activity/activity.json
+.claude/activity/activity.log
+
+# Real-time metrics
+.claude/metrics/*.json
+.claude/metrics/*.log
+
+# ===========================================
+# SYNC-SAFE: System Files (LOW RISK)
+# These files can be synced as they represent persistent state
+# ===========================================
+
+# Persistent workspace memory - SYNC SAFE
+# .claude/memory/workspace-memory.json
+
+# Decision logs - SYNC SAFE  
+# .claude/decisions/decisions.json
+
+# Learning data - SYNC SAFE
+# .claude/learning/*.json
+
+# ===========================================
+# SYNC CONTROL FILES
+# ===========================================
+
+# Sync system state and locks
+.claude/sync/
+logs/robust-sync.log*
+logs/sync.log*
+
+# Temporary sync files
+*.sync-tmp
+*.sync-backup
+
+# ===========================================
+# STANDARD IGNORES
+# ===========================================
+
+# System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.tmp
+
+# Log files
+*.log
+logs/*.log
+!logs/README.md
+
+# Backup files
+*.backup
+*.bak
+
+# Node modules
+node_modules/
+npm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+out/
+
+# ===========================================
+# PROJECT-SPECIFIC IGNORES
+# ===========================================
+
+# Add project-specific ignores below this line
+# These will be synced as part of workspace configuration

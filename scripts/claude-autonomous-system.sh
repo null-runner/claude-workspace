@@ -92,9 +92,39 @@ with open(status_file, 'w') as f:
 EOF
 }
 
+# Check if atomic sync is requesting pause
+check_sync_pause() {
+    [[ -f "$WORKSPACE_DIR/.claude/autonomous/sync-pause.lock" ]]
+}
+
+# Wait for sync operation to complete
+wait_for_sync_completion() {
+    local service_name="$1"
+    local max_wait=300  # 5 minutes max wait
+    local wait_count=0
+    
+    while check_sync_pause && [[ $wait_count -lt $max_wait ]]; do
+        update_service_status "$service_name" "paused" "Waiting for atomic sync to complete"
+        sleep 5
+        ((wait_count += 5))
+    done
+    
+    if [[ $wait_count -ge $max_wait ]]; then
+        log_master "WARN" "$service_name" "Sync pause timeout - resuming operations"
+        return 1
+    fi
+    
+    return 0
+}
+
 # Enhanced context monitoring (every 5 minutes)
 run_context_monitor() {
     while true; do
+        # Check for sync pause before file operations
+        if check_sync_pause; then
+            wait_for_sync_completion "CONTEXT"
+        fi
+        
         if [[ -f "$WORKSPACE_DIR/scripts/claude-simplified-memory.sh" ]]; then
             "$WORKSPACE_DIR/scripts/claude-simplified-memory.sh" auto-save >/dev/null 2>&1
             local result=$?
@@ -116,6 +146,11 @@ run_context_monitor() {
 # Project detection monitoring (every 30 seconds)
 run_project_monitor() {
     while true; do
+        # Check for sync pause before file operations
+        if check_sync_pause; then
+            wait_for_sync_completion "PROJECT"
+        fi
+        
         if [[ -f "$WORKSPACE_DIR/scripts/claude-auto-project-detector.sh" ]]; then
             "$WORKSPACE_DIR/scripts/claude-auto-project-detector.sh" check >/dev/null 2>&1
             local result=$?
@@ -137,6 +172,11 @@ run_project_monitor() {
 # Intelligence extraction (every 15 minutes)
 run_intelligence_extractor() {
     while true; do
+        # Check for sync pause before file operations
+        if check_sync_pause; then
+            wait_for_sync_completion "INTELLIGENCE"
+        fi
+        
         if [[ -f "$WORKSPACE_DIR/scripts/claude-intelligence-extractor.sh" ]]; then
             "$WORKSPACE_DIR/scripts/claude-intelligence-extractor.sh" extract >/dev/null 2>&1
             local result=$?
