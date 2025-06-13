@@ -425,13 +425,30 @@
         "path": "docs/ATOMIC-SYNC_EN.md",
         "creation_time": "2025-06-13T20:01:12.936414"
       }
+    },
+    {
+      "id": "auto-script-claude-smart-sync.sh-1749840634",
+      "title": "Added new workspace tool: claude-smart-sync.sh",
+      "decision": "Created new script 'claude-smart-sync.sh' for workspace automation",
+      "reasoning": "Auto-detected from script creation at 2025-06-13T20:49:28.144525",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-13T20:50:34.156609Z",
+      "auto_extracted": true,
+      "pattern_details": {
+        "type": "new_script",
+        "name": "claude-smart-sync.sh",
+        "path": "/home/nullrunner/claude-workspace/scripts/claude-smart-sync.sh",
+        "creation_time": "2025-06-13T20:49:28.144525"
+      }
     }
   ],
   "extraction_stats": {
-    "total_extracted": 25,
+    "total_extracted": 26,
     "by_source": {
       "git_commits": 0,
-      "file_patterns": 25,
+      "file_patterns": 26,
       "project_creation": 0
     }
   }

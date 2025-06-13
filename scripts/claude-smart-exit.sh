@@ -281,6 +281,12 @@ prompt_save_session() {
             prompt_custom_note
             ;;
         [Nn])
+            # Trigger smart sync anche senza salvataggio sessione
+            if [[ -f "$WORKSPACE_DIR/scripts/claude-smart-sync.sh" ]]; then
+                echo -e "${CYAN}🔄 Triggering exit sync...${NC}"
+                "$WORKSPACE_DIR/scripts/claude-smart-sync.sh" sync "Exit checkpoint (no session save)"
+            fi
+            
             # Marca exit come graceful anche senza salvataggio
             mark_graceful_exit
             echo -e "${GREEN}👋 Goodbye! Session not saved.${NC}"
@@ -382,6 +388,12 @@ save_session() {
     # Marca exit come graceful prima di salvare
     mark_graceful_exit
     
+    # Trigger smart sync on exit
+    if [[ -f "$WORKSPACE_DIR/scripts/claude-smart-sync.sh" ]]; then
+        echo -e "${CYAN}🔄 Triggering exit sync...${NC}"
+        "$WORKSPACE_DIR/scripts/claude-smart-sync.sh" sync "Exit checkpoint: $note"
+    fi
+    
     if [[ -f "$WORKSPACE_DIR/scripts/claude-enhanced-save.sh" ]]; then
         "$WORKSPACE_DIR/scripts/claude-enhanced-save.sh" "$note"
         echo ""
@@ -432,6 +444,13 @@ case "${1:-}" in
             save_session "$auto_note"
         else
             echo -e "${YELLOW}💡 Insufficient activity for auto-save${NC}"
+            
+            # Still trigger smart sync on exit
+            if [[ -f "$WORKSPACE_DIR/scripts/claude-smart-sync.sh" ]]; then
+                echo -e "${CYAN}🔄 Triggering exit sync...${NC}"
+                "$WORKSPACE_DIR/scripts/claude-smart-sync.sh" sync "Exit checkpoint (minimal activity)"
+            fi
+            
             mark_graceful_exit
             echo -e "${GREEN}👋 Goodbye!${NC}"
             exit 0
