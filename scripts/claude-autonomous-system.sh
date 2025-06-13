@@ -54,6 +54,8 @@ update_service_status() {
     local status="$2"
     local message="$3"
     
+    export service status message SERVICE_STATUS_FILE
+    
     python3 << 'EOF'
 import json
 import os
@@ -88,7 +90,6 @@ with open(status_file, 'w') as f:
     json.dump(service_status, f, indent=2)
 
 EOF
-    export service status message SERVICE_STATUS_FILE
 }
 
 # Enhanced context monitoring (every 5 minutes)
@@ -368,6 +369,7 @@ show_system_status() {
     
     # Show service status
     if [[ -f "$SERVICE_STATUS_FILE" ]]; then
+        export SERVICE_STATUS_FILE
         python3 << 'EOF'
 import json
 import os
@@ -397,7 +399,6 @@ except Exception as e:
     print("📊 SERVICE STATUS: No status data available")
 
 EOF
-        export SERVICE_STATUS_FILE
     else
         echo "📊 SERVICE STATUS: No status data available"
     fi
