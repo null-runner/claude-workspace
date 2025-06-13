@@ -20,16 +20,25 @@ All'inizio di OGNI conversazione - tono amichevole "vediamo dove eravamo rimasti
 
 **Raccomandato**: usa `cexit-safe` e poi chiudi manualmente.
 
-## CRITICO: Commit
-SEMPRE usare DUE comandi bash consecutivi:
-1. `git commit -m "msg"`
-2. `git push`
+## CRITICO: Commit Frequenti
+**COMMIT IMMEDIATO OBBLIGATORIO** dopo modifiche a:
+- Script critici (cexit, startup, sync, autonomous, exit-hook)
+- CLAUDE.md o documentazione
+- Configurazioni sistema (.claude/*)
+- Qualsiasi modifica richiesta dall'user
+
+**SEMPRE usare DUE comandi bash consecutivi:**
+1. `git add .`
+2. `git commit -m "msg"`
+3. `git push`
 
 **OBBLIGATORIO: Tutti i commit devono essere firmati:**
 ```bash
 🤖 Generated with Claude Workspace (by null-runner)
 Co-Authored-By: Claude <noreply@anthropic.com>
 ```
+
+**REGOLA ORO**: Meglio 10 commit "micro" che perdere il lavoro!
 
 ## Sistema Autonomo
 Il workspace ora è **completamente autonomo** con sync automatico:

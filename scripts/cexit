@@ -35,21 +35,6 @@ fi
 echo -e "${BLUE}🚀 Executing smart exit...${NC}"
 "$WORKSPACE_DIR/scripts/claude-smart-exit.sh" --auto
 
-# Se arriviamo qui, smart-exit ha completato con successo
-echo -e "${GREEN}✅ Graceful exit completato - terminando sessione Claude Code...${NC}"
-echo ""
-
-# Strategia 1: Prova a terminare il processo parent Claude Code
-CLAUDE_PID=$(ps -o pid,cmd -e | grep -E "claude$|claude-code$" | grep -v grep | awk '{print $1}' | head -1)
-if [[ -n "$CLAUDE_PID" ]]; then
-    echo -e "${BLUE}🎯 Terminando Claude Code (PID: $CLAUDE_PID)...${NC}"
-    kill -TERM "$CLAUDE_PID" 2>/dev/null || {
-        echo -e "${YELLOW}💀 Tentativo kill gentile fallito, uso kill -9...${NC}"
-        kill -9 "$CLAUDE_PID" 2>/dev/null
-    }
-    sleep 1
-fi
-
-# Strategia 2: Se siamo ancora qui, termina questa shell
-echo -e "${BLUE}🔄 Terminando shell corrente...${NC}"
-kill -TERM $$ 2>/dev/null || exit "$@"
+# Se arriviamo qui, smart-exit non ha fatto exit (errore)
+echo -e "${YELLOW}⚠️  Smart exit non ha terminato - fallback a exit normale${NC}"
+exit "$@"
