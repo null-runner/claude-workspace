@@ -356,11 +356,16 @@ except Exception as e:
 EOF
 }
 
-# Marca exit come graceful per evitare recovery al prossimo startup
+# Marca exit come graceful per evitare recovery al prossimo startup (atomic)
 mark_graceful_exit() {
     local recovery_dir="$WORKSPACE_DIR/.claude/auto-memory"
+    local exit_type_file="$recovery_dir/exit_type"
+    local temp_file="$recovery_dir/exit_type.tmp.$$"
+    
     mkdir -p "$recovery_dir"
-    echo "graceful_exit" > "$recovery_dir/exit_type"
+    # Atomic write: write to temp file, then move
+    echo "graceful_exit" > "$temp_file"
+    mv "$temp_file" "$exit_type_file"
 }
 
 # Prompt per nota custom
@@ -457,8 +462,8 @@ case "${1:-}" in
             echo -e "${GREEN}✅ Exit type marked as graceful${NC}"
             echo -e "${GREEN}👋 Graceful exit operations completed!${NC}"
             echo ""
-            # NON fare exit qui - torna al cexit per la terminazione forzata
-            return 0
+            # Exit normale per tornare al cexit per la terminazione forzata
+            exit 0
         fi
         ;;
     "--analyze-only")

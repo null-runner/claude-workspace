@@ -37,6 +37,24 @@ echo -e "${BLUE}🚀 Executing smart exit...${NC}"
 
 # Graceful exit completato
 echo -e "${GREEN}✅ Graceful exit completato!${NC}"
+
+# CLEANUP: Termina smart-sync daemon se attivo (anche con cexit-safe)
+echo -e "${CYAN}🧹 Cleaning up smart-sync daemon...${NC}"
+SYNC_PID_FILE="$WORKSPACE_DIR/.claude/sync/smart-sync.pid"
+if [[ -f "$SYNC_PID_FILE" ]]; then
+    SYNC_PID=$(cat "$SYNC_PID_FILE")
+    if [[ -n "$SYNC_PID" ]] && kill -0 "$SYNC_PID" 2>/dev/null; then
+        echo -e "${CYAN}🛑 Stopping smart-sync daemon (PID: $SYNC_PID)...${NC}"
+        kill -TERM "$SYNC_PID" 2>/dev/null
+        sleep 1
+        if kill -0 "$SYNC_PID" 2>/dev/null; then
+            kill -KILL "$SYNC_PID" 2>/dev/null
+        fi
+        echo -e "${GREEN}✅ Smart-sync daemon stopped${NC}"
+    fi
+    rm -f "$SYNC_PID_FILE"
+fi
+
 echo -e "${BLUE}💡 Ora puoi chiudere manualmente Claude Code o usare Ctrl+C${NC}"
 echo -e "${YELLOW}🎯 Per exit forzato, usa: ./scripts/cexit${NC}"
 echo ""
@@ -44,6 +62,7 @@ echo -e "${CYAN}📋 SUMMARY:${NC}"
 echo -e "   💾 Session salvata"
 echo -e "   🔄 Smart-sync eseguito"
 echo -e "   📤 Repository aggiornato"
+echo -e "   🧹 Daemon cleanup eseguito"
 echo -e "   ✅ Workspace pulito e pronto"
 echo ""
 

@@ -94,13 +94,17 @@ recovery_check() {
 # Setup emergency recovery marker
 setup_emergency_recovery() {
     local recovery_dir="$WORKSPACE_DIR/.claude/auto-memory"
+    local exit_type_file="$recovery_dir/exit_type"
+    local temp_file="$recovery_dir/exit_type.tmp.$$"
+    
     mkdir -p "$recovery_dir"
     
     # Crea marker che verrà rimosso solo su exit pulito
     echo "Session started: $(date)" > "$recovery_dir/emergency_recovery_needed"
     
-    # Crea marker per distinguere exit normale da crash
-    echo "normal_exit" > "$recovery_dir/exit_type"
+    # Crea marker per distinguere exit normale da crash (atomic)
+    echo "normal_exit" > "$temp_file"
+    mv "$temp_file" "$exit_type_file"
 }
 
 # Cleanup vecchi file temporanei
