@@ -4,31 +4,21 @@
   "devices": {
     "NEURAL-X": {
       "type": "desktop",
-      "last_seen": "2025-06-13T17:34:07Z",
+      "last_seen": "2025-06-12T23:38:13Z",
       "active": true
     }
   },
   "current_session": {
-    "started_at": "2025-06-13T17:34:07Z",
+    "started_at": "2025-06-12T23:38:13Z",
     "device": "NEURAL-X",
-    "last_activity": "2025-06-13T17:34:07Z",
+    "last_activity": "2025-06-12T23:38:13Z",
     "active_project": null,
     "working_directory": "~/claude-workspace",
     "last_command": "claude-save",
-    "session_note": "Auto-sync da NEURAL-X"
+    "session_note": "Test sistema memoria completo"
   },
   "recent_projects": [],
   "session_history": [
-    {
-      "started_at": "2025-06-12T23:38:13Z",
-      "device": "NEURAL-X",
-      "last_activity": "2025-06-12T23:38:13Z",
-      "active_project": null,
-      "working_directory": "~/claude-workspace",
-      "last_command": "claude-save",
-      "session_note": "Test sistema memoria completo",
-      "ended_at": "2025-06-13T17:34:07Z"
-    },
     {
       "started_at": "2025-06-12T23:10:51Z",
       "device": "NEURAL-X",

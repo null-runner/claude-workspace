@@ -1527,3 +1527,13 @@ To github.com:null-runner/claude-workspace.git
 [Fri Jun 13 18:00:24 CEST 2025] Enhanced session salvata: Auto-save: Significant activity detected (score: 38)
 [Fri Jun 13 19:00:01 CEST 2025] Enhanced session salvata: Emergency recovery - restoring from crash
 [Fri Jun 13 19:20:03 CEST 2025] Enhanced session salvata: Emergency recovery - restoring from crash
+[Fri Jun 13 19:34:06 CEST 2025] Auto-sync avviato su NEURAL-X
+[Fri Jun 13 19:34:06 CEST 2025] Pulling da remoto...
+From github.com:null-runner/claude-workspace
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[Fri Jun 13 19:34:07 CEST 2025] Modifiche rilevate, sincronizzazione in corso...
+[Fri Jun 13 19:34:07 CEST 2025] Sessione salvata: Auto-sync da NEURAL-X
+[Fri Jun 13 19:34:07 CEST 2025] Enhanced session salvata: Auto-sync NEURAL-X
+[Fri Jun 13 19:34:07 CEST 2025] Esecuzione pulizia intelligente memoria...
+[Fri Jun 13 19:34:07 CEST 2025] Pulizia memoria completata

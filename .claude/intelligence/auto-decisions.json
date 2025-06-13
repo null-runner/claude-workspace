@@ -170,13 +170,30 @@
         "path": "docs/AUTO-MEMORY_EN.md",
         "creation_time": "2025-06-13T18:11:05.696977"
       }
+    },
+    {
+      "id": "auto-script-claude-smart-exit.sh-1749835885",
+      "title": "Added new workspace tool: claude-smart-exit.sh",
+      "decision": "Created new script 'claude-smart-exit.sh' for workspace automation",
+      "reasoning": "Auto-detected from script creation at 2025-06-13T19:21:48.962462",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-13T19:31:25.067580Z",
+      "auto_extracted": true,
+      "pattern_details": {
+        "type": "new_script",
+        "name": "claude-smart-exit.sh",
+        "path": "/home/nullrunner/claude-workspace/scripts/claude-smart-exit.sh",
+        "creation_time": "2025-06-13T19:21:48.962462"
+      }
     }
   ],
   "extraction_stats": {
-    "total_extracted": 10,
+    "total_extracted": 11,
     "by_source": {
       "git_commits": 0,
-      "file_patterns": 10,
+      "file_patterns": 11,
       "project_creation": 0
     }
   }
