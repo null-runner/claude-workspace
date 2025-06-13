@@ -12,6 +12,11 @@ RED='\033[0;31m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
+# Source integrity checks
+source "$WORKSPACE_DIR/scripts/state-integrity-manager.sh" 2>/dev/null || {
+    echo -e "${YELLOW}Warning: state-integrity-manager.sh not available${NC}" >&2
+}
+
 # Avvia sistema autonomo se non è già in esecuzione
 start_autonomous_system() {
     if [[ -f "$WORKSPACE_DIR/scripts/claude-autonomous-system.sh" ]]; then
@@ -88,6 +93,43 @@ recovery_check() {
                 fi
             fi
         fi
+    fi
+}
+
+# Integrity check - verifica consistenza file critici
+integrity_check() {
+    echo -e "${CYAN}🔧 Controllo integrità file critici...${NC}"
+    
+    # Inizializza sistema integrity se non esiste
+    if command -v init_manifest >/dev/null 2>&1; then
+        init_manifest >/dev/null 2>&1
+    fi
+    
+    # Esegui controllo rapido
+    if command -v run_consistency_check >/dev/null 2>&1; then
+        local check_result
+        if run_consistency_check true >/dev/null 2>&1; then
+            echo -e "${GREEN}✅ File critici integri${NC}"
+        else
+            echo -e "${YELLOW}⚠️  Alcuni file corrotti - recovery automatico tentato${NC}"
+            
+            # Mostra log recenti per debugging
+            local integrity_log="$WORKSPACE_DIR/.claude/integrity/integrity.log"
+            if [[ -f "$integrity_log" ]]; then
+                echo -e "${BLUE}Log recenti:${NC}"
+                tail -3 "$integrity_log" | while read -r line; do
+                    if [[ "$line" =~ ERROR ]]; then
+                        echo -e "${RED}  $line${NC}"
+                    elif [[ "$line" =~ WARN ]]; then
+                        echo -e "${YELLOW}  $line${NC}"
+                    else
+                        echo -e "  $line"
+                    fi
+                done
+            fi
+        fi
+    else
+        echo -e "${YELLOW}⚠️  Sistema integrity non disponibile${NC}"
     fi
 }
 
@@ -213,16 +255,19 @@ main_startup() {
     # 1. Recovery check
     recovery_check
     
-    # 2. Cleanup
+    # 2. Integrity check
+    integrity_check
+    
+    # 3. Cleanup
     cleanup_temp_files
     
-    # 3. Setup emergency recovery
+    # 4. Setup emergency recovery
     setup_emergency_recovery
     
-    # 4. Migration check
+    # 5. Migration check
     migrate_from_old_auto_memory
     
-    # 5. Start autonomous system
+    # 6. Start autonomous system
     start_autonomous_system
     
     # 6. Install exit hook for automatic graceful exit

@@ -10,62 +10,62 @@
   ],
   "recent_decisions": [
     {
-      "title": "Added new workspace tool: claude-memory-coordinator.sh",
+      "title": "Added new workspace tool: atomic-file-operations.sh",
       "category": "tool",
       "impact": "low",
       "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:35:38.932328Z"
+      "timestamp": "2025-06-14T01:50:39.083243Z"
     },
     {
-      "title": "Added new workspace tool: claude-sync-daemon.sh",
+      "title": "Added new workspace tool: state-integrity-manager.sh",
       "category": "tool",
       "impact": "low",
       "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:35:38.932330Z"
+      "timestamp": "2025-06-14T01:50:39.083249Z"
     },
     {
-      "title": "Added new workspace tool: claude-enhanced-save.sh",
+      "title": "Added new workspace tool: claude-process-manager.sh",
       "category": "tool",
       "impact": "low",
       "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:35:38.932332Z"
+      "timestamp": "2025-06-14T01:50:39.083253Z"
     },
     {
-      "title": "Added new workspace tool: json-safe-operations.sh",
+      "title": "Added new workspace tool: json-safe-wrapper.sh",
       "category": "tool",
       "impact": "low",
       "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:35:38.932333Z"
+      "timestamp": "2025-06-14T01:50:39.083257Z"
     },
     {
-      "title": "Added new workspace tool: test-json-locking.sh",
+      "title": "Added new workspace tool: test-sync-coordinator.sh",
       "category": "tool",
       "impact": "low",
       "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:35:38.932337Z"
+      "timestamp": "2025-06-14T01:50:39.083259Z"
     },
     {
-      "title": "Added new workspace tool: claude-sync-coordinator.sh",
-      "category": "tool",
+      "title": "Added documentation: json-file-locking-system.md",
+      "category": "process",
       "impact": "low",
       "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:35:38.932339Z"
+      "timestamp": "2025-06-14T01:50:39.083262Z"
     },
     {
-      "title": "Added new workspace tool: claude-sync-lock.sh",
-      "category": "tool",
+      "title": "Added documentation: sync-coordinator-implementation.md",
+      "category": "process",
       "impact": "low",
       "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:35:38.932341Z"
+      "timestamp": "2025-06-14T01:50:39.083265Z"
     },
     {
-      "title": "Added new workspace tool: claude-backup-cleaner.sh",
-      "category": "tool",
+      "title": "Added documentation: process-security-system.md",
+      "category": "process",
       "impact": "low",
       "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:35:38.932345Z"
+      "timestamp": "2025-06-14T01:50:39.083267Z"
     }
   ],
   "current_focus": "tool_focused_development",
-  "extraction_timestamp": "2025-06-14T01:45:41.183860Z"
+  "extraction_timestamp": "2025-06-14T01:50:41.495216Z"
 }

@@ -208,3 +208,21 @@ To github.com:null-runner/claude-workspace.git
    5dd5220..5fbca06  HEAD -> main
 [2025-06-14 01:47:25] [SUCCESS] ✅ Auto-push completed successfully
 [2025-06-14 01:47:25] [SUCCESS] Commit 5fbca062a67cfd03b269425f80d013cc064e4b18 pushed to remote
+[2025-06-14 01:49:33] [INFO] Post-commit hook triggered for 226a3b471d8ce56bb9ab615721179734953f296e
+[2025-06-14 01:49:33] [INFO] Changed files: .claude/logs/auto-push.log
+.claude/processes/process-manager.log
+scripts/claude-safe-process.sh
+[2025-06-14 01:49:33] [INFO] Repository whitelisted for auto-push: null-runner/claude-workspace
+[2025-06-14 01:49:33] [INFO] Attempting auto-push to origin...
+To github.com:null-runner/claude-workspace.git
+   5fbca06..226a3b4  HEAD -> main
+[2025-06-14 01:49:34] [SUCCESS] ✅ Auto-push completed successfully
+[2025-06-14 01:49:34] [SUCCESS] Commit 226a3b471d8ce56bb9ab615721179734953f296e pushed to remote
+[2025-06-14 01:50:26] [INFO] Post-commit hook triggered for a5859dc277b60a7336215b2e1076d4cb29e9c1a6
+[2025-06-14 01:50:26] [INFO] Changed files: docs/process-security-system.md
+[2025-06-14 01:50:26] [INFO] Repository whitelisted for auto-push: null-runner/claude-workspace
+[2025-06-14 01:50:26] [INFO] Attempting auto-push to origin...
+To github.com:null-runner/claude-workspace.git
+   226a3b4..a5859dc  HEAD -> main
+[2025-06-14 01:50:28] [SUCCESS] ✅ Auto-push completed successfully
+[2025-06-14 01:50:28] [SUCCESS] Commit a5859dc277b60a7336215b2e1076d4cb29e9c1a6 pushed to remote

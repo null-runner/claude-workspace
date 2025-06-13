@@ -11,3 +11,57 @@
 [2025-06-14 01:44:38.060] [SUCCESS] [atomic-file-operations.sh:636] Removed PID file: /home/nullrunner/claude-workspace/.claude/test-atomic/test.pid
 [2025-06-14 01:45:41.076] [DEBUG] [claude-memory-coordinator.sh:71] atomic_write_text: /home/nullrunner/claude-workspace/.claude/memory-coordination/memory-coordinator.lock
 [2025-06-14 01:45:41.091] [SUCCESS] [claude-memory-coordinator.sh:71] Atomic write completed: /home/nullrunner/claude-workspace/.claude/memory-coordination/memory-coordinator.lock
+[2025-06-14 01:50:32.275] [DEBUG] [state-integrity-manager.sh:212] atomic_write_file: /home/nullrunner/claude-workspace/.claude/test-integrity/test.json -> /home/nullrunner/claude-workspace/.claude/integrity/versions/.claude_test-integrity_test.json.v1
+[2025-06-14 01:50:32.293] [SUCCESS] [state-integrity-manager.sh:212] Atomic file copy completed: /home/nullrunner/claude-workspace/.claude/integrity/versions/.claude_test-integrity_test.json.v1
+[2025-06-14 01:50:32.391] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/test-integrity/test.json
+[2025-06-14 01:50:32.493] [ERROR] [state-integrity-manager.sh:296] Invalid JSON in file: /home/nullrunner/claude-workspace/.claude/test-integrity/test.json
+[2025-06-14 01:50:32.496] [INFO] [state-integrity-manager.sh:348] Attempting to recover corrupted file: /home/nullrunner/claude-workspace/.claude/test-integrity/test.json
+[2025-06-14 01:50:32.498] [WARN] [state-integrity-manager.sh:348] No backup directory found: /home/nullrunner/claude-workspace/.claude/backups/.claude/test-integrity
+[2025-06-14 01:50:32.500] [ERROR] [state-integrity-manager.sh:348] Failed to recover corrupted file: /home/nullrunner/claude-workspace/.claude/test-integrity/test.json
+[2025-06-14 01:50:32.504] [DEBUG] [state-integrity-manager.sh:368] File consistency check passed: /home/nullrunner/claude-workspace/.claude/integrity/versions/.claude_test-integrity_test.json.v1
+[2025-06-14 01:50:32.505] [DEBUG] [state-integrity-manager.sh:369] atomic_write_file: /home/nullrunner/claude-workspace/.claude/integrity/versions/.claude_test-integrity_test.json.v1 -> /home/nullrunner/claude-workspace/.claude/test-integrity/test.json
+[2025-06-14 01:50:32.511] [DEBUG] [state-integrity-manager.sh:369] Created backup: /home/nullrunner/claude-workspace/.claude/backups/.claude/test-integrity/test.json.20250614_015032.backup
+[2025-06-14 01:50:32.524] [SUCCESS] [state-integrity-manager.sh:369] Atomic file copy completed: /home/nullrunner/claude-workspace/.claude/test-integrity/test.json
+[2025-06-14 01:50:32.620] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/sync-coordination/coordinator-state.json
+[2025-06-14 01:50:32.643] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/sync-coordination/sync-queue.json
+[2025-06-14 01:50:32.666] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/integrity/manifest.json
+[2025-06-14 01:50:32.690] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/memory-coordination/health-status.json
+[2025-06-14 01:50:32.713] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/memory-coordination/operation-queue.json
+[2025-06-14 01:50:32.736] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/test-integrity/test.json
+[2025-06-14 01:50:32.763] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/backup/last-cleanup.json
+[2025-06-14 01:50:32.786] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/backup/cleanup-config.json
+[2025-06-14 01:50:32.810] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/activity/activity.json
+[2025-06-14 01:50:32.836] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/activity/current-session.json
+[2025-06-14 01:50:32.867] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/decisions/decisions.json
+[2025-06-14 01:50:32.875] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/autonomous/autonomous-system.pid
+[2025-06-14 01:50:32.899] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/autonomous/service-status.json
+[2025-06-14 01:50:32.924] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/logs/last-rotation.json
+[2025-06-14 01:50:32.947] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/logs/rotation-config.json
+[2025-06-14 01:50:32.973] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/sync/sync-config.json
+[2025-06-14 01:50:32.980] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/sync/smart-sync.pid
+[2025-06-14 01:50:33.003] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/sync/config.json
+[2025-06-14 01:50:33.029] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/memory/enhanced-sessions.json
+[2025-06-14 01:50:33.054] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/memory/intelligence-cache.json
+[2025-06-14 01:50:33.078] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/memory/workspace-memory.json
+[2025-06-14 01:50:33.102] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/memory/current-session-context.json
+[2025-06-14 01:50:33.126] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/memory/session-history.json
+[2025-06-14 01:50:33.150] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/memory/enhanced-context.json
+[2025-06-14 01:50:33.174] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/memory/unified-context.json
+[2025-06-14 01:50:33.197] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/auto-projects/current.json
+[2025-06-14 01:50:33.294] [ERROR] [state-integrity-manager.sh:296] Invalid JSON in file: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 01:50:33.298] [INFO] [state-integrity-manager.sh:348] Attempting to recover corrupted file: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 01:50:33.300] [WARN] [state-integrity-manager.sh:348] No backup directory found: /home/nullrunner/claude-workspace/.claude/backups/.claude/benchmarks
+[2025-06-14 01:50:33.301] [ERROR] [state-integrity-manager.sh:348] Failed to recover corrupted file: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 01:50:33.414] [ERROR] [state-integrity-manager.sh:296] Invalid JSON in file: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 01:50:33.442] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/settings.local.json
+[2025-06-14 01:50:33.473] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/intelligence/last-extraction.json
+[2025-06-14 01:50:33.504] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/intelligence/auto-learnings.json
+[2025-06-14 01:50:33.528] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/intelligence/auto-decisions.json
+[2025-06-14 01:50:33.553] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/contexts/index.json
+[2025-06-14 01:50:33.577] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/learning/learnings.json
+[2025-06-14 01:50:33.601] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/projects/project-config.json
+[2025-06-14 01:50:33.607] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/auto-memory/exit_type
+[2025-06-14 01:50:33.631] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/metrics/productivity.json
+[2025-06-14 01:50:33.655] [DEBUG] [state-integrity-manager.sh:296] File consistency check passed: /home/nullrunner/claude-workspace/.claude/tools/weekly-digest.json
+[2025-06-14 01:50:41.389] [DEBUG] [claude-memory-coordinator.sh:78] atomic_write_text: /home/nullrunner/claude-workspace/.claude/memory-coordination/memory-coordinator.lock
+[2025-06-14 01:50:41.401] [SUCCESS] [claude-memory-coordinator.sh:78] Atomic write completed: /home/nullrunner/claude-workspace/.claude/memory-coordination/memory-coordinator.lock
