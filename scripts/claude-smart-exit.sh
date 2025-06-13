@@ -243,7 +243,25 @@ smart_exit_prompt() {
                 # Marca exit come graceful anche senza salvataggio
                 mark_graceful_exit
                 echo -e "${GREEN}👋 Goodbye! Session not saved.${NC}"
-                exit 0
+                echo ""
+                echo -e "${YELLOW}🚪 Terminare Claude Code? [Y/n]: ${NC}\c"
+                read -r terminate_response
+                if [[ "$terminate_response" =~ ^[Nn] ]]; then
+                    echo -e "${BLUE}💡 Sessione mantenuta aperta${NC}"
+                    return 0
+                else
+                    echo -e "${RED}👋 Terminating Claude Code...${NC}"
+                    claude_pid=$(pgrep -x "claude")
+                    if [[ -n "$claude_pid" ]]; then
+                        echo -e "${RED}🔥 Found Claude Code PID: $claude_pid${NC}"
+                        echo -e "${RED}🔥 Killing Claude process...${NC}"
+                        kill "$claude_pid" 2>/dev/null || kill -9 "$claude_pid" 2>/dev/null
+                        echo -e "${GREEN}✅ Claude Code terminated successfully!${NC}"
+                    else
+                        echo -e "${YELLOW}⚠️  Claude process not found - already terminated?${NC}"
+                    fi
+                    exit 0
+                fi
             fi
             ;;
     esac
@@ -290,7 +308,25 @@ prompt_save_session() {
             # Marca exit come graceful anche senza salvataggio
             mark_graceful_exit
             echo -e "${GREEN}👋 Goodbye! Session not saved.${NC}"
-            exit 0
+            echo ""
+            echo -e "${YELLOW}🚪 Terminare Claude Code? [Y/n]: ${NC}\c"
+            read -r terminate_response
+            if [[ "$terminate_response" =~ ^[Nn] ]]; then
+                echo -e "${BLUE}💡 Sessione mantenuta aperta${NC}"
+                return 0
+            else
+                echo -e "${RED}👋 Terminating Claude Code...${NC}"
+                claude_pid=$(pgrep -x "claude")
+                if [[ -n "$claude_pid" ]]; then
+                    echo -e "${RED}🔥 Found Claude Code PID: $claude_pid${NC}"
+                    echo -e "${RED}🔥 Killing Claude process...${NC}"
+                    kill "$claude_pid" 2>/dev/null || kill -9 "$claude_pid" 2>/dev/null
+                    echo -e "${GREEN}✅ Claude Code terminated successfully!${NC}"
+                else
+                    echo -e "${YELLOW}⚠️  Claude process not found - already terminated?${NC}"
+                fi
+                exit 0
+            fi
             ;;
         *)
             echo -e "${RED}Invalid choice. Try again.${NC}"
@@ -415,7 +451,25 @@ save_session() {
         echo -e "${GREEN}👋 Goodbye!${NC}"
     fi
     
-    exit 0
+    echo ""
+    echo -e "${YELLOW}🚪 Terminare Claude Code? [Y/n]: ${NC}\c"
+    read -r terminate_response
+    if [[ "$terminate_response" =~ ^[Nn] ]]; then
+        echo -e "${BLUE}💡 Sessione mantenuta aperta${NC}"
+        return 0
+    else
+        echo -e "${RED}👋 Terminating Claude Code...${NC}"
+        claude_pid=$(pgrep -x "claude")
+        if [[ -n "$claude_pid" ]]; then
+            echo -e "${RED}🔥 Found Claude Code PID: $claude_pid${NC}"
+            echo -e "${RED}🔥 Killing Claude process...${NC}"
+            kill "$claude_pid" 2>/dev/null || kill -9 "$claude_pid" 2>/dev/null
+            echo -e "${GREEN}✅ Claude Code terminated successfully!${NC}"
+        else
+            echo -e "${YELLOW}⚠️  Claude process not found - already terminated?${NC}"
+        fi
+        exit 0
+    fi
 }
 
 # Help
@@ -446,6 +500,7 @@ case "${1:-}" in
         recommendation=$(echo "$analysis_output" | grep "^RECOMMENDATION:" | cut -d: -f2)
         if [[ "$recommendation" == "STRONGLY_RECOMMEND" || "$recommendation" == "RECOMMEND" ]]; then
             auto_note=$(generate_auto_note)
+            echo -e "${GREEN}🤖 Auto-saving session with note: $auto_note${NC}"
             save_session "$auto_note"
         else
             echo -e "${YELLOW}💡 Insufficient activity for auto-save${NC}"
@@ -460,10 +515,28 @@ case "${1:-}" in
             
             mark_graceful_exit
             echo -e "${GREEN}✅ Exit type marked as graceful${NC}"
-            echo -e "${GREEN}👋 Graceful exit operations completed!${NC}"
+            echo -e "${GREEN}✅ Graceful exit operations completed!${NC}"
             echo ""
-            # Exit normale per tornare al cexit per la terminazione forzata
-            exit 0
+            # Ritorna al cexit per la terminazione controllata
+            echo -e "${YELLOW}🚪 Terminare Claude Code? [Y/n]: ${NC}\c"
+            read -r terminate_response
+            if [[ "$terminate_response" =~ ^[Nn] ]]; then
+                echo -e "${BLUE}💡 Sessione mantenuta aperta${NC}"
+                return 0
+            else
+                echo -e "${RED}👋 Terminating Claude Code...${NC}"
+                # Trova e termina il processo Claude Code
+                claude_pid=$(pgrep -x "claude")
+                if [[ -n "$claude_pid" ]]; then
+                    echo -e "${RED}🔥 Found Claude Code PID: $claude_pid${NC}"
+                    echo -e "${RED}🔥 Killing Claude process...${NC}"
+                    kill "$claude_pid" 2>/dev/null || kill -9 "$claude_pid" 2>/dev/null
+                    echo -e "${GREEN}✅ Claude Code terminated successfully!${NC}"
+                else
+                    echo -e "${YELLOW}⚠️  Claude process not found - already terminated?${NC}"
+                fi
+                exit 0
+            fi
         fi
         ;;
     "--analyze-only")
