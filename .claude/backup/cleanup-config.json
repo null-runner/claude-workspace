@@ -2,24 +2,41 @@
   "retention_policies": {
     "daily_backups": {
       "keep_days": 7,
-      "patterns": ["*.backup", "*-backup-*"]
+      "patterns": [
+        "*.backup",
+        "*-backup-*"
+      ]
     },
     "weekly_backups": {
       "keep_weeks": 4,
-      "patterns": ["*weekly*", "*-week-*"]
+      "patterns": [
+        "*weekly*",
+        "*-week-*"
+      ]
     },
     "monthly_backups": {
       "keep_months": 6,
-      "patterns": ["*monthly*", "*-month-*"]
+      "patterns": [
+        "*monthly*",
+        "*-month-*"
+      ]
     },
     "log_files": {
       "keep_days": 30,
       "max_size_mb": 100,
-      "patterns": ["*.log", "*.log.*"]
+      "patterns": [
+        "*.log",
+        "*.log.*"
+      ]
     },
     "temp_files": {
       "keep_hours": 24,
-      "patterns": ["*.tmp", "*.temp", "*~", ".#*"]
+      "patterns": [
+        "*.tmp",
+        "*.temp",
+        "*~",
+        ".#*"
+      ]
     }
   },
   "size_limits": {

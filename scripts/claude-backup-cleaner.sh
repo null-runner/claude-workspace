@@ -367,7 +367,8 @@ case "${1:-status}" in
         ;;
     "dry-run")
         # Abilita dry run temporaneamente
-        local temp_config=$(mktemp)
+        load_config
+        temp_config=$(mktemp)
         python3 -c "
 import json
 config = json.load(open('$BACKUP_CONFIG'))

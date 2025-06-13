@@ -11,6 +11,11 @@ LOCK_SCRIPT="$WORKSPACE_DIR/scripts/claude-sync-lock.sh"
 # Source JSON safe operations
 source "$WORKSPACE_DIR/scripts/json-safe-operations.sh"
 
+# Source atomic file operations
+source "$WORKSPACE_DIR/scripts/atomic-file-operations.sh" 2>/dev/null || {
+    echo "Warning: atomic-file-operations.sh not available, using fallback operations" >&2
+}
+
 # Colori
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
@@ -427,8 +432,14 @@ start_service() {
     local pid_file="$SYNC_DIR/smart-sync.pid"
     
     if [[ -f "$pid_file" ]]; then
-        local existing_pid=$(cat "$pid_file")
-        if kill -0 "$existing_pid" 2>/dev/null; then
+        local existing_pid
+        if command -v atomic_read_pid >/dev/null 2>&1; then
+            existing_pid=$(atomic_read_pid "$pid_file")
+        else
+            existing_pid=$(cat "$pid_file" 2>/dev/null)
+        fi
+        
+        if [[ -n "$existing_pid" ]] && kill -0 "$existing_pid" 2>/dev/null; then
             echo -e "${YELLOW}Smart sync already running with PID $existing_pid${NC}"
             return 1
         else
@@ -439,7 +450,13 @@ start_service() {
     # Start in background
     nohup "$0" monitor > "$SYNC_DIR/smart-sync-output.log" 2>&1 &
     local new_pid=$!
-    echo "$new_pid" > "$pid_file"
+    
+    # Use atomic PID write
+    if command -v atomic_write_pid >/dev/null 2>&1; then
+        atomic_write_pid "$pid_file" "$new_pid" "smart-sync"
+    else
+        echo "$new_pid" > "$pid_file"
+    fi
     
     echo -e "${GREEN}✅ Smart sync started with PID $new_pid${NC}"
     echo "Logs: $SYNC_DIR/smart-sync.log"

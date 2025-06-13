@@ -31,3 +31,16 @@
 [2025-06-14 01:45:59] [WARN] Smart-exit timeout or error in safe mode
 [2025-06-14 01:45:59] [INFO] Marked graceful exit successfully
 [2025-06-14 01:45:59] [INFO] Claude Code safe exit completed
+[2025-06-14 01:46:55] [INFO] Installing exit hook manually
+[2025-06-14 01:46:55] [INFO] Detected Claude Code in process chain: PID=71114, CMD=bash
+[2025-06-14 01:46:55] [INFO] Installing safe hooks for Claude Code context
+[2025-06-14 01:46:55] [INFO] Safe exit hook installed successfully
+[2025-06-14 01:46:55] [INFO] Detected Claude Code in process chain: PID=71114, CMD=bash
+[2025-06-14 01:46:55] [INFO] Trap-based exit hook triggered (exit_code=0)
+[2025-06-14 01:46:55] [INFO] Detected Claude Code in process chain: PID=71114, CMD=bash
+[2025-06-14 01:46:55] [WARN] Running in Claude Code context - using safe mode
+[2025-06-14 01:46:55] [INFO] Executing Claude Code safe exit
+[2025-06-14 01:46:55] [WARN] Using current directory: /home/nullrunner/claude-workspace
+[2025-06-14 01:46:55] [WARN] Smart-exit timeout or error in safe mode
+[2025-06-14 01:46:55] [INFO] Marked graceful exit successfully
+[2025-06-14 01:46:55] [INFO] Claude Code safe exit completed

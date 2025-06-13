@@ -12,3 +12,5 @@
 [2025-06-14 01:46:23] [INFO] Cleaning files older than 1 days: *~
 [2025-06-14 01:46:23] [INFO] Cleaned 0 files matching *~
 [2025-06-14 01:46:23] [INFO] Cleaning files older than 30 days: *.log
+[2025-06-14 01:46:23] [INFO] Cleaned 0 files matching *.log
+[2025-06-14 01:46:23] [INFO] Cleanup completed: 0MB -> 0MB (saved: 0MB)

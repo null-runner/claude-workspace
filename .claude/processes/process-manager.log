@@ -1,0 +1,18 @@
+[2025-06-14 01:46:46] [INFO] Initialized process whitelist
+[2025-06-14 01:46:50] [INFO] PID 14501 validated: claude-autonomo
+[2025-06-14 01:46:50] [INFO] PID 14506 validated: claude-autonomo
+[2025-06-14 01:46:50] [INFO] PID 14507 validated: claude-autonomo
+[2025-06-14 01:46:50] [INFO] PID 14509 validated: claude-autonomo
+[2025-06-14 01:46:50] [INFO] PID 14511 validated: claude-autonomo
+[2025-06-14 01:46:50] [INFO] PID 23458 validated: claude-smart-sy
+[2025-06-14 01:46:50] [INFO] Process 282 (bash) matches whitelist pattern: ^bash$
+[2025-06-14 01:46:50] [ERROR] SAFETY: PID 282 (bash) is whitelisted and should NOT be killed!
+[2025-06-14 01:46:50] [INFO] Process 448 (bash) matches whitelist pattern: ^bash$
+[2025-06-14 01:46:50] [ERROR] SAFETY: PID 448 (bash) is whitelisted and should NOT be killed!
+[2025-06-14 01:46:50] [INFO] Process 70954 (bash) matches whitelist pattern: ^bash$
+[2025-06-14 01:46:50] [ERROR] SAFETY: PID 70954 (bash) is whitelisted and should NOT be killed!
+[2025-06-14 01:46:50] [WARN] PID 70978 doesn't match expected pattern '^bash$': claude-process- | /bin/bash /home/nullrunner/claude-workspace/scripts/claude-process-manager.sh find-processes bash
+[2025-06-14 01:46:50] [INFO] Found 6 valid processes for pattern ''
+[2025-06-14 01:46:56] [INFO] Process 71209 (bash) matches whitelist pattern: ^bash$
+[2025-06-14 01:46:56] [ERROR] SAFETY: PID 71209 (bash) is whitelisted and should NOT be killed!
+[2025-06-14 01:47:04] [INFO] PID 71301 validated: sleep

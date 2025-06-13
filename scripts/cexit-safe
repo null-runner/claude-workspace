@@ -45,12 +45,30 @@ if [[ -f "$SYNC_PID_FILE" ]]; then
     SYNC_PID=$(cat "$SYNC_PID_FILE")
     if [[ -n "$SYNC_PID" ]] && kill -0 "$SYNC_PID" 2>/dev/null; then
         echo -e "${CYAN}🛑 Stopping smart-sync daemon (PID: $SYNC_PID)...${NC}"
-        kill -TERM "$SYNC_PID" 2>/dev/null
-        sleep 1
-        if kill -0 "$SYNC_PID" 2>/dev/null; then
-            kill -KILL "$SYNC_PID" 2>/dev/null
+        
+        # Use safe process manager if available
+        local process_manager="$WORKSPACE_DIR/scripts/claude-process-manager.sh"
+        if [[ -f "$process_manager" ]]; then
+            if "$process_manager" kill-pid "$SYNC_PID" "smart-sync" 5; then
+                echo -e "${GREEN}✅ Smart-sync daemon stopped safely${NC}"
+            else
+                echo -e "${RED}❌ Failed to stop smart-sync daemon safely${NC}"
+            fi
+        else
+            # Fallback with ownership check
+            local current_uid=$(id -u)
+            local owner=$(ps -o uid= -p "$SYNC_PID" 2>/dev/null | tr -d ' ')
+            if [[ "$owner" == "$current_uid" ]]; then
+                kill -TERM "$SYNC_PID" 2>/dev/null
+                sleep 1
+                if kill -0 "$SYNC_PID" 2>/dev/null; then
+                    kill -KILL "$SYNC_PID" 2>/dev/null
+                fi
+                echo -e "${GREEN}✅ Smart-sync daemon stopped${NC}"
+            else
+                echo -e "${RED}❌ Smart-sync daemon not owned by current user${NC}"
+            fi
         fi
-        echo -e "${GREEN}✅ Smart-sync daemon stopped${NC}"
     fi
     rm -f "$SYNC_PID_FILE"
 fi
