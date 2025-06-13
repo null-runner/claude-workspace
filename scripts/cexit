@@ -33,63 +33,8 @@ fi
 
 # Esegui smart exit con modalità automatica
 echo -e "${BLUE}🚀 Executing smart exit...${NC}"
-echo ""
 "$WORKSPACE_DIR/scripts/claude-smart-exit.sh" --auto
 
-# Se arriviamo qui, smart-exit ha completato - ora FORZA l'exit
-echo ""
-echo -e "${GREEN}✅ Graceful exit completato - FORZANDO terminazione Claude Code...${NC}"
-echo -e "${YELLOW}⏳ Preparazione terminazione forzata...${NC}"
-sleep 1
-echo ""
-
-# STRATEGIA ULTRA-AGGRESSIVA per exit garantito
-echo -e "${BLUE}🎯 Analizzando processi...${NC}"
-
-# Trova Claude con precisione
-CLAUDE_PID=$(ps -eo pid,cmd | awk '$2 == "claude" {print $1}' | head -1)
-
-if [[ -n "$CLAUDE_PID" ]]; then
-    echo -e "${BLUE}🎯 Trovato Claude PID: $CLAUDE_PID${NC}"
-    echo ""
-    
-    # METODO 1: Kill process group (più efficace contro thread multipli)
-    echo -e "${CYAN}🔥 Sending SIGTERM to process group...${NC}"
-    kill -TERM -"$CLAUDE_PID" 2>/dev/null
-    echo -e "${CYAN}⏳ Waiting for graceful shutdown...${NC}"
-    sleep 1
-    
-    # METODO 2: Se ancora vivo, kill SIGKILL su process group  
-    if kill -0 "$CLAUDE_PID" 2>/dev/null; then
-        echo -e "${YELLOW}💀 Process still running - sending SIGKILL to group...${NC}"
-        kill -KILL -"$CLAUDE_PID" 2>/dev/null
-        echo -e "${YELLOW}⏳ Force killing process group...${NC}"
-        sleep 1
-    else
-        echo -e "${GREEN}✅ Process group terminated gracefully${NC}"
-    fi
-    
-    # METODO 3: Kill diretto se ancora resiste
-    if kill -0 "$CLAUDE_PID" 2>/dev/null; then
-        echo -e "${RED}🔥 Process still alive - direct kill...${NC}"
-        kill -KILL "$CLAUDE_PID" 2>/dev/null
-        echo -e "${RED}⏳ Force killing main process...${NC}"
-        sleep 0.5
-    fi
-    
-    # METODO 4: Nuklea tutti i processi claude
-    echo -e "${RED}☢️  Final cleanup - nuking all claude processes...${NC}"
-    pkill -KILL -f "claude" 2>/dev/null
-    echo -e "${RED}⏳ System-wide cleanup...${NC}"
-    sleep 0.5
-    
-else
-    echo -e "${YELLOW}⚠️  Claude PID non trovato - proceeding with direct exit${NC}"
-    sleep 0.5
-fi
-
-echo ""
-echo -e "${GREEN}🎯 Termination sequence completed${NC}"
-echo -e "${BLUE}🚀 EXEC EXIT - bye bye!${NC}"
-sleep 0.3
-exec bash -c "echo 'Process terminated successfully'; exit ${1:-0}"
+# Se arriviamo qui, smart-exit non ha fatto exit (errore)
+echo -e "${YELLOW}⚠️  Smart exit non ha terminato - fallback a exit normale${NC}"
+exit "$@"
