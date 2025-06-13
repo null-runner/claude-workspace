@@ -307,6 +307,7 @@ import os
 import subprocess
 import json
 from pathlib import Path
+from datetime import datetime
 
 project_path = Path("$project_dir")
 
@@ -440,6 +441,10 @@ else:
                 print(f"   ❌ {line[:100]}")
         print()
 
+# Calcola statistiche
+passed = sum(1 for r in test_results if r["success"])
+failed = len(test_results) - passed
+
 # Salva risultati
 results_file = Path("$TOOLS_DIR/test-results.json")
 with open(results_file, "w") as f:
@@ -466,6 +471,7 @@ import re
 import os
 from pathlib import Path
 from collections import Counter, defaultdict
+from datetime import datetime
 
 errors = []
 error_patterns = defaultdict(int)

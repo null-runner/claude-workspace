@@ -1,0 +1,15 @@
+[2025-06-13 17:59:49] [INFO] Auto-memory terminato (PID: 11441)
+[2025-06-13 18:00:13] [INFO] Auto-memory terminato (PID: 11489)
+[2025-06-13 18:00:22] [INFO] Auto-memory terminato (PID: 11531)
+[2025-06-13 18:00:24] [INFO] Auto-memory terminato (PID: 11542)
+[2025-06-13 18:00:24] [INFO] Auto-memory avviato (PID: 11545)
+[2025-06-13 18:00:24] [INFO] Starting auto-memory daemon
+[2025-06-13 18:00:24] [INFO] Performing auto-save: Significant activity detected (score: 38)
+[2025-06-13 18:00:24] [SUCCESS] Auto-save completed: Auto-save: Significant activity detected (score: 38)
+[2025-06-13 18:00:31] [INFO] Auto-memory terminato (PID: 11633)
+[2025-06-13 18:05:44] [INFO] Lock file removed, exiting daemon
+[2025-06-13 18:05:44] [INFO] Auto-memory terminato (PID: 11545)
+[2025-06-13 18:31:06] [INFO] Auto-memory terminato (PID: 12051)
+[2025-06-13 19:00:01] [INFO] Auto-memory terminato (PID: 13473)
+[2025-06-13 19:20:03] [INFO] Auto-memory terminato (PID: 15123)
+[2025-06-13 19:22:00] [INFO] Auto-memory terminato (PID: 15390)

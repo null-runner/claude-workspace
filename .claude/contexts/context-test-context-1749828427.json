@@ -1,0 +1,22 @@
+{
+  "project_name": "test-context",
+  "timestamp": "2025-06-13T15:27:07Z",
+  "reason": "Manual save for testing",
+  "environment": {
+    "working_directory": "/home/nullrunner/claude-workspace",
+    "git_branch": "main",
+    "modified_files_count": 11,
+    "device": "NEURAL-X"
+  },
+  "session_info": {
+    "last_summary": "Session checkpoint",
+    "incomplete_tasks": []
+  },
+  "recent_files": [],
+  "mental_context": {
+    "focus_area": null,
+    "blockers": [],
+    "next_steps": [],
+    "notes": null
+  }
+}

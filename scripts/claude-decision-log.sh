@@ -80,14 +80,31 @@ log_decision() {
     
     echo -e "${YELLOW}📝 Registrando decisione...${NC}"
     
-    python3 << EOF
+    # Esporta le variabili per Python
+    export decision_id timestamp title decision reasoning project category impact adr_number
+    export DECISIONS_DB DECISIONS_DIR
+    
+    python3 << 'EOF'
 import json
 import os
 from datetime import datetime
 
+# Variabili da bash
+decisions_db = os.environ.get('DECISIONS_DB')
+decisions_dir = os.environ.get('DECISIONS_DIR')
+decision_id = os.environ.get('decision_id')
+adr_number = os.environ.get('adr_number')
+timestamp = os.environ.get('timestamp')
+title = os.environ.get('title')
+decision = os.environ.get('decision')
+reasoning = os.environ.get('reasoning')
+project = os.environ.get('project')
+category = os.environ.get('category')
+impact = os.environ.get('impact')
+
 # Carica o crea database
-if os.path.exists("$DECISIONS_DB"):
-    with open("$DECISIONS_DB", "r") as f:
+if os.path.exists(decisions_db):
+    with open(decisions_db, "r") as f:
         db = json.load(f)
 else:
     db = {
@@ -108,17 +125,17 @@ else:
 
 # Crea decisione
 decision_record = {
-    "id": "$decision_id",
-    "adr_number": "ADR-$adr_number",
-    "timestamp": "$timestamp",
-    "title": "$title",
-    "decision": "$decision",
-    "reasoning": "$reasoning" if "$reasoning" else "Not specified",
-    "project": "$project",
-    "category": "$category",
-    "impact": "$impact",
-    "status": "active",  # active, superseded, deprecated
-    "author": "$(hostname)",
+    "id": decision_id,
+    "adr_number": f"ADR-{adr_number}",
+    "timestamp": timestamp,
+    "title": title,
+    "decision": decision,
+    "reasoning": reasoning if reasoning else "Not specified",
+    "project": project,
+    "category": category,
+    "impact": impact,
+    "status": "active",
+    "author": os.uname().nodename,
     "tags": [],
     "references": [],
     "supersedes": None,
@@ -129,57 +146,58 @@ decision_record = {
 db["decisions"].append(decision_record)
 
 # Aggiorna statistiche progetto
-if "$project" not in db["projects"]:
-    db["projects"]["$project"] = {
+if project not in db["projects"]:
+    db["projects"][project] = {
         "decisions_count": 0,
         "categories": {},
         "last_decision": None
     }
 
-db["projects"]["$project"]["decisions_count"] += 1
-db["projects"]["$project"]["last_decision"] = "$timestamp"
+db["projects"][project]["decisions_count"] += 1
+db["projects"][project]["last_decision"] = timestamp
 
-if "$category" not in db["projects"]["$project"]["categories"]:
-    db["projects"]["$project"]["categories"]["$category"] = 0
-db["projects"]["$project"]["categories"]["$category"] += 1
+if category not in db["projects"][project]["categories"]:
+    db["projects"][project]["categories"][category] = 0
+db["projects"][project]["categories"][category] += 1
 
 # Aggiorna categorie
-if "$category" in db["categories"]:
-    db["categories"]["$category"]["count"] += 1
-    db["categories"]["$category"]["decisions"].append({
-        "id": "$decision_id",
-        "title": "$title",
-        "project": "$project",
-        "timestamp": "$timestamp"
+if category in db["categories"]:
+    db["categories"][category]["count"] += 1
+    db["categories"][category]["decisions"].append({
+        "id": decision_id,
+        "title": title,
+        "project": project,
+        "timestamp": timestamp
     })
 
 # Aggiorna stats
 db["stats"]["total_decisions"] += 1
-db["stats"]["by_impact"]["$impact"] += 1
+db["stats"]["by_impact"][impact] += 1
 
 # Salva database
-with open("$DECISIONS_DB", "w") as f:
+with open(decisions_db, "w") as f:
     json.dump(db, f, indent=2)
 
-print(f"✅ Decisione registrata: {decision_record['adr_number']}")
-print(f"📋 Titolo: $title")
-print(f"🎯 Impatto: $impact")
+print(f'✅ Decisione registrata: {decision_record["adr_number"]}')
+print(f'📋 Titolo: {title}')
+print(f'🎯 Impatto: {impact}')
 
 # Crea file ADR individuale
-adr_file = os.path.join("$DECISIONS_DIR", f"{decision_record['adr_number']}-{decision_record['title'].lower().replace(' ', '-')}.md")
-with open(adr_file, "w") as f:
-    f.write(f"# {decision_record['adr_number']}: {decision_record['title']}\n\n")
-    f.write(f"**Date**: {decision_record['timestamp']}\n")
-    f.write(f"**Status**: Active\n")
-    f.write(f"**Project**: {decision_record['project']}\n")
-    f.write(f"**Category**: {decision_record['category']}\n")
-    f.write(f"**Impact**: {decision_record['impact']}\n\n")
-    f.write(f"## Decision\n{decision_record['decision']}\n\n")
-    f.write(f"## Reasoning\n{decision_record['reasoning']}\n\n")
-    f.write(f"## Consequences\n_To be determined_\n\n")
-    f.write(f"## References\n_None yet_\n")
+clean_title = title.lower().replace(" ", "-").replace("/", "-")
+adr_file = os.path.join(decisions_dir, f'{decision_record["adr_number"]}-{clean_title}.md')
+with open(adr_file, 'w') as f:
+    f.write(f'# {decision_record["adr_number"]}: {decision_record["title"]}\n\n')
+    f.write(f'**Date**: {decision_record["timestamp"]}\n')
+    f.write(f'**Status**: Active\n')
+    f.write(f'**Project**: {decision_record["project"]}\n')
+    f.write(f'**Category**: {decision_record["category"]}\n')
+    f.write(f'**Impact**: {decision_record["impact"]}\n\n')
+    f.write(f'## Decision\n{decision_record["decision"]}\n\n')
+    f.write(f'## Reasoning\n{decision_record["reasoning"]}\n\n')
+    f.write(f'## Consequences\n_To be determined_\n\n')
+    f.write(f'## References\n_None yet_\n')
 
-print(f"📄 ADR file creato: {os.path.basename(adr_file)}")
+print(f'📄 ADR file creato: {os.path.basename(adr_file)}')
 EOF
     
     # Aggiorna DECISIONS.md principale

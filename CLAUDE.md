@@ -23,7 +23,8 @@ Il workspace ora è **completamente autonomo**:
 - **Memoria Semplificata**: Context automatico per Claude senza scoring complesso
 - **Detection Progetti**: Auto-start/stop tracking quando entri/esci da progetti  
 - **Intelligence Extraction**: Auto-learning da git commits, log errors, file patterns
-- **Smart Exit**: Exit autonomo che salva solo se necessario (git dirty o >30min)
+- **Smart Exit**: Analisi intelligente attività sessione, distingue crash da exit normale
+- **Crash Detection**: Recovery automatico solo per crash reali, non per exit normali
 - **Master Daemon**: Sistema unificato che gestisce tutti i servizi in background
 
 ## Regole
@@ -36,8 +37,8 @@ Il workspace ora è **completamente autonomo**:
 - **Startup**: `./scripts/claude-startup.sh` (avvia tutto automaticamente)
 - **Status**: `./scripts/claude-autonomous-system.sh status` (stato servizi)
 - **Memory**: `./scripts/claude-simplified-memory.sh load/save` (context Claude)
-- **Exit**: `./scripts/claude-autonomous-exit.sh` (uscita intelligente)
-- **Sync**: `./scripts/sync.sh` (backup remoto)
+- **Exit**: `./scripts/claude-smart-exit.sh` (uscita intelligente con analisi attività)
+- **Sync**: `./scripts/sync-now.sh` (backup remoto manuale)
 
 ## Comandi Debug
 - `./scripts/claude-auto-project-detector.sh test` - test detection progetti

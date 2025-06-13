@@ -62,45 +62,61 @@ detect_active_project() {
 # Funzione per analizzare file modificati
 analyze_modified_files() {
     cd ~/claude-workspace
-    local modified_files=$(git status --porcelain 2>/dev/null | head -20)
     
-    if [[ -n "$modified_files" ]]; then
-        echo "$modified_files" | python3 -c "
-import sys
+    # Usa approccio più robusto con tempfile
+    python3 << 'EOF'
+import subprocess
 import json
+import sys
 
-files = []
-for line in sys.stdin:
-    line = line.strip()
-    if not line:
-        continue
+try:
+    # Esegui git status e cattura output
+    result = subprocess.run(['git', 'status', '--porcelain'], 
+                          capture_output=True, text=True, check=True)
     
-    status = line[:2]
-    filepath = line[3:]
+    files = []
+    for line in result.stdout.strip().split('\n'):
+        if not line:
+            continue
+            
+        # Parse formato git status --porcelain
+        # Formato: XY filename
+        # X = index status, Y = working tree status
+        if len(line) < 3:
+            continue
+            
+        status = line[:2]
+        filepath = line[3:]  # Skip status + space
+        
+        # Determina tipo di modifica basato su status
+        if 'M' in status:
+            change_type = 'modified'
+        elif 'A' in status:
+            change_type = 'added'
+        elif 'D' in status:
+            change_type = 'deleted'
+        elif '?' in status:
+            change_type = 'untracked'
+        elif 'R' in status:
+            change_type = 'renamed'
+        elif 'C' in status:
+            change_type = 'copied'
+        else:
+            change_type = 'unknown'
+        
+        files.append({
+            'path': filepath,
+            'change_type': change_type,
+            'status': status.strip()
+        })
     
-    # Determina tipo di modifica
-    if 'M' in status:
-        change_type = 'modified'
-    elif 'A' in status:
-        change_type = 'added'
-    elif 'D' in status:
-        change_type = 'deleted'
-    elif '?' in status:
-        change_type = 'untracked'
-    else:
-        change_type = 'unknown'
-    
-    files.append({
-        'path': filepath,
-        'change_type': change_type,
-        'status': status.strip()
-    })
+    print(json.dumps(files, indent=2))
 
-print(json.dumps(files, indent=2))
-"
-    else
-        echo "[]"
-    fi
+except subprocess.CalledProcessError:
+    print("[]")
+except Exception as e:
+    print("[]")
+EOF
 }
 
 # Funzione per salvare sessione enhanced

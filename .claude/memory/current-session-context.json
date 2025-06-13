@@ -1,71 +1,136 @@
 {
-  "id": "2025-06-13T14:39:12Z-NEURAL-X",
-  "timestamp": "2025-06-13T14:39:12Z",
+  "id": "2025-06-13T17:20:03Z-NEURAL-X",
+  "timestamp": "2025-06-13T17:20:03Z",
   "device": "NEURAL-X",
   "working_directory": "~/claude-workspace",
   "active_project": null,
-  "session_note": "Test finale sistema",
-  "conversation_summary": "Sistema enhanced save completato e testato",
-  "incomplete_tasks": [
-    "Fixare eventuali bug",
-    "Committare tutto"
-  ],
-  "next_steps": [
-    "Implementare altre features approvate"
-  ],
+  "session_note": "Emergency recovery - restoring from crash",
+  "conversation_summary": null,
+  "incomplete_tasks": [],
+  "next_steps": [],
   "modified_files": [
     {
-      "path": "LAUDE.md",
+      "path": "claude/activity/activity.json",
       "change_type": "modified",
       "status": "M"
     },
     {
-      "path": "ogs/sync.log",
+      "path": ".claude/activity/activity.log",
       "change_type": "modified",
       "status": "M"
     },
     {
-      "path": "cripts/auto-sync.sh",
+      "path": ".claude/autonomous/autonomous-system.log",
       "change_type": "modified",
       "status": "M"
     },
     {
-      "path": "cripts/claude-status-bar.sh",
-      "change_type": "deleted",
-      "status": "D"
+      "path": ".claude/autonomous/autonomous-system.pid",
+      "change_type": "modified",
+      "status": "M"
     },
     {
-      "path": "cripts/status",
-      "change_type": "deleted",
-      "status": "D"
+      "path": ".claude/autonomous/service-status.json",
+      "change_type": "modified",
+      "status": "M"
+    },
+    {
+      "path": ".claude/intelligence/extraction.log",
+      "change_type": "modified",
+      "status": "M"
+    },
+    {
+      "path": ".claude/intelligence/last-extraction.json",
+      "change_type": "modified",
+      "status": "M"
     },
     {
       "path": ".claude/memory/current-session-context.json",
-      "change_type": "untracked",
-      "status": "??"
+      "change_type": "modified",
+      "status": "M"
+    },
+    {
+      "path": ".claude/memory/enhanced-context.json",
+      "change_type": "modified",
+      "status": "M"
     },
     {
       "path": ".claude/memory/enhanced-sessions.json",
-      "change_type": "untracked",
-      "status": "??"
+      "change_type": "modified",
+      "status": "M"
     },
     {
       "path": ".claude/memory/enhanced-sessions.json.backup",
-      "change_type": "untracked",
-      "status": "??"
+      "change_type": "modified",
+      "status": "M"
+    },
+    {
+      "path": "logs/sync.log",
+      "change_type": "modified",
+      "status": "M"
+    },
+    {
+      "path": "scripts/claude-decision-log.sh",
+      "change_type": "modified",
+      "status": "M"
     },
     {
       "path": "scripts/claude-enhanced-save.sh",
+      "change_type": "modified",
+      "status": "M"
+    },
+    {
+      "path": "scripts/claude-workspace-tools.sh",
+      "change_type": "modified",
+      "status": "M"
+    },
+    {
+      "path": ".claude/auto-memory/",
       "change_type": "untracked",
       "status": "??"
     },
     {
-      "path": "scripts/claude-session-manager.sh",
+      "path": ".claude/contexts/",
       "change_type": "untracked",
       "status": "??"
     },
     {
-      "path": "scripts/css",
+      "path": ".claude/decisions/",
+      "change_type": "untracked",
+      "status": "??"
+    },
+    {
+      "path": ".claude/learning/",
+      "change_type": "untracked",
+      "status": "??"
+    },
+    {
+      "path": ".claude/memory/enhanced-context.json.backup",
+      "change_type": "untracked",
+      "status": "??"
+    },
+    {
+      "path": ".claude/metrics/",
+      "change_type": "untracked",
+      "status": "??"
+    },
+    {
+      "path": ".claude/tools/",
+      "change_type": "untracked",
+      "status": "??"
+    },
+    {
+      "path": "docs/AUTO-MEMORY_EN.md",
+      "change_type": "untracked",
+      "status": "??"
+    },
+    {
+      "path": "scripts/claude-auto-memory.sh",
+      "change_type": "untracked",
+      "status": "??"
+    },
+    {
+      "path": "scripts/claude-smart-exit.sh",
       "change_type": "untracked",
       "status": "??"
     }
@@ -73,7 +138,7 @@
   "git_status": {
     "branch": "main",
     "has_changes": true,
-    "last_commit": "bbfdd4f: \u2728 Add IDE-style status bar for Claude workspace"
+    "last_commit": "9e015b5: \ud83c\udfe5 Fix health monitor false degraded alerts"
   },
   "context": {
     "todo_list_active": false,

@@ -54,20 +54,34 @@ migrate_from_old_auto_memory() {
 # Recovery check - verifica se ci sono stati crash
 recovery_check() {
     local crash_indicator="$WORKSPACE_DIR/.claude/auto-memory/emergency_recovery_needed"
+    local exit_type_file="$WORKSPACE_DIR/.claude/auto-memory/exit_type"
     
     if [[ -f "$crash_indicator" ]]; then
-        echo -e "${YELLOW}🚨 Recovery necessario: rilevato crash sessione precedente${NC}"
+        # Controlla se è stato un exit normale o un crash
+        local exit_type=""
+        if [[ -f "$exit_type_file" ]]; then
+            exit_type=$(cat "$exit_type_file" 2>/dev/null)
+        fi
         
-        # Tenta recovery automatico
-        if [[ -f "$WORKSPACE_DIR/scripts/claude-enhanced-save.sh" ]]; then
-            echo -e "${CYAN}🔧 Tentativo auto-recovery...${NC}"
-            "$WORKSPACE_DIR/scripts/claude-enhanced-save.sh" "Emergency recovery - restoring from crash" >/dev/null 2>&1
+        if [[ "$exit_type" == "graceful_exit" ]]; then
+            # Exit normale - pulizia semplice
+            echo -e "${GREEN}✅ Sessione precedente chiusa correttamente${NC}"
+            rm -f "$crash_indicator" "$exit_type_file"
+        else
+            # Crash reale - recovery necessario
+            echo -e "${YELLOW}🚨 Recovery necessario: rilevato crash sessione precedente${NC}"
             
-            if [[ $? -eq 0 ]]; then
-                echo -e "${GREEN}✅ Recovery completato${NC}"
-                rm -f "$crash_indicator"
-            else
-                echo -e "${RED}❌ Recovery fallito${NC}"
+            # Tenta recovery automatico
+            if [[ -f "$WORKSPACE_DIR/scripts/claude-enhanced-save.sh" ]]; then
+                echo -e "${CYAN}🔧 Tentativo auto-recovery...${NC}"
+                "$WORKSPACE_DIR/scripts/claude-enhanced-save.sh" "Emergency recovery - restoring from crash" >/dev/null 2>&1
+                
+                if [[ $? -eq 0 ]]; then
+                    echo -e "${GREEN}✅ Recovery completato${NC}"
+                    rm -f "$crash_indicator" "$exit_type_file"
+                else
+                    echo -e "${RED}❌ Recovery fallito${NC}"
+                fi
             fi
         fi
     fi
@@ -81,8 +95,8 @@ setup_emergency_recovery() {
     # Crea marker che verrà rimosso solo su exit pulito
     echo "Session started: $(date)" > "$recovery_dir/emergency_recovery_needed"
     
-    # Setup trap per rimuovere marker su exit pulito
-    trap 'rm -f "$recovery_dir/emergency_recovery_needed"' EXIT
+    # Crea marker per distinguere exit normale da crash
+    echo "normal_exit" > "$recovery_dir/exit_type"
 }
 
 # Cleanup vecchi file temporanei
