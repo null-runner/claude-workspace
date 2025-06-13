@@ -244,7 +244,7 @@ smart_exit_prompt() {
                 mark_graceful_exit
                 echo -e "${GREEN}👋 Goodbye! Session not saved.${NC}"
                 
-                if terminate_claude_code; then
+                if terminate_claude_code "" "safe_mode"; then
                     exit 0
                 else
                     return 0
@@ -296,7 +296,7 @@ prompt_save_session() {
             mark_graceful_exit
             echo -e "${GREEN}👋 Goodbye! Session not saved.${NC}"
             
-            if terminate_claude_code; then
+            if terminate_claude_code "" "safe_mode"; then
                 exit 0
             else
                 return 0
@@ -309,9 +309,16 @@ prompt_save_session() {
     esac
 }
 
-# Termina Claude Code in modo sicuro con validazione avanzata
+# Termina Claude Code in modo sicuro usando il process manager
 terminate_claude_code() {
     local prompt_text="${1:-🚪 Terminare Claude Code? [Y/n]: }"
+    local force_terminate="${2:-false}"  # New parameter for safe mode
+    
+    # In safe mode, never terminate Claude Code
+    if [[ "$force_terminate" == "safe_mode" ]]; then
+        echo -e "${BLUE}🔒 Safe mode: Claude Code termination DISABLED${NC}"
+        return 1  # Don't terminate
+    fi
     
     echo ""
     echo -e "${YELLOW}$prompt_text${NC}\c"
@@ -323,23 +330,23 @@ terminate_claude_code() {
     else
         echo -e "${RED}👋 Terminating Claude Code...${NC}"
         
-        # Enhanced Claude process detection with validation
-        local claude_pids=()
-        local validated_pids=()
+        # Use the centralized process manager for safe termination
+        local process_manager="$WORKSPACE_DIR/scripts/claude-process-manager.sh"
         
-        # Method 1: Direct process name matching
-        mapfile -t claude_pids < <(pgrep -x "claude" 2>/dev/null)
-        
-        # Method 2: Fuzzy matching for claude-related processes
-        if [[ ${#claude_pids[@]} -eq 0 ]]; then
-            echo -e "${CYAN}🔍 Trying fuzzy process detection...${NC}"
-            mapfile -t claude_pids < <(pgrep -i "claude" 2>/dev/null)
+        if [[ ! -f "$process_manager" ]]; then
+            echo -e "${RED}❌ Process manager not found - using fallback method${NC}"
+            fallback_claude_termination
+            return $?
         fi
         
-        # Method 3: Search by command line arguments
+        # Find Claude processes safely using the process manager
+        echo -e "${CYAN}🔍 Searching for Claude processes safely...${NC}"
+        local claude_pids
+        mapfile -t claude_pids < <("$process_manager" find-processes "claude" 2>/dev/null)
+        
         if [[ ${#claude_pids[@]} -eq 0 ]]; then
-            echo -e "${CYAN}🔍 Searching by command line...${NC}"
-            mapfile -t claude_pids < <(pgrep -f "claude" 2>/dev/null)
+            # Try more specific pattern
+            mapfile -t claude_pids < <("$process_manager" find-processes "claude-code" 2>/dev/null)
         fi
         
         if [[ ${#claude_pids[@]} -eq 0 ]]; then
@@ -347,68 +354,78 @@ terminate_claude_code() {
             return 0
         fi
         
-        echo -e "${CYAN}🔍 Found ${#claude_pids[@]} potential Claude process(es)${NC}"
+        echo -e "${GREEN}✅ Found ${#claude_pids[@]} Claude process(es) for safe termination${NC}"
         
-        # Validate each process before termination
+        # Terminate each Claude process using the safe process manager
+        local terminated=0
+        local failed=0
+        
         for claude_pid in "${claude_pids[@]}"; do
-            if validate_claude_process "$claude_pid"; then
-                validated_pids+=("$claude_pid")
-            fi
-        done
-        
-        if [[ ${#validated_pids[@]} -eq 0 ]]; then
-            echo -e "${YELLOW}⚠️  No valid Claude processes found after validation${NC}"
-            return 0
-        fi
-        
-        echo -e "${GREEN}✅ Validated ${#validated_pids[@]} Claude process(es) for termination${NC}"
-        
-        # Terminate each validated Claude instance
-        for claude_pid in "${validated_pids[@]}"; do
-            echo -e "${RED}🔥 Terminating Claude Code PID: $claude_pid${NC}"
+            echo -e "${RED}🔥 Safely terminating Claude Code PID: $claude_pid${NC}"
             
-            # Try graceful shutdown first (SIGTERM)
-            if kill -TERM "$claude_pid" 2>/dev/null; then
-                echo -e "${YELLOW}⏳ Waiting for graceful shutdown...${NC}"
-                
-                # Wait up to 5 seconds for graceful shutdown
-                local countdown=5
-                while [[ $countdown -gt 0 ]] && kill -0 "$claude_pid" 2>/dev/null; do
-                    printf "."
-                    sleep 1
-                    ((countdown--))
-                done
-                echo ""
-                
-                # Force kill if still running
-                if kill -0 "$claude_pid" 2>/dev/null; then
-                    echo -e "${RED}🔥 Graceful shutdown failed, force killing...${NC}"
-                    kill -KILL "$claude_pid" 2>/dev/null
-                    sleep 1
-                    
-                    # Final check
-                    if kill -0 "$claude_pid" 2>/dev/null; then
-                        echo -e "${RED}❌ Failed to terminate PID $claude_pid${NC}"
-                    else
-                        echo -e "${GREEN}✅ Process $claude_pid terminated (forced)${NC}"
-                    fi
-                else
-                    echo -e "${GREEN}✅ Process $claude_pid terminated gracefully${NC}"
-                fi
+            if "$process_manager" kill-pid "$claude_pid" "claude" 10; then
+                ((terminated++))
             else
-                echo -e "${RED}❌ Failed to send SIGTERM to PID $claude_pid${NC}"
-                # Try direct SIGKILL as last resort
-                if kill -KILL "$claude_pid" 2>/dev/null; then
-                    echo -e "${YELLOW}⚠️  Used SIGKILL as last resort${NC}"
-                else
-                    echo -e "${RED}❌ Complete failure to terminate PID $claude_pid${NC}"
-                fi
+                ((failed++))
+                echo -e "${RED}❌ Failed to terminate PID $claude_pid${NC}"
             fi
         done
         
-        echo -e "${GREEN}✅ Claude Code termination process completed!${NC}"
+        echo ""
+        echo -e "${GREEN}✅ Termination summary: $terminated successful, $failed failed${NC}"
+        
+        if [[ $terminated -gt 0 ]]; then
+            echo -e "${GREEN}✅ Claude Code termination completed!${NC}"
+            return 0
+        else
+            echo -e "${RED}❌ No Claude processes were terminated${NC}"
+            return 1
+        fi
+    fi
+}
+
+# Fallback termination method (old unsafe method, only used if process manager fails)
+fallback_claude_termination() {
+    echo -e "${YELLOW}⚠️  Using fallback termination method${NC}"
+    
+    # Simple pgrep with basic validation
+    local claude_pids
+    mapfile -t claude_pids < <(pgrep -x "claude" 2>/dev/null)
+    
+    if [[ ${#claude_pids[@]} -eq 0 ]]; then
+        mapfile -t claude_pids < <(pgrep "claude-code" 2>/dev/null)
+    fi
+    
+    if [[ ${#claude_pids[@]} -eq 0 ]]; then
+        echo -e "${YELLOW}⚠️  No Claude processes found${NC}"
         return 0
     fi
+    
+    # Basic ownership check only
+    local current_uid=$(id -u)
+    local valid_pids=()
+    
+    for pid in "${claude_pids[@]}"; do
+        local process_owner=$(ps -o uid= -p "$pid" 2>/dev/null | tr -d ' ')
+        if [[ "$process_owner" == "$current_uid" ]]; then
+            valid_pids+=("$pid")
+        fi
+    done
+    
+    if [[ ${#valid_pids[@]} -eq 0 ]]; then
+        echo -e "${YELLOW}⚠️  No owned Claude processes found${NC}"
+        return 0
+    fi
+    
+    # Simple termination
+    for pid in "${valid_pids[@]}"; do
+        echo -e "${RED}🔥 Terminating Claude PID: $pid${NC}"
+        kill -TERM "$pid" 2>/dev/null
+        sleep 2
+        kill -KILL "$pid" 2>/dev/null
+    done
+    
+    return 0
 }
 
 # Validate if a PID is actually a Claude process
@@ -566,7 +583,7 @@ save_session() {
         echo -e "${GREEN}👋 Goodbye!${NC}"
     fi
     
-    if terminate_claude_code; then
+    if terminate_claude_code "" "safe_mode"; then
         exit 0
     else
         return 0
@@ -582,6 +599,7 @@ show_help() {
     echo "Options:"
     echo "  --force-prompt    Always show save prompt regardless of activity"
     echo "  --auto           Auto-save without prompt if significant activity"
+    echo "  --safe-mode      Safe mode - never terminate Claude Code"
     echo "  --analyze-only   Only analyze and show activity, don't prompt"
     echo "  --help           Show this help"
     echo ""
@@ -594,6 +612,28 @@ case "${1:-}" in
     "--force-prompt")
         echo -e "${CYAN}🔧 Force prompt mode${NC}"
         prompt_save_session "forced"
+        ;;
+    "--safe-mode")
+        echo -e "${CYAN}🔒 Safe mode - minimal operations only${NC}"
+        echo -e "${BLUE}💾 Running safe exit operations...${NC}"
+        
+        # Mark graceful exit
+        mark_graceful_exit
+        echo -e "${GREEN}✅ Exit marked as graceful${NC}"
+        
+        # Trigger smart sync if available (safe operation)
+        if [[ -f "$WORKSPACE_DIR/scripts/claude-smart-sync.sh" ]]; then
+            echo -e "${CYAN}🔄 Triggering safe sync...${NC}"
+            timeout 15 "$WORKSPACE_DIR/scripts/claude-smart-sync.sh" sync "Safe mode checkpoint" 2>/dev/null || {
+                echo -e "${YELLOW}⚠️ Safe sync timeout/error - continuing${NC}"
+            }
+        fi
+        
+        echo -e "${GREEN}✅ Safe mode operations completed${NC}"
+        echo -e "${BLUE}🔒 Claude Code session preserved${NC}"
+        
+        # Return without terminating Claude Code
+        return 0
         ;;
     "--auto")
         echo -e "${CYAN}🤖 Auto-save mode${NC}"
@@ -618,7 +658,7 @@ case "${1:-}" in
             echo -e "${GREEN}✅ Exit type marked as graceful${NC}"
             echo -e "${GREEN}✅ Graceful exit operations completed!${NC}"
             
-            if terminate_claude_code; then
+            if terminate_claude_code "" "safe_mode"; then
                 exit 0
             else
                 return 0

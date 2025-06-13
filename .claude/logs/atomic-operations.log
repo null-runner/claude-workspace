@@ -1,0 +1,13 @@
+[2025-06-14 01:44:37.982] [DEBUG] [atomic-file-operations.sh:592] atomic_write_text: /home/nullrunner/claude-workspace/.claude/test-atomic/test-file.txt
+[2025-06-14 01:44:37.999] [SUCCESS] [atomic-file-operations.sh:592] Atomic write completed: /home/nullrunner/claude-workspace/.claude/test-atomic/test-file.txt
+[2025-06-14 01:44:38.002] [DEBUG] [atomic-file-operations.sh:296] atomic_write_text: /home/nullrunner/claude-workspace/.claude/test-atomic/test.pid
+[2025-06-14 01:44:38.015] [SUCCESS] [atomic-file-operations.sh:296] Atomic write completed: /home/nullrunner/claude-workspace/.claude/test-atomic/test.pid
+[2025-06-14 01:44:38.038] [DEBUG] [atomic-file-operations.sh:617] File consistency check passed: /home/nullrunner/claude-workspace/.claude/test-atomic/test.json
+[2025-06-14 01:44:38.039] [INFO] [atomic-file-operations.sh:628] Attempting to recover corrupted file: /home/nullrunner/claude-workspace/.claude/test-atomic/test.json
+[2025-06-14 01:44:38.041] [WARN] [atomic-file-operations.sh:628] No backup directory found: /home/nullrunner/claude-workspace/.claude/backups/.claude/test-atomic
+[2025-06-14 01:44:38.042] [WARN] [atomic-file-operations.sh:628] Creating empty JSON object for: /home/nullrunner/claude-workspace/.claude/test-atomic/test.json
+[2025-06-14 01:44:38.043] [DEBUG] [atomic-file-operations.sh:528] atomic_write_text: /home/nullrunner/claude-workspace/.claude/test-atomic/test.json
+[2025-06-14 01:44:38.056] [SUCCESS] [atomic-file-operations.sh:528] Atomic write completed: /home/nullrunner/claude-workspace/.claude/test-atomic/test.json
+[2025-06-14 01:44:38.060] [SUCCESS] [atomic-file-operations.sh:636] Removed PID file: /home/nullrunner/claude-workspace/.claude/test-atomic/test.pid
+[2025-06-14 01:45:41.076] [DEBUG] [claude-memory-coordinator.sh:71] atomic_write_text: /home/nullrunner/claude-workspace/.claude/memory-coordination/memory-coordinator.lock
+[2025-06-14 01:45:41.091] [SUCCESS] [claude-memory-coordinator.sh:71] Atomic write completed: /home/nullrunner/claude-workspace/.claude/memory-coordination/memory-coordinator.lock

@@ -346,8 +346,27 @@ emergency_stop() {
     rm -f "$WORKSPACE_DIR/.claude/sync/sync.lock"
     rm -f "$WORKSPACE_DIR/.claude/autonomous/sync-pause.lock"
     
-    # Kill any running sync processes
-    pkill -f "claude-atomic-sync" 2>/dev/null
+    # Safely terminate any running sync processes
+    local process_manager="$WORKSPACE_DIR/scripts/claude-process-manager.sh"
+    if [[ -f "$process_manager" ]]; then
+        echo -e "${CYAN}🔒 Using safe process manager to stop sync processes${NC}"
+        local pids
+        mapfile -t pids < <("$process_manager" find-processes "claude-atomic-sync" 2>/dev/null)
+        for pid in "${pids[@]}"; do
+            "$process_manager" kill-pid "$pid" "claude-atomic-sync" 5 >/dev/null 2>&1
+        done
+    else
+        # Fallback with ownership validation
+        local current_uid=$(id -u)
+        local pids
+        mapfile -t pids < <(pgrep -f "claude-atomic-sync" 2>/dev/null)
+        for pid in "${pids[@]}"; do
+            local owner=$(ps -o uid= -p "$pid" 2>/dev/null | tr -d ' ')
+            if [[ "$owner" == "$current_uid" ]]; then
+                kill "$pid" 2>/dev/null
+            fi
+        done
+    fi
     
     echo -e "${GREEN}✅ Emergency stop completed${NC}"
 }

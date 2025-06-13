@@ -1,0 +1,14 @@
+[2025-06-14 01:46:23] [INFO] Starting regular cleanup
+[2025-06-14 01:46:23] [INFO] Created default backup cleanup configuration
+[2025-06-14 01:46:23] [INFO] Current backup size: 0MB
+[2025-06-14 01:46:23] [INFO] Cleaning files older than 7 days: *.backup
+[2025-06-14 01:46:23] [INFO] Cleaned 0 files matching *.backup
+[2025-06-14 01:46:23] [INFO] Cleaning files older than 7 days: *.bak
+[2025-06-14 01:46:23] [INFO] Cleaned 0 files matching *.bak
+[2025-06-14 01:46:23] [INFO] Cleaning files older than 1 days: *.tmp
+[2025-06-14 01:46:23] [INFO] Cleaned 0 files matching *.tmp
+[2025-06-14 01:46:23] [INFO] Cleaning files older than 1 days: *.temp
+[2025-06-14 01:46:23] [INFO] Cleaned 0 files matching *.temp
+[2025-06-14 01:46:23] [INFO] Cleaning files older than 1 days: *~
+[2025-06-14 01:46:23] [INFO] Cleaned 0 files matching *~
+[2025-06-14 01:46:23] [INFO] Cleaning files older than 30 days: *.log

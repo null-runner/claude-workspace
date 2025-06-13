@@ -1,0 +1,43 @@
+{
+  "retention_policies": {
+    "daily_backups": {
+      "keep_days": 7,
+      "patterns": ["*.backup", "*-backup-*"]
+    },
+    "weekly_backups": {
+      "keep_weeks": 4,
+      "patterns": ["*weekly*", "*-week-*"]
+    },
+    "monthly_backups": {
+      "keep_months": 6,
+      "patterns": ["*monthly*", "*-month-*"]
+    },
+    "log_files": {
+      "keep_days": 30,
+      "max_size_mb": 100,
+      "patterns": ["*.log", "*.log.*"]
+    },
+    "temp_files": {
+      "keep_hours": 24,
+      "patterns": ["*.tmp", "*.temp", "*~", ".#*"]
+    }
+  },
+  "size_limits": {
+    "max_backup_size_mb": 500,
+    "emergency_cleanup_threshold_mb": 1000,
+    "warning_threshold_mb": 250
+  },
+  "safety_settings": {
+    "min_free_space_mb": 100,
+    "verify_before_delete": true,
+    "dry_run_mode": false,
+    "preserve_critical_files": true
+  },
+  "critical_patterns": [
+    "unified-context.json*",
+    "session-history.json*",
+    "intelligence-cache.json*",
+    "config.json*",
+    "service-status.json*"
+  ]
+}

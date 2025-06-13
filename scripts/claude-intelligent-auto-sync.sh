@@ -373,8 +373,39 @@ case "${1:-start}" in
         ;;
     "stop")
         echo "Stopping intelligent auto-sync..."
-        pkill -f "claude-intelligent-auto-sync.sh"
-        pkill -f "claude-smart-sync-filter.sh"
+        
+        # Use safe process manager if available
+        local process_manager="$WORKSPACE_DIR/scripts/claude-process-manager.sh"
+        if [[ -f "$process_manager" ]]; then
+            echo "Using safe process manager..."
+            local pids
+            mapfile -t pids < <("$process_manager" find-processes "claude-intelligent-auto-sync.sh")
+            for pid in "${pids[@]}"; do
+                "$process_manager" kill-pid "$pid" "claude-intelligent-auto-sync" 5
+            done
+            
+            mapfile -t pids < <("$process_manager" find-processes "claude-smart-sync-filter.sh")
+            for pid in "${pids[@]}"; do
+                "$process_manager" kill-pid "$pid" "claude-smart-sync-filter" 5
+            done
+        else
+            # Fallback with basic ownership check
+            local current_uid=$(id -u)
+            local pids
+            
+            mapfile -t pids < <(pgrep -f "claude-intelligent-auto-sync.sh" 2>/dev/null)
+            for pid in "${pids[@]}"; do
+                local owner=$(ps -o uid= -p "$pid" 2>/dev/null | tr -d ' ')
+                [[ "$owner" == "$current_uid" ]] && kill "$pid" 2>/dev/null
+            done
+            
+            mapfile -t pids < <(pgrep -f "claude-smart-sync-filter.sh" 2>/dev/null)
+            for pid in "${pids[@]}"; do
+                local owner=$(ps -o uid= -p "$pid" 2>/dev/null | tr -d ' ')
+                [[ "$owner" == "$current_uid" ]] && kill "$pid" 2>/dev/null
+            done
+        fi
+        
         echo "Stopped"
         ;;
     *)

@@ -15,6 +15,16 @@ SESSION_HISTORY="$MEMORY_DIR/session-history.json"
 INTELLIGENCE_CACHE="$MEMORY_DIR/intelligence-cache.json"
 SYNC_METADATA="$MEMORY_DIR/sync-metadata.json"
 
+# Source atomic file operations
+source "$WORKSPACE_DIR/scripts/atomic-file-operations.sh" 2>/dev/null || {
+    echo "Warning: atomic-file-operations.sh not available, using fallback operations" >&2
+}
+
+# Source safe JSON operations
+source "$WORKSPACE_DIR/scripts/json-safe-operations.sh" 2>/dev/null || {
+    echo "Warning: json-safe-operations.sh not available, using fallback operations" >&2
+}
+
 # Timeout configurations
 LOCK_TIMEOUT=30  # 30 seconds max lock time
 QUEUE_TIMEOUT=60 # 60 seconds max queue wait time
@@ -45,7 +55,14 @@ coord_log() {
 # Initialize coordinator queue if not exists
 init_queue() {
     if [[ ! -f "$OPERATION_QUEUE" ]]; then
-        echo '{"operations": [], "last_cleanup": null}' > "$OPERATION_QUEUE"
+        # Use safe JSON write for initialization
+        local initial_queue='{"operations": [], "last_cleanup": null}'
+        if command -v safe_json_write >/dev/null 2>&1; then
+            safe_json_write "$OPERATION_QUEUE" "$initial_queue" 2 10 false
+        else
+            # Fallback to atomic write
+            atomic_write_text "$OPERATION_QUEUE" "$initial_queue" false 644
+        fi
     fi
 }
 
@@ -56,7 +73,9 @@ acquire_lock() {
     local attempts=0
     
     while [[ $attempts -lt $max_attempts ]]; do
-        if (set -C; echo "$caller:$$:$(date +%s)" > "$COORD_LOCK") 2>/dev/null; then
+        # Use atomic write for lock file
+        local lock_content="$caller:$$:$(date +%s)"
+        if (set -C; atomic_write_text "$COORD_LOCK" "$lock_content" false 644) 2>/dev/null; then
             coord_log "LOCK" "Lock acquired by $caller (PID: $$)"
             return 0
         fi
@@ -88,6 +107,7 @@ acquire_lock() {
 # Release coordination lock
 release_lock() {
     local caller="$1"
+    local silent="${2:-false}"
     
     if [[ -f "$COORD_LOCK" ]]; then
         local lock_info=$(cat "$COORD_LOCK" 2>/dev/null || echo "")
@@ -100,18 +120,24 @@ release_lock() {
             coord_log "LOCK" "Lock released by $caller (PID: $$)"
             return 0
         else
-            coord_log "WARN" "Lock not owned by $caller:$$ (current: $lock_info)"
+            if [[ "$silent" != "true" ]]; then
+                coord_log "WARN" "Lock not owned by $caller:$$ (current: $lock_info)"
+            fi
             return 1
         fi
     else
-        coord_log "WARN" "No lock file found for release by $caller"
+        # Only log warning if not in silent mode
+        if [[ "$silent" != "true" ]]; then
+            coord_log "WARN" "No lock file found for release by $caller"
+        fi
         return 1
     fi
 }
 
 # Cleanup function
 cleanup_on_exit() {
-    release_lock "${BASH_SOURCE[1]##*/}"
+    # Use silent mode to avoid warnings during normal exit
+    release_lock "${BASH_SOURCE[1]##*/}" true
 }
 trap cleanup_on_exit EXIT
 

@@ -195,6 +195,88 @@ run_intelligence_extractor() {
     done
 }
 
+# Backup cleanup monitor (every 6 hours for regular, daily for size check)
+run_backup_cleaner() {
+    local cleanup_counter=0
+    
+    while true; do
+        # Check for sync pause before file operations
+        if check_sync_pause; then
+            wait_for_sync_completion "BACKUP-CLEANER"
+        fi
+        
+        # Run size check every iteration (6 hours)
+        local current_size=0
+        if [[ -f "$WORKSPACE_DIR/scripts/claude-backup-cleaner.sh" ]]; then
+            # Get current backup size
+            current_size=$("$WORKSPACE_DIR/scripts/claude-backup-cleaner.sh" status 2>/dev/null | grep "Current backup size:" | awk '{print $4}' | tr -d 'MB' || echo 0)
+            
+            # Size-based cleanup if over threshold (250MB warning, 500MB max)
+            if [[ $current_size -gt 250 ]]; then
+                log_master "INFO" "BACKUP-CLEANER" "Running size-based cleanup (${current_size}MB)"
+                "$WORKSPACE_DIR/scripts/claude-backup-cleaner.sh" size-cleanup >/dev/null 2>&1
+                local result=$?
+                
+                if [[ $result -eq 0 ]]; then
+                    update_service_status "backup_cleaner" "active" "Size-based cleanup completed (was ${current_size}MB)"
+                else
+                    update_service_status "backup_cleaner" "warning" "Size cleanup had issues"
+                fi
+            else
+                update_service_status "backup_cleaner" "active" "Backup size OK (${current_size}MB)"
+            fi
+            
+            # Regular age-based cleanup every 24 hours (4 iterations of 6 hours)
+            ((cleanup_counter++))
+            if [[ $cleanup_counter -ge 4 ]]; then
+                log_master "INFO" "BACKUP-CLEANER" "Running scheduled age-based cleanup"
+                "$WORKSPACE_DIR/scripts/claude-backup-cleaner.sh" cleanup >/dev/null 2>&1
+                local cleanup_result=$?
+                
+                if [[ $cleanup_result -eq 0 ]]; then
+                    update_service_status "backup_cleaner" "active" "Scheduled cleanup completed"
+                else
+                    update_service_status "backup_cleaner" "warning" "Scheduled cleanup had issues"
+                fi
+                
+                cleanup_counter=0
+            fi
+        else
+            update_service_status "backup_cleaner" "error" "Backup cleaner script not found"
+            log_master "ERROR" "BACKUP-CLEANER" "Backup cleaner script not found"
+        fi
+        
+        sleep 21600  # 6 hours
+    done
+}
+
+# Log rotation monitor (every 12 hours)
+run_log_rotator() {
+    while true; do
+        # Check for sync pause before file operations
+        if check_sync_pause; then
+            wait_for_sync_completion "LOG-ROTATOR"
+        fi
+        
+        if [[ -f "$WORKSPACE_DIR/scripts/claude-log-rotator.sh" ]]; then
+            # Run quick rotation check
+            "$WORKSPACE_DIR/scripts/claude-log-rotator.sh" quick >/dev/null 2>&1
+            local result=$?
+            
+            if [[ $result -eq 0 ]]; then
+                update_service_status "log_rotator" "active" "Log rotation completed"
+            else
+                update_service_status "log_rotator" "warning" "Log rotation had issues"
+            fi
+        else
+            update_service_status "log_rotator" "error" "Log rotator script not found"
+            log_master "ERROR" "LOG-ROTATOR" "Log rotator script not found"
+        fi
+        
+        sleep 43200  # 12 hours
+    done
+}
+
 # Health monitor (every 60 seconds)
 run_health_monitor() {
     while true; do
@@ -219,7 +301,7 @@ def check_service_health():
         services = status.get('services', {})
         
         # Check core services (ignore 'null' entries and 'health_monitor' self-reference)
-        core_services = ['context_monitor', 'project_monitor', 'intelligence_extractor']
+        core_services = ['context_monitor', 'project_monitor', 'intelligence_extractor', 'backup_cleaner', 'log_rotator']
         active_services = 0
         recent_activity = 0
         
@@ -244,10 +326,10 @@ def check_service_health():
                         pass
         
         # Health logic: if most services are active AND have recent activity
-        if active_services >= 2 and recent_activity >= 2:
-            return "healthy", f"All core services operational ({active_services}/3 active, {recent_activity}/3 recent)"
-        elif active_services >= 1:
-            return "degraded", f"Some services may be slow ({active_services}/3 active, {recent_activity}/3 recent)"
+        if active_services >= 3 and recent_activity >= 3:
+            return "healthy", f"All core services operational ({active_services}/5 active, {recent_activity}/5 recent)"
+        elif active_services >= 2:
+            return "degraded", f"Some services may be slow ({active_services}/5 active, {recent_activity}/5 recent)"
         else:
             return "critical", "Core services not responding"
             
@@ -303,6 +385,14 @@ start_autonomous_daemon() {
     run_intelligence_extractor &
     local intelligence_pid=$!
     
+    echo -e "${BLUE}   🧹 Starting backup cleaner...${NC}"
+    run_backup_cleaner &
+    local backup_pid=$!
+    
+    echo -e "${BLUE}   📋 Starting log rotator...${NC}"
+    run_log_rotator &
+    local rotator_pid=$!
+    
     echo -e "${BLUE}   🏥 Starting health monitor...${NC}"
     run_health_monitor &
     local health_pid=$!
@@ -312,7 +402,7 @@ start_autonomous_daemon() {
     log_master "STARTUP" "MASTER" "All background services started successfully"
     
     # Setup signal handlers for graceful shutdown
-    trap "shutdown_autonomous_system $context_pid $project_pid $intelligence_pid $health_pid" SIGTERM SIGINT
+    trap "shutdown_autonomous_system $context_pid $project_pid $intelligence_pid $backup_pid $rotator_pid $health_pid" SIGTERM SIGINT
     
     echo -e "${GREEN}✅ Autonomous system started successfully${NC}"
     echo -e "${CYAN}   PID: $$${NC}"
@@ -335,7 +425,9 @@ shutdown_autonomous_system() {
     local context_pid="$1"
     local project_pid="$2" 
     local intelligence_pid="$3"
-    local health_pid="$4"
+    local backup_pid="$4"
+    local rotator_pid="$5"
+    local health_pid="$6"
     
     echo -e "${YELLOW}🛑 Shutting down autonomous system...${NC}"
     log_master "SHUTDOWN" "MASTER" "Graceful shutdown initiated"
@@ -343,25 +435,60 @@ shutdown_autonomous_system() {
     # Update status
     update_service_status "master" "stopping" "Graceful shutdown in progress"
     
-    # Kill background processes
-    if [[ -n "$context_pid" ]]; then
-        kill "$context_pid" 2>/dev/null
-        update_service_status "context_monitor" "stopped" "Stopped by master shutdown"
-    fi
+    # Safely terminate background processes using process manager
+    local process_manager="$WORKSPACE_DIR/scripts/claude-process-manager.sh"
     
-    if [[ -n "$project_pid" ]]; then
-        kill "$project_pid" 2>/dev/null
-        update_service_status "project_monitor" "stopped" "Stopped by master shutdown"
-    fi
-    
-    if [[ -n "$intelligence_pid" ]]; then
-        kill "$intelligence_pid" 2>/dev/null
-        update_service_status "intelligence_extractor" "stopped" "Stopped by master shutdown"
-    fi
-    
-    if [[ -n "$health_pid" ]]; then
-        kill "$health_pid" 2>/dev/null
-        update_service_status "health_monitor" "stopped" "Stopped by master shutdown"
+    if [[ -f "$process_manager" ]]; then
+        # Use safe process manager
+        if [[ -n "$context_pid" ]]; then
+            "$process_manager" kill-pid "$context_pid" "context" 3 >/dev/null 2>&1
+            update_service_status "context_monitor" "stopped" "Stopped by master shutdown"
+        fi
+        
+        if [[ -n "$project_pid" ]]; then
+            "$process_manager" kill-pid "$project_pid" "project" 3 >/dev/null 2>&1
+            update_service_status "project_monitor" "stopped" "Stopped by master shutdown"
+        fi
+        
+        if [[ -n "$intelligence_pid" ]]; then
+            "$process_manager" kill-pid "$intelligence_pid" "intelligence" 3 >/dev/null 2>&1
+            update_service_status "intelligence_extractor" "stopped" "Stopped by master shutdown"
+        fi
+        
+        if [[ -n "$backup_pid" ]]; then
+            "$process_manager" kill-pid "$backup_pid" "backup" 3 >/dev/null 2>&1
+            update_service_status "backup_cleaner" "stopped" "Stopped by master shutdown"
+        fi
+        
+        if [[ -n "$rotator_pid" ]]; then
+            "$process_manager" kill-pid "$rotator_pid" "rotator" 3 >/dev/null 2>&1
+            update_service_status "log_rotator" "stopped" "Stopped by master shutdown"
+        fi
+        
+        if [[ -n "$health_pid" ]]; then
+            "$process_manager" kill-pid "$health_pid" "health" 3 >/dev/null 2>&1
+            update_service_status "health_monitor" "stopped" "Stopped by master shutdown"
+        fi
+    else
+        # Fallback to basic kill with ownership check
+        local current_uid=$(id -u)
+        
+        for service_pid in "$context_pid" "$project_pid" "$intelligence_pid" "$backup_pid" "$rotator_pid" "$health_pid"; do
+            if [[ -n "$service_pid" ]]; then
+                # Basic ownership validation before kill
+                local owner=$(ps -o uid= -p "$service_pid" 2>/dev/null | tr -d ' ')
+                if [[ "$owner" == "$current_uid" ]]; then
+                    kill "$service_pid" 2>/dev/null
+                fi
+            fi
+        done
+        
+        update_service_status "context_monitor" "stopped" "Stopped by master shutdown (fallback)"
+        update_service_status "project_monitor" "stopped" "Stopped by master shutdown (fallback)"
+        update_service_status "intelligence_extractor" "stopped" "Stopped by master shutdown (fallback)"
+        update_service_status "backup_cleaner" "stopped" "Stopped by master shutdown (fallback)"
+        update_service_status "log_rotator" "stopped" "Stopped by master shutdown (fallback)"
+        update_service_status "health_monitor" "stopped" "Stopped by master shutdown (fallback)"
     fi
     
     # Final context save
@@ -414,28 +541,53 @@ stop_autonomous_system() {
     local pid=$(cat "$MASTER_PID_FILE")
     echo -e "${YELLOW}🛑 Stopping autonomous system (PID: $pid)...${NC}"
     
-    # Send SIGTERM for graceful shutdown
-    if kill -TERM "$pid" 2>/dev/null; then
-        # Wait for graceful shutdown
-        local count=0
-        while check_master_running && [[ $count -lt 10 ]]; do
-            sleep 1
-            ((count++))
-        done
-        
-        if check_master_running; then
-            # Force kill if still running
-            echo -e "${RED}⚠️  Forcing shutdown...${NC}"
-            kill -KILL "$pid" 2>/dev/null
+    # Use safe process manager for termination
+    local process_manager="$WORKSPACE_DIR/scripts/claude-process-manager.sh"
+    
+    if [[ -f "$process_manager" ]]; then
+        echo -e "${CYAN}🔒 Using safe process manager for termination${NC}"
+        if "$process_manager" kill-pid "$pid" "autonomous" 10; then
             rm -f "$MASTER_PID_FILE"
+            echo -e "${GREEN}✅ Autonomous system stopped${NC}"
+        else
+            echo -e "${RED}❌ Failed to stop autonomous system${NC}"
+            rm -f "$MASTER_PID_FILE"
+            return 1
+        fi
+    else
+        # Fallback to basic termination with ownership check
+        local current_uid=$(id -u)
+        local owner=$(ps -o uid= -p "$pid" 2>/dev/null | tr -d ' ')
+        
+        if [[ "$owner" != "$current_uid" ]]; then
+            echo -e "${RED}❌ Process not owned by current user - refusing to kill${NC}"
+            rm -f "$MASTER_PID_FILE"
+            return 1
         fi
         
-        echo -e "${GREEN}✅ Autonomous system stopped${NC}"
-    else
-        echo -e "${RED}❌ Failed to stop autonomous system${NC}"
-        # Clean up stale PID file
-        rm -f "$MASTER_PID_FILE"
-        return 1
+        # Send SIGTERM for graceful shutdown
+        if kill -TERM "$pid" 2>/dev/null; then
+            # Wait for graceful shutdown
+            local count=0
+            while check_master_running && [[ $count -lt 10 ]]; do
+                sleep 1
+                ((count++))
+            done
+            
+            if check_master_running; then
+                # Force kill if still running
+                echo -e "${RED}⚠️  Forcing shutdown...${NC}"
+                kill -KILL "$pid" 2>/dev/null
+                rm -f "$MASTER_PID_FILE"
+            fi
+            
+            echo -e "${GREEN}✅ Autonomous system stopped${NC}"
+        else
+            echo -e "${RED}❌ Failed to stop autonomous system${NC}"
+            # Clean up stale PID file
+            rm -f "$MASTER_PID_FILE"
+            return 1
+        fi
     fi
 }
 

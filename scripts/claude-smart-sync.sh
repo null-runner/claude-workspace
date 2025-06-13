@@ -452,9 +452,29 @@ stop_service() {
     if [[ -f "$pid_file" ]]; then
         local pid=$(cat "$pid_file")
         if kill -0 "$pid" 2>/dev/null; then
-            kill "$pid"
-            rm -f "$pid_file"
-            echo -e "${GREEN}✅ Smart sync stopped${NC}"
+            # Use safe process manager if available
+            local process_manager="$WORKSPACE_DIR/scripts/claude-process-manager.sh"
+            if [[ -f "$process_manager" ]]; then
+                if "$process_manager" kill-pid "$pid" "smart-sync" 5; then
+                    rm -f "$pid_file"
+                    echo -e "${GREEN}✅ Smart sync stopped safely${NC}"
+                else
+                    echo -e "${RED}❌ Failed to stop smart sync safely${NC}"
+                    rm -f "$pid_file"
+                fi
+            else
+                # Fallback with ownership check
+                local current_uid=$(id -u)
+                local owner=$(ps -o uid= -p "$pid" 2>/dev/null | tr -d ' ')
+                if [[ "$owner" == "$current_uid" ]]; then
+                    kill "$pid"
+                    rm -f "$pid_file"
+                    echo -e "${GREEN}✅ Smart sync stopped${NC}"
+                else
+                    echo -e "${RED}❌ Smart sync process not owned by current user${NC}"
+                    rm -f "$pid_file"
+                fi
+            fi
         else
             echo -e "${RED}Smart sync not running${NC}"
             rm -f "$pid_file"
