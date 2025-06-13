@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "sessions": [
+    {
+      "session_id": "1749825959-test-project",
+      "project_name": "test-project",
+      "project_type": "active",
+      "task_description": "Testing activity tracker",
+      "start_time": "2025-06-13T14:45:59Z",
+      "start_timestamp": 1749825959,
+      "device": "NEURAL-X",
+      "active": false,
+      "end_time": "2025-06-13T14:46:25Z",
+      "end_timestamp": 1749825985,
+      "duration_seconds": 26,
+      "duration_minutes": 0,
+      "duration_hours": 0.0,
+      "notes": "Test completato con successo"
+    }
+  ],
+  "projects": {
+    "test-project": {
+      "total_seconds": 26,
+      "total_minutes": 0,
+      "total_hours": 0.01,
+      "session_count": 1,
+      "last_activity": "2025-06-13T14:46:25Z",
+      "created": "2025-06-13T14:45:59Z"
+    }
+  },
+  "total_time": {
+    "seconds": 26,
+    "minutes": 0,
+    "hours": 0.01
+  }
+}

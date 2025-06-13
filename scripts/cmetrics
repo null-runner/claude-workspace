@@ -1,0 +1,3 @@
+#!/bin/bash
+# cmetrics - Claude Metrics shortcut
+exec "$HOME/claude-workspace/scripts/claude-productivity-metrics.sh" "$@"
