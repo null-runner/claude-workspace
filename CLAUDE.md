@@ -2,26 +2,53 @@
 
 ## Controllo Iniziale (OBBLIGATORIO)
 All'inizio di OGNI conversazione - tono amichevole "vediamo dove eravamo rimasti":
-1. `git status` - file modificati
-2. Leggi `.memory/` più recente 
-3. Controlla `logs/sync.log` ultimo sync
-4. `ls projects/active/` progetti attivi
-5. **Recap veloce con colori ANSI:**
-   - 📊 **Stato**: file pending, memoria, ultimo sync
-   - 🚨 **Issues**: problemi da risolvere (se ci sono)
-   - 🎯 **Next**: 1-3 azioni concrete da fare subito
+1. `./scripts/claude-startup.sh` - avvia sistema completamente autonomo
+2. `./scripts/claude-simplified-memory.sh load` - carica context sessione
+3. `git status` - file modificati
+4. **Recap automatico con info da sistema autonomo:**
+   - 📊 **Stato**: context caricato, progetto rilevato, sistema attivo
+   - 🚨 **Issues**: eventuali problemi rilevati automaticamente  
+   - 🎯 **Next**: azioni suggerite dal sistema intelligente
 
 ## CRITICO: Commit
-`git commit -m "msg" && git push` - SEMPRE pushare!  
-🤖 Generated with Claude Workspace (by nullrunner)
-Co-Authored-By: nullrunner <nullrunner@users.noreply.github.com>
+SEMPRE usare DUE comandi bash consecutivi:
+1. `git commit -m "msg"`
+2. `git push`
+
+🤖 Generated with Claude Workspace (by null-runner)
+Co-Authored-By: Claude <noreply@anthropic.com>
+
+## Sistema Autonomo
+Il workspace ora è **completamente autonomo**:
+- **Memoria Semplificata**: Context automatico per Claude senza scoring complesso
+- **Detection Progetti**: Auto-start/stop tracking quando entri/esci da progetti  
+- **Intelligence Extraction**: Auto-learning da git commits, log errors, file patterns
+- **Smart Exit**: Exit autonomo che salva solo se necessario (git dirty o >30min)
+- **Master Daemon**: Sistema unificato che gestisce tutti i servizi in background
 
 ## Regole
 - **Bilingue**: OGNI modifica doc in EN e IT 
 - README max 200 righe + sezione neofiti
 - Usare TodoWrite per task complessi
 
-## Comandi
-- Sync: `./scripts/sync.sh`
-- Memoria: `./scripts/memory.sh save "desc"`
-- Progetti: `ls projects/active/`
+## Comandi Principali
+- **Setup**: `./scripts/claude-setup-profile.sh setup` (primo avvio)
+- **Startup**: `./scripts/claude-startup.sh` (avvia tutto automaticamente)
+- **Status**: `./scripts/claude-autonomous-system.sh status` (stato servizi)
+- **Memory**: `./scripts/claude-simplified-memory.sh load/save` (context Claude)
+- **Exit**: `./scripts/claude-autonomous-exit.sh` (uscita intelligente)
+- **Sync**: `./scripts/sync.sh` (backup remoto)
+
+## Comandi Debug
+- `./scripts/claude-auto-project-detector.sh test` - test detection progetti
+- `./scripts/claude-intelligence-extractor.sh summary` - mostra insights estratti
+- `./scripts/claude-autonomous-system.sh logs` - log sistema autonomo
+
+## Profilo Utente
+Il workspace ha un profilo utente configurato. Claude personalizza:
+- Livello dettaglio spiegazioni basato su competenza
+- Tono e stile comunicazione  
+- Assunzioni su conoscenze pregresse
+- Saluti e interazioni
+
+Usa `claude-setup-profile edit` per modificare.
