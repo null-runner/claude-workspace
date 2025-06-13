@@ -32,6 +32,58 @@ detect_current_project() {
 import os
 import json
 
+def is_workspace_development_context(path_parts, workspace_dir):
+    """Detect if we're working on workspace infrastructure"""
+    # Direct workspace directories that indicate infrastructure work
+    infrastructure_dirs = [
+        "scripts",     # Script development
+        "docs",        # Documentation
+        ".claude",     # System configuration
+        "tests",       # Testing infrastructure
+        "configs"      # Configuration files
+    ]
+    
+    # Check if we're in workspace root
+    if path_parts == ["."] or len(path_parts) == 0:
+        return True
+    
+    # Check if we're in infrastructure directories
+    if len(path_parts) >= 1 and path_parts[0] in infrastructure_dirs:
+        return True
+    
+    # Check for important workspace files in current or parent directories
+    important_files = ["CLAUDE.md", "README.md", "setup.sh"]
+    current_dir = os.getcwd()
+    
+    for file in important_files:
+        if os.path.exists(os.path.join(current_dir, file)):
+            return True
+        # Check in parent directories up to workspace root
+        parent = current_dir
+        while parent != workspace_dir and parent != os.path.dirname(parent):
+            parent = os.path.dirname(parent)
+            if os.path.exists(os.path.join(parent, file)):
+                return True
+    
+    return False
+
+def detect_workspace_context(path_parts, workspace_dir):
+    """Detect specific context of workspace development"""
+    if len(path_parts) == 0 or path_parts == ["."]:
+        return "root_workspace_management"
+    elif path_parts[0] == "scripts":
+        return "script_development"
+    elif path_parts[0] == "docs":
+        return "documentation"
+    elif path_parts[0] == ".claude":
+        return "system_configuration"
+    elif path_parts[0] == "tests":
+        return "testing_infrastructure"
+    elif path_parts[0] == "configs":
+        return "configuration_management"
+    else:
+        return "workspace_infrastructure"
+
 def detect_project():
     try:
         cwd = os.getcwd()
@@ -87,6 +139,18 @@ def detect_project():
                 "relative_path": "/".join(path_parts[:3]), 
                 "depth": depth,
                 "full_path": cwd
+            }
+        
+        # Check for workspace meta-project (infrastructure development)
+        elif is_workspace_development_context(path_parts, workspace_dir):
+            return {
+                "name": "claude-workspace-development",
+                "type": "meta",
+                "path": workspace_dir,
+                "relative_path": ".",
+                "depth": len(path_parts) if relative_path != "." else 0,
+                "full_path": cwd,
+                "meta_context": detect_workspace_context(path_parts, workspace_dir)
             }
         
         # Not in a recognized project directory
@@ -347,6 +411,10 @@ show_help() {
 case "${1:-}" in
     "check")
         check_and_update_project
+        ;;
+    "detect")
+        # Output raw JSON for integration with other scripts
+        detect_current_project
         ;;
     "status")
         show_project_status

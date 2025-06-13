@@ -95,24 +95,54 @@ def get_git_status():
         }
 
 def get_current_project():
-    """Detect current project from working directory"""
+    """Detect current project using advanced project detector"""
     try:
-        cwd = os.getcwd()
+        import subprocess
+        import json
+        
         workspace_dir = os.environ.get('WORKSPACE_DIR')
-        
-        if workspace_dir and cwd.startswith(workspace_dir):
-            # Check if we're in projects/active/PROJECT_NAME
-            relative_path = os.path.relpath(cwd, workspace_dir)
-            path_parts = relative_path.split(os.sep)
+        if not workspace_dir:
+            return None
             
-            if len(path_parts) >= 3 and path_parts[0] == "projects" and path_parts[1] == "active":
-                return path_parts[2]
-            elif len(path_parts) >= 2 and path_parts[0] == "projects":
-                return path_parts[1]
+        # Use the advanced project detector (detect command outputs JSON)
+        result = subprocess.run([
+            os.path.join(workspace_dir, 'scripts', 'claude-auto-project-detector.sh'),
+            'detect'
+        ], capture_output=True, text=True, cwd=workspace_dir,
+           env=dict(os.environ, WORKSPACE_DIR=workspace_dir))
+        
+        if result.returncode == 0:
+            project_json = result.stdout.strip()
+            if project_json and project_json != "null":
+                project_data = json.loads(project_json)
+                return {
+                    "name": project_data.get("name"),
+                    "type": project_data.get("type"),
+                    "path": project_data.get("path"),
+                    "depth": project_data.get("depth", 0),
+                    "meta_context": project_data.get("meta_context"),
+                    "full_path": project_data.get("full_path")
+                }
         
         return None
-    except:
-        return None
+    except Exception as e:
+        # Fallback to simple detection
+        try:
+            cwd = os.getcwd()
+            workspace_dir = os.environ.get('WORKSPACE_DIR')
+            
+            if workspace_dir and cwd.startswith(workspace_dir):
+                relative_path = os.path.relpath(cwd, workspace_dir)
+                path_parts = relative_path.split(os.sep)
+                
+                if len(path_parts) >= 3 and path_parts[0] == "projects" and path_parts[1] == "active":
+                    return {"name": path_parts[2], "type": "active"}
+                elif len(path_parts) >= 2 and path_parts[0] == "projects":
+                    return {"name": path_parts[1], "type": "unknown"}
+            
+            return None
+        except:
+            return None
 
 def parse_env_arrays(env_var):
     """Parse environment variable as array"""
