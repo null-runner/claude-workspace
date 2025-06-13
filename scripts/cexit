@@ -35,6 +35,53 @@ fi
 echo -e "${BLUE}🚀 Executing smart exit...${NC}"
 "$WORKSPACE_DIR/scripts/claude-smart-exit.sh" --auto
 
-# Se arriviamo qui, smart-exit non ha fatto exit (errore)
-echo -e "${YELLOW}⚠️  Smart exit non ha terminato - fallback a exit normale${NC}"
-exit "$@"
+# Smart exit completato - ora richiedi conferma per terminazione
+echo ""
+echo -e "${GREEN}✅ Graceful exit operations completed!${NC}"
+echo ""
+
+# Confirmation prompt per terminare Claude Code
+read -p "🚪 Terminare Claude Code? [Y/n]: " -n 1 -r confirm
+echo ""
+
+if [[ "$confirm" =~ ^[Yy]$|^$ ]]; then
+    echo -e "${CYAN}👋 Terminating Claude Code...${NC}"
+    echo ""
+    
+    # Trova il PID di Claude Code
+    CLAUDE_PID=$(pgrep -f "claude-code" | head -1)
+    
+    if [[ -n "$CLAUDE_PID" ]]; then
+        echo -e "${CYAN}🔥 Found Claude Code PID: $CLAUDE_PID${NC}"
+        
+        # Verifica se Claude è process group leader
+        CLAUDE_PGID=$(ps -o pgid= -p "$CLAUDE_PID" 2>/dev/null | tr -d ' ')
+        if [[ -n "$CLAUDE_PGID" && "$CLAUDE_PGID" == "$CLAUDE_PID" ]]; then
+            echo -e "${CYAN}🔥 Claude è group leader - killing process group...${NC}"
+            kill -TERM -"$CLAUDE_PID" 2>/dev/null
+        else
+            echo -e "${CYAN}🔥 Killing Claude process...${NC}"
+            kill -TERM "$CLAUDE_PID" 2>/dev/null
+        fi
+        
+        # Wait per graceful termination
+        sleep 2
+        
+        # Force kill se ancora in esecuzione
+        if kill -0 "$CLAUDE_PID" 2>/dev/null; then
+            echo -e "${YELLOW}⚡ Force killing Claude...${NC}"
+            kill -KILL "$CLAUDE_PID" 2>/dev/null
+        fi
+        
+        echo -e "${GREEN}✅ Claude Code terminated successfully!${NC}"
+    else
+        echo -e "${YELLOW}⚠️  Claude Code process not found${NC}"
+        echo -e "${CYAN}💡 Exiting gracefully...${NC}"
+    fi
+    
+    exit 0
+else
+    echo -e "${CYAN}💡 Sessione mantenuta aperta${NC}"
+    echo -e "${YELLOW}💡 Usa 'exit' normale se vuoi chiudere senza graceful operations${NC}"
+    exit 0
+fi
