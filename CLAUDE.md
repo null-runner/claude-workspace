@@ -13,7 +13,7 @@ All'inizio di OGNI conversazione - tono amichevole "vediamo dove eravamo rimasti
 
 ## CRITICO: Commit
 `git commit -m "msg" && git push` - SEMPRE pushare!  
-🤖 Generated with Claude Workspace
+🤖 Generated with Claude Workspace (by nullrunner)
 Co-Authored-By: nullrunner <nullrunner@users.noreply.github.com>
 
 ## Regole
