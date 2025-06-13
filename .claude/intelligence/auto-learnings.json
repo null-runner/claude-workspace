@@ -1,0 +1,12 @@
+{
+  "version": "1.0", 
+  "auto_learnings": [],
+  "pattern_stats": {
+    "total_patterns": 0,
+    "by_category": {
+      "errors": 0,
+      "performance": 0,
+      "workflow": 0
+    }
+  }
+}

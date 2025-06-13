@@ -1,0 +1,19 @@
+{
+  "session_id": "2025-06-13T18:55:39.160040Z",
+  "timestamp": "2025-06-13T18:55:39.160050Z",
+  "device": "NEURAL-X",
+  "working_directory": "/home/nullrunner/claude-workspace",
+  "current_project": null,
+  "git_status": {
+    "branch": "main",
+    "has_changes": true,
+    "dirty_files_count": 29,
+    "last_commit": "0d7c688 \ud83e\udde0 Add objective technical assessment to user profile",
+    "is_git_repo": true
+  },
+  "conversation_summary": null,
+  "open_issues": [],
+  "next_actions": [],
+  "last_save_reason": "git_dirty",
+  "context_version": "simplified-v1"
+}
