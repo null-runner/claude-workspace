@@ -112,48 +112,63 @@ cleanup_temp_files() {
 
 # Installa exit hook per graceful exit automatico
 install_exit_hook() {
-    if [[ -f "$WORKSPACE_DIR/scripts/claude-exit-hook.sh" ]]; then
-        # Source lo script per rendere disponibili le funzioni
-        source "$WORKSPACE_DIR/scripts/claude-exit-hook.sh"
-        
-        # Installa l'hook senza output verbose
-        claude_exit() {
-            echo -e "${CYAN}🪝 Intercettato comando exit - avvio graceful exit...${NC}"
-            echo ""
-            
-            # Cambia alla directory workspace se non ci siamo già
-            if [[ "$(pwd)" != "$WORKSPACE_DIR" ]]; then
-                cd "$WORKSPACE_DIR" 2>/dev/null || {
-                    echo -e "${RED}❌ Errore: impossibile accedere a $WORKSPACE_DIR${NC}"
-                    echo -e "${YELLOW}💡 Proseguo con exit normale...${NC}"
-                    builtin exit "$@"
-                }
-            fi
-            
-            # Controlla se lo script smart-exit esiste
-            if [[ ! -f "$WORKSPACE_DIR/scripts/claude-smart-exit.sh" ]]; then
-                echo -e "${RED}❌ Smart-exit script non trovato${NC}"
-                echo -e "${YELLOW}💡 Proseguo con exit normale...${NC}"
-                builtin exit "$@"
-            fi
-            
-            # Esegui smart exit con modalità automatica
-            echo -e "${BLUE}🚀 Executing smart exit...${NC}"
-            "$WORKSPACE_DIR/scripts/claude-smart-exit.sh" --auto
-            
-            # Se arriviamo qui, smart-exit non ha fatto exit (errore)
-            echo -e "${YELLOW}⚠️  Smart exit non ha terminato - fallback a exit normale${NC}"
-            builtin exit "$@"
-        }
-        
-        # Crea alias che sostituisce il comando exit
-        alias exit='claude_exit'
-        export -f claude_exit
-        
-        echo -e "${GREEN}🪝 Exit hook installato - 'exit' ora esegue graceful exit automatico${NC}"
-    else
-        echo -e "${YELLOW}⚠️  Exit hook script non trovato${NC}"
+    # Crea un wrapper script che l'utente può usare invece di exit
+    local exit_wrapper="$WORKSPACE_DIR/scripts/cexit"
+    
+    cat > "$exit_wrapper" << 'EOF'
+#!/bin/bash
+# Claude Exit - Graceful exit con smart-sync automatico
+# Usa questo comando invece di 'exit' per avere graceful exit automatico
+
+WORKSPACE_DIR="$HOME/claude-workspace"
+
+# Colori
+CYAN='\033[0;36m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+echo -e "${CYAN}🪝 Claude Exit - avvio graceful exit...${NC}"
+echo ""
+
+# Cambia alla directory workspace se non ci siamo già
+if [[ "$(pwd)" != "$WORKSPACE_DIR" ]]; then
+    cd "$WORKSPACE_DIR" 2>/dev/null || {
+        echo -e "${RED}❌ Errore: impossibile accedere a $WORKSPACE_DIR${NC}"
+        echo -e "${YELLOW}💡 Proseguo con exit normale...${NC}"
+        exit "$@"
+    }
+fi
+
+# Controlla se lo script smart-exit esiste
+if [[ ! -f "$WORKSPACE_DIR/scripts/claude-smart-exit.sh" ]]; then
+    echo -e "${RED}❌ Smart-exit script non trovato${NC}"
+    echo -e "${YELLOW}💡 Proseguo con exit normale...${NC}"
+    exit "$@"
+fi
+
+# Esegui smart exit con modalità automatica
+echo -e "${BLUE}🚀 Executing smart exit...${NC}"
+"$WORKSPACE_DIR/scripts/claude-smart-exit.sh" --auto
+
+# Se arriviamo qui, smart-exit non ha fatto exit (errore)
+echo -e "${YELLOW}⚠️  Smart exit non ha terminato - fallback a exit normale${NC}"
+exit "$@"
+EOF
+    
+    chmod +x "$exit_wrapper"
+    
+    # Crea anche un alias nel PATH se possibile
+    local user_bin="$HOME/.local/bin"
+    if [[ -d "$user_bin" ]] && [[ ":$PATH:" == *":$user_bin:"* ]]; then
+        ln -sf "$exit_wrapper" "$user_bin/cexit" 2>/dev/null
     fi
+    
+    echo -e "${GREEN}🪝 Exit hook installato${NC}"
+    echo -e "${BLUE}💡 Usa 'cexit' invece di 'exit' per graceful exit automatico${NC}"
+    echo -e "${BLUE}💡 Oppure: ./scripts/cexit${NC}"
 }
 
 # Mostra status servizi

@@ -12,11 +12,9 @@ All'inizio di OGNI conversazione - tono amichevole "vediamo dove eravamo rimasti
 
 **Nota**: File di sistema (.claude/*, logs/*) sono automaticamente ignorati dal git e NON sono errori.
 
-## Exit Hook Automatico
-Il sistema installa automaticamente un hook che intercetta `exit`:
-- **Per utenti in terminale**: L'hook `exit` → graceful exit è attivo dopo startup
-- **Per Claude**: Usa `./scripts/claude-smart-exit.sh` per graceful exit manuale
-- **Controllo hook**: `./scripts/claude-exit-hook.sh status`
+## Exit Hook
+Usa `cexit` o `./scripts/cexit` per graceful exit automatico con smart-sync.
+Il comando `exit` normale funziona ancora per exit diretto.
 
 ## CRITICO: Commit
 SEMPRE usare DUE comandi bash consecutivi:
