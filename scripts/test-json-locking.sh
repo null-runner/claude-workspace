@@ -35,15 +35,14 @@ test_basic_operations() {
         ((total++))
         
         # Test read
-        local original_data
-        original_data=$(safe_json_read "$file" "{}")
-        if [[ $? -eq 0 ]]; then
-            # Test write (write the same data back)
-            if safe_json_write "$file" "$original_data" > /dev/null 2>&1; then
+        if safe_json_read "$file" "{}" > /dev/null 2>&1; then
+            # Test that file is accessible (we don't modify critical files in test)
+            # Instead, test merge with empty data which should be safe
+            if safe_json_merge "$file" "{}" > /dev/null 2>&1; then
                 echo -e "${GREEN}✓${NC}"
                 ((passed++))
             else
-                echo -e "${RED}✗ (write failed)${NC}"
+                echo -e "${RED}✗ (merge failed)${NC}"
             fi
         else
             echo -e "${RED}✗ (read failed)${NC}"

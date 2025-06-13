@@ -8,6 +8,9 @@ CONFIG_FILE="$SYNC_DIR/config.json"
 STATE_DIR="$SYNC_DIR/state"
 LOCK_SCRIPT="$WORKSPACE_DIR/scripts/claude-sync-lock.sh"
 
+# Source JSON safe operations
+source "$WORKSPACE_DIR/scripts/json-safe-operations.sh"
+
 # Colori
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
@@ -27,11 +30,10 @@ else
     exit 1
 fi
 
-# Load configuration
+# Load configuration using safe JSON operations
 load_config() {
     if [[ ! -f "$CONFIG_FILE" ]]; then
-        cat > "$CONFIG_FILE" << 'EOF'
-{
+        local default_config='{
   "milestone_commit_threshold": 20,
   "context_switch_stability": 600,
   "natural_break_inactivity": 900,
@@ -41,17 +43,54 @@ load_config() {
   "enable_context_switches": true,
   "enable_natural_breaks": true,
   "enable_exit_sync": true
-}
-EOF
-        echo -e "${GREEN}✅ Created default config at $CONFIG_FILE${NC}"
+}'
+        if safe_json_write "$CONFIG_FILE" "$default_config"; then
+            echo -e "${GREEN}✅ Created default config at $CONFIG_FILE${NC}"
+        else
+            echo -e "${RED}❌ Failed to create config file${NC}"
+            return 1
+        fi
     fi
     
-    # Parse JSON config
-    MILESTONE_THRESHOLD=$(python3 -c "import json; print(json.load(open('$CONFIG_FILE'))['milestone_commit_threshold'])")
-    CONTEXT_STABILITY=$(python3 -c "import json; print(json.load(open('$CONFIG_FILE'))['context_switch_stability'])")
-    BREAK_INACTIVITY=$(python3 -c "import json; print(json.load(open('$CONFIG_FILE'))['natural_break_inactivity'])")
-    SESSION_THRESHOLD=$(python3 -c "import json; print(json.load(open('$CONFIG_FILE'))['intense_session_threshold'])")
-    MAX_SYNCS_HOUR=$(python3 -c "import json; print(json.load(open('$CONFIG_FILE'))['max_syncs_per_hour'])")
+    # Load and parse JSON config using safe operations
+    local config_data
+    config_data=$(safe_json_read "$CONFIG_FILE" "{}")
+    
+    if [[ $? -ne 0 ]]; then
+        echo -e "${RED}❌ Failed to load config from $CONFIG_FILE${NC}"
+        return 1
+    fi
+    
+    # Parse configuration values
+    MILESTONE_THRESHOLD=$(echo "$config_data" | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+print(data.get('milestone_commit_threshold', 20))
+" 2>/dev/null || echo "20")
+    
+    CONTEXT_STABILITY=$(echo "$config_data" | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+print(data.get('context_switch_stability', 600))
+" 2>/dev/null || echo "600")
+    
+    BREAK_INACTIVITY=$(echo "$config_data" | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+print(data.get('natural_break_inactivity', 900))
+" 2>/dev/null || echo "900")
+    
+    SESSION_THRESHOLD=$(echo "$config_data" | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+print(data.get('intense_session_threshold', 2))
+" 2>/dev/null || echo "2")
+    
+    MAX_SYNCS_HOUR=$(echo "$config_data" | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+print(data.get('max_syncs_per_hour', 6))
+" 2>/dev/null || echo "6")
 }
 
 # Logging function

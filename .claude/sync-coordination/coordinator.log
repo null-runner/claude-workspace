@@ -46,3 +46,16 @@
 [2025-06-14 01:34:49] [SYNC] manual sync completed successfully
 [2025-06-14 01:34:49] [LOCK] Coordination lock released by sync-now (PID: 61456)
 [2025-06-14 01:34:49] [WARN] No coordination lock file found for release by sync-now
+[2025-06-14 01:36:52] [API] Sync request: manual from test-single (priority: normal)
+[2025-06-14 01:36:52] [INFO] Rate limit check: ALLOW: 8/12 syncs this hour
+[2025-06-14 01:36:52] [LOCK] Coordination lock acquired by test-single (PID: 64588)
+[2025-06-14 01:36:52] [EXEC] Executing manual sync immediately
+[2025-06-14 01:36:52] [SYNC] Executing sync operation: {
+    "operation": "manual",
+    "caller": "test-single",
+    "priority": "normal",
+    "reason": "Test single sync",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:36:52Z",
+    "status": "executing"
+}

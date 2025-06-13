@@ -180,7 +180,7 @@ from datetime import datetime, timedelta
 
 def process_operations():
     try:
-        with open(os.environ["OPERATION_QUEUE"], "r") as f:
+        with open(os.environ.get("OPERATION_QUEUE", "/home/nullrunner/claude-workspace/.claude/memory-coordination/operation-queue.json"), "r") as f:
             queue_data = json.load(f)
         
         pending_ops = [op for op in queue_data["operations"] if op["status"] == "pending"]
@@ -203,7 +203,7 @@ def process_operations():
             operation["processed_at"] = datetime.now().isoformat() + "Z"
             
             # Save intermediate state
-            with open(os.environ["OPERATION_QUEUE"], "w") as f:
+            with open(os.environ.get("OPERATION_QUEUE", "/home/nullrunner/claude-workspace/.claude/memory-coordination/operation-queue.json"), "w") as f:
                 json.dump(queue_data, f, indent=2)
             
             # Execute operation based on type
@@ -225,7 +225,7 @@ def process_operations():
         queue_data["last_cleanup"] = datetime.now().isoformat() + "Z"
         
         # Save final state
-        with open(os.environ["OPERATION_QUEUE"], "w") as f:
+        with open(os.environ.get("OPERATION_QUEUE", "/home/nullrunner/claude-workspace/.claude/memory-coordination/operation-queue.json"), "w") as f:
             json.dump(queue_data, f, indent=2)
         
         print(f"Processed {processed_count} operations")
@@ -259,7 +259,7 @@ def execute_simplified_save(operation):
     """Execute simplified memory save"""
     try:
         # Call simplified memory save directly
-        script_path = os.path.join(os.environ["WORKSPACE_DIR"], "scripts", "claude-simplified-memory.sh")
+        script_path = os.path.join(os.environ.get("WORKSPACE_DIR", "/home/nullrunner/claude-workspace"), "scripts", "claude-simplified-memory.sh")
         
         # Extract parameters from operation if available
         params = operation.get("params", {})
@@ -285,7 +285,7 @@ def execute_simplified_save(operation):
 def execute_enhanced_save(operation):
     """Execute enhanced memory save"""
     try:
-        script_path = os.path.join(os.environ["WORKSPACE_DIR"], "scripts", "claude-enhanced-save.sh")
+        script_path = os.path.join(os.environ.get("WORKSPACE_DIR", "/home/nullrunner/claude-workspace"), "scripts", "claude-enhanced-save.sh")
         
         params = operation.get("params", {})
         cmd = [script_path]
@@ -314,7 +314,7 @@ def execute_auto_save(operation):
         params = operation.get("params", {})
         auto_note = params.get("note", "Auto-save coordinated")
         
-        script_path = os.path.join(os.environ["WORKSPACE_DIR"], "scripts", "claude-enhanced-save.sh")
+        script_path = os.path.join(os.environ.get("WORKSPACE_DIR", "/home/nullrunner/claude-workspace"), "scripts", "claude-enhanced-save.sh")
         result = subprocess.run([script_path, auto_note], capture_output=True, text=True,
                               env=dict(os.environ, MEMORY_COORD_MODE="true"))
         
@@ -416,7 +416,7 @@ def execute_operation(operation):
 def execute_simplified_save(operation):
     import subprocess
     try:
-        script_path = os.path.join(os.environ["WORKSPACE_DIR"], "scripts", "claude-simplified-memory.sh")
+        script_path = os.path.join(os.environ.get("WORKSPACE_DIR", "/home/nullrunner/claude-workspace"), "scripts", "claude-simplified-memory.sh")
         params = operation.get("params", {})
         cmd = [script_path, "save"]
         
@@ -445,7 +445,7 @@ def execute_simplified_save(operation):
 def execute_enhanced_save(operation):
     import subprocess
     try:
-        script_path = os.path.join(os.environ["WORKSPACE_DIR"], "scripts", "claude-enhanced-save.sh")
+        script_path = os.path.join(os.environ.get("WORKSPACE_DIR", "/home/nullrunner/claude-workspace"), "scripts", "claude-enhanced-save.sh")
         params = operation.get("params", {})
         cmd = [script_path]
         
@@ -477,7 +477,7 @@ def execute_auto_save(operation):
         params = operation.get("params", {})
         auto_note = params.get("note", "Auto-save coordinated")
         
-        script_path = os.path.join(os.environ["WORKSPACE_DIR"], "scripts", "claude-enhanced-save.sh")
+        script_path = os.path.join(os.environ.get("WORKSPACE_DIR", "/home/nullrunner/claude-workspace"), "scripts", "claude-enhanced-save.sh")
         result = subprocess.run([script_path, auto_note], capture_output=True, text=True,
                               env=dict(os.environ, MEMORY_COORD_MODE="true"))
         
@@ -576,7 +576,7 @@ import os
 from datetime import datetime
 
 try:
-    with open(os.environ["OPERATION_QUEUE"], "r") as f:
+    with open(os.environ.get("OPERATION_QUEUE", "/home/nullrunner/claude-workspace/.claude/memory-coordination/operation-queue.json"), "r") as f:
         queue_data = json.load(f)
     
     operations = queue_data.get("operations", [])
@@ -715,13 +715,13 @@ from datetime import datetime
 from pathlib import Path
 
 # Import safe JSON operations
-sys.path.insert(0, os.path.join(os.environ["WORKSPACE_DIR"], "scripts"))
+sys.path.insert(0, os.path.join(os.environ.get("WORKSPACE_DIR", "/home/nullrunner/claude-workspace"), "scripts"))
 from safe_json_operations import safe_json_read, safe_json_write, SafeJSONError
 
 def get_git_status():
     """Get comprehensive git status"""
     try:
-        workspace_dir = os.environ.get('WORKSPACE_DIR')
+        workspace_dir = os.environ.get('WORKSPACE_DIR', '/home/nullrunner/claude-workspace')
         result = subprocess.run(['git', 'status', '--porcelain'], 
                               capture_output=True, text=True, cwd=workspace_dir)
         
@@ -758,7 +758,7 @@ def get_git_status():
 def get_current_project():
     """Detect current project using multiple strategies"""
     try:
-        workspace_dir = os.environ.get('WORKSPACE_DIR')
+        workspace_dir = os.environ.get('WORKSPACE_DIR', '/home/nullrunner/claude-workspace')
         cwd = os.getcwd()
         
         # Strategy 1: Advanced project detector
@@ -799,7 +799,7 @@ def get_current_project():
 def extract_intelligence_insights():
     """Extract and cache intelligence insights"""
     try:
-        workspace_dir = os.environ.get('WORKSPACE_DIR')
+        workspace_dir = os.environ.get('WORKSPACE_DIR', '/home/nullrunner/claude-workspace')
         intelligence_dir = os.path.join(workspace_dir, '.claude', 'intelligence')
         
         insights = {
@@ -866,7 +866,7 @@ def extract_intelligence_insights():
 def generate_next_actions():
     """Generate intelligent next actions"""
     try:
-        workspace_dir = os.environ.get('WORKSPACE_DIR')
+        workspace_dir = os.environ.get('WORKSPACE_DIR', '/home/nullrunner/claude-workspace')
         next_actions = []
         
         # Analyze recent commits
@@ -911,7 +911,7 @@ def generate_next_actions():
 def extract_todo_comments():
     """Extract TODO comments from project files"""
     try:
-        workspace_dir = os.environ.get('WORKSPACE_DIR')
+        workspace_dir = os.environ.get('WORKSPACE_DIR', '/home/nullrunner/claude-workspace')
         current_project = get_current_project()
         
         if not current_project:
@@ -1114,11 +1114,11 @@ import os
 from datetime import datetime
 
 # Import safe JSON operations
-sys.path.insert(0, os.path.join(os.environ["WORKSPACE_DIR"], "scripts"))
+sys.path.insert(0, os.path.join(os.environ.get("WORKSPACE_DIR", "/home/nullrunner/claude-workspace"), "scripts"))
 from safe_json_operations import safe_json_read, SafeJSONError
 
 try:
-    context = safe_json_read(os.environ['UNIFIED_CONTEXT'])
+    context = safe_json_read(os.environ.get('UNIFIED_CONTEXT', '/home/nullrunner/claude-workspace/.claude/memory/unified-context.json'))
     if not context:
         raise SafeJSONError("Context file is empty")
     
@@ -1253,11 +1253,11 @@ import os
 from datetime import datetime
 
 # Import safe JSON operations
-sys.path.insert(0, os.path.join(os.environ["WORKSPACE_DIR"], "scripts"))
+sys.path.insert(0, os.path.join(os.environ.get("WORKSPACE_DIR", "/home/nullrunner/claude-workspace"), "scripts"))
 from safe_json_operations import safe_json_read
 
 try:
-    health_data = safe_json_read(os.environ['HEALTH_STATUS'], {})
+    health_data = safe_json_read(os.environ.get('HEALTH_STATUS', '/home/nullrunner/claude-workspace/.claude/memory-coordination/health-status.json'), {})
     
     system_status = health_data.get('system_status', 'unknown')
     status_color = {
