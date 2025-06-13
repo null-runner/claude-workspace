@@ -94,6 +94,82 @@ def get_git_status():
             "is_git_repo": False
         }
 
+def get_intelligence_insights():
+    """Extract intelligence insights for context enrichment"""
+    try:
+        workspace_dir = os.environ.get('WORKSPACE_DIR')
+        if not workspace_dir:
+            return None
+            
+        intelligence_dir = os.path.join(workspace_dir, '.claude', 'intelligence')
+        
+        insights = {
+            "recent_learnings": [],
+            "recent_decisions": [],
+            "current_focus": None,
+            "system_insights": {}
+        }
+        
+        # Load auto-learnings
+        learnings_file = os.path.join(intelligence_dir, 'auto-learnings.json')
+        if os.path.exists(learnings_file):
+            with open(learnings_file, 'r') as f:
+                learnings_data = json.load(f)
+                # Get most recent 3 learnings
+                recent_learnings = learnings_data.get('auto_learnings', [])[-3:]
+                insights["recent_learnings"] = [
+                    {
+                        "title": learning.get("title"),
+                        "lesson": learning.get("lesson"),
+                        "category": learning.get("category"),
+                        "severity": learning.get("severity")
+                    }
+                    for learning in recent_learnings
+                ]
+        
+        # Load auto-decisions
+        decisions_file = os.path.join(intelligence_dir, 'auto-decisions.json')
+        if os.path.exists(decisions_file):
+            with open(decisions_file, 'r') as f:
+                decisions_data = json.load(f)
+                # Get most recent 5 decisions
+                recent_decisions = decisions_data.get('auto_decisions', [])[-5:]
+                insights["recent_decisions"] = [
+                    {
+                        "title": decision.get("title"),
+                        "category": decision.get("category"),
+                        "impact": decision.get("impact"),
+                        "source": decision.get("source")
+                    }
+                    for decision in recent_decisions
+                ]
+        
+        # Infer current focus from recent decisions
+        if insights["recent_decisions"]:
+            categories = [d.get("category") for d in insights["recent_decisions"]]
+            category_counts = {}
+            for cat in categories:
+                category_counts[cat] = category_counts.get(cat, 0) + 1
+            
+            most_common = max(category_counts, key=category_counts.get)
+            insights["current_focus"] = f"{most_common}_focused_development"
+        
+        # System insights summary
+        if insights["recent_learnings"]:
+            high_severity = [l for l in insights["recent_learnings"] if l.get("severity") == "high"]
+            if high_severity:
+                insights["system_insights"]["critical_issues"] = len(high_severity)
+            
+            stability_issues = [l for l in insights["recent_learnings"] 
+                             if "stability" in l.get("category", "").lower()]
+            if stability_issues:
+                insights["system_insights"]["stability_focus"] = True
+        
+        return insights if any(insights.values()) else None
+        
+    except Exception as e:
+        return None
+
 def get_current_project():
     """Detect current project using advanced project detector"""
     try:
@@ -162,6 +238,28 @@ next_actions_str = os.environ.get('next_actions', '')
 open_issues = parse_env_arrays('open_issues') if open_issues_str else []
 next_actions = parse_env_arrays('next_actions') if next_actions_str else []
 
+# Get intelligence insights
+intelligence_insights = get_intelligence_insights()
+
+# Auto-generate conversation summary from intelligence if not provided
+if not conversation_summary and intelligence_insights:
+    summary_parts = []
+    if intelligence_insights.get("recent_decisions"):
+        recent_count = len(intelligence_insights["recent_decisions"])
+        summary_parts.append(f"Recent development: {recent_count} decisions tracked")
+    
+    if intelligence_insights.get("recent_learnings"):
+        for learning in intelligence_insights["recent_learnings"]:
+            if learning.get("severity") in ["high", "medium"]:
+                summary_parts.append(f"Key insight: {learning.get('lesson')}")
+    
+    if intelligence_insights.get("current_focus"):
+        focus = intelligence_insights["current_focus"].replace("_", " ")
+        summary_parts.append(f"Current focus: {focus}")
+    
+    if summary_parts:
+        conversation_summary = ". ".join(summary_parts[:3])  # Limit to 3 parts for brevity
+
 # Create simplified context
 context = {
     "session_id": datetime.now().isoformat() + "Z",
@@ -170,6 +268,7 @@ context = {
     "working_directory": os.getcwd(),
     "current_project": get_current_project(),
     "git_status": get_git_status(),
+    "intelligence_insights": intelligence_insights,
     "conversation_summary": conversation_summary or None,
     "open_issues": open_issues,
     "next_actions": next_actions,
