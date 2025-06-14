@@ -2,18 +2,18 @@
   "daemon": {
     "pid": 152366,
     "status": "running",
-    "last_update": "2025-06-14T11:02:40Z"
+    "last_update": "2025-06-14T13:08:52Z"
   },
   "context_monitor": {
     "status": "running",
     "message": "Context monitoring active",
-    "last_update": "2025-06-14T11:02:40Z",
+    "last_update": "2025-06-14T13:08:52Z",
     "interval": "300"
   },
   "project_monitor": {
     "status": "active",
     "message": "Project detection completed",
-    "last_update": "2025-06-14T11:02:40Z",
+    "last_update": "2025-06-14T13:08:52Z",
     "interval": "30"
   }
 }

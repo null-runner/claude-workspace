@@ -1,0 +1,53 @@
+{
+  "context_version": "simplified-v1",
+  "timestamp": "2025-06-14T13:08:54Z",
+  "save_reason": "test",
+  "device": {
+    "name": "NEURAL-X",
+    "type": "desktop"
+  },
+  "working_directory": "/home/nullrunner/claude-workspace",
+  "current_project": {
+    "name": "claude-workspace-development",
+    "type": "meta",
+    "path": "/home/nullrunner/claude-workspace",
+    "relative_path": ".",
+    "depth": 0,
+    "full_path": "/home/nullrunner/claude-workspace",
+    "meta_context": "root_workspace_management"
+  },
+  "git_status": {
+    "branch": "main",
+    "has_changes": true,
+    "dirty_files_count": 6,
+    "dirty_files": [
+      "M .claude/context/auto-context-status.json",
+      "M .claude/context/auto-context.log",
+      "M .claude/logs/auto-push.log",
+      "M .claude/sync-coordination/coordinator-state.json",
+      "M .claude/sync-coordination/coordinator.log",
+      "M .claude/sync-coordination/daemon.log"
+    ],
+    "last_commit": "9e2b6bf \u2705 Migration completed: Simplified system fully operational",
+    "is_git_repo": true
+  },
+  "intelligence_insights": {
+    "recent_learnings": [],
+    "recent_decisions": [],
+    "current_focus": null,
+    "extraction_timestamp": "2025-06-14T13:08:54.082661+00:00"
+  },
+  "conversation_summary": "Test completo sistema semplificato",
+  "open_issues": [
+    "Auto-context save error",
+    "BUG: Handle blocked files (log for debugging) (scripts/claude-intelligent-auto-sync.sh:152)",
+    "IMPORTANT: Pulizia intelligente memoria senza perdere informazioni importanti (scripts/claude-memory-cleaner.sh:3)",
+    "IMPORTANT: Estrai pattern e informazioni importanti dalle vecchie sessioni (scripts/claude-memory-cleaner.sh:46)",
+    "NOTE: important_notes = [s.get('note') for s in old_sessions if s.get('note') and len(... (scripts/claude-memory-cleaner.sh:51)",
+    "NOTE: \"important_notes\": important_notes[:3] (scripts/claude-memory-cleaner.sh:60)"
+  ],
+  "next_actions": [
+    "Fix daemon parametri",
+    "Commit test results"
+  ]
+}

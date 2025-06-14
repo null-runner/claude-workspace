@@ -1,0 +1,13 @@
+{
+  "sessions": [
+    {
+      "id": "2025-06-14T13:08:54Z-test",
+      "timestamp": "2025-06-14T13:08:54Z",
+      "save_reason": "test",
+      "summary": "Test completo sistema semplificato",
+      "device": "NEURAL-X"
+    }
+  ],
+  "version": "simplified-v1",
+  "last_update": "2025-06-14T13:08:54Z"
+}
