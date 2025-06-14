@@ -1,6 +1,40 @@
 {
   "sessions": [
     {
+      "id": "2025-06-14T11:41:56.755524Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T11:41:56.755524Z",
+      "save_type": "simplified",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "Comprehensive",
+      "changes_count": 13
+    },
+    {
+      "id": "2025-06-14T02:48:43.745177Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T02:48:43.745177Z",
+      "save_type": "simplified",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "documentazione",
+      "changes_count": 5
+    },
+    {
       "id": "2025-06-14T02:06:01.372058Z-claude-memory-coordinator",
       "timestamp": "2025-06-14T02:06:01.372058Z",
       "save_type": "simplified",
@@ -155,5 +189,5 @@
     }
   ],
   "version": "unified-v1",
-  "last_update": "2025-06-14T02:06:01.372058Z"
+  "last_update": "2025-06-14T11:41:56.755524Z"
 }

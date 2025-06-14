@@ -10,62 +10,62 @@
   ],
   "recent_decisions": [
     {
-      "title": "Added new workspace tool: test-sync-coordinator.sh",
-      "category": "tool",
-      "impact": "low",
-      "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:50:39.083259Z"
-    },
-    {
-      "title": "Added documentation: json-file-locking-system.md",
+      "title": "Added documentation: setup-en.md",
       "category": "process",
       "impact": "low",
       "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:50:39.083262Z"
+      "timestamp": "2025-06-14T02:50:39.812855Z"
     },
     {
-      "title": "Added documentation: sync-coordinator-implementation.md",
-      "category": "process",
-      "impact": "low",
-      "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:50:39.083265Z"
-    },
-    {
-      "title": "Added documentation: process-security-system.md",
-      "category": "process",
-      "impact": "low",
-      "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:50:39.083267Z"
-    },
-    {
-      "title": "Added new workspace tool: config-backup-manager.sh",
+      "title": "Added new workspace tool: claude-security-essential.sh",
       "category": "tool",
       "impact": "low",
       "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T02:05:39.262566Z"
+      "timestamp": "2025-06-14T03:35:40.262200Z"
     },
     {
-      "title": "Added new workspace tool: error-handling-library.sh",
+      "title": "Added new workspace tool: test-simplified-system.sh",
       "category": "tool",
       "impact": "low",
       "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T02:05:39.262579Z"
+      "timestamp": "2025-06-14T03:35:40.262208Z"
     },
     {
-      "title": "Added new workspace tool: claude-simplified-memory-optimized.sh",
+      "title": "Added new workspace tool: claude-startup-simple.sh",
       "category": "tool",
       "impact": "low",
       "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T02:05:39.262582Z"
+      "timestamp": "2025-06-14T03:35:40.262211Z"
     },
     {
-      "title": "Added new workspace tool: error-handling-template.sh",
+      "title": "Added new workspace tool: cexit-enhanced.sh",
       "category": "tool",
       "impact": "low",
       "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T02:05:39.262587Z"
+      "timestamp": "2025-06-14T03:35:40.262213Z"
+    },
+    {
+      "title": "Added new workspace tool: claude-auto-context.sh",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-14T03:35:40.262215Z"
+    },
+    {
+      "title": "Added new workspace tool: claude-config.sh",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-14T03:35:40.262217Z"
+    },
+    {
+      "title": "🔄 Smart sync: Natural break after productive session (6 files)",
+      "category": "general",
+      "impact": "medium",
+      "source": "git_commit",
+      "timestamp": "2025-06-14T04:05:40.571023Z"
     }
   ],
   "current_focus": "tool_focused_development",
-  "extraction_timestamp": "2025-06-14T02:06:01.400772Z"
+  "extraction_timestamp": "2025-06-14T11:41:56.784467Z"
 }
