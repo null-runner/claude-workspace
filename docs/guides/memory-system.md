@@ -1,28 +1,32 @@
-# 🧠 Sistema Memoria Intelligente Claude Workspace
+# 🧠 Sistema Coordinatore Memoria Enterprise - Claude Workspace
 
 ## 📖 Panoramica
 
-Il sistema di memoria di Claude Workspace fornisce continuità tra sessioni e progetti, mantenendo il contesto senza ingolfare il sistema grazie a una pulizia intelligente automatica.
+Il **coordinatore memoria unificato** di Claude Workspace fornisce gestione memoria enterprise-grade con **operazioni atomiche**, **file locking**, **caching intelligente** e **recovery automatico** - zero overhead manutenzione con affidabilità enterprise.
 
-## 🏗️ Architettura
+## 🏗️ Architettura Enterprise
 
-### Memoria Globale Workspace
+### Coordinatore Memoria Unificato
 ```
-.claude/memory/
-├── workspace-memory.json     # Memoria globale workspace
-└── projects/                 # Memoria specifica per progetto
-    ├── active_sito-bar.json
-    ├── sandbox_test-app.json
-    └── production_api.json
+.claude/
+├── memory-coordination/      # NUOVO: Coordinatore enterprise
+│   ├── coordinator.log      # Log coordinamento
+│   ├── health-status.json   # Monitoraggio salute
+│   └── locks/              # File locking
+├── memory/                  # Gestito dal coordinatore  
+│   ├── workspace-memory.json # Memoria globale
+│   ├── unified-context.json  # Cache unificato
+│   └── projects/            # Memoria progetti
+└── backups/                 # Backup automatici
+    └── memory/              # Con retention policies
 ```
 
-### Memoria Per-Progetto
-Ogni progetto mantiene:
-- **Stato corrente**: ultima attività, file attivi, note recenti
-- **Storico sessioni**: cronologia del lavoro
-- **TODO e obiettivi**: task attivi e completati
-- **Note tecniche**: setup, architettura, dipendenze
-- **Dati archiviati**: informazioni compattate intelligentemente
+### Funzionalità Enterprise
+- **Operazioni Atomiche**: File locking previene corruzione
+- **Caching Intelligente**: Performance ottimizzate con prefetching
+- **Recovery Automatico**: Rilevamento errori e rollback
+- **Backup Automation**: Rotazione automatica con retention
+- **Process Protection**: Coordinamento sicuro processi concorrenti
 
 ## 🔄 Sistema Pulizia Intelligente
 
@@ -46,30 +50,43 @@ Ogni progetto mantiene:
 4. **Mantiene metriche**: statistiche di completamento
 5. **Preserva contesto**: informazioni essenziali per continuità
 
-## 📱 Comandi Disponibili
+## 📱 Comandi Enterprise
 
-### Memoria Globale
+### Coordinatore Unificato
 ```bash
-claude-save "nota sessione"           # Salva stato corrente
-claude-resume                         # Riprende ultima sessione
-claude-memory                         # Gestisce memoria globale
-claude-memory context "obiettivo"     # Aggiorna obiettivi
+# Controllo coordinatore
+claude-memory-coordinator start       # Avvia coordinatore unificato
+claude-memory-coordinator status      # Stato coordinatore e servizi
+claude-memory-coordinator health      # Controllo salute completo
+
+# Performance e recovery
+claude-memory-coordinator optimize    # Ottimizza cache e performance  
+claude-memory-coordinator integrity-check # Verifica integrità memoria
+claude-memory-coordinator auto-recover    # Recovery automatico errori
 ```
 
-### Memoria Progetto
+### Memoria (Enterprise-Grade)
 ```bash
-claude-project-memory save "nota"     # Salva stato progetto
-claude-project-memory resume          # Riprende progetto corrente
-claude-project-memory todo add "task" # Aggiunge TODO
-claude-project-memory todo list       # Lista TODO
-claude-project-memory todo done 1     # Completa TODO
+# Memoria globale (operazioni atomiche)
+claude-save "nota sessione"           # Salva (atomico + cached)
+claude-resume                         # Riprende (performance-ottimizzato)
+
+# Memoria progetto (coordinata)
+claude-project-memory save "nota"     # Salva progetto (atomico)
+claude-project-memory resume          # Riprende (cached + validato)
+claude-project-memory todo add "task" # TODO (coordinato)
 ```
 
-### Pulizia Memoria
+### Gestione Enterprise
 ```bash
-claude-memory-cleaner auto            # Pulizia automatica
-claude-memory-cleaner stats           # Statistiche memoria
-claude-memory-cleaner project nome    # Pulisce progetto specifico
+# Backup automation
+claude-backup-cleaner status          # Stato backup con retention
+claude-backup-cleaner clean           # Pulizia backup automatica
+claude-backup-cleaner set-retention 60 # Imposta retention (giorni)
+
+# Legacy (ancora disponibile)
+claude-memory-cleaner auto            # Pulizia memoria automatica
+claude-memory-cleaner stats           # Statistiche complete
 ```
 
 ## 🤖 Automazione
@@ -270,4 +287,14 @@ Il sistema avvisa quando:
 - ✅ Mantieni obiettivi aggiornati
 - ✅ Documenta decisioni architetturali importanti
 
-Il sistema di memoria intelligente garantisce continuità perfetta tra sessioni mantenendo prestazioni ottimali! 🚀
+## 🚀 Vantaggi Enterprise
+
+Il **coordinatore memoria enterprise** garantisce:
+
+🔒 **Affidabilità**: Operazioni atomiche, file locking, recovery automatico  
+⚡ **Performance**: Caching intelligente, operazioni batch, prefetching smart  
+🛡️ **Protezione**: Process coordination, integrity monitoring, backup automation  
+🌐 **Scalabilità**: Gestione multi-device, conflitti risolti, sync enterprise-grade  
+🎯 **Automazione**: Zero manutenzione, self-healing, retention policies automatiche
+
+Il **coordinatore memoria enterprise** garantisce continuità perfetta tra sessioni con **affidabilità enterprise e performance ottimali**! 🚀

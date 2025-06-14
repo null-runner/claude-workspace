@@ -1,27 +1,44 @@
 **Lingua:** [🇺🇸 English](memory-system-en.md) | [🇮🇹 Italiano](memory-system-it.md)
 
-# 🧠 Sistema Memoria Intelligente Claude Workspace
+# 🧠 Sistema Coordinatore Memoria Enterprise - Claude Workspace
 
 ## 📖 Panoramica
 
-Il sistema di memoria di Claude Workspace fornisce continuità tra sessioni e progetti, mantenendo il contesto senza ingolfare il sistema grazie a una pulizia intelligente automatica.
+Il **coordinatore memoria unificato** di Claude Workspace fornisce gestione memoria enterprise-grade con continuità perfetta tra sessioni e progetti. Il sistema presenta **operazioni atomiche**, **file locking**, **caching intelligente** e **recovery automatico** - offrendo affidabilità enterprise con zero overhead di manutenzione.
 
-## 🏗️ Architettura
+## 🏗️ Architettura Enterprise
 
-### Memoria Globale Workspace
+### Struttura Coordinatore Memoria Unificato
 ```
-.claude/memory/
-├── workspace-memory.json     # Memoria globale workspace
-└── projects/                 # Memoria specifica per progetto
-    ├── active_sito-bar.json
-    ├── sandbox_test-app.json
-    └── production_api.json
+.claude/
+├── memory-coordination/       # NUOVO: Coordinatore enterprise
+│   ├── coordinator.log       # Log attività coordinamento
+│   ├── health-status.json    # Monitoraggio salute sistema
+│   └── locks/               # Directory file locking
+├── memory/                   # Gestito dal coordinatore
+│   ├── workspace-memory.json # Memoria globale workspace
+│   ├── unified-context.json  # Cache context unificato
+│   └── projects/             # Memoria specifica progetto
+│       ├── active_sito-bar.json
+│       ├── sandbox_test-app.json
+│       └── production_api.json
+└── backups/                  # Rotazione backup automatica
+    └── memory/              # Backup memoria con retention
 ```
+
+### Funzionalità Coordinatore Memoria Enterprise
+Il **coordinatore unificato** gestisce tutti i tipi memoria con:
+- **Operazioni Atomiche**: File locking previene corruzione durante accesso concorrente
+- **Protezione Processi**: Prevenzione deadlock e coordinamento processi
+- **Caching Intelligente**: Accesso memoria ottimizzato per performance con prefetching smart
+- **Risoluzione Conflitti**: Gestione avanzata conflitti memoria cross-device
+- **Recovery Automatico**: Rilevamento errori e capacità rollback enterprise-grade
+- **Automazione Backup**: Rotazione automatica con retention policies configurabili
 
 ### Memoria Per-Progetto
-Ogni progetto mantiene:
+Ogni progetto mantiene (gestito dal coordinatore):
 - **Stato corrente**: ultima attività, file attivi, note recenti
-- **Storico sessioni**: cronologia del lavoro
+- **Storico sessioni**: cronologia del lavoro  
 - **TODO e obiettivi**: task attivi e completati
 - **Note tecniche**: setup, architettura, dipendenze
 - **Dati archiviati**: informazioni compattate intelligentemente
@@ -48,46 +65,81 @@ Ogni progetto mantiene:
 4. **Mantiene metriche**: statistiche di completamento
 5. **Preserva contesto**: informazioni essenziali per continuità
 
-## 📱 Comandi Disponibili
+## 📱 Comandi Enterprise
 
-### Memoria Globale
+### Coordinatore Memoria Unificato
 ```bash
-claude-save "nota sessione"           # Salva stato corrente
-claude-resume                         # Riprende ultima sessione
-claude-memory                         # Gestisce memoria globale
-claude-memory context "obiettivo"     # Aggiorna obiettivi
+# Controllo coordinatore principale
+claude-memory-coordinator start       # Avvia coordinatore unificato
+claude-memory-coordinator stop        # Ferma coordinatore
+claude-memory-coordinator status      # Controlla stato coordinatore
+claude-memory-coordinator health      # Controllo salute tutti i servizi
+claude-memory-coordinator restart     # Riavvia con cleanup
+
+# Performance e ottimizzazione
+claude-memory-coordinator optimize    # Ottimizza cache e performance
+claude-memory-coordinator cache-stats # Visualizza statistiche cache
+claude-memory-coordinator cache-refresh # Aggiorna cache
 ```
 
-### Memoria Progetto
+### Gestione Memoria (Migliorata)
 ```bash
-claude-project-memory save "nota"     # Salva stato progetto
-claude-project-memory resume          # Riprende progetto corrente
-claude-project-memory todo add "task" # Aggiunge TODO
-claude-project-memory todo list       # Lista TODO
-claude-project-memory todo done 1     # Completa TODO
+# Memoria globale (gestita da coordinatore)
+claude-save "nota sessione"           # Salva stato corrente (atomico)
+claude-resume                         # Riprende ultima sessione (cached)
+claude-memory context "obiettivo"     # Aggiorna obiettivi (locked)
+
+# Memoria progetto (enterprise-grade)
+claude-project-memory save "nota"     # Salva stato progetto (atomico)
+claude-project-memory resume          # Riprende progetto (cached)
+claude-project-memory todo add "task" # Aggiunge TODO (coordinato)
+claude-project-memory todo list       # Lista TODO (performance-ottimizzato)
+claude-project-memory todo done 1     # Completa TODO (aggiornamento atomico)
 ```
 
-### Pulizia Memoria
+### Gestione Enterprise
 ```bash
-claude-memory-cleaner auto            # Pulizia automatica
-claude-memory-cleaner stats           # Statistiche memoria
-claude-memory-cleaner project nome    # Pulisce progetto specifico
+# Integrità e recovery
+claude-memory-coordinator integrity-check  # Verifica integrità memoria
+claude-memory-coordinator auto-recover     # Recovery automatico errori
+claude-memory-coordinator manual-recover   # Recovery manuale con opzioni
+
+# Gestione backup  
+claude-backup-cleaner status               # Visualizza stato backup
+claude-backup-cleaner clean                # Pulisce backup vecchi
+claude-backup-cleaner set-retention 60     # Imposta retention (giorni)
+
+# Pulizia legacy (ancora disponibile)
+claude-memory-cleaner auto                 # Pulizia automatica
+claude-memory-cleaner stats                # Statistiche memoria
 ```
 
-## 🤖 Automazione
+## 🤖 Automazione Enterprise
 
-### Auto-Save
-- **Trigger**: ogni modifica file (via auto-sync)
-- **Frequenza**: quando rileva cambiamenti
-- **Scope**: sia memoria globale che per-progetto
+### Auto-Save Coordinatore Unificato
+- **Trigger**: modifiche file rilevate dal coordinatore
+- **Metodo**: operazioni atomiche con file locking
+- **Scope**: gestione unificata (memoria globale + progetto + sessione)
+- **Performance**: caching intelligente e operazioni batch
+- **Affidabilità**: risoluzione automatica conflitti e validazione integrità
 
-### Auto-Cleanup
-- **Frequenza**: una volta al giorno
-- **Trigger**: durante auto-sync
-- **Intelligenza**: preserva informazioni importanti
+### Auto-Cleanup Enterprise
+- **Frequenza**: configurabile (default: giornaliera)
+- **Intelligenza**: riconoscimento pattern avanzato preserva informazioni critiche
+- **Coordinamento**: pulizia unificata su tutti i tipi memoria
+- **Performance**: operazioni batch ottimizzate riducono overhead I/O
+- **Integrazione Backup**: backup automatico prima operazioni pulizia
 - **Soglie**: 
-  - File > 50KB → compattazione
-  - Ultima pulizia > 7 giorni → ricompattazione
+  - File > 50KB → compattazione intelligente con backup
+  - Ultima pulizia > 7 giorni → ricompattazione forzata con controllo integrità
+  - Corruzione memoria rilevata → recovery automatico
+
+### Rotazione Backup Automatica
+- **Pianificazione**: retention policies configurabili (default: 30 giorni)
+- **Compressione**: efficiente con deduplicazione
+- **Verifica**: controlli integrità automatici sui backup
+- **Pulizia**: rimozione automatica backup scaduti
+- **Recovery**: ripristino one-command da qualsiasi punto backup
 
 ## 💾 Formato Dati
 
@@ -272,4 +324,31 @@ Il sistema avvisa quando:
 - ✅ Mantieni obiettivi aggiornati
 - ✅ Documenta decisioni architetturali importanti
 
-Il sistema di memoria intelligente garantisce continuità perfetta tra sessioni mantenendo prestazioni ottimali! 🚀
+## 🚀 Performance & Affidabilità Enterprise
+
+Il **coordinatore memoria unificato** offre performance e affidabilità enterprise-grade:
+
+### Funzionalità Performance
+- **Caching Intelligente**: Sistema caching multi-livello con smart prefetching
+- **Operazioni Atomiche**: File locking garantisce accesso concorrente sicuro
+- **Elaborazione Batch**: Operazioni bulk ottimizzate riducono overhead I/O
+- **Lazy Loading**: Carica solo componenti memoria richiesti on demand
+- **Ottimizzazione Background**: Tuning performance continuo e gestione cache
+
+### Funzionalità Affidabilità
+- **File Locking**: Previene corruzione durante accesso concorrente
+- **Protezione Processi**: Prevenzione deadlock e coordinamento processi
+- **Recovery Automatico**: Rilevamento errori e rollback enterprise-grade
+- **Monitoraggio Integrità**: Validazione continua consistenza memoria
+- **Automazione Backup**: Rotazione automatica con retention policies configurabili
+
+### Vantaggi Enterprise
+- **Zero Perdita Dati**: Operazioni atomiche e backup automatici garantiscono sicurezza dati
+- **Alta Performance**: Caching intelligente e ottimizzazioni offrono operazioni veloci
+- **Scalabilità**: Gestisce progetti grandi e dispositivi concorrenti multipli
+- **Affidabilità**: Meccanismi gestione errori e recovery enterprise-grade
+- **Maintenance-Free**: Completamente automatizzato con auto-gestione intelligente
+
+Perfetto per sviluppatori che richiedono **affidabilità enterprise** con **zero overhead manutenzione**!
+
+Il **coordinatore memoria enterprise** garantisce continuità perfetta tra sessioni offrendo **performance e affidabilità enterprise-grade**! 🚀

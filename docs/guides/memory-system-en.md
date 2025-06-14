@@ -114,20 +114,32 @@ claude-memory-cleaner auto                 # Automatic cleanup
 claude-memory-cleaner stats                # Memory statistics
 ```
 
-## 🤖 Automation
+## 🤖 Enterprise Automation
 
-### Auto-Save
-- **Trigger**: every file modification (via auto-sync)
-- **Frequency**: when detecting changes
-- **Scope**: both global and per-project memory
+### Unified Coordinator Auto-Save
+- **Trigger**: file modifications detected by coordinator
+- **Method**: atomic operations with file locking
+- **Scope**: unified management (global + project + session memory)
+- **Performance**: intelligent caching and batch operations
+- **Reliability**: automatic conflict resolution and integrity validation
 
-### Auto-Cleanup
-- **Frequency**: once daily
-- **Trigger**: during auto-sync
-- **Intelligence**: preserves important information
+### Enterprise Auto-Cleanup
+- **Frequency**: configurable (default: daily)
+- **Intelligence**: advanced pattern recognition preserves critical information
+- **Coordination**: unified cleanup across all memory types
+- **Performance**: optimized batch operations reduce I/O overhead
+- **Backup Integration**: automatic backup before cleanup operations
 - **Thresholds**: 
-  - Files > 50KB → compaction
-  - Last cleanup > 7 days → re-compaction
+  - Files > 50KB → intelligent compaction with backup
+  - Last cleanup > 7 days → forced re-compaction with integrity check
+  - Memory corruption detected → automatic recovery
+
+### Automatic Backup Rotation
+- **Schedule**: configurable retention policies (default: 30 days)
+- **Compression**: space-efficient with deduplication
+- **Verification**: automatic integrity checks on backups
+- **Cleanup**: automatic removal of expired backups
+- **Recovery**: one-command restore from any backup point
 
 ## 💾 Data Format
 
@@ -435,15 +447,31 @@ tar -czf - .claude/memory/ | gpg -c > memory-backup-encrypted.tar.gz.gpg
 claude-memory-cleaner stats | grep "privacy-check"
 ```
 
-## 🚀 Performance Optimization
+## 🚀 Enterprise Performance & Reliability
 
-The memory system is designed to stay fast and lightweight:
+The **unified memory coordinator** delivers enterprise-grade performance and reliability:
 
-- **Automatic compaction** prevents memory bloat
-- **Intelligent caching** speeds up frequent operations  
-- **Lazy loading** only loads what you need
-- **Background cleanup** maintains performance
+### Performance Features
+- **Intelligent Caching**: Multi-layered caching system with smart prefetching
+- **Atomic Operations**: File locking ensures safe concurrent access  
+- **Batch Processing**: Optimized bulk operations reduce I/O overhead
+- **Lazy Loading**: Only loads required memory components on demand
+- **Background Optimization**: Continuous performance tuning and cache management
 
-Perfect for hobby developers who want enterprise-level features with zero maintenance overhead!
+### Reliability Features  
+- **File Locking**: Prevents corruption during concurrent access
+- **Process Protection**: Deadlock prevention and process coordination
+- **Automatic Recovery**: Enterprise-grade error detection and rollback
+- **Integrity Monitoring**: Continuous validation of memory consistency
+- **Backup Automation**: Automatic rotation with configurable retention policies
 
-The intelligent memory system ensures perfect continuity between sessions while maintaining optimal performance! 🚀
+### Enterprise Benefits
+- **Zero Data Loss**: Atomic operations and automatic backups ensure data safety
+- **High Performance**: Intelligent caching and optimization deliver fast operations
+- **Scalability**: Handles large projects and multiple concurrent devices
+- **Reliability**: Enterprise-grade error handling and recovery mechanisms
+- **Maintenance-Free**: Fully automated with intelligent self-management
+
+Perfect for developers who demand **enterprise reliability** with **zero maintenance overhead**!
+
+The **enterprise memory coordinator** ensures perfect continuity between sessions while delivering **enterprise-grade performance and reliability**! 🚀
