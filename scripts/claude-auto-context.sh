@@ -120,7 +120,7 @@ auto_save_context() {
     # Try to save context
     if [[ -f "$WORKSPACE_DIR/scripts/claude-simplified-memory.sh" ]]; then
         local result
-        result=$("$WORKSPACE_DIR/scripts/claude-simplified-memory.sh" auto-save 2>&1)
+        result=$("$WORKSPACE_DIR/scripts/claude-simplified-memory.sh" save auto "Auto-save from daemon" "" "" 2>&1)
         local exit_code=$?
         
         if [[ $exit_code -eq 0 ]]; then
