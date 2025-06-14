@@ -1353,3 +1353,36 @@ Commands:
 [2025-06-14 18:32:46] [DEBUG] [PROJECT] Project detection completed
 [2025-06-14 18:33:17] [DEBUG] [PROJECT] Checking project changes
 [2025-06-14 18:33:17] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:33:48] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:33:48] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:34:19] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:34:19] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:34:50] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:34:50] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:35:21] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:35:21] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:35:52] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:35:52] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:36:23] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:36:23] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:36:53] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:36:53] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:37:24] [DEBUG] [CONTEXT] Starting auto-save check
+[2025-06-14 18:37:24] [ERROR] [CONTEXT] Auto-save failed: Usage: /home/nullrunner/claude-workspace/scripts/claude-simplified-memory.sh {save|load|stats} [args...]
+
+Commands:
+  save [reason] [summary] [issues] [actions] - Save context
+  load                                       - Load and display context
+  stats                                      - Show performance statistics
+[2025-06-14 18:37:24] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:37:24] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:37:55] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:37:55] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:38:26] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:38:26] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:38:57] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:38:57] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:39:28] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:39:28] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:39:59] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:39:59] [DEBUG] [PROJECT] Project detection completed
