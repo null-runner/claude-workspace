@@ -1,8 +1,8 @@
 **Lingua:** [🇺🇸 English](setup-en.md) | [🇮🇹 Italiano](setup-it.md)
 
-# Guida Setup Completa - Claude Workspace
+# Guida Setup Completa - Claude Workspace Enterprise
 
-Questa guida copre il setup completo del sistema Claude Workspace sia per il PC fisso che per il laptop.
+Questa guida copre il setup completo del sistema Claude Workspace Enterprise-Grade sia per il PC fisso che per il laptop. Il sistema è ora dotato di componenti enterprise per massima robustezza e performance.
 
 ## Setup PC Fisso
 
@@ -10,7 +10,11 @@ Questa guida copre il setup completo del sistema Claude Workspace sia per il PC 
 - Ubuntu/Debian o sistema Linux compatibile
 - Git installato
 - Accesso SSH configurato
-- Python 3.x per il server HTTP temporaneo
+- Python 3.x (richiesto per componenti enterprise)
+- **Nuovo**: jq (JSON processor) per coordinatori
+- **Nuovo**: flock utility per file locking
+- **Minimo**: 2GB RAM liberi per sistema autonomo
+- **Raccomandato**: SSD per performance ottimale
 
 ### Installazione step-by-step
 
@@ -22,12 +26,14 @@ Questa guida copre il setup completo del sistema Claude Workspace sia per il PC 
    mkdir -p ~/claude-workspace/{projects/{active,sandbox,production},scripts,configs,logs,docs}
    ```
 
-2. **Eseguire lo script di setup**:
+2. **Eseguire lo script di setup enterprise**:
    ```bash
    cd ~/claude-workspace
    chmod +x setup.sh
-   ./setup.sh
+   ./setup.sh --enterprise
    ```
+   
+   **Nota**: Il flag `--enterprise` abilita componenti avanzati
 
 3. **Cosa fa lo script setup.sh**:
    - Crea tutte le directory necessarie
@@ -36,22 +42,20 @@ Questa guida copre il setup completo del sistema Claude Workspace sia per il PC 
    - Genera gli script di gestione
    - Configura il logging
 
-4. **Verificare l'installazione**:
+4. **Verificare l'installazione enterprise**:
    ```bash
-   ~/claude-workspace/scripts/claude-status.sh
+   ~/claude-workspace/scripts/claude-startup.sh
    ```
 
-   Output atteso:
+   Output atteso enterprise:
    ```
-   === Claude Workspace Status ===
-   Timestamp: 2025-01-06 10:30:45
-   
-   Access Control: ENABLED/DISABLED
-   Allowed Devices: 1
-   
-   Directory Structure: OK
-   Scripts: OK
-   Permissions: OK
+   🚀 CLAUDE WORKSPACE ENTERPRISE STARTUP
+   =====================================
+   📍 Sistema Autonomo: ATTIVO
+   🎯 Coordinatori: OK (3/3)
+   🔒 File Locking: ENABLED
+   📊 Monitoraggio: HEALTHY
+   ✅ Sistema enterprise completamente operativo
    ```
 
 5. **Inizializzare sistema memoria intelligente**:
@@ -189,7 +193,26 @@ Questa guida copre il setup completo del sistema Claude Workspace sia per il PC 
    tail -f ~/claude-workspace/logs/auto-sync.log
    ```
 
-## Troubleshooting Comune
+## Exit Sicuro Sistema Enterprise
+
+### 🗂️ Comando cexit (Raccomandato)
+
+Per uscire dal sistema enterprise in modo sicuro:
+
+```bash
+# Exit sicuro mantenendo sessione aperta (raccomandato)
+~/claude-workspace/scripts/cexit-safe
+
+# Exit completo con terminazione Claude Code
+~/claude-workspace/scripts/cexit
+
+# Exit con sync forzato
+~/claude-workspace/scripts/cexit --force-sync
+```
+
+**Importante**: **USA SEMPRE** `cexit` o `cexit-safe` invece di `exit` normale!
+
+## Troubleshooting Enterprise
 
 ### Problema: Sistema memoria non funziona
 

@@ -1,8 +1,8 @@
 **Lingua:** [🇺🇸 English](sandbox-system.md) | [🇮🇹 Italiano](sandbox-system-it.md)
 
-# Sistema Sandbox Claude Workspace
+# Sistema Sandbox Claude Workspace Enterprise
 
-Sistema completo di gestione progetti sandbox con auto-cleanup e template predefiniti.
+Sistema completo enterprise di gestione progetti sandbox con auto-cleanup, template predefiniti e coordinatori avanzati.
 
 ## Overview
 
@@ -369,9 +369,9 @@ npm install && npm run dev
 
 ---
 
-## 🎯 Sistema Sandbox Completo
+## 🎯 Sistema Sandbox Enterprise Completo
 
-Il sistema sandbox è ora completamente configurato con:
+Il sistema sandbox enterprise è ora completamente configurato con:
 
 ✅ **Auto-cleanup** progetti sandbox vecchi  
 ✅ **Template pronti** Python, Node.js, React  
@@ -379,5 +379,10 @@ Il sistema sandbox è ora completamente configurato con:
 ✅ **Automazione** cron job configurabili  
 ✅ **Logging e monitoring** dettagliato  
 ✅ **Sicurezza** e robustezza integrate  
+🆕 **Coordinatori Enterprise** per gestione intelligente  
+🆕 **Project Mode** con protezione avanzata  
+🆕 **Lock System** distribuito enterprise  
+🆕 **Performance Monitoring** real-time  
+🆕 **Recovery Automatico** da crash  
 
-Usa `./scripts/setup-cron.sh` per configurare l'automazione completa!
+Usa `./scripts/claude-startup.sh` per avviare il sistema enterprise completo!

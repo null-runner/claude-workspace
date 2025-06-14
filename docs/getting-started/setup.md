@@ -359,21 +359,27 @@ df -h ~/claude-workspace
 du -sh ~/claude-workspace/*
 ```
 
-**Pulizia**:
+**Pulizia Enterprise**:
 ```bash
-# Rimuovere log vecchi
-find ~/claude-workspace/logs -name "*.log" -mtime +30 -delete
+# Rotazione log automatica (enterprise)
+~/claude-workspace/scripts/claude-log-rotator.sh --auto
+
+# Backup cleaner enterprise
+~/claude-workspace/scripts/claude-backup-cleaner.sh --cleanup-old
 
 # Archiviare progetti vecchi
 tar -czf ~/backups/old-projects-$(date +%Y%m%d).tar.gz ~/claude-workspace/projects/production/old-project
 rm -rf ~/claude-workspace/projects/production/old-project
+
+# Pulizia coordinatori (sicura)
+~/claude-workspace/scripts/claude-memory-coordinator.sh cleanup
 ```
 
-## Configurazioni Avanzate
+## Configurazioni Enterprise Avanzate
 
-### Escludere file dal sync
+### Escludere file dal sync enterprise
 
-Creare `~/claude-workspace/.rsync-exclude`:
+Creare `~/claude-workspace/.rsync-exclude` (enterprise-aware):
 ```
 *.tmp
 *.log
@@ -382,81 +388,138 @@ __pycache__/
 .git/
 *.swp
 .DS_Store
+# Enterprise excludes
+.claude/logs/*.log
+.claude/coordination/*.tmp
+*.pid
+*.sock
 ```
 
-### Modificare frequenza sync
+### Configurare coordinatori enterprise
 
-Editare crontab:
-```bash
-crontab -e
-# Cambiare */5 con */10 per sync ogni 10 minuti
+Editare `~/claude-workspace/.claude/enterprise-config.json`:
+```json
+{
+  "coordinators": {
+    "memory": {
+      "max_memory_mb": 512,
+      "cleanup_interval": 3600
+    },
+    "sync": {
+      "max_concurrent": 3,
+      "timeout_seconds": 300
+    },
+    "monitoring": {
+      "health_check_interval": 60,
+      "performance_logging": true
+    }
+  }
+}
 ```
 
-### Backup automatico
+### Performance tuning enterprise
 
-Aggiungere a crontab sul PC fisso:
 ```bash
-0 2 * * * tar -czf ~/backups/claude-workspace-$(date +\%Y\%m\%d).tar.gz ~/claude-workspace/
+# Ottimizza performance I/O
+~/claude-workspace/scripts/claude-startup.sh --optimize
+
+# Configura monitoring avanzato
+~/claude-workspace/scripts/claude-autonomous-system.sh configure --performance-mode
+
+# Setup backup enterprise automatico
+~/claude-workspace/scripts/claude-backup-cleaner.sh schedule --daily
 ```
 
 ## Verifica Post-Setup
 
-### Checklist PC Fisso
-- [ ] Directory structure creata
-- [ ] Scripts eseguibili
+### Checklist PC Fisso Enterprise
+- [ ] Directory structure creata (incluse enterprise)
+- [ ] Scripts eseguibili (tutti i coordinatori)
 - [ ] SSH server attivo
 - [ ] Controllo accessi configurato
-- [ ] Log directory scrivibile
-- [ ] Sistema memoria inizializzato
-- [ ] Comandi claude-save e claude-resume funzionanti
-- [ ] Directory .claude/memory/ creata con permessi corretti
+- [ ] Log directory scrivibile + rotazione
+- [ ] **Sistema autonomo avviato**: `claude-startup.sh`
+- [ ] **Coordinatori attivi**: memory, sync, project
+- [ ] **Sistema memoria enterprise**: `claude-simplified-memory.sh`
+- [ ] **File locking system**: `claude-sync-lock.sh`
+- [ ] **Monitoraggio performance**: `claude-autonomous-system.sh status`
+- [ ] **Exit sicuro**: `cexit` and `cexit-safe` funzionanti
+- [ ] **Backup cleaner**: `claude-backup-cleaner.sh` configurato
+- [ ] **Log rotator**: `claude-log-rotator.sh` attivo
 
-### Checklist Laptop
+### Checklist Laptop Enterprise
 - [ ] SSH key configurata
 - [ ] Connessione SSH funzionante
-- [ ] Scripts di sync funzionanti
-- [ ] Sync automatico configurato (opzionale)
-- [ ] Primo sync completato con successo
-- [ ] Memoria sincronizzata dal PC fisso
-- [ ] Comandi memoria funzionanti (claude-save, claude-project-memory)
-- [ ] Test progetto con memoria completato
+- [ ] **Coordinatori sync attivi**
+- [ ] **Smart sync enterprise**: `claude-smart-sync.sh`
+- [ ] **Sistema autonomo sincronizzato**
+- [ ] **Memoria coordinata cross-device**
+- [ ] **Lock enterprise funzionanti**
+- [ ] **Exit sicuro configurato**: `cexit-safe`
+- [ ] **Recovery automatico**: `claude-startup.sh --recovery`
+- [ ] **Performance monitoring**: logs enterprise
+- [ ] **Test progetto con coordinatori completato**
 
-## Comandi Utili per Debug
+## Comandi Utili per Debug Enterprise
 
 ```bash
-# Verificare connettività
+# === DIAGNOSI SISTEMA ENTERPRISE ===
+
+# Status completo sistema autonomo
+~/claude-workspace/scripts/claude-autonomous-system.sh status
+~/claude-workspace/scripts/claude-autonomous-system.sh logs
+
+# Verifica coordinatori
+~/claude-workspace/scripts/claude-memory-coordinator.sh status
+~/claude-workspace/scripts/claude-sync-coordinator.sh status
+
+# Monitor performance real-time
+watch -n 2 '~/claude-workspace/scripts/claude-autonomous-system.sh status'
+
+# === DEBUG MEMORIA ENTERPRISE ===
+
+# Test memoria coordinata
+~/claude-workspace/scripts/claude-simplified-memory.sh save "Test enterprise"
+~/claude-workspace/scripts/claude-simplified-memory.sh load
+
+# Verifica struttura enterprise
+find ~/claude-workspace/.claude/memory-coordination -type f | head -10
+find ~/claude-workspace/.claude/logs -name "*.log" | head -5
+
+# === DEBUG LOCK SYSTEM ===
+
+# Status lock distribuito
+~/claude-workspace/scripts/claude-sync-lock.sh status
+
+# Diagnosi lock bloccati
+~/claude-workspace/scripts/claude-sync-lock.sh diagnose
+
+# === DEBUG CONNETTIVITA ===
+
+# Verificare connettività (unchanged)
 ping -c 3 192.168.1.106
 nc -zv 192.168.1.106 22
 
-# Debug SSH
+# Debug SSH (unchanged)
 ssh -vvv nullrunner@192.168.1.106
 
-# Test rsync con output verbose
-rsync -avz --dry-run --progress ~/claude-workspace/projects/ nullrunner@192.168.1.106:~/claude-workspace/projects/
+# === RECOVERY ENTERPRISE ===
 
-# Controllare log di sistema
-journalctl -u ssh -f  # Sul PC fisso
-tail -f /var/log/auth.log  # Sul PC fisso
+# Recovery completo sistema
+~/claude-workspace/scripts/claude-startup.sh --recovery
 
-# Monitorare sync in tempo reale
-watch -n 1 'ls -la ~/claude-workspace/.sync.lock; tail -5 ~/claude-workspace/logs/sync.log'
+# Cleanup enterprise completo
+~/claude-workspace/scripts/claude-backup-cleaner.sh --cleanup-all
+~/claude-workspace/scripts/claude-log-rotator.sh --force-rotate
 
-# Debug sistema memoria
-# Verifica struttura memoria
-find ~/claude-workspace/.claude/memory -type f -name "*.json" | head -10
+# === PERFORMANCE MONITORING ===
 
-# Test comandi memoria
-claude-save "Test sistema memoria" && claude-resume
+# Statistiche performance
+~/claude-workspace/scripts/claude-autonomous-system.sh stats
 
-# Verifica dimensione memoria
-du -sh ~/claude-workspace/.claude/memory/
+# Log aggregati enterprise
+tail -f ~/.claude/logs/enterprise-*.log
 
-# Lista progetti con memoria
-claude-project-memory list
-
-# Statistiche memoria
-claude-memory-cleaner stats
-
-# Test sincronizzazione memoria cross-device
-rsync -avz --dry-run ~/claude-workspace/.claude/ nullrunner@192.168.1.106:~/claude-workspace/.claude/
+# Test stress coordinatori
+for i in {1..5}; do ~/claude-workspace/scripts/claude-simplified-memory.sh save "stress-test-$i"; done
 ```

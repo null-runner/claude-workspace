@@ -1,8 +1,8 @@
-# Complete Setup Guide - Claude Workspace
+# Complete Setup Guide - Claude Workspace Enterprise
 
 [🇺🇸 English](setup-en.md) | [🇮🇹 Italiano](setup-it.md)
 
-This guide covers the complete setup of Claude Workspace system for both desktop PC and laptop - designed to be straightforward for hobby developers and personal projects.
+This guide covers the complete setup of Claude Workspace Enterprise-Grade system for both desktop PC and laptop. The system now features enterprise components for maximum robustness and performance.
 
 ## Desktop PC Setup
 
@@ -10,7 +10,11 @@ This guide covers the complete setup of Claude Workspace system for both desktop
 - Ubuntu/Debian or compatible Linux system
 - Git installed
 - SSH access configured
-- Python 3.x for temporary HTTP server
+- Python 3.x (required for enterprise components)
+- **New**: jq (JSON processor) for coordinators
+- **New**: flock utility for file locking
+- **Minimum**: 2GB free RAM for autonomous system
+- **Recommended**: SSD for optimal performance
 
 ### Step-by-Step Installation
 
@@ -22,57 +26,69 @@ This guide covers the complete setup of Claude Workspace system for both desktop
    mkdir -p ~/claude-workspace/{projects/{active,sandbox,production},scripts,configs,logs,docs}
    ```
 
-2. **Run setup script**:
+2. **Run enterprise setup script**:
    ```bash
    cd ~/claude-workspace
    chmod +x setup.sh
-   ./setup.sh
+   ./setup.sh --enterprise
    ```
+   
+   **Note**: The `--enterprise` flag enables advanced components:
+   - Process coordination system
+   - Advanced file locking
+   - Enterprise automatic backup
+   - Performance monitoring
 
-3. **What setup.sh does**:
-   - Creates all necessary directories
+3. **What setup.sh --enterprise does**:
+   - Creates all necessary directories (including enterprise)
    - Sets correct permissions (755 for directories, 644 for files)
-   - Creates access control file
-   - Generates management scripts
-   - Configures logging
+   - Creates access control file with process protection
+   - Generates enterprise management scripts
+   - Configures multi-level logging
+   - **New**: Initializes coordinators (memory, sync, project)
+   - **New**: Configures distributed lock system
+   - **New**: Installs monitoring components
+   - **New**: Sets up automatic log rotation
 
-4. **Verify installation**:
+4. **Verify enterprise installation**:
    ```bash
-   ~/claude-workspace/scripts/claude-status.sh
+   ~/claude-workspace/scripts/claude-startup.sh
    ```
 
-   Expected output:
+   Expected enterprise output:
    ```
-   === Claude Workspace Status ===
-   Timestamp: 2025-01-06 10:30:45
+   🚀 CLAUDE WORKSPACE ENTERPRISE STARTUP
+   =====================================
+   📍 Autonomous System: ACTIVE
+   🎯 Coordinators: OK (3/3)
+   🔒 File Locking: ENABLED
+   📊 Monitoring: HEALTHY
+   🧠 Memory: LOADED
+   🔄 Sync: READY
    
-   Access Control: ENABLED/DISABLED
-   Allowed Devices: 1
-   
-   Directory Structure: OK
-   Scripts: OK
-   Permissions: OK
+   ✅ Enterprise system fully operational
    ```
 
-5. **Initialize intelligent memory system**:
+5. **Initialize enterprise memory system**:
    ```bash
-   # Create memory structure
-   mkdir -p ~/claude-workspace/.claude/memory/projects
+   # Start memory coordinator
+   ~/claude-workspace/scripts/claude-memory-coordinator.sh start
    
    # Initialize global workspace memory
-   claude-save "Claude Workspace system initialized"
+   ~/claude-workspace/scripts/claude-simplified-memory.sh save "Claude Workspace Enterprise system initialized"
    
    # Verify functionality
-   claude-resume
+   ~/claude-workspace/scripts/claude-simplified-memory.sh load
    ```
 
    Expected output:
    ```
-   🧠 WORKSPACE MEMORY
-   ====================
+   🧠 ENTERPRISE WORKSPACE MEMORY
+   ===============================
    📍 LAST SESSION:
       When: A few seconds ago (hostname)
-      Last note: Claude Workspace system initialized
+      Last note: Claude Workspace Enterprise system initialized
+      Coordinator: ACTIVE
    ```
 
 ### SSH Configuration
@@ -189,30 +205,63 @@ This guide covers the complete setup of Claude Workspace system for both desktop
    tail -f ~/claude-workspace/logs/auto-sync.log
    ```
 
-## Common Troubleshooting
+## Safe Exit Enterprise System
 
-### Problem: Memory system not working
+### 🗂️ cexit Command (Recommended)
 
-**Symptoms**: `claude-save` or `claude-project-memory` commands don't work
+To safely exit the enterprise system:
 
-**Solutions**:
 ```bash
-# Verify memory directory exists
-ls -la ~/claude-workspace/.claude/memory/
+# Safe exit keeping session open (recommended)
+~/claude-workspace/scripts/cexit-safe
 
-# If doesn't exist, create manually
-mkdir -p ~/claude-workspace/.claude/memory/projects
+# Complete exit with Claude Code termination
+~/claude-workspace/scripts/cexit
 
-# Verify permissions
-chmod 700 ~/claude-workspace/.claude/memory
-chmod 755 ~/claude-workspace/.claude/memory/projects
+# Exit with forced sync
+~/claude-workspace/scripts/cexit --force-sync
+```
 
-# Test memory scripts
-which claude-save
-ls -la ~/claude-workspace/scripts/claude-*.sh
+**Important**: 
+- **DO NOT use** normal `exit` - doesn't trigger graceful shutdown
+- **Always use** `cexit` or `cexit-safe` to preserve system state
+- Enterprise system requires coordinated shutdown
 
-# If missing, add to PATH or use full path
-~/claude-workspace/scripts/claude-save.sh "Memory test"
+### What cexit does
+1. 💾 Automatically saves session state
+2. 🔄 Final intelligent sync
+3. 📊 Updates performance statistics
+4. 🔒 Releases all locks
+5. 🚫 Terminates background services
+6. 🔍 Analyzes session activity for insights
+
+## Enterprise Troubleshooting
+
+### Problem: Enterprise memory system not working
+
+**Symptoms**: Memory coordinator not responding or memory not syncing
+
+**Enterprise Solutions**:
+```bash
+# Verify memory coordinator
+~/claude-workspace/scripts/claude-memory-coordinator.sh status
+
+# Restart coordinator if needed
+~/claude-workspace/scripts/claude-memory-coordinator.sh restart
+
+# Verify enterprise structure
+ls -la ~/claude-workspace/.claude/memory-coordination/
+ls -la ~/claude-workspace/.claude/logs/
+
+# Test memory with coordinator
+~/claude-workspace/scripts/claude-simplified-memory.sh save "Enterprise memory test"
+~/claude-workspace/scripts/claude-simplified-memory.sh load
+
+# Verify lock files
+ls -la ~/claude-workspace/.claude/*.lock
+
+# Clean locks if stuck
+~/claude-workspace/scripts/claude-sync-lock.sh cleanup
 ```
 
 ### Problem: Memory doesn't sync between devices
@@ -336,25 +385,33 @@ Add to crontab on desktop PC:
 
 ## Post-Setup Verification
 
-### Desktop PC Checklist
-- [ ] Directory structure created
-- [ ] Scripts executable
+### Desktop PC Enterprise Checklist
+- [ ] Directory structure created (including enterprise)
+- [ ] Scripts executable (all coordinators)
 - [ ] SSH server active
 - [ ] Access control configured
-- [ ] Log directory writable
-- [ ] Memory system initialized
-- [ ] claude-save and claude-resume commands working
-- [ ] .claude/memory/ directory created with correct permissions
+- [ ] Log directory writable + rotation
+- [ ] **Autonomous system started**: `claude-startup.sh`
+- [ ] **Coordinators active**: memory, sync, project
+- [ ] **Enterprise memory system**: `claude-simplified-memory.sh`
+- [ ] **File locking system**: `claude-sync-lock.sh`
+- [ ] **Performance monitoring**: `claude-autonomous-system.sh status`
+- [ ] **Safe exit**: `cexit` and `cexit-safe` working
+- [ ] **Backup cleaner**: `claude-backup-cleaner.sh` configured
+- [ ] **Log rotator**: `claude-log-rotator.sh` active
 
-### Laptop Checklist
+### Laptop Enterprise Checklist
 - [ ] SSH key configured
 - [ ] SSH connection working
-- [ ] Sync scripts working
-- [ ] Automatic sync configured (optional)
-- [ ] First sync completed successfully
-- [ ] Memory synced from desktop PC
-- [ ] Memory commands working (claude-save, claude-project-memory)
-- [ ] Test project with memory completed
+- [ ] **Enterprise sync coordinators active**
+- [ ] **Smart sync enterprise**: `claude-smart-sync.sh`
+- [ ] **Autonomous system synchronized**
+- [ ] **Cross-device coordinated memory**
+- [ ] **Enterprise locks working**
+- [ ] **Safe exit configured**: `cexit-safe`
+- [ ] **Automatic recovery**: `claude-startup.sh --recovery`
+- [ ] **Performance monitoring**: enterprise logs
+- [ ] **Test project with coordinators completed**
 
 ## Useful Debug Commands
 

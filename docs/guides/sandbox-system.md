@@ -1,16 +1,75 @@
-# Sistema Sandbox Claude Workspace
+# Sistema Sandbox Claude Workspace Enterprise
 
-Sistema completo di gestione progetti sandbox con auto-cleanup e template predefiniti.
+Sistema completo enterprise di gestione progetti sandbox con auto-cleanup, template predefiniti e coordinatori avanzati.
 
 ## Overview
 
-Il sistema sandbox fornisce:
+Il sistema sandbox enterprise fornisce:
 - **Auto-cleanup**: Rimozione automatica progetti sandbox vecchi
 - **Template**: Template pronti per Python, Node.js, React
 - **Gestione progetti**: Creazione, archiviazione, monitoraggio
 - **Automazione**: Cron job per cleanup e backup automatici
+- **🆕 Coordinatori Enterprise**: Gestione intelligente cross-dispositivi
+- **🆕 Project Mode**: Modalità progetto enterprise con protezione
+- **🆕 Lock System**: Sistema di lock distribuito per operazioni sicure
+- **🆕 Performance Monitoring**: Monitoraggio avanzato performance
+- **🆕 Recovery Automatico**: Auto-recovery da crash e errori
 
 ## Script Principali
+
+### 🆕 Script Enterprise
+
+#### 🎯 claude-project-mode.sh
+Modalità progetto enterprise con protezione e monitoraggio.
+
+```bash
+# Avvia modalità progetto enterprise
+./scripts/claude-project-mode.sh start mio-progetto
+
+# Status modalità progetto
+./scripts/claude-project-mode.sh status
+
+# Stop sicuro modalità progetto
+./scripts/claude-project-mode.sh stop mio-progetto
+```
+
+#### 🔒 claude-sync-lock.sh
+Sistema di lock distribuito enterprise per operazioni sicure.
+
+```bash
+# Acquisisce lock per operazione
+./scripts/claude-sync-lock.sh acquire "cleanup-operation"
+
+# Rilascia lock
+./scripts/claude-sync-lock.sh release "cleanup-operation"
+
+# Status di tutti i lock
+./scripts/claude-sync-lock.sh status
+```
+
+#### 🧹 claude-backup-cleaner.sh
+Pulizia enterprise dei backup con retention policy.
+
+```bash
+# Cleanup automatico backup vecchi
+./scripts/claude-backup-cleaner.sh --auto
+
+# Cleanup forzato con retention policy
+./scripts/claude-backup-cleaner.sh --cleanup-old --days 30
+```
+
+#### 📋 claude-log-rotator.sh
+Rotazione log enterprise con compressione.
+
+```bash
+# Rotazione automatica log
+./scripts/claude-log-rotator.sh --auto
+
+# Rotazione forzata
+./scripts/claude-log-rotator.sh --force-rotate
+```
+
+### Script Classici Potenziati
 
 ### 🧹 cleanup-sandbox.sh
 Rimuove progetti sandbox più vecchi del periodo di retention configurato.
