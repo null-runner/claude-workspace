@@ -35,7 +35,7 @@ save_context() {
     echo -e "${YELLOW}💾 Saving optimized context...${NC}"
     
     export WORKSPACE_DIR
-    python3 "$WORKSPACE_DIR/scripts/memory-operations.py" save_context "$save_reason" "$conversation_summary" "$open_issues" "$next_actions"
+    python3 "$WORKSPACE_DIR/scripts/memory_operations.py" save_context "$save_reason" "$conversation_summary" "$open_issues" "$next_actions"
     local result=$?
     
     if [[ $result -eq 0 ]]; then
@@ -61,7 +61,7 @@ load_context() {
     echo -e "${CYAN}Loading optimized context...${NC}"
     
     export WORKSPACE_DIR
-    local context_json=$(python3 "$WORKSPACE_DIR/scripts/memory-operations.py" load_context)
+    local context_json=$(python3 "$WORKSPACE_DIR/scripts/memory_operations.py" load_context)
     local result=$?
     
     if [[ $result -ne 0 ]]; then
@@ -111,7 +111,7 @@ except Exception as e:
 # Funzione per ottenere statistiche performance
 get_stats() {
     export WORKSPACE_DIR
-    python3 "$WORKSPACE_DIR/scripts/memory-operations.py" stats
+    python3 "$WORKSPACE_DIR/scripts/memory_operations.py" stats
 }
 
 # Main command handler
