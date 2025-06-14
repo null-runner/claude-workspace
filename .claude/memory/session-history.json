@@ -1,6 +1,27 @@
 {
   "sessions": [
     {
+      "id": "2025-06-14T10:00:03Z-clean",
+      "timestamp": "2025-06-14T10:00:03Z",
+      "save_reason": "clean",
+      "summary": "Clean final test",
+      "device": "NEURAL-X"
+    },
+    {
+      "id": "2025-06-14T09:59:48Z-final",
+      "timestamp": "2025-06-14T09:59:48Z",
+      "save_reason": "final",
+      "summary": "Final test of claude-memory-simplified",
+      "device": "NEURAL-X"
+    },
+    {
+      "id": "2025-06-14T09:59:28Z-test2",
+      "timestamp": "2025-06-14T09:59:28Z",
+      "save_reason": "test2",
+      "summary": "Testing the fixed save function",
+      "device": "NEURAL-X"
+    },
+    {
       "id": "2025-06-14T11:41:56.755524Z-claude-memory-coordinator",
       "timestamp": "2025-06-14T11:41:56.755524Z",
       "save_type": "simplified",
@@ -189,5 +210,5 @@
     }
   ],
   "version": "unified-v1",
-  "last_update": "2025-06-14T11:41:56.755524Z"
+  "last_update": "2025-06-14T10:00:03Z"
 }
