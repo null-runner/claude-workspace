@@ -1,8 +1,0 @@
-[2025-06-14 12:17:40] [PERF] memory_save: .282534029s (max: 3.0s)
-[2025-06-14 12:17:40] [PERF] memory_load: .068008883s (max: 3.0s)
-[2025-06-14 12:17:58] [PERF] memory_save: .267528650s (max: 3.0s)
-[2025-06-14 12:17:58] [PERF] project_detection: .072420599s (max: 3.0s)
-[2025-06-14 12:18:21] [PERF] memory_save: .265886602s (max: 3.0s)
-[2025-06-14 12:18:29] [PERF] memory_load: .064271203s (max: 3.0s)
-[2025-06-14 12:18:29] [PERF] project_detect: .072610966s (max: 3.0s)
-[2025-06-14 12:18:29] [PERF] startup_status: .002941160s (max: 2.0s)

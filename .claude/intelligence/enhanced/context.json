@@ -21,8 +21,18 @@
       "expertise_areas": {
         "features": {
           "confidence": "high",
-          "frequency": 21,
-          "avg_impact": 88.21
+          "frequency": 23,
+          "avg_impact": 368.97
+        },
+        "fixes": {
+          "confidence": "high",
+          "frequency": 22,
+          "avg_impact": 382.84
+        },
+        "testing": {
+          "confidence": "high",
+          "frequency": 23,
+          "avg_impact": 310.15
         },
         "documentation": {
           "confidence": "high",
@@ -34,20 +44,10 @@
           "frequency": 3,
           "avg_impact": 127.03
         },
-        "fixes": {
-          "confidence": "high",
-          "frequency": 21,
-          "avg_impact": 105.05
-        },
         "security": {
           "confidence": "medium",
           "frequency": 3,
           "avg_impact": 10.33
-        },
-        "testing": {
-          "confidence": "high",
-          "frequency": 21,
-          "avg_impact": 32.62
         },
         "configuration": {
           "confidence": "high",
@@ -60,13 +60,7 @@
     "session_context": {
       "current_focus": "pattern_analysis",
       "recent_decisions": [],
-      "active_learnings": [
-        {
-          "title": "System Crash/Recovery Pattern",
-          "category": "system_stability",
-          "lesson": "Recurring system crashes and emergency recoveries detected"
-        }
-      ],
+      "active_learnings": [],
       "suggested_actions": []
     },
     "project_context": {
@@ -85,9 +79,9 @@
     "claude_optimizations": {
       "suggested_prompts": [
         "Leverage my strong features background when suggesting solutions",
-        "Leverage my strong documentation background when suggesting solutions",
         "Leverage my strong fixes background when suggesting solutions",
         "Leverage my strong testing background when suggesting solutions",
+        "Leverage my strong documentation background when suggesting solutions",
         "Leverage my strong configuration background when suggesting solutions"
       ],
       "context_priorities": [
@@ -107,6 +101,6 @@
   "context_stats": {
     "total_insights": 5,
     "accuracy_score": 0.85,
-    "last_update": "2025-06-14T12:01:16.577888Z"
+    "last_update": "2025-06-14T12:55:39.790754Z"
   }
 }

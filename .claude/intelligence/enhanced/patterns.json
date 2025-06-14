@@ -13,10 +13,10 @@
           5,
           3
         ],
-        "average_commits_per_day": 77.67,
+        "average_commits_per_day": 78.33,
         "total_active_days": 3,
         "work_hour_distribution": {
-          "12": 3,
+          "12": 5,
           "11": 11,
           "3": 1,
           "2": 14,
@@ -33,26 +33,15 @@
           "14": 1
         },
         "work_day_distribution": {
-          "5": 43,
+          "5": 45,
           "4": 188,
           "3": 2
         }
       },
       "decision_patterns": {
-        "testing": {
-          "frequency": 22,
-          "avg_impact": 41.68,
-          "preferred_hours": [
-            0,
-            1,
-            12,
-            20,
-            22
-          ]
-        },
         "features": {
-          "frequency": 22,
-          "avg_impact": 103.18,
+          "frequency": 23,
+          "avg_impact": 368.97,
           "preferred_hours": [
             0,
             1,
@@ -64,6 +53,32 @@
             17,
             18,
             21
+          ]
+        },
+        "fixes": {
+          "frequency": 22,
+          "avg_impact": 382.84,
+          "preferred_hours": [
+            0,
+            1,
+            2,
+            12,
+            19,
+            20,
+            21,
+            22,
+            23
+          ]
+        },
+        "testing": {
+          "frequency": 23,
+          "avg_impact": 310.15,
+          "preferred_hours": [
+            0,
+            1,
+            12,
+            20,
+            22
           ]
         },
         "documentation": {
@@ -84,20 +99,6 @@
           "preferred_hours": [
             2,
             21
-          ]
-        },
-        "fixes": {
-          "frequency": 21,
-          "avg_impact": 105.05,
-          "preferred_hours": [
-            0,
-            1,
-            2,
-            19,
-            20,
-            21,
-            22,
-            23
           ]
         },
         "security": {
@@ -132,17 +133,17 @@
         "file_patterns": {}
       },
       "error_resolution_patterns": {
-        "total_fixes": 21,
+        "total_fixes": 22,
         "avg_files_per_fix": 0,
-        "avg_lines_per_fix": 1050.48,
+        "avg_lines_per_fix": 3828.36,
         "preferred_approaches": {
+          "feature_addition": 2,
           "direct_fix": 19,
-          "feature_addition": 1,
           "modification": 1
         },
-        "fix_frequency": 0.09012875536480687
+        "fix_frequency": 0.09361702127659574
       },
-      "analysis_timestamp": "2025-06-14T12:19:42.992278Z"
+      "analysis_timestamp": "2025-06-14T12:55:39.767818Z"
     },
     "project_patterns": {
       "creation_frequency": {},
@@ -171,8 +172,8 @@
       "language_patterns": 0.0,
       "error_patterns": 1.0
     },
-    "last_update": "2025-06-14T12:19:42.992291Z",
+    "last_update": "2025-06-14T12:55:39.767831Z",
     "analysis_period_days": 30,
-    "total_commits_analyzed": 233
+    "total_commits_analyzed": 235
   }
 }

@@ -1,7 +1,0 @@
-diff --git a/.claude/benchmarks/git-test-file.txt b/.claude/benchmarks/git-test-file.txt
-new file mode 100644
-index 0000000..858838c
---- /dev/null
-+++ b/.claude/benchmarks/git-test-file.txt
-@@ -0,0 +1 @@
-+benchmark test

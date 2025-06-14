@@ -1,3 +1,0 @@
-#!/bin/bash
-# ctools - Claude Tools shortcut
-exec "$HOME/claude-workspace/scripts/claude-workspace-tools.sh" "$@"

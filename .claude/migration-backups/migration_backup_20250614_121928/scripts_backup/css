@@ -1,5 +1,0 @@
-#!/bin/bash
-# CSS - Claude Session Shortcut
-# Alias rapido per claude-session-manager
-
-exec "$HOME/claude-workspace/scripts/claude-session-manager.sh" "$@"

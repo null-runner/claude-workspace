@@ -1,6 +1,0 @@
-{
-    "status": "backup_completed",
-    "message": "Backup created successfully",
-    "timestamp": "2025-06-14T12:19:28+02:00",
-    "backup_location": "/home/nullrunner/claude-workspace/.claude/migration-backups/migration_backup_20250614_121928"
-}

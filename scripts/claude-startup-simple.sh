@@ -21,16 +21,10 @@ mkdir -p "$LOGS_DIR" "$PIDS_DIR"
 
 # Helper: check if daemon is running
 is_daemon_running() {
-    local daemon_name="$1"
-    local pid_file="$PIDS_DIR/${daemon_name}.pid"
+    local daemon_script="$1"
     
-    if [[ -f "$pid_file" ]]; then
-        local pid=$(cat "$pid_file" 2>/dev/null)
-        if [[ -n "$pid" ]] && kill -0 "$pid" 2>/dev/null; then
-            return 0
-        fi
-    fi
-    return 1
+    # Delega al daemon wrapper per il check
+    "$daemon_script" status >/dev/null 2>&1
 }
 
 # Helper: start daemon
@@ -39,7 +33,7 @@ start_daemon() {
     local script_path="$2"
     
     # Check if already running
-    if is_daemon_running "$daemon_name"; then
+    if is_daemon_running "$script_path"; then
         echo -e "  ${GREEN}✓${NC} $daemon_name already running"
         return 0
     fi
@@ -56,7 +50,7 @@ start_daemon() {
         # Quick verification (0.5s max)
         local retries=5
         while ((retries > 0)); do
-            if is_daemon_running "$daemon_name"; then
+            if is_daemon_running "$script_path"; then
                 echo -e "\r  ${GREEN}✓${NC} $daemon_name started"
                 return 0
             fi
@@ -80,7 +74,7 @@ main() {
     
     # Start daemons in parallel with subshells
     (
-        start_daemon "claude-auto-context" "$WORKSPACE_DIR/scripts/claude-auto-context.sh" || exit 1
+        start_daemon "claude-auto-context" "$WORKSPACE_DIR/scripts/claude-auto-context-daemon.sh" || exit 1
     ) &
     local pid1=$!
     

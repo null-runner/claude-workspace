@@ -1,3 +1,0 @@
-#!/bin/bash
-# Backup Cleanup shortcut - collegamento rapido al backup cleaner
-exec "$HOME/claude-workspace/scripts/claude-backup-cleaner.sh" "$@"

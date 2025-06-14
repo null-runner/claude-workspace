@@ -2,108 +2,32 @@
   "version": "2.0",
   "enhanced_learnings": {
     "categorized_learnings": {
-      "system_stability": [
-        {
-          "id": "auto-pattern-crash_issues-1749849090",
-          "timestamp": "2025-06-13T23:11:30.964435Z",
-          "title": "System Crash/Recovery Pattern",
-          "lesson": "Recurring system crashes and emergency recoveries detected",
-          "solution": "Investigate crash causes and improve stability",
-          "prevention": "Add crash detection, auto-save, and graceful shutdown",
-          "category": "system_stability",
-          "severity": "medium",
-          "source": "error_pattern_analysis",
-          "occurrences": 5,
-          "auto_extracted": true,
-          "pattern_details": {
-            "type": "crash_issues",
-            "frequency": 5,
-            "files_affected": [
-              "auto-memory.log",
-              "sync.log"
-            ]
-          },
-          "severity_score": 60,
-          "enhanced_category": "system_stability"
-        }
-      ],
-      "access_control": [],
-      "version_control": [],
-      "programming": [],
-      "networking": [],
-      "filesystem": [],
-      "performance": [],
-      "configuration": [],
-      "security": [],
-      "workflow": [],
-      "general": []
+      "technical_skills": [],
+      "workflow_improvements": [],
+      "error_patterns": [],
+      "success_patterns": [],
+      "decision_outcomes": []
     },
     "severity_scoring": {
       "critical_learnings": [],
-      "important_learnings": [
-        {
-          "id": "auto-pattern-crash_issues-1749849090",
-          "timestamp": "2025-06-13T23:11:30.964435Z",
-          "title": "System Crash/Recovery Pattern",
-          "lesson": "Recurring system crashes and emergency recoveries detected",
-          "solution": "Investigate crash causes and improve stability",
-          "prevention": "Add crash detection, auto-save, and graceful shutdown",
-          "category": "system_stability",
-          "severity": "medium",
-          "source": "error_pattern_analysis",
-          "occurrences": 5,
-          "auto_extracted": true,
-          "pattern_details": {
-            "type": "crash_issues",
-            "frequency": 5,
-            "files_affected": [
-              "auto-memory.log",
-              "sync.log"
-            ]
-          },
-          "severity_score": 60,
-          "enhanced_category": "system_stability"
-        }
-      ],
+      "important_learnings": [],
       "minor_learnings": []
     },
     "success_tracking": {
-      "solution_success_rates": {
-        "system_stability": [
-          {
-            "solution": "Investigate crash causes and improve stability",
-            "prevention": "Add crash detection, auto-save, and graceful shutdown",
-            "effectiveness": 0.6666666666666666
-          }
-        ]
-      },
-      "learning_effectiveness": {
-        "system_stability": 0.6666666666666666
-      },
+      "solution_success_rates": {},
+      "learning_effectiveness": {},
       "pattern_accuracy": {}
     },
     "time_based_patterns": {
-      "daily_patterns": {
-        "23": {
-          "system_stability": 1
-        }
-      },
-      "weekly_patterns": {
-        "4": {
-          "system_stability": 1
-        }
-      },
-      "monthly_patterns": {
-        "13": {
-          "system_stability": 1
-        }
-      }
+      "daily_patterns": {},
+      "weekly_patterns": {},
+      "monthly_patterns": {}
     }
   },
   "learning_stats": {
-    "total_learnings": 1,
-    "success_rate": 0.6,
-    "improvement_velocity": 1.0,
-    "last_update": "2025-06-14T12:01:16.599188Z"
+    "total_learnings": 0,
+    "success_rate": 0.0,
+    "improvement_velocity": 0.0,
+    "last_update": "2025-06-14T12:55:39.811720Z"
   }
 }

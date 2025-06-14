@@ -503,9 +503,28 @@ except:
     
     # Show current system type
     if [[ -f "$WORKSPACE_DIR/scripts/claude-startup-simple.sh" ]]; then
-        local simple_startup="$WORKSPACE_DIR/scripts/claude-startup-simple.sh"
         echo -e "${BLUE}Current System: Simplified${NC}"
-        "$simple_startup" status 2>/dev/null || echo "Simplified system not running"
+        echo -e "${BLUE}Daemon Status:${NC}"
+        echo ""
+        
+        # Check each daemon individually
+        local daemons=(
+            "claude-auto-context-daemon.sh:claude-auto-context:Unified context + project monitoring"
+            "claude-intelligence-daemon.sh:claude-intelligence-daemon:Background learning"
+            "claude-sync-daemon.sh:claude-sync-daemon:Periodic smart sync"
+        )
+        
+        for daemon_info in "${daemons[@]}"; do
+            IFS=':' read -r script_name daemon_name description <<< "$daemon_info"
+            local daemon_script="$WORKSPACE_DIR/scripts/$script_name"
+            
+            if [[ -f "$daemon_script" ]] && "$daemon_script" status >/dev/null 2>&1; then
+                echo -e "  ${GREEN}✓${NC} $daemon_name"
+            else
+                echo -e "  ${RED}✗${NC} $daemon_name"
+            fi
+            echo "    $description"
+        done
     elif [[ -f "$WORKSPACE_DIR/scripts/claude-autonomous-system.sh" ]]; then
         local complex_startup="$WORKSPACE_DIR/scripts/claude-autonomous-system.sh"
         echo -e "${BLUE}Current System: Complex${NC}"

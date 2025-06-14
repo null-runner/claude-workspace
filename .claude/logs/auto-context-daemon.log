@@ -1,0 +1,8 @@
+[2025-06-14 12:53:27] Starting auto-context daemon...
+[0;36m🤖 Starting auto-context daemon...[0m
+[0;34m   📝 Context monitoring: 300s intervals[0m
+[0;34m   📁 Project monitoring: 30s intervals[0m
+[2025-06-14 12:53:29] Auto-context daemon started successfully (PID: 152363)
+[0;32m✅ Auto-context daemon started (PID: 152366)[0m
+[0;36m   Log: /home/nullrunner/claude-workspace/.claude/context/auto-context.log[0m
+[0;36m   Status: /home/nullrunner/claude-workspace/.claude/context/auto-context-status.json[0m

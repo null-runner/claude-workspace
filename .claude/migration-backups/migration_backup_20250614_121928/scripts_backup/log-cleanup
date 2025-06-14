@@ -1,3 +1,0 @@
-#!/bin/bash
-# Log Cleanup shortcut - collegamento rapido al log rotator
-exec "$HOME/claude-workspace/scripts/claude-log-rotator.sh" "$@"
