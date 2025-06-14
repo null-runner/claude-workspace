@@ -1,0 +1,58 @@
+# Claude Workspace .gitignore
+
+# System files (prevent sync loops)
+.claude/autonomous/service-status.json
+.claude/autonomous/*.log
+.claude/autonomous/*.pid
+.claude/activity/activity.log
+.claude/intelligence/extraction.log
+.claude/intelligence/auto-decisions.json
+.claude/sync/smart-sync.log
+.claude/sync/smart-sync-output.log
+.claude/sync/sync-timestamps.log
+
+# Auto-memory system files
+.claude/auto-memory/auto-memory.log
+.claude/auto-memory/emergency_recovery_needed
+
+# Memory system files
+.claude/memory/current-session-context.json
+.claude/memory/enhanced-context.json
+.claude/memory/enhanced-sessions.json
+
+# Sync logs
+logs/sync.log
+
+# Backup files
+*.backup
+.claude/memory/enhanced-context.json.backup
+
+# Temporary files
+*.tmp
+*.swp
+*~
+.DS_Store
+
+# Build artifacts
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# OS files
+Thumbs.db
+.Trash-*
+
+# Log files
+logs/*.log
+
+# State files (device-specific)
+.claude/sync/
+.claude/autonomous/service-status.json
+.claude/intelligence/extraction.log
+.claude/intelligence/last-extraction.json

@@ -1,0 +1,85 @@
+{
+  "version": "1.0",
+  "device": {
+    "type": "auto-detect",
+    "profiles": {
+      "desktop": {
+        "performance": "high",
+        "sync_interval_minutes": 30,
+        "max_memory_usage_mb": 1024,
+        "enable_monitoring": true
+      },
+      "laptop": {
+        "performance": "balanced",
+        "sync_interval_minutes": 60,
+        "max_memory_usage_mb": 512,
+        "enable_monitoring": false
+      }
+    }
+  },
+  "sync": {
+    "enabled": true,
+    "auto_sync_on_exit": true,
+    "auto_sync_on_startup": false,
+    "conflict_resolution": "manual",
+    "exclude_patterns": [
+      "*.tmp",
+      "*.log",
+      ".DS_Store",
+      "node_modules/",
+      ".git/hooks/",
+      ".claude/autonomous/*.pid",
+      ".claude/sync/sync.lock"
+    ]
+  },
+  "memory": {
+    "enabled": true,
+    "auto_save": true,
+    "context_retention_days": 30,
+    "max_session_files": 100,
+    "intelligence_cache": true
+  },
+  "logging": {
+    "level": "info",
+    "max_file_size_mb": 10,
+    "keep_files": 7,
+    "compress_after_days": 1,
+    "categories": {
+      "error": { "enabled": true, "max_size_mb": 50 },
+      "system": { "enabled": true, "max_size_mb": 20 },
+      "debug": { "enabled": false, "max_size_mb": 5 }
+    }
+  },
+  "backup": {
+    "enabled": true,
+    "daily_retention_days": 7,
+    "weekly_retention_weeks": 4,
+    "monthly_retention_months": 3,
+    "max_backup_size_mb": 250,
+    "critical_files": [
+      "unified-context.json*",
+      "session-history.json*",
+      "intelligence-cache.json*",
+      "config.json*"
+    ]
+  },
+  "autonomous": {
+    "enabled": true,
+    "project_detection": true,
+    "intelligence_extraction": true,
+    "smart_exit": true,
+    "crash_recovery": true
+  },
+  "security": {
+    "permissions_file": "settings.local.json",
+    "verify_before_delete": true,
+    "min_free_space_mb": 100,
+    "preserve_critical_files": true
+  },
+  "user_preferences": {
+    "notification_level": "normal",
+    "startup_message": true,
+    "show_tips": true,
+    "language": "auto"
+  }
+}

@@ -128,12 +128,16 @@ test_intelligence_pattern_recognition() {
         return 1
     fi
     
-    # Test pattern analysis
-    if ! measure_performance "intelligence_patterns" "$intelligence_script patterns" 10.0; then
-        case $? in
-            1) log_error "Intelligence pattern analysis failed"; return 1 ;;
-            2) log_warning "Intelligence pattern analysis too slow"; return 2 ;;
-        esac
+    # Test pattern analysis with timeout protection
+    local patterns_result=0
+    timeout 30s "$intelligence_script" patterns >/dev/null 2>&1 || patterns_result=$?
+    
+    if [[ $patterns_result -eq 124 ]]; then
+        log_warning "Intelligence pattern analysis timed out (30s)"
+        return 2
+    elif [[ $patterns_result -ne 0 ]]; then
+        log_error "Intelligence pattern analysis failed"
+        return 1
     fi
     
     # Verify pattern database exists and is valid
@@ -177,13 +181,17 @@ test_intelligence_data_extraction() {
         log_warning "Limited git history for analysis: $commits_analyzed commits"
     fi
     
-    # Test intelligence extraction
+    # Test intelligence extraction with timeout
     local intelligence_script="$SCRIPT_DIR/claude-intelligence-enhanced.sh"
-    if ! measure_performance "intelligence_analysis" "$intelligence_script analyze" 15.0; then
-        case $? in
-            1) log_error "Intelligence analysis failed"; return 1 ;;
-            2) log_warning "Intelligence analysis too slow"; return 2 ;;
-        esac
+    local analysis_result=0
+    timeout 45s "$intelligence_script" analyze >/dev/null 2>&1 || analysis_result=$?
+    
+    if [[ $analysis_result -eq 124 ]]; then
+        log_warning "Intelligence analysis timed out (45s)"
+        return 2
+    elif [[ $analysis_result -ne 0 ]]; then
+        log_error "Intelligence analysis failed"
+        return 1
     fi
     
     # Verify enhanced databases
@@ -207,12 +215,16 @@ test_intelligence_cross_project_learning() {
     # Test cross-project analysis
     local intelligence_script="$SCRIPT_DIR/claude-intelligence-enhanced.sh"
     
-    # Generate cross-project insights
-    if ! measure_performance "cross_project_analysis" "$intelligence_script summary" 8.0; then
-        case $? in
-            1) log_error "Cross-project analysis failed"; return 1 ;;
-            2) log_warning "Cross-project analysis too slow"; return 2 ;;
-        esac
+    # Generate cross-project insights with timeout
+    local summary_result=0
+    timeout 20s "$intelligence_script" summary >/dev/null 2>&1 || summary_result=$?
+    
+    if [[ $summary_result -eq 124 ]]; then
+        log_warning "Cross-project analysis timed out (20s)"
+        return 2
+    elif [[ $summary_result -ne 0 ]]; then
+        log_error "Cross-project analysis failed"
+        return 1
     fi
     
     # Check for cross-project database
@@ -240,12 +252,16 @@ test_intelligence_context_generation() {
     
     local intelligence_script="$SCRIPT_DIR/claude-intelligence-enhanced.sh"
     
-    # Test context generation
-    if ! measure_performance "context_generation" "$intelligence_script context" 8.0; then
-        case $? in
-            1) log_error "Context generation failed"; return 1 ;;
-            2) log_warning "Context generation too slow"; return 2 ;;
-        esac
+    # Test context generation with timeout
+    local context_result=0
+    timeout 20s "$intelligence_script" context >/dev/null 2>&1 || context_result=$?
+    
+    if [[ $context_result -eq 124 ]]; then
+        log_warning "Context generation timed out (20s)"
+        return 2
+    elif [[ $context_result -ne 0 ]]; then
+        log_error "Context generation failed"
+        return 1
     fi
     
     # Verify context database

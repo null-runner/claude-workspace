@@ -1,0 +1,27 @@
+{
+  "auto_sync": {
+    "enabled": true,
+    "interval_minutes": 60,
+    "sync_on_startup": false,
+    "sync_on_exit": true
+  },
+  "conflict_resolution": {
+    "strategy": "manual",
+    "auto_commit_threshold": 10
+  },
+  "filters": {
+    "exclude_patterns": [
+      "*.tmp",
+      "*.log",
+      ".DS_Store",
+      "node_modules/",
+      ".git/hooks/",
+      ".claude/autonomous/*.pid",
+      ".claude/sync/sync.lock"
+    ]
+  },
+  "monitoring": {
+    "max_file_changes_before_sync": 50,
+    "min_time_between_syncs": 300
+  }
+}

@@ -1,0 +1,5 @@
+#!/bin/bash
+# ctrack - Claude Track shortcut
+# Alias rapido per activity tracker
+
+exec "$HOME/claude-workspace/scripts/claude-activity-tracker.sh" "$@"

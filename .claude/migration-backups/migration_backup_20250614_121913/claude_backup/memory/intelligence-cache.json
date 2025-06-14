@@ -1,0 +1,71 @@
+{
+  "recent_learnings": [
+    {
+      "title": "System Crash/Recovery Pattern",
+      "lesson": "Recurring system crashes and emergency recoveries detected",
+      "category": "system_stability",
+      "severity": "medium",
+      "timestamp": "2025-06-13T23:11:30.964435Z"
+    }
+  ],
+  "recent_decisions": [
+    {
+      "title": "Added documentation: SIMPLIFICATION_PLAN.md",
+      "category": "process",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-14T11:50:57.089704Z"
+    },
+    {
+      "title": "✨ Add claude-memory-simplified.sh: Direct operations without coordinator overhead",
+      "category": "general",
+      "impact": "medium",
+      "source": "git_commit",
+      "timestamp": "2025-06-14T12:04:21.299922Z"
+    },
+    {
+      "title": "🚀 Add claude-sync-smart.sh: Intelligent git sync without coordinator overhead",
+      "category": "general",
+      "impact": "medium",
+      "source": "git_commit",
+      "timestamp": "2025-06-14T12:04:21.299937Z"
+    },
+    {
+      "title": "🚀 Add claude-startup-simple.sh: fast boot with 3 essential daemons",
+      "category": "general",
+      "impact": "medium",
+      "source": "git_commit",
+      "timestamp": "2025-06-14T12:04:21.299940Z"
+    },
+    {
+      "title": "Added new workspace tool: claude-intelligence-enhanced.sh",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-14T12:04:21.367523Z"
+    },
+    {
+      "title": "Added new workspace tool: claude-project-enhanced.sh",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-14T12:04:21.367533Z"
+    },
+    {
+      "title": "Added new workspace tool: claude-memory-simplified.sh",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-14T12:04:21.367537Z"
+    },
+    {
+      "title": "Added new workspace tool: claude-sync-smart.sh",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-14T12:04:21.367539Z"
+    }
+  ],
+  "current_focus": "tool_focused_development",
+  "extraction_timestamp": "2025-06-14T12:18:21.720206Z"
+}

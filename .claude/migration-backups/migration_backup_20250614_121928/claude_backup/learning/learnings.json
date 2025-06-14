@@ -1,0 +1,85 @@
+{
+  "version": "1.0",
+  "learnings": [
+    {
+      "id": "learn-1749828370-2739",
+      "timestamp": "2025-06-13T15:26:10Z",
+      "title": "Always test error paths",
+      "lesson": "Found critical bug during system test #testing #debugging",
+      "context": "Testing revealed unhandled error case",
+      "category": "bug-fix",
+      "severity": "high",
+      "project": "test-system",
+      "tags": [
+        "testing",
+        "debugging"
+      ],
+      "applied_count": 0,
+      "prevented_issues": [],
+      "related_errors": [],
+      "references": []
+    }
+  ],
+  "categories": {
+    "bug-fix": {
+      "count": 1,
+      "learnings": [
+        {
+          "id": "learn-1749828370-2739",
+          "title": "Always test error paths",
+          "timestamp": "2025-06-13T15:26:10Z",
+          "severity": "high"
+        }
+      ]
+    },
+    "performance": {
+      "count": 0,
+      "learnings": []
+    },
+    "security": {
+      "count": 0,
+      "learnings": []
+    },
+    "design": {
+      "count": 0,
+      "learnings": []
+    },
+    "process": {
+      "count": 0,
+      "learnings": []
+    }
+  },
+  "projects": {
+    "test-system": {
+      "learnings_count": 1,
+      "categories": {
+        "bug-fix": 1
+      },
+      "prevented_issues": 0
+    }
+  },
+  "tags": {
+    "testing": {
+      "count": 1,
+      "learnings": [
+        "learn-1749828370-2739"
+      ]
+    },
+    "debugging": {
+      "count": 1,
+      "learnings": [
+        "learn-1749828370-2739"
+      ]
+    }
+  },
+  "stats": {
+    "total_learnings": 1,
+    "prevented_issues": 0,
+    "by_severity": {
+      "low": 0,
+      "medium": 0,
+      "high": 1,
+      "critical": 0
+    }
+  }
+}

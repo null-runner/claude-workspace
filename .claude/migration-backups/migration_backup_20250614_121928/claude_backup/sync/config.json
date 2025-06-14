@@ -1,0 +1,7 @@
+{
+  "milestone_commit_threshold": 20,
+  "context_switch_stability": 600,
+  "natural_break_inactivity": 900,
+  "intense_session_threshold": 2,
+  "max_syncs_per_hour": 6
+}

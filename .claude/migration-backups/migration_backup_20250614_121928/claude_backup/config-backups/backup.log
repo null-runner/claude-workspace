@@ -1,0 +1,5 @@
+[2025-06-14 01:53:30.500] [INFO] [config-backup-manager.sh:174] Initialized backup configuration
+[2025-06-14 01:53:30.513] [DEBUG] [config-backup-manager.sh:526] Creating backup: /home/nullrunner/claude-workspace/.claude/test-backup/test-config.json -> /home/nullrunner/claude-workspace/.claude/config-backups/files/.claude/test-backup/test-config.json.20250614_015330.24aa1f1b.backup.gz
+[2025-06-14 01:53:30.516] [SUCCESS] [config-backup-manager.sh:526] Created compressed backup: /home/nullrunner/claude-workspace/.claude/config-backups/files/.claude/test-backup/test-config.json.20250614_015330.24aa1f1b.backup.gz
+[2025-06-14 01:53:30.612] [INFO] [config-backup-manager.sh:537] Restoring file from backup: /home/nullrunner/claude-workspace/.claude/config-backups/files/.claude/test-backup/test-config.json.20250614_015330.24aa1f1b.backup.gz -> /home/nullrunner/claude-workspace/.claude/test-backup/test-config.json
+[2025-06-14 01:53:30.616] [SUCCESS] [config-backup-manager.sh:537] File restored successfully: /home/nullrunner/claude-workspace/.claude/test-backup/test-config.json

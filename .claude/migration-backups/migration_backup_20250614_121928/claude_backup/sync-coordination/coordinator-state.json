@@ -1,0 +1,12 @@
+{
+  "active_sync_type": null,
+  "last_sync_timestamp": "2025-06-14T01:36:57.261144Z",
+  "environment_state": {},
+  "conflict_resolution_enabled": true,
+  "rate_limiting": {
+    "enabled": true,
+    "max_syncs_per_hour": 12,
+    "current_hour_count": 12,
+    "hour_reset_time": "2025-06-14T02:33:16.631829Z"
+  }
+}

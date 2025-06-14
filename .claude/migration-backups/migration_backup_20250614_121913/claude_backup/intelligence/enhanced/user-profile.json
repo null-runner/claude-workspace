@@ -1,0 +1,31 @@
+{
+  "version": "2.0",
+  "user_profile": {
+    "working_style": {
+      "preferred_hours": [],
+      "session_length": 0,
+      "break_frequency": 0,
+      "multitasking_level": "medium"
+    },
+    "technical_profile": {
+      "primary_languages": [],
+      "frameworks": [],
+      "tools": [],
+      "expertise_level": {}
+    },
+    "learning_style": {
+      "learns_from_errors": true,
+      "prefers_examples": true,
+      "documentation_level": "medium",
+      "explanation_depth": "detailed"
+    },
+    "problem_solving": {
+      "approach": "systematic",
+      "debugging_style": "methodical",
+      "preferred_resources": [],
+      "typical_mistakes": []
+    }
+  },
+  "profile_confidence": 0.0,
+  "last_update": ""
+}

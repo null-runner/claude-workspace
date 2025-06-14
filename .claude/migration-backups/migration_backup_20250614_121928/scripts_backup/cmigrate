@@ -1,0 +1,5 @@
+#!/bin/bash
+# Claude Migration Wrapper - Shortcut for claude-migrate.sh
+
+WORKSPACE_DIR="${WORKSPACE_DIR:-$HOME/claude-workspace}"
+exec "$WORKSPACE_DIR/scripts/claude-migrate.sh" "$@"

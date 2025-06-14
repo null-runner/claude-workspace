@@ -1,0 +1,265 @@
+{
+  "sessions": [
+    {
+      "id": "2025-06-14T12:18:21.693568Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T12:18:21.693568Z",
+      "save_type": "simplified",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "Testing",
+      "changes_count": 18
+    },
+    {
+      "id": "2025-06-14T12:17:58.285350Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T12:17:58.285350Z",
+      "save_type": "simplified",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "Testing",
+      "changes_count": 17
+    },
+    {
+      "id": "2025-06-14T12:17:40.502545Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T12:17:40.502545Z",
+      "save_type": "simplified",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "Testing",
+      "changes_count": 11
+    },
+    {
+      "id": "2025-06-14T10:00:03Z-clean",
+      "timestamp": "2025-06-14T10:00:03Z",
+      "save_reason": "clean",
+      "summary": "Clean final test",
+      "device": "NEURAL-X"
+    },
+    {
+      "id": "2025-06-14T09:59:48Z-final",
+      "timestamp": "2025-06-14T09:59:48Z",
+      "save_reason": "final",
+      "summary": "Final test of claude-memory-simplified",
+      "device": "NEURAL-X"
+    },
+    {
+      "id": "2025-06-14T09:59:28Z-test2",
+      "timestamp": "2025-06-14T09:59:28Z",
+      "save_reason": "test2",
+      "summary": "Testing the fixed save function",
+      "device": "NEURAL-X"
+    },
+    {
+      "id": "2025-06-14T11:41:56.755524Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T11:41:56.755524Z",
+      "save_type": "simplified",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "Comprehensive",
+      "changes_count": 13
+    },
+    {
+      "id": "2025-06-14T02:48:43.745177Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T02:48:43.745177Z",
+      "save_type": "simplified",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "documentazione",
+      "changes_count": 5
+    },
+    {
+      "id": "2025-06-14T02:06:01.372058Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T02:06:01.372058Z",
+      "save_type": "simplified",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "Completed",
+      "changes_count": 6
+    },
+    {
+      "id": "2025-06-14T01:55:41.776954Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T01:55:41.776954Z",
+      "save_type": "auto",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "git_dirty",
+      "changes_count": 8
+    },
+    {
+      "id": "2025-06-14T01:50:41.469346Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T01:50:41.469346Z",
+      "save_type": "auto",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "git_dirty",
+      "changes_count": 8
+    },
+    {
+      "id": "2025-06-14T01:45:41.157709Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T01:45:41.157709Z",
+      "save_type": "auto",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "git_dirty",
+      "changes_count": 18
+    },
+    {
+      "id": "2025-06-14T01:40:40.809172Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T01:40:40.809172Z",
+      "save_type": "auto",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "git_dirty",
+      "changes_count": 4
+    },
+    {
+      "id": "2025-06-14T01:35:40.492352Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T01:35:40.492352Z",
+      "save_type": "auto",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "git_dirty",
+      "changes_count": 11
+    },
+    {
+      "id": "2025-06-14T01:34:41.179700Z-claude-enhanced-save",
+      "timestamp": "2025-06-14T01:34:41.179700Z",
+      "save_type": "enhanced",
+      "caller": "claude-enhanced-save",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "testing",
+      "changes_count": 11
+    },
+    {
+      "id": "2025-06-14T01:34:22.360917Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T01:34:22.360917Z",
+      "save_type": "simplified",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "Testing",
+      "changes_count": 10
+    },
+    {
+      "id": "2025-06-14T01:34:14.798697Z-test-script",
+      "timestamp": "2025-06-14T01:34:14.798697Z",
+      "save_type": "test",
+      "caller": "test-script",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": null,
+      "changes_count": 6
+    }
+  ],
+  "version": "unified-v1",
+  "last_update": "2025-06-14T12:18:21.693568Z"
+}

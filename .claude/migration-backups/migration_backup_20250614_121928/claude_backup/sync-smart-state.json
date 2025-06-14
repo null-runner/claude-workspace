@@ -1,0 +1,17 @@
+{
+    "device": "workstation",
+    "hostname": "NEURAL-X",
+    "last_sync": 0,
+    "sync_count": 0,
+    "patterns": {
+        "typical_sync_times": [],
+        "deep_work_periods": [],
+        "preferred_intervals": []
+    },
+    "stats": {
+        "successful_syncs": 0,
+        "conflicts_resolved": 0,
+        "auto_merges": 0,
+        "manual_interventions": 0
+    }
+}

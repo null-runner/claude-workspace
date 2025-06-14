@@ -1,0 +1,144 @@
+[2025-06-14 01:33:53] [API] Sync request: manual from test-sync (priority: high)
+[2025-06-14 01:33:53] [INFO] Rate limit check: ALLOW: 3/12 syncs this hour
+[2025-06-14 01:33:53] [LOCK] Coordination lock acquired by test-sync (PID: 60756)
+[2025-06-14 01:33:53] [EXEC] Executing manual sync immediately
+[2025-06-14 01:33:53] [SYNC] Executing sync operation: {
+    "operation": "manual",
+    "caller": "test-sync",
+    "priority": "high",
+    "reason": "Testing coordinator",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:33:53Z",
+    "status": "executing"
+}
+[2025-06-14 01:33:53] [ERROR] manual sync failed
+[2025-06-14 01:33:53] [LOCK] Coordination lock released by test-sync (PID: 60756)
+[2025-06-14 01:33:53] [WARN] No coordination lock file found for release by test-sync
+[2025-06-14 01:34:04] [API] Sync request: manual from test-sync (priority: high)
+[2025-06-14 01:34:04] [INFO] Rate limit check: ALLOW: 4/12 syncs this hour
+[2025-06-14 01:34:04] [LOCK] Coordination lock acquired by test-sync (PID: 60834)
+[2025-06-14 01:34:04] [EXEC] Executing manual sync immediately
+[2025-06-14 01:34:04] [SYNC] Executing sync operation: {
+    "operation": "manual",
+    "caller": "test-sync",
+    "priority": "high",
+    "reason": "Testing coordinator fix",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:34:04Z",
+    "status": "executing"
+}
+[2025-06-14 01:34:07] [SYNC] manual sync completed successfully
+[2025-06-14 01:34:07] [LOCK] Coordination lock released by test-sync (PID: 60834)
+[2025-06-14 01:34:07] [WARN] No coordination lock file found for release by test-sync
+[2025-06-14 01:34:46] [API] Sync request: manual from sync-now (priority: high)
+[2025-06-14 01:34:46] [INFO] Rate limit check: ALLOW: 5/12 syncs this hour
+[2025-06-14 01:34:46] [LOCK] Coordination lock acquired by sync-now (PID: 61456)
+[2025-06-14 01:34:46] [EXEC] Executing manual sync immediately
+[2025-06-14 01:34:46] [SYNC] Executing sync operation: {
+    "operation": "manual",
+    "caller": "sync-now",
+    "priority": "high",
+    "reason": "Manual sync request",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:34:46Z",
+    "status": "executing"
+}
+[2025-06-14 01:34:49] [SYNC] manual sync completed successfully
+[2025-06-14 01:34:49] [LOCK] Coordination lock released by sync-now (PID: 61456)
+[2025-06-14 01:34:49] [WARN] No coordination lock file found for release by sync-now
+[2025-06-14 01:36:52] [API] Sync request: manual from test-single (priority: normal)
+[2025-06-14 01:36:52] [INFO] Rate limit check: ALLOW: 8/12 syncs this hour
+[2025-06-14 01:36:52] [LOCK] Coordination lock acquired by test-single (PID: 64588)
+[2025-06-14 01:36:52] [EXEC] Executing manual sync immediately
+[2025-06-14 01:36:52] [SYNC] Executing sync operation: {
+    "operation": "manual",
+    "caller": "test-single",
+    "priority": "normal",
+    "reason": "Test single sync",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:36:52Z",
+    "status": "executing"
+}
+[2025-06-14 01:36:55] [SYNC] manual sync completed successfully
+[2025-06-14 01:36:55] [LOCK] Coordination lock released by test-single (PID: 64588)
+[2025-06-14 01:36:55] [WARN] No coordination lock file found for release by test-single
+[2025-06-14 01:36:55] [API] Sync request: smart from test-concurrent-2 (priority: normal)
+[2025-06-14 01:36:55] [API] Sync request: smart from test-concurrent-1 (priority: normal)
+[2025-06-14 01:36:55] [API] Sync request: smart from test-concurrent-3 (priority: normal)
+[2025-06-14 01:36:55] [API] Sync request: smart from test-concurrent-4 (priority: normal)
+[2025-06-14 01:36:55] [API] Sync request: smart from test-concurrent-5 (priority: normal)
+[2025-06-14 01:36:55] [INFO] Rate limit check: ALLOW: 9/12 syncs this hour
+[2025-06-14 01:36:55] [INFO] Rate limit check: ALLOW: 10/12 syncs this hour
+[2025-06-14 01:36:55] [INFO] Rate limit check: ALLOW: 11/12 syncs this hour
+[2025-06-14 01:36:55] [LOCK] Coordination lock acquired by test-concurrent-2 (PID: 64712)
+[2025-06-14 01:36:55] [EXEC] Executing smart sync immediately
+[2025-06-14 01:36:55] [INFO] Rate limit check: ALLOW: 12/12 syncs this hour
+[2025-06-14 01:36:55] [WARN] Sync request denied due to rate limiting: DENY: Rate limit exceeded (12/12 syncs this hour)
+[2025-06-14 01:36:55] [SYNC] Executing sync operation: {
+    "operation": "smart",
+    "caller": "test-concurrent-2",
+    "priority": "normal",
+    "reason": "Concurrent test 2",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:36:55Z",
+    "status": "executing"
+}
+[2025-06-14 01:36:55] [ERROR] smart sync failed
+[2025-06-14 01:36:55] [LOCK] Coordination lock released by test-concurrent-2 (PID: 64712)
+[2025-06-14 01:36:55] [WARN] No coordination lock file found for release by test-concurrent-2
+[2025-06-14 01:36:56] [LOCK] Coordination lock acquired by test-concurrent-3 (PID: 64715)
+[2025-06-14 01:36:56] [EXEC] Executing smart sync immediately
+[2025-06-14 01:36:56] [SYNC] Executing sync operation: {
+    "operation": "smart",
+    "caller": "test-concurrent-3",
+    "priority": "normal",
+    "reason": "Concurrent test 3",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:36:56Z",
+    "status": "executing"
+}
+[2025-06-14 01:36:56] [ERROR] smart sync failed
+[2025-06-14 01:36:56] [LOCK] Coordination lock released by test-concurrent-3 (PID: 64715)
+[2025-06-14 01:36:56] [WARN] No coordination lock file found for release by test-concurrent-3
+[2025-06-14 01:36:56] [LOCK] Coordination lock acquired by test-concurrent-4 (PID: 64718)
+[2025-06-14 01:36:56] [EXEC] Executing smart sync immediately
+[2025-06-14 01:36:56] [SYNC] Executing sync operation: {
+    "operation": "smart",
+    "caller": "test-concurrent-4",
+    "priority": "normal",
+    "reason": "Concurrent test 4",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:36:56Z",
+    "status": "executing"
+}
+[2025-06-14 01:36:56] [ERROR] smart sync failed
+[2025-06-14 01:36:56] [LOCK] Coordination lock released by test-concurrent-4 (PID: 64718)
+[2025-06-14 01:36:56] [WARN] No coordination lock file found for release by test-concurrent-4
+[2025-06-14 01:36:57] [LOCK] Coordination lock acquired by test-concurrent-1 (PID: 64710)
+[2025-06-14 01:36:57] [EXEC] Executing smart sync immediately
+[2025-06-14 01:36:57] [SYNC] Executing sync operation: {
+    "operation": "smart",
+    "caller": "test-concurrent-1",
+    "priority": "normal",
+    "reason": "Concurrent test 1",
+    "files_info": "",
+    "timestamp": "2025-06-13T23:36:57Z",
+    "status": "executing"
+}
+[2025-06-14 01:36:57] [ERROR] smart sync failed
+[2025-06-14 01:36:57] [LOCK] Coordination lock released by test-concurrent-1 (PID: 64710)
+[2025-06-14 01:36:57] [WARN] No coordination lock file found for release by test-concurrent-1
+[2025-06-14 01:37:02] [LOCK] Coordination lock acquired by process-command (PID: 65045)
+[2025-06-14 01:37:02] [QUEUE] Processing sync operation queue
+[2025-06-14 01:37:02] [LOCK] Coordination lock released by process-command (PID: 65045)
+[2025-06-14 01:37:02] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 01:37:02] [API] Sync request: manual from rate-test-1 (priority: low)
+[2025-06-14 01:37:02] [WARN] Sync request denied due to rate limiting: DENY: Rate limit exceeded (12/12 syncs this hour)
+[2025-06-14 01:37:02] [API] Sync request: manual from rate-test-2 (priority: low)
+[2025-06-14 01:37:02] [WARN] Sync request denied due to rate limiting: DENY: Rate limit exceeded (12/12 syncs this hour)
+[2025-06-14 01:37:02] [API] Sync request: manual from rate-test-3 (priority: low)
+[2025-06-14 01:37:02] [WARN] Sync request denied due to rate limiting: DENY: Rate limit exceeded (12/12 syncs this hour)
+[2025-06-14 01:37:02] [API] Sync request: manual from rate-test-4 (priority: low)
+[2025-06-14 01:37:02] [WARN] Sync request denied due to rate limiting: DENY: Rate limit exceeded (12/12 syncs this hour)
+[2025-06-14 01:37:02] [API] Sync request: manual from rate-test-5 (priority: low)
+[2025-06-14 01:37:03] [WARN] Sync request denied due to rate limiting: DENY: Rate limit exceeded (12/12 syncs this hour)

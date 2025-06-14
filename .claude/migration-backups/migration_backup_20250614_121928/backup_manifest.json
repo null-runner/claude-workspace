@@ -1,0 +1,13 @@
+{
+    "backup_date": "2025-06-14T12:19:28+02:00",
+    "workspace_dir": "/home/nullrunner/claude-workspace",
+    "backup_type": "migration_backup",
+    "git_commit": "5ed91b02544223c96f8fb01583b4d3f9dfa69dd1",
+    "git_branch": "main",
+    "system_info": {
+        "hostname": "NEURAL-X",
+        "user": "nullrunner",
+        "platform": "Linux",
+        "timestamp": "1749896368"
+    }
+}

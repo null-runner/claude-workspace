@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "workspace_id": "claude-workspace-nullrunner",
+  "devices": {
+    "NEURAL-X": {
+      "type": "desktop",
+      "last_seen": "2025-06-13T17:34:07Z",
+      "active": true
+    }
+  },
+  "current_session": {
+    "started_at": "2025-06-13T17:34:07Z",
+    "device": "NEURAL-X",
+    "last_activity": "2025-06-13T17:34:07Z",
+    "active_project": null,
+    "working_directory": "~/claude-workspace",
+    "last_command": "claude-save",
+    "session_note": "Auto-sync da NEURAL-X"
+  },
+  "recent_projects": [],
+  "session_history": [
+    {
+      "started_at": "2025-06-12T23:38:13Z",
+      "device": "NEURAL-X",
+      "last_activity": "2025-06-12T23:38:13Z",
+      "active_project": null,
+      "working_directory": "~/claude-workspace",
+      "last_command": "claude-save",
+      "session_note": "Test sistema memoria completo",
+      "ended_at": "2025-06-13T17:34:07Z"
+    },
+    {
+      "started_at": "2025-06-12T23:10:51Z",
+      "device": "NEURAL-X",
+      "last_activity": "2025-06-12T23:10:51Z",
+      "active_project": null,
+      "working_directory": "~/claude-workspace",
+      "last_command": "claude-save",
+      "session_note": "Test implementazione sistema memoria v2",
+      "ended_at": "2025-06-12T23:38:13Z"
+    },
+    {
+      "started_at": "2025-06-13T00:00:00Z",
+      "device": "NEURAL-X",
+      "last_activity": "2025-06-13T00:58:00Z",
+      "active_project": null,
+      "working_directory": "~/claude-workspace",
+      "last_command": "sistema setup e sync implementato",
+      "ended_at": "2025-06-12T23:10:51Z"
+    }
+  ],
+  "context": {
+    "last_conversation_topic": "Aggiornamento obiettivi",
+    "current_goal": "Sistema memoria Claude implementato e testato",
+    "next_steps": [
+      "Testare su laptop",
+      "Documentare funzionalit\u00e0",
+      "Creare primo progetto reale"
+    ]
+  },
+  "settings": {
+    "auto_save_interval": 300,
+    "max_history_days": 30,
+    "context_retention": "detailed"
+  }
+}

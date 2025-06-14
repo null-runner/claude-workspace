@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "test-context": {
+      "contexts": [
+        {
+          "file": "context-test-context-1749828427.json",
+          "timestamp": "2025-06-13T15:27:07Z",
+          "reason": "Manual save for testing"
+        }
+      ],
+      "last_switch": "2025-06-13T15:27:07Z",
+      "total_switches": 1
+    }
+  }
+}

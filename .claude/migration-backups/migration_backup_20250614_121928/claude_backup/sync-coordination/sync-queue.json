@@ -1,0 +1,10 @@
+{
+  "operations": [],
+  "last_cleanup": null,
+  "statistics": {
+    "total_processed": 0,
+    "successful": 0,
+    "failed": 0,
+    "conflicts_resolved": 0
+  }
+}
