@@ -208,7 +208,7 @@ clone_workspace() {
     fi
     
     echo -e "${BLUE}Cloning repository...${NC}"
-    git clone https://github.com/null-runner/claude-workspace.git "$WORKSPACE_DIR"
+    git clone https://github.com/YOUR-USERNAME/claude-workspace.git "$WORKSPACE_DIR"
     cd "$WORKSPACE_DIR"
     
     # Make scripts executable
@@ -290,7 +290,7 @@ show_completion() {
     echo -e "  ${BLUE}cexit${NC}   - Graceful exit from Claude"
     echo ""
     echo -e "${YELLOW}📖 Documentation: ~/claude-workspace/README.md${NC}"
-    echo -e "${YELLOW}🆘 Issues: https://github.com/null-runner/claude-workspace/issues${NC}"
+    echo -e "${YELLOW}🆘 Issues: https://github.com/YOUR-USERNAME/claude-workspace/issues${NC}"
 }
 
 # Main installation flow
@@ -330,7 +330,7 @@ error_handler() {
     echo ""
     echo -e "${RED}❌ Installation failed at line $1${NC}"
     echo -e "${YELLOW}💡 Please check the error above and try again${NC}"
-    echo -e "${YELLOW}🆘 Report issues: https://github.com/null-runner/claude-workspace/issues${NC}"
+    echo -e "${YELLOW}🆘 Report issues: https://github.com/YOUR-USERNAME/claude-workspace/issues${NC}"
     exit 1
 }
 

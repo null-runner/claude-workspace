@@ -8,7 +8,7 @@
 
 ### **Option 1: Full Auto-Install (Recommended)**
 ```bash
-bash <(curl -sSL https://raw.githubusercontent.com/null-runner/claude-workspace/main/install.sh)
+bash <(curl -sSL https://raw.githubusercontent.com/YOUR-USERNAME/claude-workspace/main/install.sh)
 ```
 
 ### **Option 2: Manual Steps**
@@ -25,7 +25,7 @@ npm install -g @anthropic-ai/claude-code
 
 #### **Step 3: Get Workspace**
 ```bash
-git clone https://github.com/null-runner/claude-workspace.git ~/claude-workspace
+git clone https://github.com/YOUR-USERNAME/claude-workspace.git ~/claude-workspace
 cd ~/claude-workspace
 chmod +x scripts/*.sh
 ./scripts/claude-startup.sh
@@ -138,7 +138,7 @@ After installation:
 3. **Type `cw`** in Claude to activate workspace
 4. **Start coding!** Everything is auto-saved
 
-**🆘 Need help?** Open an [issue](https://github.com/null-runner/claude-workspace/issues)
+**🆘 Need help?** Open an [issue](https://github.com/YOUR-USERNAME/claude-workspace/issues)
 
 ---
 

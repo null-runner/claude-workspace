@@ -79,7 +79,7 @@ main_setup() {
         echo ""
         echo "📥 Clonazione repository..."
         cd ~
-        git clone https://github.com/null-runner/claude-workspace.git
+        git clone https://github.com/YOUR-USERNAME/claude-workspace.git
         
         if [[ $? -ne 0 ]]; then
             echo -e "${RED}❌ Errore clonazione. Verifica di avere accesso al repository.${NC}"
@@ -103,7 +103,7 @@ main_setup() {
         
         echo ""
         echo -e "${YELLOW}📋 IMPORTANTE: Aggiungi questa deploy key su GitHub:${NC}"
-        echo "   URL: https://github.com/null-runner/claude-workspace/settings/keys"
+        echo "   URL: https://github.com/YOUR-USERNAME/claude-workspace/settings/keys"
         echo "   Nome: Claude-Laptop-$(hostname)-$(date +%Y%m%d)"
         echo ""
         echo "🔑 CHIAVE:"

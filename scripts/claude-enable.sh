@@ -12,12 +12,12 @@ touch ~/.claude-access/ACTIVE
 cd ~/claude-workspace
 git config core.sshCommand "ssh -i ~/.claude-access/keys/claude_deploy"
 git config user.name "Claude Code"
-git config user.email "claude@nullrunner.local"
+git config user.email "claude@example.com"
 
 # Mostra deploy key
 echo ""
 echo "📋 AGGIUNGI QUESTA DEPLOY KEY SU GITHUB:"
-echo "   URL: https://github.com/nullrunner/claude-workspace/settings/keys"
+echo "   URL: https://github.com/YOUR-USERNAME/claude-workspace/settings/keys"
 echo "   Nome: Claude-$(hostname)-$(date +%Y%m%d)"
 echo "   Permessi: ✅ Allow write access"
 echo ""
