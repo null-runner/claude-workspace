@@ -1,0 +1,56 @@
+# Claude Workspace Template .gitignore
+
+# Personal projects (keep these private in your fork)
+projects/active/*
+projects/sandbox/*
+projects/stable/*
+
+# But keep the directory structure
+!projects/active/.gitkeep
+!projects/sandbox/.gitkeep  
+!projects/stable/.gitkeep
+
+# Runtime system files (generated automatically)
+.claude/logs/*
+.claude/memory/*
+.claude/activity/*
+.claude/intelligence/*
+.claude/memory-coordination/*
+.claude/context/*
+.claude/sync-coordination/*
+.claude/auto-memory/*
+.claude/integrity/*
+
+# Keep essential directory structure
+!.claude/logs/.gitkeep
+!.claude/memory/.gitkeep
+!.claude/activity/.gitkeep
+!.claude/intelligence/.gitkeep
+
+# Temporary files
+*.tmp
+*.temp
+*.pid
+*.lock
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Personal environment
+.env
+.env.local

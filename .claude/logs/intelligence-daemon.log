@@ -1,6 +1,0 @@
-[2025-06-14 12:52:40] Starting intelligence daemon...
-[0;31m❌ Unknown daemon command: [0m
-Usage: claude-intelligence-enhanced daemon [start|stop|status]
-[2025-06-14 12:52:42] ERROR: Failed to start intelligence daemon
-[2025-06-14 12:55:29] Intelligence daemon already running
-[2025-06-14 12:57:53] Intelligence daemon already running
