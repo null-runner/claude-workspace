@@ -10,34 +10,6 @@
   ],
   "recent_decisions": [
     {
-      "title": "Added new workspace tool: atomic-file-operations.sh",
-      "category": "tool",
-      "impact": "low",
-      "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:50:39.083243Z"
-    },
-    {
-      "title": "Added new workspace tool: state-integrity-manager.sh",
-      "category": "tool",
-      "impact": "low",
-      "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:50:39.083249Z"
-    },
-    {
-      "title": "Added new workspace tool: claude-process-manager.sh",
-      "category": "tool",
-      "impact": "low",
-      "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:50:39.083253Z"
-    },
-    {
-      "title": "Added new workspace tool: json-safe-wrapper.sh",
-      "category": "tool",
-      "impact": "low",
-      "source": "file_pattern_analysis",
-      "timestamp": "2025-06-14T01:50:39.083257Z"
-    },
-    {
       "title": "Added new workspace tool: test-sync-coordinator.sh",
       "category": "tool",
       "impact": "low",
@@ -64,8 +36,36 @@
       "impact": "low",
       "source": "file_pattern_analysis",
       "timestamp": "2025-06-14T01:50:39.083267Z"
+    },
+    {
+      "title": "Added new workspace tool: config-backup-manager.sh",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-14T02:05:39.262566Z"
+    },
+    {
+      "title": "Added new workspace tool: error-handling-library.sh",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-14T02:05:39.262579Z"
+    },
+    {
+      "title": "Added new workspace tool: claude-simplified-memory-optimized.sh",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-14T02:05:39.262582Z"
+    },
+    {
+      "title": "Added new workspace tool: error-handling-template.sh",
+      "category": "tool",
+      "impact": "low",
+      "source": "file_pattern_analysis",
+      "timestamp": "2025-06-14T02:05:39.262587Z"
     }
   ],
   "current_focus": "tool_focused_development",
-  "extraction_timestamp": "2025-06-14T01:55:41.802598Z"
+  "extraction_timestamp": "2025-06-14T02:06:01.400772Z"
 }

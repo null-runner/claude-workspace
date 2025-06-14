@@ -74,9 +74,12 @@ claude-project-memory todo add "Core implementation"
 claude-project-memory todo add "Testing"
 claude-project-memory todo add "Documentation"
 
-# Save state and sync
+# Save state and sync (enterprise-grade)
 claude-save "Created new project: my-new-project"
 ~/claude-workspace/scripts/sync-now.sh
+
+# Optional: Use enhanced exit for session termination
+# cexit-safe  # Graceful exit + keeps session open
 ```
 
 ### 3. Project Types and Where to Put Them
@@ -116,10 +119,14 @@ claude-project-memory resume
 git add .
 git commit -m "WIP: feature implementation"
 
-# 3. Save state and sync with desktop
+# 3. Save state and sync with desktop (enterprise-grade)
 claude-project-memory save "Implemented feature X, next: testing"
 claude-save "Continue my-project development on desktop"
 ~/claude-workspace/scripts/sync-now.sh
+
+# Enhanced exit options
+# Use cexit-safe for proper session termination
+# cexit-safe  # Graceful exit + keeps session open
 
 # 4. On desktop - continue development
 # Resume general context

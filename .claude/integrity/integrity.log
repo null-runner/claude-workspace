@@ -134,3 +134,179 @@
 [2025-06-14 01:55:04.520] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/tools/weekly-digest.json
 [2025-06-14 01:55:04.591] [ERROR] [claude-startup.sh:111] Consistency check failed: 1/37 files corrupted
 [2025-06-14 02:00:03.713] [DEBUG] [error-handling-library.sh:201] File validation passed: /tmp/test.json
+[2025-06-14 02:18:05.560] [DEBUG] [error-handling-library.sh:201] File validation passed: /tmp/test.json
+[2025-06-14 02:33:15.695] [DEBUG] [claude-startup.sh:151] File validation passed: /home/nullrunner/claude-workspace/.claude/auto-memory/exit_type
+[2025-06-14 02:33:15.702] [INFO] [claude-startup.sh:210] Starting consistency check (fix_corrupted=true)
+[2025-06-14 02:33:15.726] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync-coordination/coordinator-state.json
+[2025-06-14 02:33:15.749] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync-coordination/sync-queue.json
+[2025-06-14 02:33:15.772] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/integrity/manifest.json
+[2025-06-14 02:33:15.797] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory-coordination/health-status.json
+[2025-06-14 02:33:15.822] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory-coordination/operation-queue.json
+[2025-06-14 02:33:15.850] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/test-integrity/test.json
+[2025-06-14 02:33:15.869] [INFO] [claude-startup.sh:210] Starting consistency check (fix_corrupted=true)
+[2025-06-14 02:33:15.874] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/backup/last-cleanup.json
+[2025-06-14 02:33:15.895] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync-coordination/coordinator-state.json
+[2025-06-14 02:33:15.899] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/backup/cleanup-config.json
+[2025-06-14 02:33:15.919] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync-coordination/sync-queue.json
+[2025-06-14 02:33:15.922] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/activity/activity.json
+[2025-06-14 02:33:15.942] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/integrity/manifest.json
+[2025-06-14 02:33:15.945] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/activity/current-session.json
+[2025-06-14 02:33:15.967] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory-coordination/health-status.json
+[2025-06-14 02:33:15.970] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/decisions/decisions.json
+[2025-06-14 02:33:15.976] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/autonomous/autonomous-system.pid
+[2025-06-14 02:33:15.990] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory-coordination/operation-queue.json
+[2025-06-14 02:33:15.999] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/autonomous/service-status.json
+[2025-06-14 02:33:16.015] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/test-integrity/test.json
+[2025-06-14 02:33:16.022] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/logs/last-rotation.json
+[2025-06-14 02:33:16.039] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/backup/last-cleanup.json
+[2025-06-14 02:33:16.046] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/logs/rotation-config.json
+[2025-06-14 02:33:16.061] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/backup/cleanup-config.json
+[2025-06-14 02:33:16.069] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync/sync-config.json
+[2025-06-14 02:33:16.077] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync/smart-sync.pid
+[2025-06-14 02:33:16.084] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/activity/activity.json
+[2025-06-14 02:33:16.100] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync/config.json
+[2025-06-14 02:33:16.106] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/activity/current-session.json
+[2025-06-14 02:33:16.124] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/enhanced-sessions.json
+[2025-06-14 02:33:16.130] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/decisions/decisions.json
+[2025-06-14 02:33:16.136] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/autonomous/autonomous-system.pid
+[2025-06-14 02:33:16.148] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/intelligence-cache.json
+[2025-06-14 02:33:16.161] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/autonomous/service-status.json
+[2025-06-14 02:33:16.172] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/workspace-memory.json
+[2025-06-14 02:33:16.183] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/logs/last-rotation.json
+[2025-06-14 02:33:16.194] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/current-session-context.json
+[2025-06-14 02:33:16.207] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/logs/rotation-config.json
+[2025-06-14 02:33:16.219] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/session-history.json
+[2025-06-14 02:33:16.231] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync/sync-config.json
+[2025-06-14 02:33:16.239] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync/smart-sync.pid
+[2025-06-14 02:33:16.241] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/enhanced-context.json
+[2025-06-14 02:33:16.262] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync/config.json
+[2025-06-14 02:33:16.264] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/unified-context.json
+[2025-06-14 02:33:16.286] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/auto-projects/current.json
+[2025-06-14 02:33:16.286] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/enhanced-sessions.json
+[2025-06-14 02:33:16.308] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/intelligence-cache.json
+[2025-06-14 02:33:16.332] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/workspace-memory.json
+[2025-06-14 02:33:16.356] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/current-session-context.json
+[2025-06-14 02:33:16.382] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/session-history.json
+[2025-06-14 02:33:16.405] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/enhanced-context.json
+[2025-06-14 02:33:16.426] [ERROR] [state-integrity-manager.sh:410] File failed consistency check: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:16.428] [INFO] [state-integrity-manager.sh:300] Attempting to recover file: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:16.432] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/unified-context.json
+[2025-06-14 02:33:16.438] [ERROR] [state-integrity-manager.sh:300] Failed to recover file: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:16.439] [ERROR] [state-integrity-manager.sh:410] File recovery failed: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:16.455] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/auto-projects/current.json
+[2025-06-14 02:33:16.531] [ERROR] [state-integrity-manager.sh:414] File failed consistency check: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:16.546] [ERROR] [state-integrity-manager.sh:410] File failed consistency check: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:16.547] [INFO] [state-integrity-manager.sh:300] Attempting to recover file: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:16.556] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/settings.local.json
+[2025-06-14 02:33:16.557] [ERROR] [state-integrity-manager.sh:300] Failed to recover file: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:16.558] [ERROR] [state-integrity-manager.sh:410] File recovery failed: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:16.578] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/last-extraction.json
+[2025-06-14 02:33:16.600] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/auto-learnings.json
+[2025-06-14 02:33:16.623] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/auto-decisions.json
+[2025-06-14 02:33:16.647] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/contexts/index.json
+[2025-06-14 02:33:16.652] [ERROR] [state-integrity-manager.sh:414] File failed consistency check: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:16.670] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/learning/learnings.json
+[2025-06-14 02:33:16.677] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/settings.local.json
+[2025-06-14 02:33:16.693] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/config-backups/backup-config.json
+[2025-06-14 02:33:16.702] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/last-extraction.json
+[2025-06-14 02:33:16.715] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/projects/project-config.json
+[2025-06-14 02:33:16.725] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/auto-learnings.json
+[2025-06-14 02:33:16.738] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/metrics/productivity.json
+[2025-06-14 02:33:16.747] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/auto-decisions.json
+[2025-06-14 02:33:16.765] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/tools/weekly-digest.json
+[2025-06-14 02:33:16.773] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/contexts/index.json
+[2025-06-14 02:33:16.800] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/learning/learnings.json
+[2025-06-14 02:33:16.825] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/config-backups/backup-config.json
+[2025-06-14 02:33:16.838] [ERROR] [claude-startup.sh:210] Consistency check failed: 1/37 files corrupted
+[2025-06-14 02:33:16.848] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/projects/project-config.json
+[2025-06-14 02:33:16.870] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/metrics/productivity.json
+[2025-06-14 02:33:16.893] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/tools/weekly-digest.json
+[2025-06-14 02:33:16.967] [DEBUG] [claude-startup.sh:151] File validation passed: /home/nullrunner/claude-workspace/.claude/auto-memory/exit_type
+[2025-06-14 02:33:16.974] [ERROR] [claude-startup.sh:210] Consistency check failed: 1/37 files corrupted
+[2025-06-14 02:33:16.974] [INFO] [claude-startup.sh:210] Starting consistency check (fix_corrupted=true)
+[2025-06-14 02:33:17.000] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync-coordination/coordinator-state.json
+[2025-06-14 02:33:17.027] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync-coordination/sync-queue.json
+[2025-06-14 02:33:17.050] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/integrity/manifest.json
+[2025-06-14 02:33:17.075] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory-coordination/health-status.json
+[2025-06-14 02:33:17.098] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory-coordination/operation-queue.json
+[2025-06-14 02:33:17.124] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/test-integrity/test.json
+[2025-06-14 02:33:17.148] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/backup/last-cleanup.json
+[2025-06-14 02:33:17.173] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/backup/cleanup-config.json
+[2025-06-14 02:33:17.197] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/activity/activity.json
+[2025-06-14 02:33:17.232] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/activity/current-session.json
+[2025-06-14 02:33:17.256] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/decisions/decisions.json
+[2025-06-14 02:33:17.262] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/autonomous/autonomous-system.pid
+[2025-06-14 02:33:17.284] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/autonomous/service-status.json
+[2025-06-14 02:33:17.307] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/logs/last-rotation.json
+[2025-06-14 02:33:17.329] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/logs/rotation-config.json
+[2025-06-14 02:33:17.354] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync/sync-config.json
+[2025-06-14 02:33:17.361] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync/smart-sync.pid
+[2025-06-14 02:33:17.387] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync/config.json
+[2025-06-14 02:33:17.413] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/enhanced-sessions.json
+[2025-06-14 02:33:17.436] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/intelligence-cache.json
+[2025-06-14 02:33:17.458] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/workspace-memory.json
+[2025-06-14 02:33:17.480] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/current-session-context.json
+[2025-06-14 02:33:17.504] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/session-history.json
+[2025-06-14 02:33:17.528] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/enhanced-context.json
+[2025-06-14 02:33:17.552] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/unified-context.json
+[2025-06-14 02:33:17.575] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/auto-projects/current.json
+[2025-06-14 02:33:17.664] [ERROR] [state-integrity-manager.sh:410] File failed consistency check: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:17.665] [INFO] [state-integrity-manager.sh:300] Attempting to recover file: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:17.674] [ERROR] [state-integrity-manager.sh:300] Failed to recover file: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:17.676] [ERROR] [state-integrity-manager.sh:410] File recovery failed: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:17.735] [DEBUG] [claude-startup.sh:151] File validation passed: /home/nullrunner/claude-workspace/.claude/auto-memory/exit_type
+[2025-06-14 02:33:17.742] [INFO] [claude-startup.sh:210] Starting consistency check (fix_corrupted=true)
+[2025-06-14 02:33:17.766] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync-coordination/coordinator-state.json
+[2025-06-14 02:33:17.768] [ERROR] [state-integrity-manager.sh:414] File failed consistency check: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:17.789] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync-coordination/sync-queue.json
+[2025-06-14 02:33:17.791] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/settings.local.json
+[2025-06-14 02:33:17.812] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/integrity/manifest.json
+[2025-06-14 02:33:17.813] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/last-extraction.json
+[2025-06-14 02:33:17.836] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory-coordination/health-status.json
+[2025-06-14 02:33:17.836] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/auto-learnings.json
+[2025-06-14 02:33:17.858] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory-coordination/operation-queue.json
+[2025-06-14 02:33:17.858] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/auto-decisions.json
+[2025-06-14 02:33:17.881] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/contexts/index.json
+[2025-06-14 02:33:17.883] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/test-integrity/test.json
+[2025-06-14 02:33:17.904] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/learning/learnings.json
+[2025-06-14 02:33:17.906] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/backup/last-cleanup.json
+[2025-06-14 02:33:17.927] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/config-backups/backup-config.json
+[2025-06-14 02:33:17.930] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/backup/cleanup-config.json
+[2025-06-14 02:33:17.951] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/projects/project-config.json
+[2025-06-14 02:33:17.952] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/activity/activity.json
+[2025-06-14 02:33:17.974] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/activity/current-session.json
+[2025-06-14 02:33:17.974] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/metrics/productivity.json
+[2025-06-14 02:33:17.997] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/tools/weekly-digest.json
+[2025-06-14 02:33:17.997] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/decisions/decisions.json
+[2025-06-14 02:33:18.003] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/autonomous/autonomous-system.pid
+[2025-06-14 02:33:18.026] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/autonomous/service-status.json
+[2025-06-14 02:33:18.048] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/logs/last-rotation.json
+[2025-06-14 02:33:18.071] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/logs/rotation-config.json
+[2025-06-14 02:33:18.072] [ERROR] [claude-startup.sh:210] Consistency check failed: 1/37 files corrupted
+[2025-06-14 02:33:18.094] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync/sync-config.json
+[2025-06-14 02:33:18.102] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync/smart-sync.pid
+[2025-06-14 02:33:18.126] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync/config.json
+[2025-06-14 02:33:18.149] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/enhanced-sessions.json
+[2025-06-14 02:33:18.175] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/intelligence-cache.json
+[2025-06-14 02:33:18.197] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/workspace-memory.json
+[2025-06-14 02:33:18.220] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/current-session-context.json
+[2025-06-14 02:33:18.243] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/session-history.json
+[2025-06-14 02:33:18.265] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/enhanced-context.json
+[2025-06-14 02:33:18.288] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/unified-context.json
+[2025-06-14 02:33:18.311] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/auto-projects/current.json
+[2025-06-14 02:33:18.398] [ERROR] [state-integrity-manager.sh:410] File failed consistency check: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:18.399] [INFO] [state-integrity-manager.sh:300] Attempting to recover file: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:18.408] [ERROR] [state-integrity-manager.sh:300] Failed to recover file: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:18.409] [ERROR] [state-integrity-manager.sh:410] File recovery failed: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:18.497] [ERROR] [state-integrity-manager.sh:414] File failed consistency check: /home/nullrunner/claude-workspace/.claude/benchmarks/benchmark-results-20250613-194726.json
+[2025-06-14 02:33:18.520] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/settings.local.json
+[2025-06-14 02:33:18.543] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/last-extraction.json
+[2025-06-14 02:33:18.570] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/auto-learnings.json
+[2025-06-14 02:33:18.595] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/auto-decisions.json
+[2025-06-14 02:33:18.617] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/contexts/index.json
+[2025-06-14 02:33:18.639] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/learning/learnings.json
+[2025-06-14 02:33:18.662] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/config-backups/backup-config.json
+[2025-06-14 02:33:18.685] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/projects/project-config.json
+[2025-06-14 02:33:18.708] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/metrics/productivity.json
+[2025-06-14 02:33:18.733] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/tools/weekly-digest.json
+[2025-06-14 02:33:18.802] [ERROR] [claude-startup.sh:210] Consistency check failed: 1/37 files corrupted

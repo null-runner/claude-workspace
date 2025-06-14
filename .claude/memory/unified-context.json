@@ -1,10 +1,10 @@
 {
   "context_version": "unified-v1",
-  "timestamp": "2025-06-14T01:55:41.776954Z",
-  "save_type": "auto",
+  "timestamp": "2025-06-14T02:06:01.372058Z",
+  "save_type": "simplified",
   "caller": "claude-memory-coordinator",
   "device": "NEURAL-X",
-  "working_directory": "/home/nullrunner/claude-workspace",
+  "working_directory": "/home/nullrunner/claude-workspace/scripts",
   "current_project": {
     "name": "claude-workspace-development",
     "type": "meta",
@@ -17,18 +17,16 @@
   "git_status": {
     "branch": "main",
     "has_changes": true,
-    "dirty_files_count": 8,
+    "dirty_files_count": 6,
     "dirty_files": [
-      "M .claude/auto-memory/exit_type",
-      " M .claude/integrity/integrity.log",
-      " M .claude/integrity/manifest.json",
-      " M .claude/logs/atomic-operations.log",
+      "M .claude/logs/atomic-operations.log",
       " M .claude/logs/auto-push.log",
       " M .claude/memory-coordination/coordinator.log",
       " M .claude/memory-coordination/health-status.json",
+      " D .claude/memory/git-status-cache.json",
       "?? .claude/memory-coordination/memory-coordinator.lock"
     ],
-    "last_commit": "0e15a4a 🛡️ Sistema operazioni atomiche completato",
+    "last_commit": "41ea5e6 🚀 Performance Optimization Complete",
     "is_git_repo": true
   },
   "intelligence_insights": {
@@ -42,34 +40,6 @@
       }
     ],
     "recent_decisions": [
-      {
-        "title": "Added new workspace tool: atomic-file-operations.sh",
-        "category": "tool",
-        "impact": "low",
-        "source": "file_pattern_analysis",
-        "timestamp": "2025-06-14T01:50:39.083243Z"
-      },
-      {
-        "title": "Added new workspace tool: state-integrity-manager.sh",
-        "category": "tool",
-        "impact": "low",
-        "source": "file_pattern_analysis",
-        "timestamp": "2025-06-14T01:50:39.083249Z"
-      },
-      {
-        "title": "Added new workspace tool: claude-process-manager.sh",
-        "category": "tool",
-        "impact": "low",
-        "source": "file_pattern_analysis",
-        "timestamp": "2025-06-14T01:50:39.083253Z"
-      },
-      {
-        "title": "Added new workspace tool: json-safe-wrapper.sh",
-        "category": "tool",
-        "impact": "low",
-        "source": "file_pattern_analysis",
-        "timestamp": "2025-06-14T01:50:39.083257Z"
-      },
       {
         "title": "Added new workspace tool: test-sync-coordinator.sh",
         "category": "tool",
@@ -97,14 +67,42 @@
         "impact": "low",
         "source": "file_pattern_analysis",
         "timestamp": "2025-06-14T01:50:39.083267Z"
+      },
+      {
+        "title": "Added new workspace tool: config-backup-manager.sh",
+        "category": "tool",
+        "impact": "low",
+        "source": "file_pattern_analysis",
+        "timestamp": "2025-06-14T02:05:39.262566Z"
+      },
+      {
+        "title": "Added new workspace tool: error-handling-library.sh",
+        "category": "tool",
+        "impact": "low",
+        "source": "file_pattern_analysis",
+        "timestamp": "2025-06-14T02:05:39.262579Z"
+      },
+      {
+        "title": "Added new workspace tool: claude-simplified-memory-optimized.sh",
+        "category": "tool",
+        "impact": "low",
+        "source": "file_pattern_analysis",
+        "timestamp": "2025-06-14T02:05:39.262582Z"
+      },
+      {
+        "title": "Added new workspace tool: error-handling-template.sh",
+        "category": "tool",
+        "impact": "low",
+        "source": "file_pattern_analysis",
+        "timestamp": "2025-06-14T02:05:39.262587Z"
       }
     ],
     "current_focus": "tool_focused_development",
-    "extraction_timestamp": "2025-06-14T01:55:41.802598Z"
+    "extraction_timestamp": "2025-06-14T02:06:01.400772Z"
   },
-  "conversation_summary": "git_dirty",
-  "session_note": "git_dirty",
-  "save_reason": "manual",
+  "conversation_summary": "Completed",
+  "session_note": null,
+  "save_reason": "performance_optimization",
   "open_issues": [
     "BUG: Handle blocked files (log for debugging) (scripts/claude-intelligent-auto-sync.sh:152)",
     "IMPORTANT: Pulizia intelligente memoria senza perdere informazioni importanti (scripts/claude-memory-cleaner.sh:3)",
@@ -114,7 +112,7 @@
   ],
   "next_actions": [
     "Verify recent fixes are working correctly",
-    "Commit current changes (9 files modified)",
+    "Commit current changes (7 files modified)",
     "Test workspace script changes",
     "Update documentation if needed"
   ],

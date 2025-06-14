@@ -17,11 +17,11 @@
       ]
     }
   },
-  "last_check": "2025-06-14T01:55:04+02:00",
+  "last_check": "2025-06-14T02:33:18+02:00",
   "stats": {
     "files_tracked": 37,
     "versions_created": 1,
     "recoveries_performed": 1,
-    "consistency_checks": 3
+    "consistency_checks": 7
   }
 }

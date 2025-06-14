@@ -44,3 +44,9 @@
 [2025-06-14 01:46:55] [WARN] Smart-exit timeout or error in safe mode
 [2025-06-14 01:46:55] [INFO] Marked graceful exit successfully
 [2025-06-14 01:46:55] [INFO] Claude Code safe exit completed
+[2025-06-14 02:27:37] [INFO] Detected Claude Code in process chain: PID=58433, CMD=claude
+[2025-06-14 02:27:37] [INFO] Checking hook status in Claude Code context
+[2025-06-14 02:27:37] [WARN] Hook status: NOT ACTIVE
+[2025-06-14 02:29:07] [INFO] Detected Claude Code in process chain: PID=58433, CMD=claude
+[2025-06-14 02:29:07] [INFO] Checking hook status in Claude Code context
+[2025-06-14 02:29:07] [WARN] Hook status: NOT ACTIVE

@@ -1,6 +1,6 @@
-# Guida Setup Completa - Claude Workspace
+# Guida Setup Completa - Claude Workspace Enterprise
 
-Questa guida copre il setup completo del sistema Claude Workspace sia per il PC fisso che per il laptop.
+Questa guida copre il setup completo del sistema Claude Workspace Enterprise-Grade sia per il PC fisso che per il laptop. Il sistema è ora dotato di componenti enterprise per massima robustezza e performance.
 
 ## Setup PC Fisso
 
@@ -8,7 +8,11 @@ Questa guida copre il setup completo del sistema Claude Workspace sia per il PC 
 - Ubuntu/Debian o sistema Linux compatibile
 - Git installato
 - Accesso SSH configurato
-- Python 3.x per il server HTTP temporaneo
+- Python 3.x (richiesto per componenti enterprise)
+- **Nuovo**: jq (JSON processor) per coordinatori
+- **Nuovo**: flock utility per file locking
+- **Minimo**: 2GB RAM liberi per sistema autonomo
+- **Raccomandato**: SSD per performance ottimale
 
 ### Installazione step-by-step
 
@@ -20,48 +24,59 @@ Questa guida copre il setup completo del sistema Claude Workspace sia per il PC 
    mkdir -p ~/claude-workspace/{projects/{active,sandbox,production},scripts,configs,logs,docs}
    ```
 
-2. **Eseguire lo script di setup**:
+2. **Eseguire lo script di setup enterprise**:
    ```bash
    cd ~/claude-workspace
    chmod +x setup.sh
-   ./setup.sh
+   ./setup.sh --enterprise
    ```
+   
+   **Nota**: Il flag `--enterprise` abilita componenti avanzati:
+   - Sistema di coordinamento processi
+   - File locking avanzato
+   - Backup automatico enterprise
+   - Monitoraggio performance
 
-3. **Cosa fa lo script setup.sh**:
-   - Crea tutte le directory necessarie
+3. **Cosa fa lo script setup.sh --enterprise**:
+   - Crea tutte le directory necessarie (incluse enterprise)
    - Imposta i permessi corretti (755 per directory, 644 per file)
-   - Crea il file di controllo accessi
-   - Genera gli script di gestione
-   - Configura il logging
+   - Crea il file di controllo accessi con protezione processi
+   - Genera gli script di gestione enterprise
+   - Configura il logging multi-livello
+   - **Nuovo**: Inizializza coordinatori (memory, sync, project)
+   - **Nuovo**: Configura sistema di lock distribuito
+   - **Nuovo**: Installa componenti di monitoraggio
+   - **Nuovo**: Setup rotazione log automatica
 
-4. **Verificare l'installazione**:
+4. **Verificare l'installazione enterprise**:
    ```bash
-   ~/claude-workspace/scripts/claude-status.sh
+   ~/claude-workspace/scripts/claude-startup.sh
    ```
 
-   Output atteso:
+   Output atteso enterprise:
    ```
-   === Claude Workspace Status ===
-   Timestamp: 2025-01-06 10:30:45
+   🚀 CLAUDE WORKSPACE ENTERPRISE STARTUP
+   =====================================
+   📍 Sistema Autonomo: ATTIVO
+   🎯 Coordinatori: OK (3/3)
+   🔒 File Locking: ENABLED
+   📊 Monitoraggio: HEALTHY
+   🧠 Memoria: LOADED
+   🔄 Sync: READY
    
-   Access Control: ENABLED/DISABLED
-   Allowed Devices: 1
-   
-   Directory Structure: OK
-   Scripts: OK
-   Permissions: OK
+   ✅ Sistema enterprise completamente operativo
    ```
 
-5. **Inizializzare sistema memoria intelligente**:
+5. **Inizializzare sistema memoria enterprise**:
    ```bash
-   # Crea struttura memoria
-   mkdir -p ~/claude-workspace/.claude/memory/projects
+   # Avvia coordinatore memoria
+   ~/claude-workspace/scripts/claude-memory-coordinator.sh start
    
    # Inizializza memoria globale workspace
-   claude-save "Sistema Claude Workspace inizializzato"
+   ~/claude-workspace/scripts/claude-simplified-memory.sh save "Sistema Claude Workspace Enterprise inizializzato"
    
    # Verifica funzionamento
-   claude-resume
+   ~/claude-workspace/scripts/claude-simplified-memory.sh load
    ```
 
    Output atteso:
@@ -165,52 +180,92 @@ Questa guida copre il setup completo del sistema Claude Workspace sia per il PC 
    claude-project-memory save "Test progetto inizializzato"
    ```
 
-### Configurazione Sync Automatico
+### Configurazione Sync Enterprise
 
-1. **Abilitare sync automatico**:
+1. **Abilitare sync enterprise con coordinatore**:
    ```bash
-   ~/claude-workspace/scripts/auto-sync.sh enable
+   ~/claude-workspace/scripts/claude-sync-coordinator.sh enable
+   ~/claude-workspace/scripts/claude-smart-sync.sh start
    ```
 
-2. **Verificare crontab**:
+2. **Verificare servizi enterprise**:
    ```bash
-   crontab -l | grep claude-workspace
+   ~/claude-workspace/scripts/claude-autonomous-system.sh status
    ```
 
    Dovrebbe mostrare:
    ```
-   */5 * * * * ~/claude-workspace/scripts/sync-now.sh >> ~/claude-workspace/logs/auto-sync.log 2>&1
+   📊 ENTERPRISE SERVICES STATUS
+   ===========================
+   Master Daemon: RUNNING
+   Sync Coordinator: ACTIVE
+   Memory Coordinator: HEALTHY
+   Project Monitor: MONITORING
+   Intelligence Extractor: LEARNING
    ```
 
-3. **Monitorare i log**:
+3. **Monitorare i log enterprise**:
    ```bash
-   tail -f ~/claude-workspace/logs/auto-sync.log
+   ~/claude-workspace/scripts/claude-autonomous-system.sh logs
    ```
 
-## Troubleshooting Comune
+## Exit Sicuro Sistema Enterprise
 
-### Problema: Sistema memoria non funziona
+### 🗂️ Comando cexit (Raccomandato)
 
-**Sintomi**: Comandi `claude-save` o `claude-project-memory` non funzionano
+Per uscire dal sistema enterprise in modo sicuro:
 
-**Soluzioni**:
 ```bash
-# Verifica esistenza directory memoria
-ls -la ~/claude-workspace/.claude/memory/
+# Exit sicuro mantenendo sessione aperta (raccomandato)
+~/claude-workspace/scripts/cexit-safe
 
-# Se non esiste, crea manualmente
-mkdir -p ~/claude-workspace/.claude/memory/projects
+# Exit completo con terminazione Claude Code
+~/claude-workspace/scripts/cexit
 
-# Verifica permessi
-chmod 700 ~/claude-workspace/.claude/memory
-chmod 755 ~/claude-workspace/.claude/memory/projects
+# Exit con sync forzato
+~/claude-workspace/scripts/cexit --force-sync
+```
 
-# Test script memoria
-which claude-save
-ls -la ~/claude-workspace/scripts/claude-*.sh
+**Importante**: 
+- **NON usare** `exit` normale - non attiva il graceful shutdown
+- **Usa sempre** `cexit` o `cexit-safe` per preservare stato sistema
+- Il sistema enterprise richiede shutdown coordinato
 
-# Se mancano, aggiungi al PATH o usa path completo
-~/claude-workspace/scripts/claude-save.sh "Test memoria"
+### Cosa fa cexit
+1. 💾 Salva automaticamente stato sessione
+2. 🔄 Sync intelligente finale
+3. 📊 Aggiorna statistiche performance
+4. 🔒 Rilascia tutti i lock
+5. 🚫 Termina servizi background
+6. 🔍 Analizza attività sessione per insights
+
+## Troubleshooting Enterprise
+
+### Problema: Sistema memoria enterprise non funziona
+
+**Sintomi**: Coordinatore memoria non risponde o memoria non sincronizza
+
+**Soluzioni Enterprise**:
+```bash
+# Verifica coordinatore memoria
+~/claude-workspace/scripts/claude-memory-coordinator.sh status
+
+# Riavvia coordinatore se necessario
+~/claude-workspace/scripts/claude-memory-coordinator.sh restart
+
+# Verifica struttura enterprise
+ls -la ~/claude-workspace/.claude/memory-coordination/
+ls -la ~/claude-workspace/.claude/logs/
+
+# Test memoria con coordinatore
+~/claude-workspace/scripts/claude-simplified-memory.sh save "Test memoria enterprise"
+~/claude-workspace/scripts/claude-simplified-memory.sh load
+
+# Verifica lock files
+ls -la ~/claude-workspace/.claude/*.lock
+
+# Pulisci lock se bloccati
+~/claude-workspace/scripts/claude-sync-lock.sh cleanup
 ```
 
 ### Problema: Memoria non sincronizza tra dispositivi
@@ -269,18 +324,30 @@ ssh -v nullrunner@192.168.1.106
 rsync -avz --dry-run ~/claude-workspace/projects/ nullrunner@192.168.1.106:~/claude-workspace/projects/
 ```
 
-### Problema: File di lock bloccato
+### Problema: Sistema lock enterprise bloccato
 
-**Sintomo**: Messaggio "Another sync is already running"
+**Sintomo**: "Lock acquisition failed" o coordinatori non rispondono
 
-**Soluzione**:
+**Soluzione Enterprise**:
 ```bash
-# Sul laptop
-rm ~/claude-workspace/.sync.lock
+# Diagnosi lock enterprise
+~/claude-workspace/scripts/claude-sync-lock.sh status
 
-# Verificare processi rsync zombie
-ps aux | grep rsync
-# Se necessario: killall rsync
+# Cleanup lock automatico
+~/claude-workspace/scripts/claude-sync-lock.sh cleanup
+
+# Verifica coordinatori
+~/claude-workspace/scripts/claude-autonomous-system.sh status
+
+# Riavvio coordinatori se necessario
+~/claude-workspace/scripts/claude-memory-coordinator.sh restart
+~/claude-workspace/scripts/claude-sync-coordinator.sh restart
+
+# Verifica processi enterprise
+ps aux | grep -E "(claude-.*coordinator|autonomous-system)"
+
+# Recovery completo sistema
+~/claude-workspace/scripts/claude-startup.sh --recovery
 ```
 
 ### Problema: Spazio disco insufficiente
