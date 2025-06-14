@@ -13,9 +13,10 @@
           5,
           3
         ],
-        "average_commits_per_day": 76.67,
+        "average_commits_per_day": 77.67,
         "total_active_days": 3,
         "work_hour_distribution": {
+          "12": 3,
           "11": 11,
           "3": 1,
           "2": 14,
@@ -32,20 +33,32 @@
           "14": 1
         },
         "work_day_distribution": {
-          "5": 40,
+          "5": 43,
           "4": 188,
           "3": 2
         }
       },
       "decision_patterns": {
+        "testing": {
+          "frequency": 22,
+          "avg_impact": 41.68,
+          "preferred_hours": [
+            0,
+            1,
+            12,
+            20,
+            22
+          ]
+        },
         "features": {
-          "frequency": 21,
-          "avg_impact": 88.21,
+          "frequency": 22,
+          "avg_impact": 103.18,
           "preferred_hours": [
             0,
             1,
             2,
             11,
+            12,
             14,
             16,
             17,
@@ -96,16 +109,6 @@
             11
           ]
         },
-        "testing": {
-          "frequency": 21,
-          "avg_impact": 32.62,
-          "preferred_hours": [
-            0,
-            1,
-            20,
-            22
-          ]
-        },
         "architecture": {
           "frequency": 1,
           "avg_impact": 11.0,
@@ -137,9 +140,9 @@
           "feature_addition": 1,
           "modification": 1
         },
-        "fix_frequency": 0.09130434782608696
+        "fix_frequency": 0.09012875536480687
       },
-      "analysis_timestamp": "2025-06-14T12:01:16.554983Z"
+      "analysis_timestamp": "2025-06-14T12:19:42.992278Z"
     },
     "project_patterns": {
       "creation_frequency": {},
@@ -168,8 +171,8 @@
       "language_patterns": 0.0,
       "error_patterns": 1.0
     },
-    "last_update": "2025-06-14T12:01:16.554997Z",
+    "last_update": "2025-06-14T12:19:42.992291Z",
     "analysis_period_days": 30,
-    "total_commits_analyzed": 230
+    "total_commits_analyzed": 233
   }
 }
