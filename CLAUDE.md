@@ -14,17 +14,16 @@ All'inizio di OGNI conversazione - tono amichevole "vediamo dove eravamo rimasti
 
 **Nota**: File di sistema (.claude/*, logs/*) sono automaticamente ignorati dal git e NON sono errori.
 
-## Exit Hook (Sicuro)
-**Exit hook ora è COMPLETAMENTE SICURO**:
-- **Auto-detection Claude Code**: NON termina mai Claude Code stesso
-- **Safe mode automatico**: Solo cleanup essenziale quando in Claude Code
-- **Timeout protection**: Timeout 30s per evitare hang
-- **Graceful fallback**: Se rileva problemi fa solo sync sicuro
+## Exit Hook (Disabilitato)
+**Exit hook automatico DISABILITATO per sicurezza**:
+- Exit hook automatico rimosso per evitare interferenze
+- Comando `exit` normale funziona come standard (nessun hook)
+- Per graceful exit usare `cexit` manualmente quando necessario
 
 **Opzioni per graceful exit**:
 - `cexit` / `./scripts/cexit` - graceful exit + terminazione forzata Claude Code
 - `./scripts/cexit-safe` - graceful exit + lascia sessione aperta (raccomandato)  
-- `exit` - ora SICURO con exit hook protetto
+- `exit` - exit normale senza alcun hook automatico
 
 ## CRITICO: Commit Frequenti
 **COMMIT IMMEDIATO OBBLIGATORIO** dopo modifiche a:

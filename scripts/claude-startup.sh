@@ -275,7 +275,7 @@ cleanup_temp_files() {
     find "$WORKSPACE_DIR/.claude/auto-memory" -name "rate_limit_*" -mtime +1 -delete 2>/dev/null || true
 }
 
-# Installa exit hook per graceful exit automatico
+# Crea cexit wrapper per graceful exit manuale (exit hook automatico disabilitato)
 install_exit_hook() {
     # Crea un wrapper script che l'utente può usare invece di exit
     local exit_wrapper="$WORKSPACE_DIR/scripts/cexit"
@@ -413,11 +413,8 @@ main_startup() {
         ((startup_errors++))
     fi
     
-    # 7. Install exit hook for automatic graceful exit
-    error_log "INFO" "Step 7: Install exit hook"
-    if ! install_exit_hook; then
-        error_log "WARN" "Exit hook installation had issues (non-critical)"
-    fi
+    # 7. Exit hook installation DISABLED (use cexit manually instead)
+    error_log "INFO" "Step 7: Exit hook disabled (use cexit for graceful exit)"
     
     echo ""
     
