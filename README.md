@@ -52,33 +52,26 @@ Perfect for:
 
 ---
 
-## 🎯 Quick Start (10 Steps Max!)
+## 🚀 **One-Command Setup**
 
-### 1️⃣ Check Prerequisites
+### **Full Auto-Install** ⚡
 ```bash
-# Run this to check if you're ready
-curl -s https://raw.githubusercontent.com/null-runner/claude-workspace/main/check.sh | bash
+bash <(curl -sSL https://raw.githubusercontent.com/null-runner/claude-workspace/main/install.sh)
 ```
 
-### 2️⃣ Clone and Setup
+**That's it!** Works on Linux, macOS, Windows (WSL).
+
+### **Quick Start Guide**
+👉 **[Complete Setup Guide](QUICK_START.md)** - Step-by-step with troubleshooting
+
+### **Manual Install** (if you prefer)
 ```bash
-cd ~
-git clone https://github.com/YOURUSERNAME/claude-workspace.git
-cd claude-workspace
+# Install Claude Code
+npm install -g @anthropic-ai/claude-code
 
-# One-time setup with profile
-./scripts/claude-setup-profile.sh setup
-
-# Start autonomous system
-./scripts/claude-startup.sh
-```
-
-### 3️⃣ Ready to Use!
-```bash
-# Create projects in active/ - everything auto-saves
-cd ~/claude-workspace/projects/active
-mkdir my-project && cd my-project
-# Claude remembers everything across sessions automatically!
+# Get workspace  
+git clone https://github.com/null-runner/claude-workspace.git ~/claude-workspace
+cd ~/claude-workspace && ./scripts/claude-startup.sh
 ```
 
 ---
