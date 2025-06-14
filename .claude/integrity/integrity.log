@@ -1,0 +1,26 @@
+[2025-06-14 18:27:25.148] [INFO] [claude-startup.sh:204] Initialized integrity manifest
+[2025-06-14 18:27:25.149] [INFO] [claude-startup.sh:210] Starting consistency check (fix_corrupted=true)
+[2025-06-14 18:27:25.177] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync-coordination/coordinator-state.json
+[2025-06-14 18:27:25.184] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync-coordination/sync-daemon.pid
+[2025-06-14 18:27:25.207] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync-coordination/sync-queue.json
+[2025-06-14 18:27:25.229] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/integrity/manifest.json
+[2025-06-14 18:27:25.251] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory-coordination/health-status.json
+[2025-06-14 18:27:25.275] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/activity/current-session.json
+[2025-06-14 18:27:25.298] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/sync/config.json
+[2025-06-14 18:27:25.321] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/intelligence-cache.json
+[2025-06-14 18:27:25.343] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/simplified-context.json
+[2025-06-14 18:27:25.366] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/session-history.json
+[2025-06-14 18:27:25.388] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/memory/unified-context.json
+[2025-06-14 18:27:25.411] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/auto-projects/current.json
+[2025-06-14 18:27:25.434] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/settings.local.json
+[2025-06-14 18:27:25.456] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/claude-memory-context.json
+[2025-06-14 18:27:25.480] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/enhanced/patterns.json
+[2025-06-14 18:27:25.503] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/enhanced/learnings.json
+[2025-06-14 18:27:25.526] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/enhanced/context.json
+[2025-06-14 18:27:25.552] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/enhanced/cross-project.json
+[2025-06-14 18:27:25.575] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/enhanced/user-profile.json
+[2025-06-14 18:27:25.597] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/intelligence/enhanced/daemon-control.json
+[2025-06-14 18:27:25.601] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/auto-memory/exit_type
+[2025-06-14 18:27:25.607] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/context/auto-context.pid
+[2025-06-14 18:27:25.628] [DEBUG] [state-integrity-manager.sh:410] File validation passed: /home/nullrunner/claude-workspace/.claude/context/auto-context-status.json
+[2025-06-14 18:27:25.696] [SUCCESS] [claude-startup.sh:210] Consistency check passed: 23 files checked

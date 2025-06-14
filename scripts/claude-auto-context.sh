@@ -13,6 +13,12 @@ CONTEXT_SAVE_INTERVAL=300  # 5 minutes
 PROJECT_CHECK_INTERVAL=30  # 30 seconds
 MAX_LOG_SIZE=10485760     # 10MB
 
+# Adaptive intervals
+IDLE_THRESHOLD=600        # 10 minutes
+DORMANT_THRESHOLD=1800    # 30 minutes
+IDLE_MULTIPLIER=2         # 2x slower when idle
+DORMANT_MULTIPLIER=4      # 4x slower when dormant
+
 # Colori
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
@@ -174,10 +180,47 @@ check_project_changes() {
     fi
 }
 
+# Get last file modification time in workspace
+get_last_activity_time() {
+    # Find most recently modified file (excluding .claude and .git)
+    local last_mod=$(find "$WORKSPACE_DIR" -type f \
+        -not -path "*/.claude/*" \
+        -not -path "*/.git/*" \
+        -not -path "*/node_modules/*" \
+        -not -path "*/__pycache__/*" \
+        -printf '%T@\n' 2>/dev/null | sort -nr | head -1)
+    
+    if [[ -n "$last_mod" ]]; then
+        echo "${last_mod%.*}"  # Remove decimal part
+    else
+        echo "0"
+    fi
+}
+
+# Calculate adaptive interval
+calculate_adaptive_interval() {
+    local base_interval="$1"
+    local current_time=$(date +%s)
+    local last_activity=$(get_last_activity_time)
+    local idle_time=$((current_time - last_activity))
+    
+    if [[ $idle_time -gt $DORMANT_THRESHOLD ]]; then
+        echo $((base_interval * DORMANT_MULTIPLIER))
+        log_daemon "DEBUG" "ADAPTIVE" "Dormant mode: interval ${base_interval}s -> $((base_interval * DORMANT_MULTIPLIER))s"
+    elif [[ $idle_time -gt $IDLE_THRESHOLD ]]; then
+        echo $((base_interval * IDLE_MULTIPLIER))
+        log_daemon "DEBUG" "ADAPTIVE" "Idle mode: interval ${base_interval}s -> $((base_interval * IDLE_MULTIPLIER))s"
+    else
+        echo "$base_interval"
+    fi
+}
+
 # Main daemon loop
 run_daemon() {
     local context_counter=0
     local project_counter=0
+    local current_project_interval=$PROJECT_CHECK_INTERVAL
+    local current_context_interval=$CONTEXT_SAVE_INTERVAL
     
     log_daemon "INFO" "DAEMON" "Auto-context daemon started (PID: $$)"
     echo $$ > "$PID_FILE"
@@ -192,14 +235,20 @@ run_daemon() {
             break
         fi
         
-        # Context monitoring (every 5 minutes)
-        if [[ $context_counter -ge $CONTEXT_SAVE_INTERVAL ]]; then
+        # Update adaptive intervals every minute
+        if [[ $((context_counter % 60)) -eq 0 ]]; then
+            current_project_interval=$(calculate_adaptive_interval $PROJECT_CHECK_INTERVAL)
+            current_context_interval=$(calculate_adaptive_interval $CONTEXT_SAVE_INTERVAL)
+        fi
+        
+        # Context monitoring (adaptive interval)
+        if [[ $context_counter -ge $current_context_interval ]]; then
             auto_save_context
             context_counter=0
         fi
         
-        # Project monitoring (every 30 seconds)  
-        if [[ $project_counter -ge $PROJECT_CHECK_INTERVAL ]]; then
+        # Project monitoring (adaptive interval)  
+        if [[ $project_counter -ge $current_project_interval ]]; then
             check_project_changes
             project_counter=0
         fi

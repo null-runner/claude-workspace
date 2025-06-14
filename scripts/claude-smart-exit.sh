@@ -2,7 +2,8 @@
 # Claude Smart Exit - Prompt intelligente per salvare sessione
 # Rileva attività significativa e chiede conferma di salvataggio
 
-WORKSPACE_DIR="$HOME/claude-workspace"
+WORKSPACE_DIR="${WORKSPACE_DIR:-$HOME/claude-workspace}"
+export WORKSPACE_DIR
 
 # Colori
 GREEN='\033[0;32m'
@@ -244,7 +245,7 @@ smart_exit_prompt() {
                 mark_graceful_exit
                 echo -e "${GREEN}👋 Goodbye! Session not saved.${NC}"
                 
-                if terminate_claude_code "" "safe_mode"; then
+                if terminate_claude_code "" "auto_mode"; then
                     exit 0
                 else
                     return 0
@@ -296,7 +297,7 @@ prompt_save_session() {
             mark_graceful_exit
             echo -e "${GREEN}👋 Goodbye! Session not saved.${NC}"
             
-            if terminate_claude_code "" "safe_mode"; then
+            if terminate_claude_code "" "auto_mode"; then
                 exit 0
             else
                 return 0
@@ -314,10 +315,56 @@ terminate_claude_code() {
     local prompt_text="${1:-🚪 Terminare Claude Code? [Y/n]: }"
     local force_terminate="${2:-false}"  # New parameter for safe mode
     
-    # In safe mode, never terminate Claude Code
-    if [[ "$force_terminate" == "safe_mode" ]]; then
-        echo -e "${BLUE}🔒 Safe mode: Claude Code termination DISABLED${NC}"
-        return 1  # Don't terminate
+    # In auto mode, terminate automatically without prompting
+    if [[ "$force_terminate" == "auto_mode" ]]; then
+        echo -e "${GREEN}🤖 Auto mode: Terminating Claude Code automatically${NC}"
+        # Skip the prompt, go directly to termination
+        echo -e "${RED}👋 Terminating Claude Code...${NC}"
+        
+        # Use the centralized process manager for safe termination
+        local process_manager="$WORKSPACE_DIR/scripts/claude-process-manager.sh"
+        
+        if [[ ! -f "$process_manager" ]]; then
+            echo -e "${RED}❌ Process manager not found - using fallback method${NC}"
+            fallback_claude_termination
+            return $?
+        fi
+        
+        # Find Claude processes safely using the process manager
+        echo -e "${CYAN}🔍 Searching for Claude processes safely...${NC}"
+        local claude_pids
+        mapfile -t claude_pids < <("$process_manager" find-processes "claude" 2>/dev/null)
+        
+        if [[ ${#claude_pids[@]} -eq 0 ]]; then
+            # Try more specific pattern
+            mapfile -t claude_pids < <("$process_manager" find-processes "claude-code" 2>/dev/null)
+        fi
+        
+        if [[ ${#claude_pids[@]} -eq 0 ]]; then
+            echo -e "${YELLOW}⚠️  No Claude processes found to terminate${NC}"
+            return 0
+        fi
+        
+        # Terminate each process safely
+        for pid in "${claude_pids[@]}"; do
+            if [[ -n "$pid" && "$pid" =~ ^[0-9]+$ ]]; then
+                echo -e "${CYAN}🔄 Terminating Claude process: $pid${NC}"
+                "$process_manager" terminate-process "$pid" 2>/dev/null || true
+            fi
+        done
+        
+        # Wait a moment for processes to terminate
+        sleep 2
+        
+        # Verify termination
+        mapfile -t remaining_pids < <("$process_manager" find-processes "claude" 2>/dev/null)
+        if [[ ${#remaining_pids[@]} -eq 0 ]]; then
+            echo -e "${GREEN}✅ Claude Code terminated successfully${NC}"
+            return 0
+        else
+            echo -e "${YELLOW}⚠️  Some Claude processes may still be running${NC}"
+            return 0
+        fi
     fi
     
     echo ""
@@ -583,7 +630,7 @@ save_session() {
         echo -e "${GREEN}👋 Goodbye!${NC}"
     fi
     
-    if terminate_claude_code "" "safe_mode"; then
+    if terminate_claude_code "" "auto_mode"; then
         exit 0
     else
         return 0
@@ -658,7 +705,7 @@ case "${1:-}" in
             echo -e "${GREEN}✅ Exit type marked as graceful${NC}"
             echo -e "${GREEN}✅ Graceful exit operations completed!${NC}"
             
-            if terminate_claude_code "" "safe_mode"; then
+            if terminate_claude_code "" "auto_mode"; then
                 exit 0
             else
                 return 0

@@ -113,6 +113,7 @@ main() {
     echo -e "${BLUE}Tips:${NC}"
     echo "  • Use 'cexit' for graceful exit"
     echo "  • Run './scripts/claude-simplified-memory.sh load' to restore context"
+    echo "  • Run 'claude-startup-simple.sh dashboard' for quick status"
 }
 
 # Status command
@@ -160,6 +161,88 @@ stop_all() {
     echo -e "${GREEN}✓ All daemons stopped${NC}"
 }
 
+# Dashboard command
+dashboard() {
+    echo -e "${BLUE}📊 Claude Workspace Dashboard${NC}"
+    echo -e "${BLUE}================================${NC}"
+    
+    # Daemon status
+    echo -e "\n${YELLOW}🔧 Daemon Status:${NC}"
+    for daemon_name in claude-intelligence-daemon claude-auto-context claude-sync-daemon; do
+        local daemon_script="$WORKSPACE_DIR/scripts/${daemon_name}.sh"
+        
+        if pgrep -f "$daemon_script daemon" > /dev/null 2>&1; then
+            local pid=$(pgrep -f "$daemon_script daemon" | head -1)
+            echo -e "  ${GREEN}✓${NC} $daemon_name (PID: $pid)"
+        else
+            echo -e "  ${RED}✗${NC} $daemon_name"
+        fi
+    done
+    
+    # Memory & Intelligence
+    echo -e "\n${YELLOW}🧠 Intelligence & Memory:${NC}"
+    local intel_size=$(du -sh "$WORKSPACE_DIR/.claude/intelligence/" 2>/dev/null | cut -f1 || echo "0")
+    local memory_size=$(du -sh "$WORKSPACE_DIR/.claude/memory/" 2>/dev/null | cut -f1 || echo "0")
+    local log_size=$(du -sh "$WORKSPACE_DIR/.claude/logs/" 2>/dev/null | cut -f1 || echo "0")
+    echo "  Intelligence cache: $intel_size"
+    echo "  Memory data: $memory_size"
+    echo "  Log files: $log_size"
+    
+    # Sync status
+    echo -e "\n${YELLOW}🔄 Sync Status:${NC}"
+    if [[ -f "$WORKSPACE_DIR/.claude/sync-coordination/coordinator-state.json" ]]; then
+        local rate_limit=$(jq -r '.rate_limiting.current_hour_count // 0' "$WORKSPACE_DIR/.claude/sync-coordination/coordinator-state.json" 2>/dev/null || echo "0")
+        echo "  Rate limit: $rate_limit/12 syncs this hour"
+    fi
+    
+    # Last activity
+    echo -e "\n${YELLOW}⏰ Last Activity:${NC}"
+    local last_commit=$(git log -1 --format="%ar" 2>/dev/null || echo "No commits")
+    local last_save=$(stat -c %y "$WORKSPACE_DIR/.claude/memory/simplified-context.json" 2>/dev/null | cut -d' ' -f1-2 || echo "Never")
+    echo "  Last commit: $last_commit"
+    echo "  Last context save: $last_save"
+    
+    # Health check
+    local health_issues=0
+    [[ ! -f "$WORKSPACE_DIR/.claude/context/auto-context-status.json" ]] && ((health_issues++))
+    [[ ! -f "$WORKSPACE_DIR/.claude/sync-coordination/daemon.log" ]] && ((health_issues++))
+    
+    echo -e "\n${YELLOW}💚 System Health:${NC}"
+    if [[ $health_issues -eq 0 ]]; then
+        echo -e "  ${GREEN}✓${NC} All systems operational"
+    else
+        echo -e "  ${RED}⚠${NC} $health_issues issues detected"
+    fi
+}
+
+# Self-healing monitor
+check_daemons() {
+    local restart_needed=false
+    
+    echo -e "${BLUE}🛡️ Self-Healing Check${NC}"
+    
+    for daemon_info in "claude-auto-context:claude-auto-context-daemon.sh" \
+                      "claude-intelligence-daemon:claude-intelligence-daemon.sh" \
+                      "claude-sync-daemon:claude-sync-daemon.sh"; do
+        local daemon_name="${daemon_info%%:*}"
+        local daemon_script="$WORKSPACE_DIR/scripts/${daemon_info#*:}"
+        
+        if ! is_daemon_running "$daemon_script"; then
+            echo -e "  ${YELLOW}⚠${NC} $daemon_name crashed, restarting..."
+            if start_daemon "$daemon_name" "$daemon_script"; then
+                echo -e "  ${GREEN}✓${NC} $daemon_name restarted successfully"
+            else
+                echo -e "  ${RED}✗${NC} Failed to restart $daemon_name"
+            fi
+            restart_needed=true
+        fi
+    done
+    
+    if ! $restart_needed; then
+        echo -e "  ${GREEN}✓${NC} All daemons healthy"
+    fi
+}
+
 # Command handling
 case "${1:-start}" in
     "start"|"")
@@ -167,6 +250,12 @@ case "${1:-start}" in
         ;;
     "status")
         show_status
+        ;;
+    "dashboard")
+        dashboard
+        ;;
+    "check")
+        check_daemons
         ;;
     "stop")
         stop_all
@@ -180,11 +269,13 @@ case "${1:-start}" in
         echo "Usage: claude-startup-simple.sh [command]"
         echo ""
         echo "Commands:"
-        echo "  start    Start essential daemons (default)"
-        echo "  status   Show daemon status"
-        echo "  stop     Stop all daemons"
-        echo "  restart  Restart all daemons"
-        echo "  help     Show this help"
+        echo "  start      Start essential daemons (default)"
+        echo "  status     Show daemon status"
+        echo "  dashboard  Show comprehensive system dashboard"
+        echo "  check      Run self-healing check on daemons"
+        echo "  stop       Stop all daemons"
+        echo "  restart    Restart all daemons"
+        echo "  help       Show this help"
         echo ""
         echo "This is a simplified startup that only starts 3 essential daemons:"
         echo "  • claude-auto-context (unified context + project monitoring)"

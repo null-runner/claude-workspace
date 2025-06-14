@@ -1,612 +1,533 @@
-[2025-06-14 12:52:40] [LOCK] Coordination lock acquired by process-command (PID: 152072)
-[2025-06-14 12:52:40] [QUEUE] Processing sync operation queue
-[2025-06-14 12:52:40] [LOCK] Coordination lock released by process-command (PID: 152072)
-[2025-06-14 12:52:40] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 12:53:10] [LOCK] Coordination lock acquired by process-command (PID: 152254)
-[2025-06-14 12:53:10] [QUEUE] Processing sync operation queue
-[2025-06-14 12:53:11] [LOCK] Coordination lock released by process-command (PID: 152254)
-[2025-06-14 12:53:11] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 12:53:41] [LOCK] Coordination lock acquired by process-command (PID: 152467)
-[2025-06-14 12:53:41] [QUEUE] Processing sync operation queue
-[2025-06-14 12:53:41] [LOCK] Coordination lock released by process-command (PID: 152467)
-[2025-06-14 12:53:41] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 12:54:11] [LOCK] Coordination lock acquired by process-command (PID: 152651)
-[2025-06-14 12:54:11] [QUEUE] Processing sync operation queue
-[2025-06-14 12:54:11] [LOCK] Coordination lock released by process-command (PID: 152651)
-[2025-06-14 12:54:11] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 12:54:42] [LOCK] Coordination lock acquired by process-command (PID: 152804)
-[2025-06-14 12:54:42] [QUEUE] Processing sync operation queue
-[2025-06-14 12:54:42] [LOCK] Coordination lock released by process-command (PID: 152804)
-[2025-06-14 12:54:42] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 12:55:12] [LOCK] Coordination lock acquired by process-command (PID: 152929)
-[2025-06-14 12:55:12] [QUEUE] Processing sync operation queue
-[2025-06-14 12:55:13] [LOCK] Coordination lock released by process-command (PID: 152929)
-[2025-06-14 12:55:13] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 12:55:43] [LOCK] Coordination lock acquired by process-command (PID: 153173)
-[2025-06-14 12:55:43] [QUEUE] Processing sync operation queue
-[2025-06-14 12:55:43] [LOCK] Coordination lock released by process-command (PID: 153173)
-[2025-06-14 12:55:43] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 12:56:14] [LOCK] Coordination lock acquired by process-command (PID: 153272)
-[2025-06-14 12:56:14] [QUEUE] Processing sync operation queue
-[2025-06-14 12:56:14] [LOCK] Coordination lock released by process-command (PID: 153272)
-[2025-06-14 12:56:14] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 12:56:44] [LOCK] Coordination lock acquired by process-command (PID: 153391)
-[2025-06-14 12:56:44] [QUEUE] Processing sync operation queue
-[2025-06-14 12:56:44] [LOCK] Coordination lock released by process-command (PID: 153391)
-[2025-06-14 12:56:44] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 12:57:15] [LOCK] Coordination lock acquired by process-command (PID: 153490)
-[2025-06-14 12:57:15] [QUEUE] Processing sync operation queue
-[2025-06-14 12:57:15] [LOCK] Coordination lock released by process-command (PID: 153490)
-[2025-06-14 12:57:15] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 12:57:46] [LOCK] Coordination lock acquired by process-command (PID: 153609)
-[2025-06-14 12:57:46] [QUEUE] Processing sync operation queue
-[2025-06-14 12:57:46] [LOCK] Coordination lock released by process-command (PID: 153609)
-[2025-06-14 12:57:46] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 12:58:16] [LOCK] Coordination lock acquired by process-command (PID: 153812)
-[2025-06-14 12:58:16] [QUEUE] Processing sync operation queue
-[2025-06-14 12:58:16] [LOCK] Coordination lock released by process-command (PID: 153812)
-[2025-06-14 12:58:16] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 12:58:47] [LOCK] Coordination lock acquired by process-command (PID: 154026)
-[2025-06-14 12:58:47] [QUEUE] Processing sync operation queue
-[2025-06-14 12:58:47] [LOCK] Coordination lock released by process-command (PID: 154026)
-[2025-06-14 12:58:47] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 12:59:18] [LOCK] Coordination lock acquired by process-command (PID: 154208)
-[2025-06-14 12:59:18] [QUEUE] Processing sync operation queue
-[2025-06-14 12:59:18] [LOCK] Coordination lock released by process-command (PID: 154208)
-[2025-06-14 12:59:18] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 12:59:48] [LOCK] Coordination lock acquired by process-command (PID: 154400)
-[2025-06-14 12:59:48] [QUEUE] Processing sync operation queue
-[2025-06-14 12:59:48] [LOCK] Coordination lock released by process-command (PID: 154400)
-[2025-06-14 12:59:48] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:00:19] [LOCK] Coordination lock acquired by process-command (PID: 154595)
-[2025-06-14 13:00:19] [QUEUE] Processing sync operation queue
-[2025-06-14 13:00:19] [LOCK] Coordination lock released by process-command (PID: 154595)
-[2025-06-14 13:00:19] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:00:50] [LOCK] Coordination lock acquired by process-command (PID: 154793)
-[2025-06-14 13:00:50] [QUEUE] Processing sync operation queue
-[2025-06-14 13:00:50] [LOCK] Coordination lock released by process-command (PID: 154793)
-[2025-06-14 13:00:50] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:01:20] [LOCK] Coordination lock acquired by process-command (PID: 154910)
-[2025-06-14 13:01:20] [QUEUE] Processing sync operation queue
-[2025-06-14 13:01:20] [LOCK] Coordination lock released by process-command (PID: 154910)
-[2025-06-14 13:01:20] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:01:50] [LOCK] Coordination lock acquired by process-command (PID: 155041)
-[2025-06-14 13:01:50] [QUEUE] Processing sync operation queue
-[2025-06-14 13:01:50] [LOCK] Coordination lock released by process-command (PID: 155041)
-[2025-06-14 13:01:50] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:02:21] [LOCK] Coordination lock acquired by process-command (PID: 155139)
-[2025-06-14 13:02:21] [QUEUE] Processing sync operation queue
-[2025-06-14 13:02:21] [LOCK] Coordination lock released by process-command (PID: 155139)
-[2025-06-14 13:02:21] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:02:52] [LOCK] Coordination lock acquired by process-command (PID: 155268)
-[2025-06-14 13:02:52] [QUEUE] Processing sync operation queue
-[2025-06-14 13:02:52] [LOCK] Coordination lock released by process-command (PID: 155268)
-[2025-06-14 13:02:52] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:03:22] [LOCK] Coordination lock acquired by process-command (PID: 155435)
-[2025-06-14 13:03:22] [QUEUE] Processing sync operation queue
-[2025-06-14 13:03:22] [LOCK] Coordination lock released by process-command (PID: 155435)
-[2025-06-14 13:03:22] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:03:53] [LOCK] Coordination lock acquired by process-command (PID: 155599)
-[2025-06-14 13:03:53] [QUEUE] Processing sync operation queue
-[2025-06-14 13:03:53] [LOCK] Coordination lock released by process-command (PID: 155599)
-[2025-06-14 13:03:53] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:04:24] [LOCK] Coordination lock acquired by process-command (PID: 155698)
-[2025-06-14 13:04:24] [QUEUE] Processing sync operation queue
-[2025-06-14 13:04:24] [LOCK] Coordination lock released by process-command (PID: 155698)
-[2025-06-14 13:04:24] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:04:54] [LOCK] Coordination lock acquired by process-command (PID: 155844)
-[2025-06-14 13:04:54] [QUEUE] Processing sync operation queue
-[2025-06-14 13:04:54] [LOCK] Coordination lock released by process-command (PID: 155844)
-[2025-06-14 13:04:54] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:05:25] [LOCK] Coordination lock acquired by process-command (PID: 155943)
-[2025-06-14 13:05:25] [QUEUE] Processing sync operation queue
-[2025-06-14 13:05:25] [LOCK] Coordination lock released by process-command (PID: 155943)
-[2025-06-14 13:05:25] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:05:56] [LOCK] Coordination lock acquired by process-command (PID: 156091)
-[2025-06-14 13:05:56] [QUEUE] Processing sync operation queue
-[2025-06-14 13:05:56] [LOCK] Coordination lock released by process-command (PID: 156091)
-[2025-06-14 13:05:56] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:06:26] [LOCK] Coordination lock acquired by process-command (PID: 156189)
-[2025-06-14 13:06:26] [QUEUE] Processing sync operation queue
-[2025-06-14 13:06:26] [LOCK] Coordination lock released by process-command (PID: 156189)
-[2025-06-14 13:06:26] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:06:57] [LOCK] Coordination lock acquired by process-command (PID: 156339)
-[2025-06-14 13:06:57] [QUEUE] Processing sync operation queue
-[2025-06-14 13:06:57] [LOCK] Coordination lock released by process-command (PID: 156339)
-[2025-06-14 13:06:57] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:07:28] [LOCK] Coordination lock acquired by process-command (PID: 156438)
-[2025-06-14 13:07:28] [QUEUE] Processing sync operation queue
-[2025-06-14 13:07:28] [LOCK] Coordination lock released by process-command (PID: 156438)
-[2025-06-14 13:07:28] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:07:58] [LOCK] Coordination lock acquired by process-command (PID: 156586)
-[2025-06-14 13:07:58] [QUEUE] Processing sync operation queue
-[2025-06-14 13:07:58] [LOCK] Coordination lock released by process-command (PID: 156586)
-[2025-06-14 13:07:58] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:08:28] [LOCK] Coordination lock acquired by process-command (PID: 156700)
-[2025-06-14 13:08:28] [QUEUE] Processing sync operation queue
-[2025-06-14 13:08:28] [LOCK] Coordination lock released by process-command (PID: 156700)
-[2025-06-14 13:08:28] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:08:59] [LOCK] Coordination lock acquired by process-command (PID: 156836)
-[2025-06-14 13:08:59] [QUEUE] Processing sync operation queue
-[2025-06-14 13:08:59] [LOCK] Coordination lock released by process-command (PID: 156836)
-[2025-06-14 13:08:59] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:09:30] [LOCK] Coordination lock acquired by process-command (PID: 156935)
-[2025-06-14 13:09:30] [QUEUE] Processing sync operation queue
-[2025-06-14 13:09:30] [LOCK] Coordination lock released by process-command (PID: 156935)
-[2025-06-14 13:09:30] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:10:00] [LOCK] Coordination lock acquired by process-command (PID: 157053)
-[2025-06-14 13:10:00] [QUEUE] Processing sync operation queue
-[2025-06-14 13:10:00] [LOCK] Coordination lock released by process-command (PID: 157053)
-[2025-06-14 13:10:00] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:10:31] [LOCK] Coordination lock acquired by process-command (PID: 157152)
-[2025-06-14 13:10:31] [QUEUE] Processing sync operation queue
-[2025-06-14 13:10:31] [LOCK] Coordination lock released by process-command (PID: 157152)
-[2025-06-14 13:10:31] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:11:01] [LOCK] Coordination lock acquired by process-command (PID: 157271)
-[2025-06-14 13:11:01] [QUEUE] Processing sync operation queue
-[2025-06-14 13:11:01] [LOCK] Coordination lock released by process-command (PID: 157271)
-[2025-06-14 13:11:01] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:11:31] [LOCK] Coordination lock acquired by process-command (PID: 157370)
-[2025-06-14 13:11:31] [QUEUE] Processing sync operation queue
-[2025-06-14 13:11:31] [LOCK] Coordination lock released by process-command (PID: 157370)
-[2025-06-14 13:11:31] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:12:01] [LOCK] Coordination lock acquired by process-command (PID: 157490)
-[2025-06-14 13:12:01] [QUEUE] Processing sync operation queue
-[2025-06-14 13:12:01] [LOCK] Coordination lock released by process-command (PID: 157490)
-[2025-06-14 13:12:01] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:12:31] [LOCK] Coordination lock acquired by process-command (PID: 157589)
-[2025-06-14 13:12:31] [QUEUE] Processing sync operation queue
-[2025-06-14 13:12:32] [LOCK] Coordination lock released by process-command (PID: 157589)
-[2025-06-14 13:12:32] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:13:02] [LOCK] Coordination lock acquired by process-command (PID: 157707)
-[2025-06-14 13:13:02] [QUEUE] Processing sync operation queue
-[2025-06-14 13:13:02] [LOCK] Coordination lock released by process-command (PID: 157707)
-[2025-06-14 13:13:02] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:13:32] [LOCK] Coordination lock acquired by process-command (PID: 157821)
-[2025-06-14 13:13:32] [QUEUE] Processing sync operation queue
-[2025-06-14 13:13:32] [LOCK] Coordination lock released by process-command (PID: 157821)
-[2025-06-14 13:13:32] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:14:02] [LOCK] Coordination lock acquired by process-command (PID: 157958)
-[2025-06-14 13:14:02] [QUEUE] Processing sync operation queue
-[2025-06-14 13:14:02] [LOCK] Coordination lock released by process-command (PID: 157958)
-[2025-06-14 13:14:02] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:14:32] [LOCK] Coordination lock acquired by process-command (PID: 158057)
-[2025-06-14 13:14:32] [QUEUE] Processing sync operation queue
-[2025-06-14 13:14:32] [LOCK] Coordination lock released by process-command (PID: 158057)
-[2025-06-14 13:14:32] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:15:02] [LOCK] Coordination lock acquired by process-command (PID: 158176)
-[2025-06-14 13:15:02] [QUEUE] Processing sync operation queue
-[2025-06-14 13:15:02] [LOCK] Coordination lock released by process-command (PID: 158176)
-[2025-06-14 13:15:02] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:15:32] [LOCK] Coordination lock acquired by process-command (PID: 158274)
-[2025-06-14 13:15:32] [QUEUE] Processing sync operation queue
-[2025-06-14 13:15:32] [LOCK] Coordination lock released by process-command (PID: 158274)
-[2025-06-14 13:15:32] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:16:02] [LOCK] Coordination lock acquired by process-command (PID: 158393)
-[2025-06-14 13:16:02] [QUEUE] Processing sync operation queue
-[2025-06-14 13:16:02] [LOCK] Coordination lock released by process-command (PID: 158393)
-[2025-06-14 13:16:02] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:16:32] [LOCK] Coordination lock acquired by process-command (PID: 158492)
-[2025-06-14 13:16:32] [QUEUE] Processing sync operation queue
-[2025-06-14 13:16:32] [LOCK] Coordination lock released by process-command (PID: 158492)
-[2025-06-14 13:16:32] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:17:03] [LOCK] Coordination lock acquired by process-command (PID: 158615)
-[2025-06-14 13:17:03] [QUEUE] Processing sync operation queue
-[2025-06-14 13:17:03] [LOCK] Coordination lock released by process-command (PID: 158615)
-[2025-06-14 13:17:03] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:17:33] [LOCK] Coordination lock acquired by process-command (PID: 158714)
-[2025-06-14 13:17:33] [QUEUE] Processing sync operation queue
-[2025-06-14 13:17:33] [LOCK] Coordination lock released by process-command (PID: 158714)
-[2025-06-14 13:17:33] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:18:03] [LOCK] Coordination lock acquired by process-command (PID: 158832)
-[2025-06-14 13:18:03] [QUEUE] Processing sync operation queue
-[2025-06-14 13:18:03] [LOCK] Coordination lock released by process-command (PID: 158832)
-[2025-06-14 13:18:03] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:18:33] [LOCK] Coordination lock acquired by process-command (PID: 158946)
-[2025-06-14 13:18:33] [QUEUE] Processing sync operation queue
-[2025-06-14 13:18:33] [LOCK] Coordination lock released by process-command (PID: 158946)
-[2025-06-14 13:18:33] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:19:03] [LOCK] Coordination lock acquired by process-command (PID: 159083)
-[2025-06-14 13:19:03] [QUEUE] Processing sync operation queue
-[2025-06-14 13:19:03] [LOCK] Coordination lock released by process-command (PID: 159083)
-[2025-06-14 13:19:03] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:19:33] [LOCK] Coordination lock acquired by process-command (PID: 159182)
-[2025-06-14 13:19:33] [QUEUE] Processing sync operation queue
-[2025-06-14 13:19:33] [LOCK] Coordination lock released by process-command (PID: 159182)
-[2025-06-14 13:19:33] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:20:03] [LOCK] Coordination lock acquired by process-command (PID: 159301)
-[2025-06-14 13:20:03] [QUEUE] Processing sync operation queue
-[2025-06-14 13:20:03] [LOCK] Coordination lock released by process-command (PID: 159301)
-[2025-06-14 13:20:03] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:20:33] [LOCK] Coordination lock acquired by process-command (PID: 159400)
-[2025-06-14 13:20:33] [QUEUE] Processing sync operation queue
-[2025-06-14 13:20:33] [LOCK] Coordination lock released by process-command (PID: 159400)
-[2025-06-14 13:20:33] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:21:03] [LOCK] Coordination lock acquired by process-command (PID: 159519)
-[2025-06-14 13:21:03] [QUEUE] Processing sync operation queue
-[2025-06-14 13:21:03] [LOCK] Coordination lock released by process-command (PID: 159519)
-[2025-06-14 13:21:03] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:21:34] [LOCK] Coordination lock acquired by process-command (PID: 159617)
-[2025-06-14 13:21:34] [QUEUE] Processing sync operation queue
-[2025-06-14 13:21:34] [LOCK] Coordination lock released by process-command (PID: 159617)
-[2025-06-14 13:21:34] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:22:04] [LOCK] Coordination lock acquired by process-command (PID: 159738)
-[2025-06-14 13:22:04] [QUEUE] Processing sync operation queue
-[2025-06-14 13:22:04] [LOCK] Coordination lock released by process-command (PID: 159738)
-[2025-06-14 13:22:04] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:22:34] [LOCK] Coordination lock acquired by process-command (PID: 159837)
-[2025-06-14 13:22:34] [QUEUE] Processing sync operation queue
-[2025-06-14 13:22:34] [LOCK] Coordination lock released by process-command (PID: 159837)
-[2025-06-14 13:22:34] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:23:04] [LOCK] Coordination lock acquired by process-command (PID: 159956)
-[2025-06-14 13:23:04] [QUEUE] Processing sync operation queue
-[2025-06-14 13:23:04] [LOCK] Coordination lock released by process-command (PID: 159956)
-[2025-06-14 13:23:04] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:23:34] [LOCK] Coordination lock acquired by process-command (PID: 160070)
-[2025-06-14 13:23:34] [QUEUE] Processing sync operation queue
-[2025-06-14 13:23:34] [LOCK] Coordination lock released by process-command (PID: 160070)
-[2025-06-14 13:23:34] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:24:04] [LOCK] Coordination lock acquired by process-command (PID: 160206)
-[2025-06-14 13:24:04] [QUEUE] Processing sync operation queue
-[2025-06-14 13:24:04] [LOCK] Coordination lock released by process-command (PID: 160206)
-[2025-06-14 13:24:04] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:24:34] [LOCK] Coordination lock acquired by process-command (PID: 160305)
-[2025-06-14 13:24:34] [QUEUE] Processing sync operation queue
-[2025-06-14 13:24:34] [LOCK] Coordination lock released by process-command (PID: 160305)
-[2025-06-14 13:24:34] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:25:05] [LOCK] Coordination lock acquired by process-command (PID: 160423)
-[2025-06-14 13:25:05] [QUEUE] Processing sync operation queue
-[2025-06-14 13:25:05] [LOCK] Coordination lock released by process-command (PID: 160423)
-[2025-06-14 13:25:05] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:25:35] [LOCK] Coordination lock acquired by process-command (PID: 160522)
-[2025-06-14 13:25:35] [QUEUE] Processing sync operation queue
-[2025-06-14 13:25:35] [LOCK] Coordination lock released by process-command (PID: 160522)
-[2025-06-14 13:25:35] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:26:05] [LOCK] Coordination lock acquired by process-command (PID: 160641)
-[2025-06-14 13:26:05] [QUEUE] Processing sync operation queue
-[2025-06-14 13:26:05] [LOCK] Coordination lock released by process-command (PID: 160641)
-[2025-06-14 13:26:05] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:26:35] [LOCK] Coordination lock acquired by process-command (PID: 160739)
-[2025-06-14 13:26:35] [QUEUE] Processing sync operation queue
-[2025-06-14 13:26:35] [LOCK] Coordination lock released by process-command (PID: 160739)
-[2025-06-14 13:26:35] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:27:06] [LOCK] Coordination lock acquired by process-command (PID: 160860)
-[2025-06-14 13:27:06] [QUEUE] Processing sync operation queue
-[2025-06-14 13:27:06] [LOCK] Coordination lock released by process-command (PID: 160860)
-[2025-06-14 13:27:06] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:27:36] [LOCK] Coordination lock acquired by process-command (PID: 160959)
-[2025-06-14 13:27:36] [QUEUE] Processing sync operation queue
-[2025-06-14 13:27:36] [LOCK] Coordination lock released by process-command (PID: 160959)
-[2025-06-14 13:27:36] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:28:07] [LOCK] Coordination lock acquired by process-command (PID: 161078)
-[2025-06-14 13:28:07] [QUEUE] Processing sync operation queue
-[2025-06-14 13:28:07] [LOCK] Coordination lock released by process-command (PID: 161078)
-[2025-06-14 13:28:07] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:28:37] [LOCK] Coordination lock acquired by process-command (PID: 161192)
-[2025-06-14 13:28:37] [QUEUE] Processing sync operation queue
-[2025-06-14 13:28:37] [LOCK] Coordination lock released by process-command (PID: 161192)
-[2025-06-14 13:28:37] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:29:08] [LOCK] Coordination lock acquired by process-command (PID: 161329)
-[2025-06-14 13:29:08] [QUEUE] Processing sync operation queue
-[2025-06-14 13:29:08] [LOCK] Coordination lock released by process-command (PID: 161329)
-[2025-06-14 13:29:08] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:29:38] [LOCK] Coordination lock acquired by process-command (PID: 161428)
-[2025-06-14 13:29:38] [QUEUE] Processing sync operation queue
-[2025-06-14 13:29:39] [LOCK] Coordination lock released by process-command (PID: 161428)
-[2025-06-14 13:29:39] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:30:09] [LOCK] Coordination lock acquired by process-command (PID: 161547)
-[2025-06-14 13:30:09] [QUEUE] Processing sync operation queue
-[2025-06-14 13:30:09] [LOCK] Coordination lock released by process-command (PID: 161547)
-[2025-06-14 13:30:09] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:30:40] [LOCK] Coordination lock acquired by process-command (PID: 161645)
-[2025-06-14 13:30:40] [QUEUE] Processing sync operation queue
-[2025-06-14 13:30:40] [LOCK] Coordination lock released by process-command (PID: 161645)
-[2025-06-14 13:30:40] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:31:10] [LOCK] Coordination lock acquired by process-command (PID: 161809)
-[2025-06-14 13:31:10] [QUEUE] Processing sync operation queue
-[2025-06-14 13:31:10] [LOCK] Coordination lock released by process-command (PID: 161809)
-[2025-06-14 13:31:10] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:31:40] [LOCK] Coordination lock acquired by process-command (PID: 161908)
-[2025-06-14 13:31:40] [QUEUE] Processing sync operation queue
-[2025-06-14 13:31:40] [LOCK] Coordination lock released by process-command (PID: 161908)
-[2025-06-14 13:31:40] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:32:11] [LOCK] Coordination lock acquired by process-command (PID: 162029)
-[2025-06-14 13:32:11] [QUEUE] Processing sync operation queue
-[2025-06-14 13:32:11] [LOCK] Coordination lock released by process-command (PID: 162029)
-[2025-06-14 13:32:11] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:32:42] [LOCK] Coordination lock acquired by process-command (PID: 162127)
-[2025-06-14 13:32:42] [QUEUE] Processing sync operation queue
-[2025-06-14 13:32:42] [LOCK] Coordination lock released by process-command (PID: 162127)
-[2025-06-14 13:32:42] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:33:12] [LOCK] Coordination lock acquired by process-command (PID: 162246)
-[2025-06-14 13:33:12] [QUEUE] Processing sync operation queue
-[2025-06-14 13:33:12] [LOCK] Coordination lock released by process-command (PID: 162246)
-[2025-06-14 13:33:12] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:33:43] [LOCK] Coordination lock acquired by process-command (PID: 162360)
-[2025-06-14 13:33:43] [QUEUE] Processing sync operation queue
-[2025-06-14 13:33:43] [LOCK] Coordination lock released by process-command (PID: 162360)
-[2025-06-14 13:33:43] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:34:14] [LOCK] Coordination lock acquired by process-command (PID: 162497)
-[2025-06-14 13:34:14] [QUEUE] Processing sync operation queue
-[2025-06-14 13:34:14] [LOCK] Coordination lock released by process-command (PID: 162497)
-[2025-06-14 13:34:14] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:34:44] [LOCK] Coordination lock acquired by process-command (PID: 162596)
-[2025-06-14 13:34:44] [QUEUE] Processing sync operation queue
-[2025-06-14 13:34:44] [LOCK] Coordination lock released by process-command (PID: 162596)
-[2025-06-14 13:34:44] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:35:15] [LOCK] Coordination lock acquired by process-command (PID: 162714)
-[2025-06-14 13:35:15] [QUEUE] Processing sync operation queue
-[2025-06-14 13:35:15] [LOCK] Coordination lock released by process-command (PID: 162714)
-[2025-06-14 13:35:15] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:35:46] [LOCK] Coordination lock acquired by process-command (PID: 162813)
-[2025-06-14 13:35:46] [QUEUE] Processing sync operation queue
-[2025-06-14 13:35:46] [LOCK] Coordination lock released by process-command (PID: 162813)
-[2025-06-14 13:35:46] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:36:16] [LOCK] Coordination lock acquired by process-command (PID: 162932)
-[2025-06-14 13:36:16] [QUEUE] Processing sync operation queue
-[2025-06-14 13:36:16] [LOCK] Coordination lock released by process-command (PID: 162932)
-[2025-06-14 13:36:16] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:36:47] [LOCK] Coordination lock acquired by process-command (PID: 163031)
-[2025-06-14 13:36:47] [QUEUE] Processing sync operation queue
-[2025-06-14 13:36:47] [LOCK] Coordination lock released by process-command (PID: 163031)
-[2025-06-14 13:36:47] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:37:17] [LOCK] Coordination lock acquired by process-command (PID: 163152)
-[2025-06-14 13:37:17] [QUEUE] Processing sync operation queue
-[2025-06-14 13:37:17] [LOCK] Coordination lock released by process-command (PID: 163152)
-[2025-06-14 13:37:17] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 13:37:48] [LOCK] Coordination lock acquired by process-command (PID: 163251)
-[2025-06-14 13:37:48] [QUEUE] Processing sync operation queue
-[2025-06-14 13:37:48] [LOCK] Coordination lock released by process-command (PID: 163251)
-[2025-06-14 13:37:48] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:48:23] [LOCK] Coordination lock acquired by process-command (PID: 163346)
-[2025-06-14 14:48:23] [QUEUE] Processing sync operation queue
-[2025-06-14 14:48:23] [LOCK] Coordination lock released by process-command (PID: 163346)
-[2025-06-14 14:48:23] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:48:53] [LOCK] Coordination lock acquired by process-command (PID: 163460)
-[2025-06-14 14:48:53] [QUEUE] Processing sync operation queue
-[2025-06-14 14:48:53] [LOCK] Coordination lock released by process-command (PID: 163460)
-[2025-06-14 14:48:53] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:49:23] [LOCK] Coordination lock acquired by process-command (PID: 163579)
-[2025-06-14 14:49:23] [QUEUE] Processing sync operation queue
-[2025-06-14 14:49:23] [LOCK] Coordination lock released by process-command (PID: 163579)
-[2025-06-14 14:49:23] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:49:53] [LOCK] Coordination lock acquired by process-command (PID: 163695)
-[2025-06-14 14:49:53] [QUEUE] Processing sync operation queue
-[2025-06-14 14:49:53] [LOCK] Coordination lock released by process-command (PID: 163695)
-[2025-06-14 14:49:53] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:50:45] [LOCK] Coordination lock acquired by process-command (PID: 163818)
-[2025-06-14 14:50:45] [QUEUE] Processing sync operation queue
-[2025-06-14 14:50:45] [LOCK] Coordination lock released by process-command (PID: 163818)
-[2025-06-14 14:50:45] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:51:15] [LOCK] Coordination lock acquired by process-command (PID: 163919)
-[2025-06-14 14:51:15] [QUEUE] Processing sync operation queue
-[2025-06-14 14:51:15] [LOCK] Coordination lock released by process-command (PID: 163919)
-[2025-06-14 14:51:15] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:51:45] [LOCK] Coordination lock acquired by process-command (PID: 164038)
-[2025-06-14 14:51:45] [QUEUE] Processing sync operation queue
-[2025-06-14 14:51:45] [LOCK] Coordination lock released by process-command (PID: 164038)
-[2025-06-14 14:51:45] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:52:15] [LOCK] Coordination lock acquired by process-command (PID: 164137)
-[2025-06-14 14:52:15] [QUEUE] Processing sync operation queue
-[2025-06-14 14:52:15] [LOCK] Coordination lock released by process-command (PID: 164137)
-[2025-06-14 14:52:15] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:52:45] [LOCK] Coordination lock acquired by process-command (PID: 164258)
-[2025-06-14 14:52:45] [QUEUE] Processing sync operation queue
-[2025-06-14 14:52:45] [LOCK] Coordination lock released by process-command (PID: 164258)
-[2025-06-14 14:52:45] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:53:15] [LOCK] Coordination lock acquired by process-command (PID: 164357)
-[2025-06-14 14:53:15] [QUEUE] Processing sync operation queue
-[2025-06-14 14:53:15] [LOCK] Coordination lock released by process-command (PID: 164357)
-[2025-06-14 14:53:15] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:53:45] [LOCK] Coordination lock acquired by process-command (PID: 164475)
-[2025-06-14 14:53:45] [QUEUE] Processing sync operation queue
-[2025-06-14 14:53:45] [LOCK] Coordination lock released by process-command (PID: 164475)
-[2025-06-14 14:53:45] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:54:15] [LOCK] Coordination lock acquired by process-command (PID: 164589)
-[2025-06-14 14:54:15] [QUEUE] Processing sync operation queue
-[2025-06-14 14:54:15] [LOCK] Coordination lock released by process-command (PID: 164589)
-[2025-06-14 14:54:15] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:54:46] [LOCK] Coordination lock acquired by process-command (PID: 164708)
-[2025-06-14 14:54:46] [QUEUE] Processing sync operation queue
-[2025-06-14 14:54:46] [LOCK] Coordination lock released by process-command (PID: 164708)
-[2025-06-14 14:54:46] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:55:16] [LOCK] Coordination lock acquired by process-command (PID: 164825)
-[2025-06-14 14:55:16] [QUEUE] Processing sync operation queue
-[2025-06-14 14:55:16] [LOCK] Coordination lock released by process-command (PID: 164825)
-[2025-06-14 14:55:16] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:55:46] [LOCK] Coordination lock acquired by process-command (PID: 164944)
-[2025-06-14 14:55:46] [QUEUE] Processing sync operation queue
-[2025-06-14 14:55:46] [LOCK] Coordination lock released by process-command (PID: 164944)
-[2025-06-14 14:55:46] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:56:16] [LOCK] Coordination lock acquired by process-command (PID: 165042)
-[2025-06-14 14:56:16] [QUEUE] Processing sync operation queue
-[2025-06-14 14:56:16] [LOCK] Coordination lock released by process-command (PID: 165042)
-[2025-06-14 14:56:16] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:56:46] [LOCK] Coordination lock acquired by process-command (PID: 165161)
-[2025-06-14 14:56:46] [QUEUE] Processing sync operation queue
-[2025-06-14 14:56:46] [LOCK] Coordination lock released by process-command (PID: 165161)
-[2025-06-14 14:56:46] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:57:16] [LOCK] Coordination lock acquired by process-command (PID: 165260)
-[2025-06-14 14:57:16] [QUEUE] Processing sync operation queue
-[2025-06-14 14:57:16] [LOCK] Coordination lock released by process-command (PID: 165260)
-[2025-06-14 14:57:16] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:57:46] [LOCK] Coordination lock acquired by process-command (PID: 165381)
-[2025-06-14 14:57:46] [QUEUE] Processing sync operation queue
-[2025-06-14 14:57:46] [LOCK] Coordination lock released by process-command (PID: 165381)
-[2025-06-14 14:57:46] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:58:16] [LOCK] Coordination lock acquired by process-command (PID: 165479)
-[2025-06-14 14:58:16] [QUEUE] Processing sync operation queue
-[2025-06-14 14:58:16] [LOCK] Coordination lock released by process-command (PID: 165479)
-[2025-06-14 14:58:16] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:58:46] [LOCK] Coordination lock acquired by process-command (PID: 165597)
-[2025-06-14 14:58:46] [QUEUE] Processing sync operation queue
-[2025-06-14 14:58:46] [LOCK] Coordination lock released by process-command (PID: 165597)
-[2025-06-14 14:58:46] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:59:16] [LOCK] Coordination lock acquired by process-command (PID: 165711)
-[2025-06-14 14:59:16] [QUEUE] Processing sync operation queue
-[2025-06-14 14:59:16] [LOCK] Coordination lock released by process-command (PID: 165711)
-[2025-06-14 14:59:16] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 14:59:46] [LOCK] Coordination lock acquired by process-command (PID: 165830)
-[2025-06-14 14:59:46] [QUEUE] Processing sync operation queue
-[2025-06-14 14:59:46] [LOCK] Coordination lock released by process-command (PID: 165830)
-[2025-06-14 14:59:46] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:00:16] [LOCK] Coordination lock acquired by process-command (PID: 165947)
-[2025-06-14 15:00:16] [QUEUE] Processing sync operation queue
-[2025-06-14 15:00:16] [LOCK] Coordination lock released by process-command (PID: 165947)
-[2025-06-14 15:00:16] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:00:46] [LOCK] Coordination lock acquired by process-command (PID: 166065)
-[2025-06-14 15:00:46] [QUEUE] Processing sync operation queue
-[2025-06-14 15:00:46] [LOCK] Coordination lock released by process-command (PID: 166065)
-[2025-06-14 15:00:46] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:01:16] [LOCK] Coordination lock acquired by process-command (PID: 166164)
-[2025-06-14 15:01:16] [QUEUE] Processing sync operation queue
-[2025-06-14 15:01:16] [LOCK] Coordination lock released by process-command (PID: 166164)
-[2025-06-14 15:01:16] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:01:46] [LOCK] Coordination lock acquired by process-command (PID: 166283)
-[2025-06-14 15:01:46] [QUEUE] Processing sync operation queue
-[2025-06-14 15:01:46] [LOCK] Coordination lock released by process-command (PID: 166283)
-[2025-06-14 15:01:46] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:02:15] [LOCK] Coordination lock acquired by process-command (PID: 166382)
-[2025-06-14 15:02:15] [QUEUE] Processing sync operation queue
-[2025-06-14 15:02:15] [LOCK] Coordination lock released by process-command (PID: 166382)
-[2025-06-14 15:02:15] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:02:45] [LOCK] Coordination lock acquired by process-command (PID: 166502)
-[2025-06-14 15:02:45] [QUEUE] Processing sync operation queue
-[2025-06-14 15:02:45] [LOCK] Coordination lock released by process-command (PID: 166502)
-[2025-06-14 15:02:45] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:03:15] [LOCK] Coordination lock acquired by process-command (PID: 166601)
-[2025-06-14 15:03:15] [QUEUE] Processing sync operation queue
-[2025-06-14 15:03:15] [LOCK] Coordination lock released by process-command (PID: 166601)
-[2025-06-14 15:03:15] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:03:45] [LOCK] Coordination lock acquired by process-command (PID: 166720)
-[2025-06-14 15:03:45] [QUEUE] Processing sync operation queue
-[2025-06-14 15:03:45] [LOCK] Coordination lock released by process-command (PID: 166720)
-[2025-06-14 15:03:45] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:04:15] [LOCK] Coordination lock acquired by process-command (PID: 166818)
-[2025-06-14 15:04:15] [QUEUE] Processing sync operation queue
-[2025-06-14 15:04:15] [LOCK] Coordination lock released by process-command (PID: 166818)
-[2025-06-14 15:04:15] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:04:45] [LOCK] Coordination lock acquired by process-command (PID: 166952)
-[2025-06-14 15:04:45] [QUEUE] Processing sync operation queue
-[2025-06-14 15:04:45] [LOCK] Coordination lock released by process-command (PID: 166952)
-[2025-06-14 15:04:45] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:05:14] [LOCK] Coordination lock acquired by process-command (PID: 167068)
-[2025-06-14 15:05:14] [QUEUE] Processing sync operation queue
-[2025-06-14 15:05:14] [LOCK] Coordination lock released by process-command (PID: 167068)
-[2025-06-14 15:05:14] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:05:44] [LOCK] Coordination lock acquired by process-command (PID: 167187)
-[2025-06-14 15:05:44] [QUEUE] Processing sync operation queue
-[2025-06-14 15:05:44] [LOCK] Coordination lock released by process-command (PID: 167187)
-[2025-06-14 15:05:44] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:06:14] [LOCK] Coordination lock acquired by process-command (PID: 167286)
-[2025-06-14 15:06:14] [QUEUE] Processing sync operation queue
-[2025-06-14 15:06:14] [LOCK] Coordination lock released by process-command (PID: 167286)
-[2025-06-14 15:06:14] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:06:43] [LOCK] Coordination lock acquired by process-command (PID: 167404)
-[2025-06-14 15:06:43] [QUEUE] Processing sync operation queue
-[2025-06-14 15:06:43] [LOCK] Coordination lock released by process-command (PID: 167404)
-[2025-06-14 15:06:43] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:07:13] [LOCK] Coordination lock acquired by process-command (PID: 167503)
-[2025-06-14 15:07:13] [QUEUE] Processing sync operation queue
-[2025-06-14 15:07:13] [LOCK] Coordination lock released by process-command (PID: 167503)
-[2025-06-14 15:07:13] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:07:43] [LOCK] Coordination lock acquired by process-command (PID: 167623)
-[2025-06-14 15:07:43] [QUEUE] Processing sync operation queue
-[2025-06-14 15:07:43] [LOCK] Coordination lock released by process-command (PID: 167623)
-[2025-06-14 15:07:43] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:08:12] [LOCK] Coordination lock acquired by process-command (PID: 167723)
-[2025-06-14 15:08:12] [QUEUE] Processing sync operation queue
-[2025-06-14 15:08:12] [LOCK] Coordination lock released by process-command (PID: 167723)
-[2025-06-14 15:08:12] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:08:42] [LOCK] Coordination lock acquired by process-command (PID: 167976)
-[2025-06-14 15:08:42] [QUEUE] Processing sync operation queue
-[2025-06-14 15:08:42] [LOCK] Coordination lock released by process-command (PID: 167976)
-[2025-06-14 15:08:42] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:09:11] [LOCK] Coordination lock acquired by process-command (PID: 168363)
-[2025-06-14 15:09:11] [QUEUE] Processing sync operation queue
-[2025-06-14 15:09:11] [LOCK] Coordination lock released by process-command (PID: 168363)
-[2025-06-14 15:09:11] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:09:41] [LOCK] Coordination lock acquired by process-command (PID: 168548)
-[2025-06-14 15:09:41] [QUEUE] Processing sync operation queue
-[2025-06-14 15:09:41] [LOCK] Coordination lock released by process-command (PID: 168548)
-[2025-06-14 15:09:41] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:10:10] [LOCK] Coordination lock acquired by process-command (PID: 168680)
-[2025-06-14 15:10:10] [QUEUE] Processing sync operation queue
-[2025-06-14 15:10:10] [LOCK] Coordination lock released by process-command (PID: 168680)
-[2025-06-14 15:10:10] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:10:40] [LOCK] Coordination lock acquired by process-command (PID: 168810)
-[2025-06-14 15:10:40] [QUEUE] Processing sync operation queue
-[2025-06-14 15:10:41] [LOCK] Coordination lock released by process-command (PID: 168810)
-[2025-06-14 15:10:41] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:11:10] [LOCK] Coordination lock acquired by process-command (PID: 168909)
-[2025-06-14 15:11:10] [QUEUE] Processing sync operation queue
-[2025-06-14 15:11:10] [LOCK] Coordination lock released by process-command (PID: 168909)
-[2025-06-14 15:11:10] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:11:40] [LOCK] Coordination lock acquired by process-command (PID: 169039)
-[2025-06-14 15:11:40] [QUEUE] Processing sync operation queue
-[2025-06-14 15:11:40] [LOCK] Coordination lock released by process-command (PID: 169039)
-[2025-06-14 15:11:40] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:12:09] [LOCK] Coordination lock acquired by process-command (PID: 169138)
-[2025-06-14 15:12:09] [QUEUE] Processing sync operation queue
-[2025-06-14 15:12:09] [LOCK] Coordination lock released by process-command (PID: 169138)
-[2025-06-14 15:12:09] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:12:39] [LOCK] Coordination lock acquired by process-command (PID: 169271)
-[2025-06-14 15:12:39] [QUEUE] Processing sync operation queue
-[2025-06-14 15:12:39] [LOCK] Coordination lock released by process-command (PID: 169271)
-[2025-06-14 15:12:39] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:13:09] [LOCK] Coordination lock acquired by process-command (PID: 169370)
-[2025-06-14 15:13:09] [QUEUE] Processing sync operation queue
-[2025-06-14 15:13:09] [LOCK] Coordination lock released by process-command (PID: 169370)
-[2025-06-14 15:13:09] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:13:38] [LOCK] Coordination lock acquired by process-command (PID: 169500)
-[2025-06-14 15:13:38] [QUEUE] Processing sync operation queue
-[2025-06-14 15:13:38] [LOCK] Coordination lock released by process-command (PID: 169500)
-[2025-06-14 15:13:38] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:14:08] [LOCK] Coordination lock acquired by process-command (PID: 169599)
-[2025-06-14 15:14:08] [QUEUE] Processing sync operation queue
-[2025-06-14 15:14:08] [LOCK] Coordination lock released by process-command (PID: 169599)
-[2025-06-14 15:14:08] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:14:37] [LOCK] Coordination lock acquired by process-command (PID: 169716)
-[2025-06-14 15:14:37] [QUEUE] Processing sync operation queue
-[2025-06-14 15:14:37] [LOCK] Coordination lock released by process-command (PID: 169716)
-[2025-06-14 15:14:37] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:15:07] [LOCK] Coordination lock acquired by process-command (PID: 169833)
-[2025-06-14 15:15:07] [QUEUE] Processing sync operation queue
-[2025-06-14 15:15:07] [LOCK] Coordination lock released by process-command (PID: 169833)
-[2025-06-14 15:15:07] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:15:36] [LOCK] Coordination lock acquired by process-command (PID: 169967)
-[2025-06-14 15:15:36] [QUEUE] Processing sync operation queue
-[2025-06-14 15:15:36] [LOCK] Coordination lock released by process-command (PID: 169967)
-[2025-06-14 15:15:36] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:16:06] [LOCK] Coordination lock acquired by process-command (PID: 170066)
-[2025-06-14 15:16:06] [QUEUE] Processing sync operation queue
-[2025-06-14 15:16:06] [LOCK] Coordination lock released by process-command (PID: 170066)
-[2025-06-14 15:16:06] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:16:36] [LOCK] Coordination lock acquired by process-command (PID: 170184)
-[2025-06-14 15:16:36] [QUEUE] Processing sync operation queue
-[2025-06-14 15:16:36] [LOCK] Coordination lock released by process-command (PID: 170184)
-[2025-06-14 15:16:36] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:17:05] [LOCK] Coordination lock acquired by process-command (PID: 170286)
-[2025-06-14 15:17:05] [QUEUE] Processing sync operation queue
-[2025-06-14 15:17:05] [LOCK] Coordination lock released by process-command (PID: 170286)
-[2025-06-14 15:17:05] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:17:35] [LOCK] Coordination lock acquired by process-command (PID: 170407)
-[2025-06-14 15:17:35] [QUEUE] Processing sync operation queue
-[2025-06-14 15:17:35] [LOCK] Coordination lock released by process-command (PID: 170407)
-[2025-06-14 15:17:35] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:18:05] [LOCK] Coordination lock acquired by process-command (PID: 170505)
-[2025-06-14 15:18:05] [QUEUE] Processing sync operation queue
-[2025-06-14 15:18:05] [LOCK] Coordination lock released by process-command (PID: 170505)
-[2025-06-14 15:18:05] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:18:34] [LOCK] Coordination lock acquired by process-command (PID: 170624)
-[2025-06-14 15:18:34] [QUEUE] Processing sync operation queue
-[2025-06-14 15:18:34] [LOCK] Coordination lock released by process-command (PID: 170624)
-[2025-06-14 15:18:34] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:19:04] [LOCK] Coordination lock acquired by process-command (PID: 170723)
-[2025-06-14 15:19:04] [QUEUE] Processing sync operation queue
-[2025-06-14 15:19:04] [LOCK] Coordination lock released by process-command (PID: 170723)
-[2025-06-14 15:19:04] [WARN] No coordination lock file found for release by process-command
-[2025-06-14 15:19:33] [LOCK] Coordination lock acquired by process-command (PID: 170845)
-[2025-06-14 15:19:33] [QUEUE] Processing sync operation queue
-[2025-06-14 15:19:33] [LOCK] Coordination lock released by process-command (PID: 170845)
-[2025-06-14 15:19:33] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:09:35] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:10:04] [LOCK] Coordination lock acquired by process-command (PID: 196163)
+[2025-06-14 17:10:04] [QUEUE] Processing sync operation queue
+[2025-06-14 17:10:04] [LOCK] Coordination lock released by process-command (PID: 196163)
+[2025-06-14 17:10:04] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:10:34] [LOCK] Coordination lock acquired by process-command (PID: 196264)
+[2025-06-14 17:10:34] [QUEUE] Processing sync operation queue
+[2025-06-14 17:10:34] [LOCK] Coordination lock released by process-command (PID: 196264)
+[2025-06-14 17:10:34] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:11:03] [LOCK] Coordination lock acquired by process-command (PID: 196383)
+[2025-06-14 17:11:03] [QUEUE] Processing sync operation queue
+[2025-06-14 17:11:03] [LOCK] Coordination lock released by process-command (PID: 196383)
+[2025-06-14 17:11:03] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:11:33] [LOCK] Coordination lock acquired by process-command (PID: 196481)
+[2025-06-14 17:11:33] [QUEUE] Processing sync operation queue
+[2025-06-14 17:11:33] [LOCK] Coordination lock released by process-command (PID: 196481)
+[2025-06-14 17:11:33] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:12:02] [LOCK] Coordination lock acquired by process-command (PID: 196600)
+[2025-06-14 17:12:02] [QUEUE] Processing sync operation queue
+[2025-06-14 17:12:02] [LOCK] Coordination lock released by process-command (PID: 196600)
+[2025-06-14 17:12:02] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:12:32] [LOCK] Coordination lock acquired by process-command (PID: 196698)
+[2025-06-14 17:12:32] [QUEUE] Processing sync operation queue
+[2025-06-14 17:12:32] [LOCK] Coordination lock released by process-command (PID: 196698)
+[2025-06-14 17:12:32] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:13:02] [LOCK] Coordination lock acquired by process-command (PID: 196818)
+[2025-06-14 17:13:02] [QUEUE] Processing sync operation queue
+[2025-06-14 17:13:02] [LOCK] Coordination lock released by process-command (PID: 196818)
+[2025-06-14 17:13:02] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:13:31] [LOCK] Coordination lock acquired by process-command (PID: 196917)
+[2025-06-14 17:13:31] [QUEUE] Processing sync operation queue
+[2025-06-14 17:13:31] [LOCK] Coordination lock released by process-command (PID: 196917)
+[2025-06-14 17:13:31] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:14:01] [LOCK] Coordination lock acquired by process-command (PID: 197035)
+[2025-06-14 17:14:01] [QUEUE] Processing sync operation queue
+[2025-06-14 17:14:01] [LOCK] Coordination lock released by process-command (PID: 197035)
+[2025-06-14 17:14:01] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:14:30] [LOCK] Coordination lock acquired by process-command (PID: 197134)
+[2025-06-14 17:14:30] [QUEUE] Processing sync operation queue
+[2025-06-14 17:14:30] [LOCK] Coordination lock released by process-command (PID: 197134)
+[2025-06-14 17:14:30] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:15:00] [LOCK] Coordination lock acquired by process-command (PID: 197286)
+[2025-06-14 17:15:00] [QUEUE] Processing sync operation queue
+[2025-06-14 17:15:00] [LOCK] Coordination lock released by process-command (PID: 197286)
+[2025-06-14 17:15:00] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:15:30] [LOCK] Coordination lock acquired by process-command (PID: 197387)
+[2025-06-14 17:15:30] [QUEUE] Processing sync operation queue
+[2025-06-14 17:15:30] [LOCK] Coordination lock released by process-command (PID: 197387)
+[2025-06-14 17:15:30] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:16:00] [LOCK] Coordination lock acquired by process-command (PID: 197507)
+[2025-06-14 17:16:00] [QUEUE] Processing sync operation queue
+[2025-06-14 17:16:00] [LOCK] Coordination lock released by process-command (PID: 197507)
+[2025-06-14 17:16:00] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:16:29] [LOCK] Coordination lock acquired by process-command (PID: 197606)
+[2025-06-14 17:16:29] [QUEUE] Processing sync operation queue
+[2025-06-14 17:16:29] [LOCK] Coordination lock released by process-command (PID: 197606)
+[2025-06-14 17:16:29] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:16:59] [LOCK] Coordination lock acquired by process-command (PID: 197725)
+[2025-06-14 17:16:59] [QUEUE] Processing sync operation queue
+[2025-06-14 17:16:59] [LOCK] Coordination lock released by process-command (PID: 197725)
+[2025-06-14 17:16:59] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:17:28] [LOCK] Coordination lock acquired by process-command (PID: 197826)
+[2025-06-14 17:17:28] [QUEUE] Processing sync operation queue
+[2025-06-14 17:17:28] [LOCK] Coordination lock released by process-command (PID: 197826)
+[2025-06-14 17:17:28] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:17:58] [LOCK] Coordination lock acquired by process-command (PID: 197945)
+[2025-06-14 17:17:58] [QUEUE] Processing sync operation queue
+[2025-06-14 17:17:58] [LOCK] Coordination lock released by process-command (PID: 197945)
+[2025-06-14 17:17:58] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:18:28] [LOCK] Coordination lock acquired by process-command (PID: 198043)
+[2025-06-14 17:18:28] [QUEUE] Processing sync operation queue
+[2025-06-14 17:18:28] [LOCK] Coordination lock released by process-command (PID: 198043)
+[2025-06-14 17:18:28] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:18:57] [LOCK] Coordination lock acquired by process-command (PID: 198162)
+[2025-06-14 17:18:57] [QUEUE] Processing sync operation queue
+[2025-06-14 17:18:57] [LOCK] Coordination lock released by process-command (PID: 198162)
+[2025-06-14 17:18:57] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:19:27] [LOCK] Coordination lock acquired by process-command (PID: 198263)
+[2025-06-14 17:19:27] [QUEUE] Processing sync operation queue
+[2025-06-14 17:19:27] [LOCK] Coordination lock released by process-command (PID: 198263)
+[2025-06-14 17:19:27] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:19:56] [LOCK] Coordination lock acquired by process-command (PID: 198400)
+[2025-06-14 17:19:56] [QUEUE] Processing sync operation queue
+[2025-06-14 17:19:56] [LOCK] Coordination lock released by process-command (PID: 198400)
+[2025-06-14 17:19:56] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:20:26] [LOCK] Coordination lock acquired by process-command (PID: 198515)
+[2025-06-14 17:20:26] [QUEUE] Processing sync operation queue
+[2025-06-14 17:20:26] [LOCK] Coordination lock released by process-command (PID: 198515)
+[2025-06-14 17:20:26] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:20:56] [LOCK] Coordination lock acquired by process-command (PID: 198633)
+[2025-06-14 17:20:56] [QUEUE] Processing sync operation queue
+[2025-06-14 17:20:56] [LOCK] Coordination lock released by process-command (PID: 198633)
+[2025-06-14 17:20:56] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:21:25] [LOCK] Coordination lock acquired by process-command (PID: 198732)
+[2025-06-14 17:21:25] [QUEUE] Processing sync operation queue
+[2025-06-14 17:21:25] [LOCK] Coordination lock released by process-command (PID: 198732)
+[2025-06-14 17:21:25] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:21:55] [LOCK] Coordination lock acquired by process-command (PID: 198850)
+[2025-06-14 17:21:55] [QUEUE] Processing sync operation queue
+[2025-06-14 17:21:55] [LOCK] Coordination lock released by process-command (PID: 198850)
+[2025-06-14 17:21:55] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:22:25] [LOCK] Coordination lock acquired by process-command (PID: 198949)
+[2025-06-14 17:22:25] [QUEUE] Processing sync operation queue
+[2025-06-14 17:22:25] [LOCK] Coordination lock released by process-command (PID: 198949)
+[2025-06-14 17:22:25] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:22:55] [LOCK] Coordination lock acquired by process-command (PID: 199068)
+[2025-06-14 17:22:55] [QUEUE] Processing sync operation queue
+[2025-06-14 17:22:55] [LOCK] Coordination lock released by process-command (PID: 199068)
+[2025-06-14 17:22:55] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:23:24] [LOCK] Coordination lock acquired by process-command (PID: 199167)
+[2025-06-14 17:23:24] [QUEUE] Processing sync operation queue
+[2025-06-14 17:23:24] [LOCK] Coordination lock released by process-command (PID: 199167)
+[2025-06-14 17:23:24] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:23:54] [LOCK] Coordination lock acquired by process-command (PID: 199285)
+[2025-06-14 17:23:54] [QUEUE] Processing sync operation queue
+[2025-06-14 17:23:54] [LOCK] Coordination lock released by process-command (PID: 199285)
+[2025-06-14 17:23:54] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:24:23] [LOCK] Coordination lock acquired by process-command (PID: 199384)
+[2025-06-14 17:24:23] [QUEUE] Processing sync operation queue
+[2025-06-14 17:24:23] [LOCK] Coordination lock released by process-command (PID: 199384)
+[2025-06-14 17:24:23] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:24:53] [LOCK] Coordination lock acquired by process-command (PID: 199521)
+[2025-06-14 17:24:53] [QUEUE] Processing sync operation queue
+[2025-06-14 17:24:53] [LOCK] Coordination lock released by process-command (PID: 199521)
+[2025-06-14 17:24:53] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:25:23] [LOCK] Coordination lock acquired by process-command (PID: 199621)
+[2025-06-14 17:25:23] [QUEUE] Processing sync operation queue
+[2025-06-14 17:25:23] [LOCK] Coordination lock released by process-command (PID: 199621)
+[2025-06-14 17:25:23] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:25:52] [LOCK] Coordination lock acquired by process-command (PID: 199755)
+[2025-06-14 17:25:52] [QUEUE] Processing sync operation queue
+[2025-06-14 17:25:52] [LOCK] Coordination lock released by process-command (PID: 199755)
+[2025-06-14 17:25:52] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:26:22] [LOCK] Coordination lock acquired by process-command (PID: 199854)
+[2025-06-14 17:26:22] [QUEUE] Processing sync operation queue
+[2025-06-14 17:26:22] [LOCK] Coordination lock released by process-command (PID: 199854)
+[2025-06-14 17:26:22] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:26:51] [LOCK] Coordination lock acquired by process-command (PID: 199972)
+[2025-06-14 17:26:51] [QUEUE] Processing sync operation queue
+[2025-06-14 17:26:52] [LOCK] Coordination lock released by process-command (PID: 199972)
+[2025-06-14 17:26:52] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:27:21] [LOCK] Coordination lock acquired by process-command (PID: 200071)
+[2025-06-14 17:27:21] [QUEUE] Processing sync operation queue
+[2025-06-14 17:27:21] [LOCK] Coordination lock released by process-command (PID: 200071)
+[2025-06-14 17:27:21] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:27:51] [LOCK] Coordination lock acquired by process-command (PID: 200190)
+[2025-06-14 17:27:51] [QUEUE] Processing sync operation queue
+[2025-06-14 17:27:51] [LOCK] Coordination lock released by process-command (PID: 200190)
+[2025-06-14 17:27:51] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:28:20] [LOCK] Coordination lock acquired by process-command (PID: 200288)
+[2025-06-14 17:28:20] [QUEUE] Processing sync operation queue
+[2025-06-14 17:28:20] [LOCK] Coordination lock released by process-command (PID: 200288)
+[2025-06-14 17:28:20] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:28:50] [LOCK] Coordination lock acquired by process-command (PID: 200406)
+[2025-06-14 17:28:50] [QUEUE] Processing sync operation queue
+[2025-06-14 17:28:50] [LOCK] Coordination lock released by process-command (PID: 200406)
+[2025-06-14 17:28:50] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:29:20] [LOCK] Coordination lock acquired by process-command (PID: 200505)
+[2025-06-14 17:29:20] [QUEUE] Processing sync operation queue
+[2025-06-14 17:29:20] [LOCK] Coordination lock released by process-command (PID: 200505)
+[2025-06-14 17:29:20] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:29:50] [LOCK] Coordination lock acquired by process-command (PID: 200642)
+[2025-06-14 17:29:50] [QUEUE] Processing sync operation queue
+[2025-06-14 17:29:50] [LOCK] Coordination lock released by process-command (PID: 200642)
+[2025-06-14 17:29:50] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:30:20] [LOCK] Coordination lock acquired by process-command (PID: 200743)
+[2025-06-14 17:30:20] [QUEUE] Processing sync operation queue
+[2025-06-14 17:30:20] [LOCK] Coordination lock released by process-command (PID: 200743)
+[2025-06-14 17:30:20] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:30:50] [LOCK] Coordination lock acquired by process-command (PID: 200862)
+[2025-06-14 17:30:50] [QUEUE] Processing sync operation queue
+[2025-06-14 17:30:50] [LOCK] Coordination lock released by process-command (PID: 200862)
+[2025-06-14 17:30:50] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:31:19] [LOCK] Coordination lock acquired by process-command (PID: 200975)
+[2025-06-14 17:31:19] [QUEUE] Processing sync operation queue
+[2025-06-14 17:31:19] [LOCK] Coordination lock released by process-command (PID: 200975)
+[2025-06-14 17:31:19] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:31:49] [LOCK] Coordination lock acquired by process-command (PID: 201094)
+[2025-06-14 17:31:49] [QUEUE] Processing sync operation queue
+[2025-06-14 17:31:49] [LOCK] Coordination lock released by process-command (PID: 201094)
+[2025-06-14 17:31:49] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:32:18] [LOCK] Coordination lock acquired by process-command (PID: 201193)
+[2025-06-14 17:32:18] [QUEUE] Processing sync operation queue
+[2025-06-14 17:32:19] [LOCK] Coordination lock released by process-command (PID: 201193)
+[2025-06-14 17:32:19] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:32:48] [LOCK] Coordination lock acquired by process-command (PID: 201311)
+[2025-06-14 17:32:48] [QUEUE] Processing sync operation queue
+[2025-06-14 17:32:48] [LOCK] Coordination lock released by process-command (PID: 201311)
+[2025-06-14 17:32:48] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:49:47] [LOCK] Coordination lock acquired by process-command (PID: 201416)
+[2025-06-14 17:49:47] [QUEUE] Processing sync operation queue
+[2025-06-14 17:49:47] [LOCK] Coordination lock released by process-command (PID: 201416)
+[2025-06-14 17:49:47] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:50:17] [LOCK] Coordination lock acquired by process-command (PID: 201549)
+[2025-06-14 17:50:17] [QUEUE] Processing sync operation queue
+[2025-06-14 17:50:17] [LOCK] Coordination lock released by process-command (PID: 201549)
+[2025-06-14 17:50:17] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:50:48] [LOCK] Coordination lock acquired by process-command (PID: 201648)
+[2025-06-14 17:50:48] [QUEUE] Processing sync operation queue
+[2025-06-14 17:50:48] [LOCK] Coordination lock released by process-command (PID: 201648)
+[2025-06-14 17:50:48] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:51:18] [LOCK] Coordination lock acquired by process-command (PID: 201785)
+[2025-06-14 17:51:18] [QUEUE] Processing sync operation queue
+[2025-06-14 17:51:18] [LOCK] Coordination lock released by process-command (PID: 201785)
+[2025-06-14 17:51:18] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:51:48] [LOCK] Coordination lock acquired by process-command (PID: 201885)
+[2025-06-14 17:51:48] [QUEUE] Processing sync operation queue
+[2025-06-14 17:51:49] [LOCK] Coordination lock released by process-command (PID: 201885)
+[2025-06-14 17:51:49] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:52:19] [LOCK] Coordination lock acquired by process-command (PID: 202004)
+[2025-06-14 17:52:19] [QUEUE] Processing sync operation queue
+[2025-06-14 17:52:19] [LOCK] Coordination lock released by process-command (PID: 202004)
+[2025-06-14 17:52:19] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:52:49] [LOCK] Coordination lock acquired by process-command (PID: 202103)
+[2025-06-14 17:52:49] [QUEUE] Processing sync operation queue
+[2025-06-14 17:52:49] [LOCK] Coordination lock released by process-command (PID: 202103)
+[2025-06-14 17:52:49] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:53:20] [LOCK] Coordination lock acquired by process-command (PID: 202267)
+[2025-06-14 17:53:20] [QUEUE] Processing sync operation queue
+[2025-06-14 17:53:20] [LOCK] Coordination lock released by process-command (PID: 202267)
+[2025-06-14 17:53:20] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:53:50] [LOCK] Coordination lock acquired by process-command (PID: 202365)
+[2025-06-14 17:53:50] [QUEUE] Processing sync operation queue
+[2025-06-14 17:53:50] [LOCK] Coordination lock released by process-command (PID: 202365)
+[2025-06-14 17:53:50] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:54:21] [LOCK] Coordination lock acquired by process-command (PID: 202483)
+[2025-06-14 17:54:21] [QUEUE] Processing sync operation queue
+[2025-06-14 17:54:21] [LOCK] Coordination lock released by process-command (PID: 202483)
+[2025-06-14 17:54:21] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:54:51] [LOCK] Coordination lock acquired by process-command (PID: 202608)
+[2025-06-14 17:54:51] [QUEUE] Processing sync operation queue
+[2025-06-14 17:54:51] [LOCK] Coordination lock released by process-command (PID: 202608)
+[2025-06-14 17:54:51] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:55:22] [LOCK] Coordination lock acquired by process-command (PID: 202742)
+[2025-06-14 17:55:22] [QUEUE] Processing sync operation queue
+[2025-06-14 17:55:22] [LOCK] Coordination lock released by process-command (PID: 202742)
+[2025-06-14 17:55:22] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:55:52] [LOCK] Coordination lock acquired by process-command (PID: 202841)
+[2025-06-14 17:55:52] [QUEUE] Processing sync operation queue
+[2025-06-14 17:55:52] [LOCK] Coordination lock released by process-command (PID: 202841)
+[2025-06-14 17:55:52] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:56:23] [LOCK] Coordination lock acquired by process-command (PID: 202978)
+[2025-06-14 17:56:23] [QUEUE] Processing sync operation queue
+[2025-06-14 17:56:23] [LOCK] Coordination lock released by process-command (PID: 202978)
+[2025-06-14 17:56:23] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:56:53] [LOCK] Coordination lock acquired by process-command (PID: 203078)
+[2025-06-14 17:56:53] [QUEUE] Processing sync operation queue
+[2025-06-14 17:56:53] [LOCK] Coordination lock released by process-command (PID: 203078)
+[2025-06-14 17:56:53] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:57:24] [LOCK] Coordination lock acquired by process-command (PID: 203197)
+[2025-06-14 17:57:24] [QUEUE] Processing sync operation queue
+[2025-06-14 17:57:24] [LOCK] Coordination lock released by process-command (PID: 203197)
+[2025-06-14 17:57:24] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:57:54] [LOCK] Coordination lock acquired by process-command (PID: 203296)
+[2025-06-14 17:57:54] [QUEUE] Processing sync operation queue
+[2025-06-14 17:57:54] [LOCK] Coordination lock released by process-command (PID: 203296)
+[2025-06-14 17:57:54] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:58:25] [LOCK] Coordination lock acquired by process-command (PID: 203415)
+[2025-06-14 17:58:25] [QUEUE] Processing sync operation queue
+[2025-06-14 17:58:25] [LOCK] Coordination lock released by process-command (PID: 203415)
+[2025-06-14 17:58:25] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:58:56] [LOCK] Coordination lock acquired by process-command (PID: 203513)
+[2025-06-14 17:58:56] [QUEUE] Processing sync operation queue
+[2025-06-14 17:58:56] [LOCK] Coordination lock released by process-command (PID: 203513)
+[2025-06-14 17:58:56] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:59:26] [LOCK] Coordination lock acquired by process-command (PID: 203632)
+[2025-06-14 17:59:26] [QUEUE] Processing sync operation queue
+[2025-06-14 17:59:26] [LOCK] Coordination lock released by process-command (PID: 203632)
+[2025-06-14 17:59:26] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 17:59:57] [LOCK] Coordination lock acquired by process-command (PID: 203731)
+[2025-06-14 17:59:57] [QUEUE] Processing sync operation queue
+[2025-06-14 17:59:57] [LOCK] Coordination lock released by process-command (PID: 203731)
+[2025-06-14 17:59:57] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:00:28] [LOCK] Coordination lock acquired by process-command (PID: 203865)
+[2025-06-14 18:00:28] [QUEUE] Processing sync operation queue
+[2025-06-14 18:00:28] [LOCK] Coordination lock released by process-command (PID: 203865)
+[2025-06-14 18:00:28] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:00:58] [LOCK] Coordination lock acquired by process-command (PID: 203965)
+[2025-06-14 18:00:58] [QUEUE] Processing sync operation queue
+[2025-06-14 18:00:58] [LOCK] Coordination lock released by process-command (PID: 203965)
+[2025-06-14 18:00:58] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:01:29] [LOCK] Coordination lock acquired by process-command (PID: 204100)
+[2025-06-14 18:01:29] [QUEUE] Processing sync operation queue
+[2025-06-14 18:01:29] [LOCK] Coordination lock released by process-command (PID: 204100)
+[2025-06-14 18:01:29] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:02:00] [LOCK] Coordination lock acquired by process-command (PID: 204201)
+[2025-06-14 18:02:00] [QUEUE] Processing sync operation queue
+[2025-06-14 18:02:00] [LOCK] Coordination lock released by process-command (PID: 204201)
+[2025-06-14 18:02:00] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:02:30] [LOCK] Coordination lock acquired by process-command (PID: 204320)
+[2025-06-14 18:02:30] [QUEUE] Processing sync operation queue
+[2025-06-14 18:02:30] [LOCK] Coordination lock released by process-command (PID: 204320)
+[2025-06-14 18:02:30] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:03:01] [LOCK] Coordination lock acquired by process-command (PID: 204419)
+[2025-06-14 18:03:01] [QUEUE] Processing sync operation queue
+[2025-06-14 18:03:01] [LOCK] Coordination lock released by process-command (PID: 204419)
+[2025-06-14 18:03:01] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:03:31] [LOCK] Coordination lock acquired by process-command (PID: 204519)
+[2025-06-14 18:03:31] [QUEUE] Processing sync operation queue
+[2025-06-14 18:03:31] [LOCK] Coordination lock released by process-command (PID: 204519)
+[2025-06-14 18:03:31] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:04:02] [LOCK] Coordination lock acquired by process-command (PID: 204605)
+[2025-06-14 18:04:02] [QUEUE] Processing sync operation queue
+[2025-06-14 18:04:02] [LOCK] Coordination lock released by process-command (PID: 204605)
+[2025-06-14 18:04:02] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:04:32] [LOCK] Coordination lock acquired by process-command (PID: 204724)
+[2025-06-14 18:04:32] [QUEUE] Processing sync operation queue
+[2025-06-14 18:04:32] [LOCK] Coordination lock released by process-command (PID: 204724)
+[2025-06-14 18:04:32] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:05:03] [LOCK] Coordination lock acquired by process-command (PID: 204823)
+[2025-06-14 18:05:03] [QUEUE] Processing sync operation queue
+[2025-06-14 18:05:03] [LOCK] Coordination lock released by process-command (PID: 204823)
+[2025-06-14 18:05:03] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:05:33] [LOCK] Coordination lock acquired by process-command (PID: 204957)
+[2025-06-14 18:05:33] [QUEUE] Processing sync operation queue
+[2025-06-14 18:05:33] [LOCK] Coordination lock released by process-command (PID: 204957)
+[2025-06-14 18:05:33] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:06:04] [LOCK] Coordination lock acquired by process-command (PID: 205057)
+[2025-06-14 18:06:04] [QUEUE] Processing sync operation queue
+[2025-06-14 18:06:04] [LOCK] Coordination lock released by process-command (PID: 205057)
+[2025-06-14 18:06:04] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:06:34] [LOCK] Coordination lock acquired by process-command (PID: 205176)
+[2025-06-14 18:06:34] [QUEUE] Processing sync operation queue
+[2025-06-14 18:06:34] [LOCK] Coordination lock released by process-command (PID: 205176)
+[2025-06-14 18:06:34] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:07:05] [LOCK] Coordination lock acquired by process-command (PID: 205294)
+[2025-06-14 18:07:05] [QUEUE] Processing sync operation queue
+[2025-06-14 18:07:05] [LOCK] Coordination lock released by process-command (PID: 205294)
+[2025-06-14 18:07:05] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:07:35] [LOCK] Coordination lock acquired by process-command (PID: 205413)
+[2025-06-14 18:07:35] [QUEUE] Processing sync operation queue
+[2025-06-14 18:07:35] [LOCK] Coordination lock released by process-command (PID: 205413)
+[2025-06-14 18:07:35] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:08:06] [LOCK] Coordination lock acquired by process-command (PID: 205512)
+[2025-06-14 18:08:06] [QUEUE] Processing sync operation queue
+[2025-06-14 18:08:06] [LOCK] Coordination lock released by process-command (PID: 205512)
+[2025-06-14 18:08:06] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:08:36] [LOCK] Coordination lock acquired by process-command (PID: 205631)
+[2025-06-14 18:08:36] [QUEUE] Processing sync operation queue
+[2025-06-14 18:08:36] [LOCK] Coordination lock released by process-command (PID: 205631)
+[2025-06-14 18:08:36] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:09:07] [LOCK] Coordination lock acquired by process-command (PID: 205728)
+[2025-06-14 18:09:07] [QUEUE] Processing sync operation queue
+[2025-06-14 18:09:07] [LOCK] Coordination lock released by process-command (PID: 205728)
+[2025-06-14 18:09:07] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:09:37] [LOCK] Coordination lock acquired by process-command (PID: 205847)
+[2025-06-14 18:09:37] [QUEUE] Processing sync operation queue
+[2025-06-14 18:09:37] [LOCK] Coordination lock released by process-command (PID: 205847)
+[2025-06-14 18:09:37] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:10:08] [LOCK] Coordination lock acquired by process-command (PID: 205946)
+[2025-06-14 18:10:08] [QUEUE] Processing sync operation queue
+[2025-06-14 18:10:08] [LOCK] Coordination lock released by process-command (PID: 205946)
+[2025-06-14 18:10:08] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:10:39] [LOCK] Coordination lock acquired by process-command (PID: 206080)
+[2025-06-14 18:10:39] [QUEUE] Processing sync operation queue
+[2025-06-14 18:10:39] [LOCK] Coordination lock released by process-command (PID: 206080)
+[2025-06-14 18:10:39] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:11:09] [LOCK] Coordination lock acquired by process-command (PID: 206178)
+[2025-06-14 18:11:09] [QUEUE] Processing sync operation queue
+[2025-06-14 18:11:09] [LOCK] Coordination lock released by process-command (PID: 206178)
+[2025-06-14 18:11:09] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:11:39] [LOCK] Coordination lock acquired by process-command (PID: 206297)
+[2025-06-14 18:11:39] [QUEUE] Processing sync operation queue
+[2025-06-14 18:11:39] [LOCK] Coordination lock released by process-command (PID: 206297)
+[2025-06-14 18:11:39] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:12:09] [LOCK] Coordination lock acquired by process-command (PID: 206416)
+[2025-06-14 18:12:09] [QUEUE] Processing sync operation queue
+[2025-06-14 18:12:09] [LOCK] Coordination lock released by process-command (PID: 206416)
+[2025-06-14 18:12:09] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:12:39] [LOCK] Coordination lock acquired by process-command (PID: 206536)
+[2025-06-14 18:12:39] [QUEUE] Processing sync operation queue
+[2025-06-14 18:12:39] [LOCK] Coordination lock released by process-command (PID: 206536)
+[2025-06-14 18:12:39] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:13:09] [LOCK] Coordination lock acquired by process-command (PID: 206635)
+[2025-06-14 18:13:09] [QUEUE] Processing sync operation queue
+[2025-06-14 18:13:09] [LOCK] Coordination lock released by process-command (PID: 206635)
+[2025-06-14 18:13:09] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:13:40] [LOCK] Coordination lock acquired by process-command (PID: 206752)
+[2025-06-14 18:13:40] [QUEUE] Processing sync operation queue
+[2025-06-14 18:13:40] [LOCK] Coordination lock released by process-command (PID: 206752)
+[2025-06-14 18:13:40] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:14:11] [LOCK] Coordination lock acquired by process-command (PID: 206987)
+[2025-06-14 18:14:11] [QUEUE] Processing sync operation queue
+[2025-06-14 18:14:11] [LOCK] Coordination lock released by process-command (PID: 206987)
+[2025-06-14 18:14:11] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:14:41] [LOCK] Coordination lock acquired by process-command (PID: 207104)
+[2025-06-14 18:14:41] [QUEUE] Processing sync operation queue
+[2025-06-14 18:14:41] [LOCK] Coordination lock released by process-command (PID: 207104)
+[2025-06-14 18:14:41] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:15:12] [LOCK] Coordination lock acquired by process-command (PID: 207228)
+[2025-06-14 18:15:12] [QUEUE] Processing sync operation queue
+[2025-06-14 18:15:12] [LOCK] Coordination lock released by process-command (PID: 207228)
+[2025-06-14 18:15:12] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:15:43] [LOCK] Coordination lock acquired by process-command (PID: 207360)
+[2025-06-14 18:15:43] [QUEUE] Processing sync operation queue
+[2025-06-14 18:15:43] [LOCK] Coordination lock released by process-command (PID: 207360)
+[2025-06-14 18:15:43] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:16:13] [LOCK] Coordination lock acquired by process-command (PID: 207459)
+[2025-06-14 18:16:13] [QUEUE] Processing sync operation queue
+[2025-06-14 18:16:13] [LOCK] Coordination lock released by process-command (PID: 207459)
+[2025-06-14 18:16:13] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:16:44] [LOCK] Coordination lock acquired by process-command (PID: 207576)
+[2025-06-14 18:16:44] [QUEUE] Processing sync operation queue
+[2025-06-14 18:16:44] [LOCK] Coordination lock released by process-command (PID: 207576)
+[2025-06-14 18:16:44] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:17:15] [LOCK] Coordination lock acquired by process-command (PID: 207697)
+[2025-06-14 18:17:15] [QUEUE] Processing sync operation queue
+[2025-06-14 18:17:15] [LOCK] Coordination lock released by process-command (PID: 207697)
+[2025-06-14 18:17:15] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:17:46] [LOCK] Coordination lock acquired by process-command (PID: 207814)
+[2025-06-14 18:17:46] [QUEUE] Processing sync operation queue
+[2025-06-14 18:17:46] [LOCK] Coordination lock released by process-command (PID: 207814)
+[2025-06-14 18:17:46] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:18:16] [LOCK] Coordination lock acquired by process-command (PID: 207913)
+[2025-06-14 18:18:16] [QUEUE] Processing sync operation queue
+[2025-06-14 18:18:16] [LOCK] Coordination lock released by process-command (PID: 207913)
+[2025-06-14 18:18:16] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:18:47] [LOCK] Coordination lock acquired by process-command (PID: 208029)
+[2025-06-14 18:18:47] [QUEUE] Processing sync operation queue
+[2025-06-14 18:18:47] [LOCK] Coordination lock released by process-command (PID: 208029)
+[2025-06-14 18:18:47] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:19:17] [LOCK] Coordination lock acquired by process-command (PID: 208128)
+[2025-06-14 18:19:17] [QUEUE] Processing sync operation queue
+[2025-06-14 18:19:17] [LOCK] Coordination lock released by process-command (PID: 208128)
+[2025-06-14 18:19:17] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:19:48] [LOCK] Coordination lock acquired by process-command (PID: 208294)
+[2025-06-14 18:19:48] [QUEUE] Processing sync operation queue
+[2025-06-14 18:19:48] [LOCK] Coordination lock released by process-command (PID: 208294)
+[2025-06-14 18:19:48] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:20:18] [LOCK] Coordination lock acquired by process-command (PID: 208393)
+[2025-06-14 18:20:18] [QUEUE] Processing sync operation queue
+[2025-06-14 18:20:19] [LOCK] Coordination lock released by process-command (PID: 208393)
+[2025-06-14 18:20:19] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:20:49] [LOCK] Coordination lock acquired by process-command (PID: 208525)
+[2025-06-14 18:20:49] [QUEUE] Processing sync operation queue
+[2025-06-14 18:20:49] [LOCK] Coordination lock released by process-command (PID: 208525)
+[2025-06-14 18:20:49] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:21:20] [LOCK] Coordination lock acquired by process-command (PID: 208624)
+[2025-06-14 18:21:20] [QUEUE] Processing sync operation queue
+[2025-06-14 18:21:20] [LOCK] Coordination lock released by process-command (PID: 208624)
+[2025-06-14 18:21:20] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:21:51] [LOCK] Coordination lock acquired by process-command (PID: 208743)
+[2025-06-14 18:21:51] [QUEUE] Processing sync operation queue
+[2025-06-14 18:21:51] [LOCK] Coordination lock released by process-command (PID: 208743)
+[2025-06-14 18:21:51] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:22:22] [LOCK] Coordination lock acquired by process-command (PID: 208862)
+[2025-06-14 18:22:22] [QUEUE] Processing sync operation queue
+[2025-06-14 18:22:22] [LOCK] Coordination lock released by process-command (PID: 208862)
+[2025-06-14 18:22:22] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:22:52] [LOCK] Coordination lock acquired by process-command (PID: 208980)
+[2025-06-14 18:22:52] [QUEUE] Processing sync operation queue
+[2025-06-14 18:22:52] [LOCK] Coordination lock released by process-command (PID: 208980)
+[2025-06-14 18:22:52] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:23:23] [LOCK] Coordination lock acquired by process-command (PID: 209235)
+[2025-06-14 18:23:23] [QUEUE] Processing sync operation queue
+[2025-06-14 18:23:23] [LOCK] Coordination lock released by process-command (PID: 209235)
+[2025-06-14 18:23:23] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:23:54] [LOCK] Coordination lock acquired by process-command (PID: 209381)
+[2025-06-14 18:23:54] [QUEUE] Processing sync operation queue
+[2025-06-14 18:23:54] [LOCK] Coordination lock released by process-command (PID: 209381)
+[2025-06-14 18:23:54] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:24:25] [LOCK] Coordination lock acquired by process-command (PID: 209480)
+[2025-06-14 18:24:25] [QUEUE] Processing sync operation queue
+[2025-06-14 18:24:25] [LOCK] Coordination lock released by process-command (PID: 209480)
+[2025-06-14 18:24:25] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:24:56] [LOCK] Coordination lock acquired by process-command (PID: 209598)
+[2025-06-14 18:24:56] [QUEUE] Processing sync operation queue
+[2025-06-14 18:24:56] [LOCK] Coordination lock released by process-command (PID: 209598)
+[2025-06-14 18:24:56] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:25:27] [LOCK] Coordination lock acquired by process-command (PID: 209697)
+[2025-06-14 18:25:27] [QUEUE] Processing sync operation queue
+[2025-06-14 18:25:27] [LOCK] Coordination lock released by process-command (PID: 209697)
+[2025-06-14 18:25:27] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:25:58] [LOCK] Coordination lock acquired by process-command (PID: 209866)
+[2025-06-14 18:25:58] [QUEUE] Processing sync operation queue
+[2025-06-14 18:25:58] [LOCK] Coordination lock released by process-command (PID: 209866)
+[2025-06-14 18:25:58] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:26:29] [LOCK] Coordination lock acquired by process-command (PID: 210144)
+[2025-06-14 18:26:29] [QUEUE] Processing sync operation queue
+[2025-06-14 18:26:29] [LOCK] Coordination lock released by process-command (PID: 210144)
+[2025-06-14 18:26:29] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:26:59] [LOCK] Coordination lock acquired by process-command (PID: 210369)
+[2025-06-14 18:26:59] [QUEUE] Processing sync operation queue
+[2025-06-14 18:26:59] [LOCK] Coordination lock released by process-command (PID: 210369)
+[2025-06-14 18:26:59] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:27:30] [LOCK] Coordination lock acquired by process-command (PID: 210899)
+[2025-06-14 18:27:30] [QUEUE] Processing sync operation queue
+[2025-06-14 18:27:30] [LOCK] Coordination lock released by process-command (PID: 210899)
+[2025-06-14 18:27:30] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:28:01] [LOCK] Coordination lock acquired by process-command (PID: 211118)
+[2025-06-14 18:28:01] [QUEUE] Processing sync operation queue
+[2025-06-14 18:28:01] [LOCK] Coordination lock released by process-command (PID: 211118)
+[2025-06-14 18:28:01] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:28:32] [LOCK] Coordination lock acquired by process-command (PID: 211217)
+[2025-06-14 18:28:32] [QUEUE] Processing sync operation queue
+[2025-06-14 18:28:32] [LOCK] Coordination lock released by process-command (PID: 211217)
+[2025-06-14 18:28:32] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:29:02] [LOCK] Coordination lock acquired by process-command (PID: 211337)
+[2025-06-14 18:29:02] [QUEUE] Processing sync operation queue
+[2025-06-14 18:29:02] [LOCK] Coordination lock released by process-command (PID: 211337)
+[2025-06-14 18:29:02] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:29:33] [LOCK] Coordination lock acquired by process-command (PID: 211439)
+[2025-06-14 18:29:33] [QUEUE] Processing sync operation queue
+[2025-06-14 18:29:33] [LOCK] Coordination lock released by process-command (PID: 211439)
+[2025-06-14 18:29:33] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:30:04] [LOCK] Coordination lock acquired by process-command (PID: 211558)
+[2025-06-14 18:30:04] [QUEUE] Processing sync operation queue
+[2025-06-14 18:30:04] [LOCK] Coordination lock released by process-command (PID: 211558)
+[2025-06-14 18:30:04] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:30:35] [LOCK] Coordination lock acquired by process-command (PID: 211658)
+[2025-06-14 18:30:35] [QUEUE] Processing sync operation queue
+[2025-06-14 18:30:35] [LOCK] Coordination lock released by process-command (PID: 211658)
+[2025-06-14 18:30:35] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:31:06] [LOCK] Coordination lock acquired by process-command (PID: 211818)
+[2025-06-14 18:31:06] [QUEUE] Processing sync operation queue
+[2025-06-14 18:31:06] [LOCK] Coordination lock released by process-command (PID: 211818)
+[2025-06-14 18:31:06] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:31:36] [LOCK] Coordination lock acquired by process-command (PID: 211941)
+[2025-06-14 18:31:36] [QUEUE] Processing sync operation queue
+[2025-06-14 18:31:36] [LOCK] Coordination lock released by process-command (PID: 211941)
+[2025-06-14 18:31:36] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:32:07] [LOCK] Coordination lock acquired by process-command (PID: 212123)
+[2025-06-14 18:32:07] [QUEUE] Processing sync operation queue
+[2025-06-14 18:32:07] [LOCK] Coordination lock released by process-command (PID: 212123)
+[2025-06-14 18:32:07] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:32:38] [LOCK] Coordination lock acquired by process-command (PID: 212241)
+[2025-06-14 18:32:38] [QUEUE] Processing sync operation queue
+[2025-06-14 18:32:38] [LOCK] Coordination lock released by process-command (PID: 212241)
+[2025-06-14 18:32:38] [WARN] No coordination lock file found for release by process-command
+[2025-06-14 18:33:09] [LOCK] Coordination lock acquired by process-command (PID: 212371)
+[2025-06-14 18:33:09] [QUEUE] Processing sync operation queue
+[2025-06-14 18:33:09] [LOCK] Coordination lock released by process-command (PID: 212371)
+[2025-06-14 18:33:09] [WARN] No coordination lock file found for release by process-command

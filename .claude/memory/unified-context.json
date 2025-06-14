@@ -1,0 +1,64 @@
+{
+  "context_version": "unified-v1",
+  "timestamp": "2025-06-14T18:26:04.936325Z",
+  "save_type": "enhanced",
+  "caller": "claude-enhanced-save",
+  "device": "NEURAL-X",
+  "working_directory": "/home/nullrunner/claude-workspace",
+  "current_project": {
+    "name": "claude-workspace-development",
+    "type": "meta",
+    "path": "/home/nullrunner/claude-workspace",
+    "relative_path": ".",
+    "depth": 0,
+    "full_path": "/home/nullrunner/claude-workspace",
+    "meta_context": "root_workspace_management"
+  },
+  "git_status": {
+    "branch": "main",
+    "has_changes": true,
+    "dirty_files_count": 13,
+    "dirty_files": [
+      "M .claude/context/auto-context-status.json",
+      " M .claude/context/auto-context.log",
+      " M .claude/logs/auto-push.log",
+      " M .claude/sync-coordination/coordinator-state.json",
+      " M .claude/sync-coordination/coordinator.log",
+      " M .claude/sync-coordination/daemon.log",
+      " M scripts/claude-auto-context.sh",
+      " M scripts/claude-startup-simple.sh",
+      "?? .claude/auto-memory/",
+      "?? .claude/logs/atomic-operations.log"
+    ],
+    "last_commit": "fe3f9a9 🐛 Fix: auto-context save command error",
+    "is_git_repo": true
+  },
+  "intelligence_insights": {
+    "recent_learnings": [],
+    "recent_decisions": [],
+    "current_focus": null,
+    "extraction_timestamp": "2025-06-14T18:26:04.960622Z"
+  },
+  "conversation_summary": "3",
+  "session_note": "Updated",
+  "save_reason": "manual",
+  "open_issues": [
+    "BUG: Handle blocked files (log for debugging) (scripts/claude-intelligent-auto-sync.sh:152)",
+    "IMPORTANT: Pulizia intelligente memoria senza perdere informazioni importanti (scripts/claude-memory-cleaner.sh:3)",
+    "IMPORTANT: Estrai pattern e informazioni importanti dalle vecchie sessioni (scripts/claude-memory-cleaner.sh:46)",
+    "NOTE: important_notes = [s.get('note') for s in old_sessions if s.get('note') and len(... (scripts/claude-memory-cleaner.sh:51)",
+    "NOTE: \"important_notes\": important_notes[:3] (scripts/claude-memory-cleaner.sh:60)"
+  ],
+  "next_actions": [
+    "Verify recent fixes are working correctly",
+    "Commit current changes (14 files modified)",
+    "Test workspace script changes",
+    "Update documentation if needed"
+  ],
+  "incomplete_tasks": [
+    "scripts"
+  ],
+  "next_steps": [
+    "+"
+  ]
+}

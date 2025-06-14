@@ -6,6 +6,7 @@ set -euo pipefail  # Strict error handling
 
 # Environment validation
 WORKSPACE_DIR="${WORKSPACE_DIR:-$HOME/claude-workspace}"
+export WORKSPACE_DIR
 
 # Source error handling library
 if [[ -f "$WORKSPACE_DIR/scripts/error-handling-library.sh" ]]; then
