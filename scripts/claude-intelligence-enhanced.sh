@@ -509,7 +509,7 @@ patterns_db['pattern_recognition']['git_patterns'] = {
 total_commits = len(commits)
 confidence_scores = {
     'work_patterns': min(1.0, total_commits / 50),  # High confidence with 50+ commits
-    'decision_patterns': min(1.0, sum(decision_patterns.values(), key=lambda x: x['frequency']) / 20),
+    'decision_patterns': min(1.0, sum(data['frequency'] for data in decision_patterns.values()) / 20),
     'language_patterns': min(1.0, sum(language_patterns['preferred_languages'].values()) / 30),
     'error_patterns': min(1.0, error_patterns.get('total_fixes', 0) / 10) if error_patterns else 0.0
 }

@@ -47,9 +47,81 @@ save_context() {
     return $result
 }
 
+# Funzione per integrare intelligence context
+integrate_intelligence_context() {
+    local intelligence_context_file="$WORKSPACE_DIR/.claude/intelligence/claude-memory-context.json"
+    
+    if [[ -f "$intelligence_context_file" ]]; then
+        echo -e "${CYAN}🧠 Integrating enhanced intelligence context...${NC}"
+        
+        # Merge intelligence context with current memory
+        export INTELLIGENCE_CONTEXT_FILE="$intelligence_context_file"
+        export MEMORY_DIR
+        
+        python3 << 'EOF'
+import json
+import os
+from datetime import datetime
+
+def merge_intelligence_context():
+    try:
+        # Load intelligence context
+        intel_file = os.environ.get('INTELLIGENCE_CONTEXT_FILE')
+        memory_dir = os.environ.get('MEMORY_DIR')
+        
+        with open(intel_file, 'r') as f:
+            intel_context = json.load(f)
+        
+        # Load current memory context if exists
+        memory_file = os.path.join(memory_dir, 'enhanced-context.json')
+        if os.path.exists(memory_file):
+            with open(memory_file, 'r') as f:
+                memory_context = json.load(f)
+        else:
+            memory_context = {
+                "session_context": {},
+                "conversation_memory": {}
+            }
+        
+        # Merge intelligence profile into memory
+        if 'user_intelligence_profile' in intel_context:
+            memory_context['user_intelligence_profile'] = intel_context['user_intelligence_profile']
+        
+        if 'current_session' in intel_context:
+            memory_context['current_session_intelligence'] = intel_context['current_session']
+        
+        # Add timestamp
+        memory_context['last_intelligence_update'] = datetime.now().isoformat() + 'Z'
+        
+        # Save merged context
+        with open(memory_file, 'w') as f:
+            json.dump(memory_context, f, indent=2)
+        
+        print("✅ Intelligence context integrated into memory system")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Failed to integrate intelligence context: {e}")
+        return False
+
+if merge_intelligence_context():
+    exit(0)
+else:
+    exit(1)
+EOF
+        return $?
+    else
+        echo -e "${YELLOW}⚠️  No intelligence context found to integrate${NC}"
+        return 0
+    fi
+}
+
 # Funzione per caricare context semplificato
 load_context() {
     echo -e "${CYAN}🧠 Loading unified context...${NC}"
+    
+    # First integrate latest intelligence context
+    integrate_intelligence_context
     
     # Prima prova il coordinator unificato
     if [[ -x "$WORKSPACE_DIR/scripts/claude-memory-coordinator.sh" ]]; then

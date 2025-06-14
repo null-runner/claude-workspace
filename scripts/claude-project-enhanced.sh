@@ -490,7 +490,7 @@ def analyze_cross_project_patterns():
     
     # Load project lifecycle data
     lifecycle_file = os.environ.get('PROJECT_LIFECYCLE_FILE')
-    if Path(lifecycle_file).exists():
+    if lifecycle_file and Path(lifecycle_file).exists():
         try:
             with open(lifecycle_file, 'r') as f:
                 lifecycle_data = json.load(f)
@@ -728,14 +728,20 @@ show_project_status_enhanced() {
     current_project_json=$(get_project_json)
     
     if [[ "$current_project_json" != "null" ]]; then
-        echo "$current_project_json" | python3 << 'EOF'
+        export CURRENT_PROJECT_JSON="$current_project_json"
+        python3 << 'EOF'
 import json
 import sys
+import os
 
 try:
-    data = json.load(sys.stdin)
-except json.JSONDecodeError:
-    print("❌ Error parsing project data")
+    project_json = os.environ.get('CURRENT_PROJECT_JSON', 'null')
+    data = json.loads(project_json)
+except json.JSONDecodeError as e:
+    print(f"❌ Error parsing project data: {e}")
+    sys.exit(1)
+except Exception as e:
+    print(f"❌ Error: {e}")
     sys.exit(1)
 print("✅ Current Project:")
 print(f"   📁 Name: {data['name']}")

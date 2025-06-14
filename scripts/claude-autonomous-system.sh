@@ -169,7 +169,7 @@ run_project_monitor() {
     done
 }
 
-# Intelligence extraction (every 15 minutes)
+# Enhanced Intelligence extraction (every 30 minutes)
 run_intelligence_extractor() {
     while true; do
         # Check for sync pause before file operations
@@ -177,21 +177,34 @@ run_intelligence_extractor() {
             wait_for_sync_completion "INTELLIGENCE"
         fi
         
-        if [[ -f "$WORKSPACE_DIR/scripts/claude-intelligence-extractor.sh" ]]; then
+        # Use enhanced intelligence system if available, fallback to old system
+        if [[ -f "$WORKSPACE_DIR/scripts/claude-intelligence-enhanced.sh" ]]; then
+            "$WORKSPACE_DIR/scripts/claude-intelligence-enhanced.sh" analyze >/dev/null 2>&1
+            local result=$?
+            
+            if [[ $result -eq 0 ]]; then
+                update_service_status "intelligence_extractor" "active" "Enhanced intelligence analysis completed"
+                log_master "SUCCESS" "INTELLIGENCE" "Enhanced pattern recognition and context generation completed"
+            else
+                update_service_status "intelligence_extractor" "warning" "Enhanced intelligence analysis had issues"
+                log_master "WARNING" "INTELLIGENCE" "Enhanced analysis failed with status $result"
+            fi
+        elif [[ -f "$WORKSPACE_DIR/scripts/claude-intelligence-extractor.sh" ]]; then
+            # Fallback to legacy system
             "$WORKSPACE_DIR/scripts/claude-intelligence-extractor.sh" extract >/dev/null 2>&1
             local result=$?
             
             if [[ $result -eq 0 ]]; then
-                update_service_status "intelligence_extractor" "active" "Intelligence extraction completed"
+                update_service_status "intelligence_extractor" "active" "Legacy intelligence extraction completed"
             else
-                update_service_status "intelligence_extractor" "warning" "Intelligence extraction had issues"
+                update_service_status "intelligence_extractor" "warning" "Legacy intelligence extraction had issues"
             fi
         else
-            update_service_status "intelligence_extractor" "error" "Intelligence extractor script not found"
-            log_master "ERROR" "INTELLIGENCE" "Intelligence extractor script not found"
+            update_service_status "intelligence_extractor" "error" "No intelligence system found"
+            log_master "ERROR" "INTELLIGENCE" "Neither enhanced nor legacy intelligence system found"
         fi
         
-        sleep 900  # 15 minutes
+        sleep 1800  # 30 minutes (enhanced system needs less frequent runs)
     done
 }
 

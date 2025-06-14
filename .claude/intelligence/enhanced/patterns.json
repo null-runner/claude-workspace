@@ -1,0 +1,175 @@
+{
+  "version": "2.0",
+  "pattern_recognition": {
+    "git_patterns": {
+      "commit_frequency": {
+        "peak_hours": [
+          0,
+          1,
+          2
+        ],
+        "peak_days": [
+          4,
+          5,
+          3
+        ],
+        "average_commits_per_day": 76.67,
+        "total_active_days": 3,
+        "work_hour_distribution": {
+          "11": 11,
+          "3": 1,
+          "2": 14,
+          "1": 49,
+          "0": 115,
+          "23": 9,
+          "22": 5,
+          "21": 8,
+          "20": 4,
+          "19": 5,
+          "18": 1,
+          "17": 3,
+          "16": 4,
+          "14": 1
+        },
+        "work_day_distribution": {
+          "5": 40,
+          "4": 188,
+          "3": 2
+        }
+      },
+      "decision_patterns": {
+        "features": {
+          "frequency": 21,
+          "avg_impact": 88.21,
+          "preferred_hours": [
+            0,
+            1,
+            2,
+            11,
+            14,
+            16,
+            17,
+            18,
+            21
+          ]
+        },
+        "documentation": {
+          "frequency": 13,
+          "avg_impact": 98.71,
+          "preferred_hours": [
+            1,
+            2,
+            11,
+            19,
+            21,
+            22
+          ]
+        },
+        "optimization": {
+          "frequency": 3,
+          "avg_impact": 127.03,
+          "preferred_hours": [
+            2,
+            21
+          ]
+        },
+        "fixes": {
+          "frequency": 21,
+          "avg_impact": 105.05,
+          "preferred_hours": [
+            0,
+            1,
+            2,
+            19,
+            20,
+            21,
+            22,
+            23
+          ]
+        },
+        "security": {
+          "frequency": 3,
+          "avg_impact": 10.33,
+          "preferred_hours": [
+            16,
+            1,
+            11
+          ]
+        },
+        "testing": {
+          "frequency": 21,
+          "avg_impact": 32.62,
+          "preferred_hours": [
+            0,
+            1,
+            20,
+            22
+          ]
+        },
+        "architecture": {
+          "frequency": 1,
+          "avg_impact": 11.0,
+          "preferred_hours": [
+            0
+          ]
+        },
+        "configuration": {
+          "frequency": 8,
+          "avg_impact": 22.76,
+          "preferred_hours": [
+            0,
+            20,
+            21,
+            23
+          ]
+        }
+      },
+      "preferred_languages": {
+        "preferred_languages": {},
+        "file_patterns": {}
+      },
+      "error_resolution_patterns": {
+        "total_fixes": 21,
+        "avg_files_per_fix": 0,
+        "avg_lines_per_fix": 1050.48,
+        "preferred_approaches": {
+          "direct_fix": 19,
+          "feature_addition": 1,
+          "modification": 1
+        },
+        "fix_frequency": 0.09130434782608696
+      },
+      "analysis_timestamp": "2025-06-14T12:01:16.554983Z"
+    },
+    "project_patterns": {
+      "creation_frequency": {},
+      "naming_conventions": {},
+      "structure_preferences": {},
+      "abandonment_patterns": {}
+    },
+    "workflow_patterns": {
+      "session_duration": {},
+      "task_switching": {},
+      "break_patterns": {},
+      "productivity_hours": {}
+    },
+    "learning_patterns": {
+      "error_repetition": {},
+      "solution_effectiveness": {},
+      "knowledge_gaps": {},
+      "learning_velocity": {}
+    }
+  },
+  "pattern_stats": {
+    "total_patterns": 5,
+    "confidence_scores": {
+      "work_patterns": 1.0,
+      "decision_patterns": 1.0,
+      "language_patterns": 0.0,
+      "error_patterns": 1.0
+    },
+    "last_update": "2025-06-14T12:01:16.554997Z",
+    "analysis_period_days": 30,
+    "total_commits_analyzed": 230
+  }
+}
