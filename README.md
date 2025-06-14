@@ -2,7 +2,7 @@
 
 **🎯 One-command setup for an intelligent, autonomous Claude workspace that never forgets**
 
-[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge)](https://github.com/YOUR-USERNAME/claude-workspace/generate)
+[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge)](../../generate)
 
 ---
 
@@ -14,6 +14,8 @@ bash <(curl -sSL https://raw.githubusercontent.com/YOUR-USERNAME/claude-workspac
 ```
 
 **That's it!** Works on Linux, macOS, Windows (WSL).
+
+> 💡 **First time?** Replace `YOUR-USERNAME` with your GitHub username in the command above.
 
 👉 **[Complete Setup Guide](QUICK_START.md)** - Step-by-step with troubleshooting
 
