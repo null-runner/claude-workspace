@@ -12,10 +12,10 @@ Claude Workspace is your **completely autonomous coding assistant's memory** tha
 
 Think of it as:
 - 📁 **Smart folders** that sync between all your computers
-- 🧠 **Persistent memory** that remembers everything across sessions
-- 🔄 **Magic auto-sync** that just works in the background
-- 🤖 **Autonomous systems** that save and recover automatically
-- 🛡️ **Fort Knox security** but easy as pie to use
+- 🧠 **Unified memory system** that remembers everything across sessions
+- 🔄 **Coordinated auto-sync** with zero conflicts
+- 🤖 **Enterprise-grade autonomous systems** that never fail
+- 🛡️ **Fort Knox security** with automatic graceful exit
 
 Perfect for:
 - 👩‍💻 **Developers** tired of "where did I leave that code?"
@@ -25,51 +25,27 @@ Perfect for:
 
 ---
 
-## ✨ **NEW: Enterprise-Grade Stable System (2025)**
+## ✨ **NEW: Enterprise-Grade Unified System (2025)**
 
-### 🛡️ **Rock-Solid Stability**
-- **Zero corruption guarantee** with enterprise file locking system
-- **Atomic operations** for all critical files (PID, state, config)
-- **Crash-resilient design** that never loses data
-- **Safe process management** preventing accidental terminations
-- **Comprehensive error handling** with automatic recovery
+### 🛡️ **Zero-Failure Architecture**
+- **Unified memory coordinator** - one system replaces 3 conflicting ones
+- **File locking guarantee** - zero corruption with atomic operations
+- **Process security** - automatic Claude Code detection and safe exit
+- **Enterprise error handling** - comprehensive recovery with timeout/retry
+- **Performance optimized** - 23x faster with intelligent caching
 
-### 🤖 **Unified Memory System**
-- **Single memory coordinator** replacing 3 conflicting systems
-- **Pure Claude context restoration** without complex scoring
-- **Auto-save based on git changes** and time (30min intervals)  
-- **Zero-prompt autonomous exit** that saves only when needed
-- **Race condition elimination** with coordinated access
+### 🤖 **Simplified Memory System**
+- **Pure Claude context** without complex activity scoring
+- **Git-based auto-save** triggers on repository changes
+- **Time-based fallback** saves every 30 minutes
+- **Automatic graceful exit** - cexit now works flawlessly without prompts
+- **Race condition elimination** with coordinated file access
 
-### 🚦 **Coordinated Sync System**
-- **Queue-based sync processing** eliminating conflicts
+### 🚦 **Smart Sync Coordination**
+- **Queue-based processing** eliminating sync conflicts
 - **Rate limiting** (12 syncs/hour) with intelligent scheduling
-- **Automatic conflict resolution** for git operations
-- **Lock coordination** preventing simultaneous operations
-
-### 🎯 **Auto Project Detection**
-- **Intelligent project recognition** when you enter project directories
-- **Auto-start activity tracking** for projects/active/, projects/sandbox/
-- **Seamless project switching** with automatic state management
-- **Zero configuration required** - works by convention
-
-### 🧠 **Intelligence Extraction**
-- **Auto-learning from git commits** (significant changes, features, fixes)
-- **Error pattern analysis** from logs to prevent recurring issues  
-- **File creation pattern detection** (new projects, scripts, docs)
-- **Automatic insight generation** with categorization and impact assessment
-
-### ⚡ **Performance Optimized**
-- **23x faster JSON operations** with intelligent caching
-- **Reduced Python overhead** with persistent processes
-- **Batch file operations** minimizing I/O
-- **Smart monitoring** with exponential backoff
-
-### 🤖 **Master Autonomous Daemon**
-- **Unified background system** managing all services
-- **Health monitoring** with degraded service detection
-- **Service orchestration** (context, projects, intelligence, health)
-- **Graceful shutdown** with final context saves
+- **Automatic git conflict resolution** 
+- **Master daemon** orchestrating all background services
 
 ---
 
@@ -94,179 +70,79 @@ cd claude-workspace
 ./scripts/setup.sh
 ```
 
-### 4️⃣ Setup Your Profile (NEW!)
+### 4️⃣ Setup Everything
 ```bash
-# One-time setup with technical assessment
+# One-time setup with profile
 ./scripts/claude-setup-profile.sh setup
-```
 
-### 5️⃣ Generate SSH Key
-```bash
+# Generate SSH key and add to GitHub
 ssh-keygen -t ed25519 -f ~/.ssh/claude_workspace_key
+cat ~/.ssh/claude_workspace_key.pub  # Copy to GitHub → Settings → Deploy keys
+
+# Start autonomous system
+./scripts/claude-startup.sh
 ```
 
-### 6️⃣ Add Key to GitHub
-- Copy the key: `cat ~/.ssh/claude_workspace_key.pub`
-- GitHub → Settings → Deploy keys → Add new
-- Paste and save
-
-### 7️⃣ Test Everything
+### 5️⃣ Ready to Use!
 ```bash
-./scripts/claude-startup.sh                    # Starts autonomous services
-./scripts/claude-autonomous-system.sh status   # Check everything works
-```
-
-### 8️⃣ Add Your Laptop
-```bash
-# On laptop:
-curl -o setup.sh https://github.com/YOURUSERNAME/claude-workspace/raw/main/scripts/setup-laptop.sh
-chmod +x setup.sh && ./setup.sh
-```
-
-### 9️⃣ Create First Project
-```bash
+# Create projects in active/ - everything auto-saves
 cd ~/claude-workspace/projects/active
-mkdir my-awesome-project
-cd my-awesome-project
-# Auto-memory will save automatically!
-```
-
-### 🔟 Switch Devices & Continue
-```bash
-# On any device - Claude automatically loads your context!
-# Just start a new Claude session and it remembers everything
+mkdir my-project && cd my-project
+# Claude remembers everything across sessions automatically!
 ```
 
 ---
 
 ## 🌈 For Beginners & Vibe Coders
 
-### "I'm not a programmer!"
-No problem! Claude Workspace is for everyone who:
-- 📝 Works on documents across devices
-- 🎨 Creates projects of any kind
-- 🤯 Forgets what they were doing yesterday
-- 💡 Wants their computer to be completely autonomous
-- 🧠 Wants Claude to remember everything between sessions
+**"I'm not a programmer!"** - No problem! This workspace is for everyone who wants:
+- 📝 Documents that sync across devices automatically
+- 🤯 Never forgetting what you were working on
+- 🧠 Claude to remember everything between sessions
+- 🤖 Complete autonomy - zero maintenance required
 
-### How it works (in human language)
-```
-🖥️ Your Desktop          ☁️ GitHub Cloud         💻 Your Laptop
-     |                         |                        |
-     |-----> Auto-sync ------>|<------ Auto-sync -----|
-     |                         |                        |
-   [Your work]            [Safe backup]           [Your work]
-   [Auto-saved]           [Memory sync]          [Auto-loaded]
-```
-
-### Commands You'll Love
+### Main Commands (Everything Else is Automatic!)
 ```bash
-# Everything happens automatically, but you can still:
-./scripts/claude-autonomous-exit.sh           # Zero-prompt smart exit
-./scripts/claude-simplified-memory.sh load    # Load/save context
-./scripts/claude-autonomous-system.sh status  # Check autonomous services
-./scripts/claude-auto-project-detector.sh     # Test project detection
-./scripts/claude-intelligence-extractor.sh    # View auto-extracted insights
+./scripts/claude-startup.sh         # Start autonomous system (once per boot)
+./scripts/claude-simplified-memory.sh load   # Load Claude context manually
+cexit                              # Graceful exit (automatic context save)
 ```
 
 ---
 
-## 📊 System Architecture
+## 🔧 Essential Commands
 
-```
-🏠 claude-workspace/
-├── 📁 projects/
-│   ├── 🔥 active/       ← Your current work
-│   ├── 🧪 sandbox/      ← Experiments & play
-│   └── ✅ production/   ← Finished stuff
-├── 🧠 .claude/
-│   ├── 💾 memory/       ← Simplified context for Claude
-│   ├── 🤖 autonomous/   ← Master daemon & service status
-│   ├── 🎯 intelligence/ ← Auto-extracted insights & decisions
-│   ├── 📊 activity/     ← Time tracking & analytics
-│   ├── 🎯 decisions/    ← Architecture decisions (ADR)
-│   ├── 📚 learning/     ← Lessons learned tracker
-│   ├── 📈 metrics/      ← Productivity analytics
-│   └── 🔧 tools/        ← System utilities
-├── 📜 scripts/          ← Autonomous tools
-└── 📚 docs/            ← Comprehensive guides
+### Daily Use
+```bash
+./scripts/claude-startup.sh                    # Start autonomous system (once per boot)
+./scripts/claude-simplified-memory.sh load     # Load context for Claude
+cexit                                          # Graceful exit with auto-save
 ```
 
----
+### System Control
+```bash
+./scripts/claude-autonomous-system.sh status   # Check all services
+./scripts/claude-autonomous-system.sh restart  # Restart if needed
+./scripts/claude-setup-profile.sh edit         # Update user profile
+```
 
-## 🛠️ Autonomous Features
-
-### 🤖 **Master Autonomous System**
-- **Unified daemon** orchestrating all background services
-- **Health monitoring** with service status tracking  
-- **Graceful startup/shutdown** with automatic recovery
-- **Service orchestration** (context, projects, intelligence, health monitors)
-
-### 🧠 **Simplified Memory System**
-- **Pure Claude context** without complex activity scoring
-- **Git-based auto-save** triggers on repository changes
-- **Time-based fallback** saves every 30 minutes if no git activity
-- **Zero-prompt exit** with intelligent save decisions
-
-### 🎯 **Auto Project Detection**
-- **Convention-based detection** for projects/active/, projects/sandbox/
-- **Automatic activity tracking** when entering project directories
-- **Seamless project switching** with state preservation
-- **Zero configuration** required
-
-### 🧠 **Intelligence Extraction**
-- **Git commit analysis** extracts decisions from significant changes
-- **Error pattern learning** from log files to prevent recurring issues
-- **File creation patterns** detect new projects, scripts, documentation
-- **Automatic categorization** with impact assessment
-
-### 📊 **Enhanced Productivity Suite**
-- **Activity Tracker** (`ctrack`) - Time measurement per project
-- **Decision Log** - Architecture Decision Records with searchable database
-- **Learning Tracker** - Capture lessons learned and prevent repeated issues
-- **Auto-Testing** - Framework detection and execution
-- **Weekly Reports** - Productivity analytics and insights
+### Advanced Features
+```bash
+./scripts/claude-auto-project-detector.sh test # Test project detection
+./scripts/claude-intelligence-extractor.sh     # View auto-insights
+ctrack                                         # Time tracking
+```
 
 ---
 
-## 📖 Comprehensive Documentation
-
-| Topic | Description | Link |
-|-------|-------------|------|
-| 🚀 **Setup** | Complete installation guide | [docs/SETUP_EN.md](docs/SETUP_EN.md) |
-| 🧠 **Memory System** | Autonomous memory & persistence | [docs/MEMORY-SYSTEM_EN.md](docs/MEMORY-SYSTEM_EN.md) |
-| 🤖 **Auto-Memory** | Background daemon & crash recovery | [docs/AUTO-MEMORY_EN.md](docs/AUTO-MEMORY_EN.md) |
-| 📊 **Productivity Suite** | Activity tracking & analytics | [docs/PRODUCTIVITY_EN.md](docs/PRODUCTIVITY_EN.md) |
-| 🔄 **Workflow** | Daily usage patterns | [docs/WORKFLOW_EN.md](docs/WORKFLOW_EN.md) |
-| 🔐 **Security** | Keep your work safe | [docs/SECURITY_EN.md](docs/SECURITY_EN.md) |
-| 🧪 **Sandbox** | Experiment freely | [docs/SANDBOX-SYSTEM_EN.md](docs/SANDBOX-SYSTEM_EN.md) |
-| 🛠️ **Tools Reference** | All available commands | [docs/TOOLS-REFERENCE_EN.md](docs/TOOLS-REFERENCE_EN.md) |
-
----
-
-## 🆘 Quick Troubleshooting
+## 🆘 Quick Fixes
 
 ```bash
-# Check autonomous services status:
-./scripts/claude-autonomous-system.sh status
-
-# Restart autonomous system if needed:
+# System not working? Restart everything:
 ./scripts/claude-autonomous-system.sh restart
 
-# Force manual context save:
-./scripts/claude-simplified-memory.sh save "Manual backup"
-
-# Smart exit if session seems stuck:
-./scripts/claude-autonomous-exit.sh
-
-# Test project detection:
-./scripts/claude-auto-project-detector.sh test
-
-# View auto-extracted insights:
-./scripts/claude-intelligence-extractor.sh summary
-
-# Not syncing? Force it:
-git pull origin main && git push origin main
+# Not syncing? Force sync:
+git pull origin main && git push origin main  
 
 # Commands not working? Fix permissions:
 chmod +x scripts/*.sh && source ~/.bashrc
@@ -274,59 +150,41 @@ chmod +x scripts/*.sh && source ~/.bashrc
 
 ---
 
-## 🔧 System Commands Reference
+## 📊 Project Structure
 
-### Core Autonomous Services
-```bash
-./scripts/claude-startup.sh              # Start all autonomous services
-./scripts/claude-autonomous-system.sh    # Master daemon control (start/stop/status/logs)
-./scripts/claude-autonomous-exit.sh      # Zero-prompt intelligent session exit
-./scripts/claude-simplified-memory.sh    # Context save/load for Claude
-./scripts/claude-auto-project-detector.sh # Project detection and auto-tracking
-./scripts/claude-intelligence-extractor.sh # Auto-learning and insight extraction
 ```
-
-### Productivity Tools
-```bash
-./scripts/claude-activity-tracker.sh  # Time tracking (alias: ctrack)
-./scripts/claude-productivity-metrics.sh  # Analytics (alias: cmetrics)
-./scripts/claude-decision-log.sh      # Architecture decisions
-./scripts/claude-learning-tracker.sh  # Lessons learned
-./scripts/claude-workspace-tools.sh   # Unified productivity tools
-```
-
-### Setup & Configuration
-```bash
-./scripts/claude-setup-profile.sh     # User profile & assessment
-./scripts/claude-context-switch.sh    # Project switching
-./scripts/sync.sh                     # Manual sync
+claude-workspace/
+├── projects/
+│   ├── active/    ← Your current work (auto-tracked)
+│   ├── sandbox/   ← Experiments (auto-tracked)  
+│   └── production/← Finished projects
+├── .claude/       ← Unified memory & coordination
+└── scripts/       ← Autonomous system tools
 ```
 
 ---
 
-## 💝 Community & Support
+## 📚 Full Documentation
 
-🐛 [Report bugs](https://github.com/null-runner/claude-workspace/issues) | 💡 [Share ideas](https://github.com/null-runner/claude-workspace/discussions) | 🤝 PRs welcome!
+Complete guides: [docs/](docs/) | Quick setup: [docs/SETUP_EN.md](docs/SETUP_EN.md) | Memory system: [docs/MEMORY-SYSTEM_EN.md](docs/MEMORY-SYSTEM_EN.md)
+
+🐛 [Issues](https://github.com/null-runner/claude-workspace/issues) | 💡 [Discussions](https://github.com/null-runner/claude-workspace/discussions) | 🤝 PRs welcome!
 
 ---
 
-## 🎉 You're Ready!
+## 🎉 What You Get
 
-That's it! You now have:
-- ✅ Projects that sync everywhere automatically
-- ✅ A system that remembers everything between Claude sessions
-- ✅ Autonomous saving that never loses work
-- ✅ Crash recovery and emergency restoration
-- ✅ Comprehensive productivity tracking
-- ✅ Intelligent session management
-- ✅ Complete development workflow automation
-- ✅ Peace of mind with zero maintenance
+✅ **Unified memory system** - Claude remembers everything across sessions  
+✅ **Automatic sync** - Works across all your devices  
+✅ **Zero-maintenance** - Enterprise-grade stability with graceful exit  
+✅ **Smart project detection** - Auto-tracks work in active/ and sandbox/  
+✅ **Coordinated operations** - No more conflicts or corruption  
+✅ **Complete autonomy** - 23x faster, file-locked, process-secure  
 
-**Welcome to the future of autonomous development! 🚀**
+**Welcome to autonomous development! 🚀**
 
 ---
 
 <p align="center">
-  Made with ❤️ for developers and vibe coders alike<br>
-  <em>Because your computer should work for you autonomously, never against you</em>
+  <em>Your computer working for you autonomously, never against you</em>
 </p>

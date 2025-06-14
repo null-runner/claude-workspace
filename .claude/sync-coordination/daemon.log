@@ -357,3 +357,9 @@ INFO: No stuck operations found
 [2025-06-14 18:38:47] [DEBUG] Processing sync queue (iteration 520)
 [2025-06-14 18:39:18] [DEBUG] Processing sync queue (iteration 521)
 [2025-06-14 18:39:49] [DEBUG] Processing sync queue (iteration 522)
+[2025-06-14 18:40:20] [DEBUG] Processing sync queue (iteration 523)
+[2025-06-14 18:40:51] [DEBUG] Processing sync queue (iteration 524)
+[2025-06-14 18:40:51] [HEALTH] Performing health checks
+[2025-06-14 18:40:51] [HEALTH] Coordinator status check completed
+[2025-06-14 18:41:22] [DEBUG] Processing sync queue (iteration 525)
+[2025-06-14 18:41:52] [DEBUG] Processing sync queue (iteration 526)
