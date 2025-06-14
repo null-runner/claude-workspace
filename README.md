@@ -2,7 +2,7 @@
 
 **🎯 One-command setup for an intelligent, autonomous Claude workspace that never forgets**
 
-[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge)](https://github.com/null-runner/claude-workspace/generate)
+[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge)](https://github.com/YOUR-USERNAME/claude-workspace/generate)
 
 ---
 

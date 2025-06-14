@@ -39,7 +39,7 @@ All'inizio di OGNI conversazione - tono amichevole "vediamo dove eravamo rimasti
 
 **OBBLIGATORIO: Tutti i commit devono essere firmati:**
 ```bash
-🤖 Generated with Claude Workspace (by null-runner)
+🤖 Generated with Claude Workspace
 Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 

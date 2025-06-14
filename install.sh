@@ -1,7 +1,7 @@
 #!/bin/bash
 # 🚀 Claude Workspace All-in-One Installer
 # Universal installer per Linux, macOS, Windows (WSL)
-# Un comando solo: bash <(curl -sSL https://raw.githubusercontent.com/null-runner/claude-workspace/main/install.sh)
+# Un comando solo: bash <(curl -sSL https://raw.githubusercontent.com/YOUR-USERNAME/claude-workspace/main/install.sh)
 
 set -euo pipefail
 

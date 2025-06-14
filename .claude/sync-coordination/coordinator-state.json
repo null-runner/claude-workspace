@@ -6,7 +6,7 @@
   "rate_limiting": {
     "enabled": true,
     "max_syncs_per_hour": 12,
-    "current_hour_count": 11,
-    "hour_reset_time": "2025-06-14T20:01:26.176910Z"
+    "current_hour_count": 1,
+    "hour_reset_time": "2025-06-14T21:03:16.027171Z"
   }
 }

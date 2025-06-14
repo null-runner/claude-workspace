@@ -259,7 +259,7 @@ sync_to_external() {
 Synced from claude-workspace project: $project_name
 Workspace path: $workspace_path
 
-🤖 Generated with Claude Workspace (by null-runner)
+🤖 Generated with Claude Workspace
 "
     
     if git push; then
