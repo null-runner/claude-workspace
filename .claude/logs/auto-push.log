@@ -320,3 +320,39 @@ To github.com:null-runner/claude-workspace.git
    0d761e3..1a9c47d  HEAD -> main
 [2025-06-14 02:29:30] [SUCCESS] ✅ Auto-push completed successfully
 [2025-06-14 02:29:30] [SUCCESS] Commit 1a9c47dc2ff95d3c77aa0fd3d5925abe6d901b54 pushed to remote
+[2025-06-14 02:35:46] [INFO] Post-commit hook triggered for 6f59db53a70091e45f3c3d61db9fed0a0691f1dd
+[2025-06-14 02:35:46] [INFO] Changed files: .claude/integrity/integrity.log
+.claude/integrity/manifest.json
+.claude/logs/atomic-operations.log
+.claude/logs/auto-push.log
+.claude/logs/error.log
+.claude/logs/exit-hook.log
+.claude/memory-coordination/coordinator.log
+.claude/memory-coordination/health-status.json
+.claude/memory/git-status-cache.json
+.claude/memory/intelligence-cache.json
+.claude/memory/session-history.json
+.claude/memory/unified-context.json
+README_IT.md
+docs/AUTO-MEMORY_EN.md
+docs/BUSINESS_MODEL_STRATEGY.md
+docs/getting-started/setup.md
+docs/guides/workflow-en.md
+[2025-06-14 02:35:46] [INFO] Repository whitelisted for auto-push: null-runner/claude-workspace
+[2025-06-14 02:35:46] [INFO] Attempting auto-push to origin...
+To github.com:null-runner/claude-workspace.git
+   1a9c47d..6f59db5  HEAD -> main
+[2025-06-14 02:35:47] [SUCCESS] ✅ Auto-push completed successfully
+[2025-06-14 02:35:47] [SUCCESS] Commit 6f59db53a70091e45f3c3d61db9fed0a0691f1dd pushed to remote
+[2025-06-14 02:39:52] [INFO] Post-commit hook triggered for b0464fe27e4f438ad4ba2e11302ce5dbcc7bb63b
+[2025-06-14 02:39:52] [INFO] Changed files: docs/getting-started/setup-en.md
+docs/getting-started/setup-it.md
+docs/getting-started/setup.md
+docs/guides/sandbox-system-it.md
+docs/guides/sandbox-system.md
+[2025-06-14 02:39:52] [INFO] Repository whitelisted for auto-push: null-runner/claude-workspace
+[2025-06-14 02:39:52] [INFO] Attempting auto-push to origin...
+To github.com:null-runner/claude-workspace.git
+   6f59db5..b0464fe  HEAD -> main
+[2025-06-14 02:39:54] [SUCCESS] ✅ Auto-push completed successfully
+[2025-06-14 02:39:54] [SUCCESS] Commit b0464fe27e4f438ad4ba2e11302ce5dbcc7bb63b pushed to remote

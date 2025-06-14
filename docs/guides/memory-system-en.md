@@ -1,27 +1,44 @@
-# 🧠 Intelligent Memory System - Claude Workspace
+# 🧠 Enterprise Memory Coordinator System - Claude Workspace
 
 [🇺🇸 English](memory-system-en.md) | [🇮🇹 Italiano](memory-system-it.md)
 
 ## 📖 Overview
 
-Claude Workspace's memory system provides seamless continuity between sessions and projects, maintaining context without cluttering your system thanks to intelligent automatic cleanup - perfect for hobby developers who want powerful features without complexity.
+Claude Workspace's **unified memory coordinator** provides enterprise-grade memory management with seamless continuity between sessions and projects. The system features **atomic operations**, **file locking**, **intelligent caching**, and **automatic recovery** - delivering enterprise reliability with zero maintenance overhead.
 
-## 🏗️ Architecture
+## 🏗️ Enterprise Architecture
 
-### Global Workspace Memory
+### Unified Memory Coordinator Structure
 ```
-.claude/memory/
-├── workspace-memory.json     # Global workspace memory
-└── projects/                 # Project-specific memory
-    ├── active_website-bar.json
-    ├── sandbox_test-app.json
-    └── production_api.json
+.claude/
+├── memory-coordination/       # NEW: Enterprise coordinator
+│   ├── coordinator.log       # Coordination activity log
+│   ├── health-status.json    # System health monitoring
+│   └── locks/               # File locking directory
+├── memory/                   # Managed by coordinator
+│   ├── workspace-memory.json # Global workspace memory
+│   ├── unified-context.json  # Unified context cache
+│   └── projects/             # Project-specific memory
+│       ├── active_website-bar.json
+│       ├── sandbox_test-app.json
+│       └── production_api.json
+└── backups/                  # Automatic backup rotation
+    └── memory/              # Memory backups with retention
 ```
+
+### Enterprise Memory Coordinator Features
+The **unified coordinator** manages all memory types with:
+- **Atomic Operations**: File locking prevents corruption during concurrent access
+- **Process Protection**: Deadlock prevention and process coordination
+- **Intelligent Caching**: Performance-optimized memory access with smart prefetching
+- **Conflict Resolution**: Advanced handling of cross-device memory conflicts
+- **Automatic Recovery**: Enterprise-grade error detection and rollback capabilities
+- **Backup Automation**: Automatic rotation with configurable retention policies
 
 ### Per-Project Memory
-Each project maintains:
+Each project maintains (managed by coordinator):
 - **Current state**: last activity, active files, recent notes
-- **Session history**: work chronology
+- **Session history**: work chronology  
 - **TODOs and goals**: active and completed tasks
 - **Technical notes**: setup, architecture, dependencies
 - **Archived data**: intelligently compacted information
@@ -48,30 +65,53 @@ Each project maintains:
 4. **Maintains metrics**: completion statistics
 5. **Preserves context**: essential information for continuity
 
-## 📱 Available Commands
+## 📱 Enterprise Commands
 
-### Global Memory
+### Unified Memory Coordinator
 ```bash
-claude-save "session note"           # Save current state
-claude-resume                        # Resume last session
-claude-memory                        # Manage global memory
-claude-memory context "objective"    # Update objectives
+# Main coordinator control
+claude-memory-coordinator start       # Start unified coordinator
+claude-memory-coordinator stop        # Stop coordinator
+claude-memory-coordinator status      # Check coordinator status
+claude-memory-coordinator health      # Health check all services
+claude-memory-coordinator restart     # Restart with cleanup
+
+# Performance and optimization
+claude-memory-coordinator optimize    # Optimize caches and performance
+claude-memory-coordinator cache-stats # View cache statistics
+claude-memory-coordinator cache-refresh # Refresh cache
 ```
 
-### Project Memory
+### Memory Management (Enhanced)
 ```bash
-claude-project-memory save "note"     # Save project state
-claude-project-memory resume          # Resume current project
-claude-project-memory todo add "task" # Add TODO
-claude-project-memory todo list       # List TODOs
-claude-project-memory todo done 1     # Complete TODO
+# Global memory (managed by coordinator)
+claude-save "session note"           # Save current state (atomic)
+claude-resume                        # Resume last session (cached)
+claude-memory context "objective"    # Update objectives (locked)
+
+# Project memory (enterprise-grade)
+claude-project-memory save "note"     # Save project state (atomic)
+claude-project-memory resume          # Resume current project (cached)
+claude-project-memory todo add "task" # Add TODO (coordinated)
+claude-project-memory todo list       # List TODOs (performance-optimized)
+claude-project-memory todo done 1     # Complete TODO (atomic update)
 ```
 
-### Memory Cleanup
+### Enterprise Management
 ```bash
-claude-memory-cleaner auto            # Automatic cleanup
-claude-memory-cleaner stats           # Memory statistics
-claude-memory-cleaner project name    # Clean specific project
+# Integrity and recovery
+claude-memory-coordinator integrity-check  # Verify memory integrity
+claude-memory-coordinator auto-recover     # Automatic error recovery
+claude-memory-coordinator manual-recover   # Manual recovery with options
+
+# Backup management  
+claude-backup-cleaner status               # View backup status
+claude-backup-cleaner clean                # Clean old backups
+claude-backup-cleaner set-retention 60     # Set retention (days)
+
+# Legacy cleanup (still available)
+claude-memory-cleaner auto                 # Automatic cleanup
+claude-memory-cleaner stats                # Memory statistics
 ```
 
 ## 🤖 Automation
