@@ -205,27 +205,23 @@ This guide covers the complete setup of Claude Workspace Enterprise-Grade system
    tail -f ~/claude-workspace/logs/auto-sync.log
    ```
 
-## Safe Exit Enterprise System
+## Safe Exit System
 
 ### 🗂️ cexit Command (Recommended)
 
-To safely exit the enterprise system:
+Per uscire in modo sicuro dal sistema:
 
 ```bash
-# Safe exit keeping session open (recommended)
+# Safe exit mantenendo sessione aperta (raccomandato)
 ~/claude-workspace/scripts/cexit-safe
 
-# Complete exit with Claude Code termination
+# Exit completo con terminazione Claude Code
 ~/claude-workspace/scripts/cexit
-
-# Exit with forced sync
-~/claude-workspace/scripts/cexit --force-sync
 ```
 
-**Important**: 
-- **DO NOT use** normal `exit` - doesn't trigger graceful shutdown
-- **Always use** `cexit` or `cexit-safe` to preserve system state
-- Enterprise system requires coordinated shutdown
+**Importante**: 
+- **NON usare** normale `exit` - non triggera graceful shutdown
+- **Usa sempre** `cexit` o `cexit-safe` per preservare stato sistema
 
 ### What cexit does
 1. 💾 Automatically saves session state
@@ -241,27 +237,20 @@ To safely exit the enterprise system:
 
 **Symptoms**: Memory coordinator not responding or memory not syncing
 
-**Enterprise Solutions**:
+**Soluzioni**:
 ```bash
-# Verify memory coordinator
-~/claude-workspace/scripts/claude-memory-coordinator.sh status
+# Verifica stato sistema autonomo
+~/claude-workspace/scripts/claude-autonomous-system.sh status
 
-# Restart coordinator if needed
-~/claude-workspace/scripts/claude-memory-coordinator.sh restart
+# Restart sistema se necessario
+~/claude-workspace/scripts/claude-startup.sh
 
-# Verify enterprise structure
-ls -la ~/claude-workspace/.claude/memory-coordination/
-ls -la ~/claude-workspace/.claude/logs/
-
-# Test memory with coordinator
-~/claude-workspace/scripts/claude-simplified-memory.sh save "Enterprise memory test"
+# Test memoria
+~/claude-workspace/scripts/claude-simplified-memory.sh save "Memory test"
 ~/claude-workspace/scripts/claude-simplified-memory.sh load
 
-# Verify lock files
-ls -la ~/claude-workspace/.claude/*.lock
-
-# Clean locks if stuck
-~/claude-workspace/scripts/claude-sync-lock.sh cleanup
+# Pulizia se necessario
+~/claude-workspace/scripts/claude-cleaner.sh
 ```
 
 ### Problem: Memory doesn't sync between devices

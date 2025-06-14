@@ -61,3 +61,32 @@
 [2025-06-14 18:39:46] [SUCCESS] [claude-startup.sh:423] Claude Workspace startup completed successfully
 [2025-06-14 18:39:46] [SUCCESS] [claude-startup.sh:438] Claude startup completed successfully
 [2025-06-14 18:39:46] [INFO] [claude-startup.sh:25] Startup cleanup called
+[2025-06-14 18:51:46] [INFO] [claude-startup.sh:279] Cleanup trap set for function: cleanup_startup
+[2025-06-14 18:51:46] [INFO] [claude-startup.sh:377] Step 1: Recovery check
+[2025-06-14 18:51:46] [INFO] [claude-startup.sh:138] Starting recovery check
+[2025-06-14 18:51:46] [INFO] [claude-startup.sh:147] Crash indicator found, analyzing exit type
+[2025-06-14 18:51:46] [SUCCESS] [claude-startup.sh:164] Normal exit detected, cleanup completed
+[2025-06-14 18:51:46] [INFO] [claude-startup.sh:384] Step 2: Integrity check
+[2025-06-14 18:51:47] [INFO] [claude-startup.sh:391] Step 3: Cleanup temporary files
+[2025-06-14 18:51:47] [INFO] [claude-startup.sh:397] Step 4: Setup emergency recovery
+[2025-06-14 18:51:47] [INFO] [claude-startup.sh:241] Setting up emergency recovery markers
+[2025-06-14 18:51:47] [SUCCESS] [claude-startup.sh:324] Atomic write completed: /home/nullrunner/claude-workspace/.claude/auto-memory/emergency_recovery_needed
+[2025-06-14 18:51:47] [SUCCESS] [claude-startup.sh:324] Atomic write completed: /home/nullrunner/claude-workspace/.claude/auto-memory/exit_type
+[2025-06-14 18:51:47] [SUCCESS] [claude-startup.sh:267] Emergency recovery markers created successfully
+[2025-06-14 18:51:47] [INFO] [claude-startup.sh:404] Step 5: Auto-memory migration
+[2025-06-14 18:51:47] [INFO] [claude-startup.sh:105] Starting auto-memory migration
+[2025-06-14 18:51:47] [INFO] [claude-startup.sh:110] Stopping old auto-memory system
+[2025-06-14 18:51:47] [INFO] [claude-startup.sh:165] Executing: Stop old auto-memory
+[2025-06-14 18:51:47] [SUCCESS] [claude-startup.sh:170] Stop old auto-memory completed successfully
+[2025-06-14 18:51:47] [SUCCESS] [claude-startup.sh:112] Old auto-memory stopped successfully
+[2025-06-14 18:51:47] [INFO] [claude-startup.sh:121] Running memory migration
+[2025-06-14 18:51:47] [INFO] [claude-startup.sh:165] Executing: Memory migration
+[2025-06-14 18:51:47] [ERROR] [claude-startup.sh:178] Memory migration failed with exit code 1
+[2025-06-14 18:51:47] [WARN] [claude-startup.sh:125] Memory migration had issues (may be normal)
+[2025-06-14 18:51:47] [INFO] [claude-startup.sh:410] Step 6: Start autonomous system
+[2025-06-14 18:51:47] [INFO] [claude-startup.sh:165] Executing: Check autonomous system status
+[2025-06-14 18:51:47] [SUCCESS] [claude-startup.sh:170] Check autonomous system status completed successfully
+[2025-06-14 18:51:47] [INFO] [claude-startup.sh:417] Step 7: Exit hook disabled (use cexit for graceful exit)
+[2025-06-14 18:51:47] [SUCCESS] [claude-startup.sh:423] Claude Workspace startup completed successfully
+[2025-06-14 18:51:47] [SUCCESS] [claude-startup.sh:438] Claude startup completed successfully
+[2025-06-14 18:51:47] [INFO] [claude-startup.sh:25] Startup cleanup called

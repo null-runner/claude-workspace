@@ -90,61 +90,26 @@ Perfetto per:
 curl -s https://raw.githubusercontent.com/null-runner/claude-workspace/main/check.sh | bash
 ```
 
-### 2️⃣ Crea Account GitHub
-- Vai su [github.com](https://github.com) → Registrati
-- Crea un nuovo repository chiamato `claude-workspace`
-- Rendilo privato (consigliato)
-
-### 3️⃣ Installa sul Computer Principale
+### 2️⃣ Clona e Configura
 ```bash
 cd ~
 git clone https://github.com/TUOUSERNAME/claude-workspace.git
 cd claude-workspace
-./scripts/setup.sh
+
+# Setup iniziale con profilo
+./scripts/claude-setup-profile.sh setup
+
+# Avvia sistema autonomo
+./scripts/claude-startup.sh
 ```
 
-### 4️⃣ Genera Chiave SSH
+### 3️⃣ Pronto per l'Uso!
 ```bash
-ssh-keygen -t ed25519 -f ~/.ssh/claude_workspace_key
-```
-
-### 5️⃣ Aggiungi Chiave a GitHub
-- Copia la chiave: `cat ~/.ssh/claude_workspace_key.pub`
-- GitHub → Impostazioni → Deploy keys → Aggiungi nuova
-- Incolla e salva
-
-### 6️⃣ Testa Tutto
-```bash
-./scripts/claude-startup.sh                    # Avvia servizi autonomi
-./scripts/claude-autonomous-system.sh status   # Verifica che tutto funzioni
-```
-
-### 7️⃣ Aggiungi il Tuo Laptop
-```bash
-# Sul laptop:
-curl -o setup.sh https://github.com/TUOUSERNAME/claude-workspace/raw/main/scripts/setup-laptop.sh
-chmod +x setup.sh && ./setup.sh
-```
-
-### 8️⃣ Crea il Primo Progetto
-```bash
+# Crea progetti in active/ - tutto si salva automaticamente
 cd ~/claude-workspace/projects/active
 mkdir mio-progetto-fantastico
 cd mio-progetto-fantastico
-# Auto-memory salverà automaticamente!
-```
-
-### 9️⃣ Cambio Dispositivo e Continuità
-```bash
-# Su qualsiasi dispositivo - Claude carica automaticamente il tuo context!
-# Avvia semplicemente una nuova sessione Claude e ricorda tutto
-```
-
-### 🔟 Cambia Dispositivo e Continua
-```bash
-# Su qualsiasi dispositivo:
-cd ~/claude-workspace
-claude-resume  # Vedi cosa stavi facendo!
+# Claude ricorda tutto tra le sessioni automaticamente!
 ```
 
 ---
@@ -170,11 +135,8 @@ Nessun problema! Claude Workspace è per tutti quelli che:
 ### Comandi che Amerai
 ```bash
 # Tutto avviene automaticamente, ma puoi comunque:
-./scripts/claude-smart-exit.sh                # Uscita intelligente senza prompt
-./scripts/claude-simplified-memory.sh load    # Carica/salva context
-./scripts/claude-autonomous-system.sh status  # Controlla servizi autonomi
-./scripts/claude-auto-project-detector.sh     # Test rilevamento progetti
-./scripts/claude-intelligence-extractor.sh    # Vedi insights auto-estratti
+./scripts/claude-startup.sh                   # Avvia sistema autonomo (una volta per boot)
+./scripts/claude-simplified-memory.sh load    # Carica context manualmente
 ./scripts/cexit-safe                          # Exit graceful raccomandato
 ```
 
@@ -212,11 +174,11 @@ Consulta la nostra documentazione dettagliata:
 
 | Argomento | Descrizione | Link |
 |-----------|-------------|------|
-| 🚀 **Setup** | Guida completa installazione | [docs/SETUP_IT.md](docs/SETUP_IT.md) |
-| 🧠 **Memoria** | Come funziona la memoria smart | [docs/MEMORY-SYSTEM_IT.md](docs/MEMORY-SYSTEM_IT.md) |
-| 🔄 **Workflow** | Utilizzo quotidiano | [docs/WORKFLOW_IT.md](docs/WORKFLOW_IT.md) |
-| 🔐 **Sicurezza** | Mantieni il lavoro al sicuro | [docs/SECURITY_IT.md](docs/SECURITY_IT.md) |
-| 🧪 **Sandbox** | Sperimenta liberamente | [docs/SANDBOX-SYSTEM_IT.md](docs/SANDBOX-SYSTEM_IT.md) |
+| 🚀 **Setup** | Guida completa installazione | [docs/getting-started/setup-it.md](docs/getting-started/setup-it.md) |
+| 🧠 **Memoria** | Come funziona la memoria smart | [docs/guides/memory-system-it.md](docs/guides/memory-system-it.md) |
+| 🔄 **Workflow** | Utilizzo quotidiano | [docs/guides/workflow-it.md](docs/guides/workflow-it.md) |
+| 🔐 **Sicurezza** | Mantieni il lavoro al sicuro | [docs/guides/security/security-it.md](docs/guides/security/security-it.md) |
+| 🧪 **Sandbox** | Sperimenta liberamente | [docs/guides/sandbox-system-it.md](docs/guides/sandbox-system-it.md) |
 
 ---
 
@@ -224,10 +186,10 @@ Consulta la nostra documentazione dettagliata:
 
 ```bash
 # Non si sincronizza? Forzalo:
-git pull origin main && git push origin main
+./scripts/sync-now.sh
 
 # Non vedi la memoria? Aggiorna:
-claude-resume
+./scripts/claude-simplified-memory.sh load
 
 # Comandi non funzionano? Sistema i permessi:
 chmod +x scripts/*.sh && source ~/.bashrc

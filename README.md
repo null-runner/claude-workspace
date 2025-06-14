@@ -60,33 +60,20 @@ Perfect for:
 curl -s https://raw.githubusercontent.com/null-runner/claude-workspace/main/check.sh | bash
 ```
 
-### 2️⃣ Create GitHub Account
-- Go to [github.com](https://github.com) → Sign up
-- Create a new repository called `claude-workspace`
-- Make it private (recommended)
-
-### 3️⃣ Install on Main Computer
+### 2️⃣ Clone and Setup
 ```bash
 cd ~
 git clone https://github.com/YOURUSERNAME/claude-workspace.git
 cd claude-workspace
-./scripts/setup.sh
-```
 
-### 4️⃣ Setup Everything
-```bash
 # One-time setup with profile
 ./scripts/claude-setup-profile.sh setup
-
-# Generate SSH key and add to GitHub
-ssh-keygen -t ed25519 -f ~/.ssh/claude_workspace_key
-cat ~/.ssh/claude_workspace_key.pub  # Copy to GitHub → Settings → Deploy keys
 
 # Start autonomous system
 ./scripts/claude-startup.sh
 ```
 
-### 5️⃣ Ready to Use!
+### 3️⃣ Ready to Use!
 ```bash
 # Create projects in active/ - everything auto-saves
 cd ~/claude-workspace/projects/active
@@ -106,9 +93,9 @@ mkdir my-project && cd my-project
 
 ### Main Commands (Everything Else is Automatic!)
 ```bash
-./scripts/claude-startup.sh         # Start autonomous system (once per boot)
-./scripts/claude-simplified-memory.sh load   # Load Claude context manually
-cexit                              # Graceful exit (automatic context save)
+./scripts/claude-startup.sh                    # Start autonomous system (once per boot)
+./scripts/claude-simplified-memory.sh load     # Load Claude context manually
+./scripts/cexit-safe                           # Graceful exit (recommended)
 ```
 
 ---
@@ -119,7 +106,7 @@ cexit                              # Graceful exit (automatic context save)
 ```bash
 ./scripts/claude-startup.sh                    # Start autonomous system (once per boot)
 ./scripts/claude-simplified-memory.sh load     # Load context for Claude
-cexit                                          # Graceful exit with auto-save
+./scripts/cexit-safe                           # Graceful exit with auto-save
 ```
 
 ### System Control
@@ -132,8 +119,8 @@ cexit                                          # Graceful exit with auto-save
 ### Advanced Features
 ```bash
 ./scripts/claude-auto-project-detector.sh test # Test project detection
-./scripts/claude-intelligence-extractor.sh     # View auto-insights
-ctrack                                         # Time tracking
+./scripts/claude-intelligence-extractor.sh summary # View auto-insights
+./scripts/claude-activity-tracker.sh status    # Activity tracking
 ```
 
 ---
@@ -169,7 +156,7 @@ claude-workspace/
 
 ## 📚 Full Documentation
 
-Complete guides: [docs/](docs/) | Quick setup: [docs/SETUP_EN.md](docs/SETUP_EN.md) | Memory system: [docs/MEMORY-SYSTEM_EN.md](docs/MEMORY-SYSTEM_EN.md)
+Complete guides: [docs/](docs/) | Quick setup: [docs/getting-started/setup-en.md](docs/getting-started/setup-en.md) | Memory system: [docs/guides/memory-system-en.md](docs/guides/memory-system-en.md)
 
 🐛 [Issues](https://github.com/null-runner/claude-workspace/issues) | 💡 [Discussions](https://github.com/null-runner/claude-workspace/discussions) | 🤝 PRs welcome!
 

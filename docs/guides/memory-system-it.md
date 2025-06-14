@@ -67,51 +67,39 @@ Ogni progetto mantiene (gestito dal coordinatore):
 
 ## 📱 Comandi Enterprise
 
-### Coordinatore Memoria Unificato
+### Sistema Memoria Unificato
 ```bash
-# Controllo coordinatore principale
-claude-memory-coordinator start       # Avvia coordinatore unificato
-claude-memory-coordinator stop        # Ferma coordinatore
-claude-memory-coordinator status      # Controlla stato coordinatore
-claude-memory-coordinator health      # Controllo salute tutti i servizi
-claude-memory-coordinator restart     # Riavvia con cleanup
+# Controllo sistema memoria attuale
+./scripts/claude-simplified-memory.sh load     # Carica context sessione
+./scripts/claude-simplified-memory.sh save     # Salva context manualmente
+./scripts/claude-simplified-memory.sh stats    # Statistiche performance
 
-# Performance e ottimizzazione
-claude-memory-coordinator optimize    # Ottimizza cache e performance
-claude-memory-coordinator cache-stats # Visualizza statistiche cache
-claude-memory-coordinator cache-refresh # Aggiorna cache
+# Sistema autonomo
+./scripts/claude-autonomous-system.sh status   # Stato tutti i servizi
+./scripts/claude-startup.sh                   # Avvia sistema completo
 ```
 
-### Gestione Memoria (Migliorata)
+### Gestione Memoria Attuale
 ```bash
-# Memoria globale (gestita da coordinatore)
-claude-save "nota sessione"           # Salva stato corrente (atomico)
-claude-resume                         # Riprende ultima sessione (cached)
-claude-memory context "obiettivo"     # Aggiorna obiettivi (locked)
+# Memoria globale (gestita dal sistema)
+./scripts/claude-enhanced-save.sh "nota sessione"  # Salva stato corrente
+./scripts/claude-simplified-memory.sh load         # Carica ultima sessione
 
 # Memoria progetto (enterprise-grade)
-claude-project-memory save "nota"     # Salva stato progetto (atomico)
-claude-project-memory resume          # Riprende progetto (cached)
-claude-project-memory todo add "task" # Aggiunge TODO (coordinato)
-claude-project-memory todo list       # Lista TODO (performance-ottimizzato)
-claude-project-memory todo done 1     # Completa TODO (aggiornamento atomico)
+# Il sistema rileva automaticamente il progetto corrente
+# e salva il context in modo coordinato
 ```
 
-### Gestione Enterprise
+### Gestione Sistema Enterprise
 ```bash
 # Integrità e recovery
-claude-memory-coordinator integrity-check  # Verifica integrità memoria
-claude-memory-coordinator auto-recover     # Recovery automatico errori
-claude-memory-coordinator manual-recover   # Recovery manuale con opzioni
+./scripts/claude-autonomous-system.sh status      # Verifica integrità sistema
+./scripts/claude-startup.sh                       # Recovery automatico
 
-# Gestione backup  
-claude-backup-cleaner status               # Visualizza stato backup
-claude-backup-cleaner clean                # Pulisce backup vecchi
-claude-backup-cleaner set-retention 60     # Imposta retention (giorni)
-
-# Pulizia legacy (ancora disponibile)
-claude-memory-cleaner auto                 # Pulizia automatica
-claude-memory-cleaner stats                # Statistiche memoria
+# Gestione backup e pulizia
+./scripts/claude-backup-cleaner.sh status         # Stato backup
+./scripts/claude-backup-cleaner.sh clean          # Pulizia backup vecchi
+./scripts/claude-memory-cleaner.sh auto           # Pulizia automatica memoria
 ```
 
 ## 🤖 Automazione Enterprise
