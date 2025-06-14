@@ -1,0 +1,6 @@
+[2025-06-14 01:59:36] [SUCCESS] [error-handling-library.sh:324] Atomic write completed: /tmp/test_atomic.txt
+[2025-06-14 01:59:53] [INFO] [claude-startup.sh:279] Cleanup trap set for function: cleanup_startup
+[2025-06-14 01:59:53] [INFO] [claude-startup.sh:25] Startup cleanup called
+[2025-06-14 02:00:03] [INFO] [claude-startup.sh:279] Cleanup trap set for function: cleanup_startup
+[2025-06-14 02:00:03] [SUCCESS] [error-handling-library.sh:324] Atomic write completed: /tmp/test_atomic.txt
+[2025-06-14 02:00:03] [INFO] [claude-startup.sh:25] Startup cleanup called

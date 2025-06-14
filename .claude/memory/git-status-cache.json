@@ -1,0 +1,28 @@
+{
+  "git_status": {
+    "branch": "main",
+    "has_changes": true,
+    "dirty_files_count": 16,
+    "dirty_files": [
+      "M .claude/auto-memory/exit_type",
+      " M .claude/integrity/integrity.log",
+      " M .claude/integrity/manifest.json",
+      " M .claude/logs/atomic-operations.log",
+      " M .claude/logs/auto-push.log",
+      " M .claude/memory-coordination/coordinator.log",
+      " M .claude/memory-coordination/health-status.json",
+      " M .claude/memory/intelligence-cache.json",
+      " M .claude/memory/session-history.json",
+      " M .claude/memory/unified-context.json",
+      " M scripts/claude-startup.sh",
+      " M scripts/safe_json_operations.py",
+      "?? .claude/logs/error.log",
+      "?? scripts/error-handling-library.sh",
+      "?? scripts/json-cache-manager.py",
+      "?? scripts/memory-operations.py"
+    ],
+    "last_commit": "0e15a4a 🛡️ Sistema operazioni atomiche completato",
+    "is_git_repo": true
+  },
+  "timestamp": 1749859192.109678
+}

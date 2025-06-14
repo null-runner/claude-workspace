@@ -15,6 +15,7 @@ import tempfile
 import shutil
 from pathlib import Path
 from typing import Any, Dict, Optional, Union
+from collections import defaultdict
 import sys
 
 
@@ -249,11 +250,131 @@ def safe_json_update(file_path: str, update_func, default: Any = None,
         raise SafeJSONError(f"Error updating {file_path}: {e}")
 
 
+def batch_json_operations(operations: list, max_retries: int = 10) -> dict:
+    """
+    Execute multiple JSON operations in batch for better performance.
+    
+    Args:
+        operations: List of operation dicts with keys:
+            - 'type': 'read' | 'write' | 'update'
+            - 'file_path': Path to JSON file
+            - 'data': Data to write (for write operations)
+            - 'update_func': Function for update operations
+            - 'default': Default value for read/update operations
+        max_retries: Maximum number of lock acquisition retries
+        
+    Returns:
+        Dict mapping operation index to result/error
+    """
+    results = {}
+    
+    # Group operations by file to minimize lock contention
+    file_operations = defaultdict(list)
+    for i, op in enumerate(operations):
+        file_path = str(Path(op['file_path']).resolve())
+        file_operations[file_path].append((i, op))
+    
+    # Process each file's operations together
+    for file_path, file_ops in file_operations.items():
+        try:
+            # Sort operations: reads first, then writes/updates
+            file_ops.sort(key=lambda x: (x[1]['type'] != 'read', x[0]))
+            
+            with SafeJSONLock(file_path, 'r+', max_retries=max_retries) as f:
+                # Read current content once
+                try:
+                    f.seek(0)
+                    content = f.read().strip()
+                    current_data = json.loads(content) if content else None
+                except json.JSONDecodeError:
+                    current_data = None
+                
+                # Process operations
+                for op_index, op in file_ops:
+                    try:
+                        if op['type'] == 'read':
+                            results[op_index] = current_data if current_data is not None else op.get('default')
+                        
+                        elif op['type'] == 'write':
+                            current_data = op['data']
+                            results[op_index] = True
+                        
+                        elif op['type'] == 'update':
+                            if current_data is None:
+                                current_data = op.get('default')
+                            current_data = op['update_func'](current_data)
+                            results[op_index] = current_data
+                        
+                    except Exception as e:
+                        results[op_index] = SafeJSONError(f"Operation {op_index} failed: {e}")
+                
+                # Write final data if any write/update operations
+                write_ops = [op for _, op in file_ops if op['type'] in ('write', 'update')]
+                if write_ops and current_data is not None:
+                    try:
+                        f.seek(0)
+                        f.truncate()
+                        json.dump(current_data, f, indent=2, ensure_ascii=False)
+                        f.flush()
+                        os.fsync(f.fileno())
+                    except Exception as e:
+                        # Mark all write operations as failed
+                        for op_index, op in file_ops:
+                            if op['type'] in ('write', 'update'):
+                                results[op_index] = SafeJSONError(f"Write failed: {e}")
+        
+        except Exception as e:
+            # Mark all operations for this file as failed
+            for op_index, _ in file_ops:
+                results[op_index] = SafeJSONError(f"File lock failed: {e}")
+    
+    return results
+
+
+def parallel_json_reads(file_paths: list, default: Any = None, max_workers: int = 4) -> dict:
+    """
+    Read multiple JSON files in parallel.
+    
+    Args:
+        file_paths: List of file paths to read
+        default: Default value for missing/invalid files
+        max_workers: Maximum number of concurrent reads
+        
+    Returns:
+        Dict mapping file_path to data/error
+    """
+    import concurrent.futures
+    
+    results = {}
+    
+    def read_single_file(file_path):
+        try:
+            return safe_json_read(file_path, default)
+        except Exception as e:
+            return SafeJSONError(f"Read failed: {e}")
+    
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_path = {
+            executor.submit(read_single_file, path): path 
+            for path in file_paths
+        }
+        
+        for future in concurrent.futures.as_completed(future_to_path):
+            file_path = future_to_path[future]
+            try:
+                results[file_path] = future.result()
+            except Exception as e:
+                results[file_path] = SafeJSONError(f"Parallel read failed: {e}")
+    
+    return results
+
+
 def test_safe_json_operations():
     """Test the safe JSON operations."""
     import tempfile
     import concurrent.futures
     import threading
+    from collections import defaultdict
     
     print("Testing Safe JSON Operations...")
     
@@ -316,6 +437,34 @@ def test_safe_json_operations():
             print("✅ Nonexistent file handled correctly")
         except SafeJSONError:
             print("❌ Error handling test failed")
+        
+        # Test batch operations
+        print("Testing batch operations...")
+        operations = [
+            {'type': 'write', 'file_path': str(test_file), 'data': {'batch_test': 1}},
+            {'type': 'read', 'file_path': str(test_file), 'default': {}},
+            {'type': 'update', 'file_path': str(test_file), 'update_func': lambda x: {**x, 'updated': True}},
+        ]
+        
+        results = batch_json_operations(operations)
+        assert len(results) == 3
+        print(f"Batch results: {results}")  # Debug
+        # Results should contain all operations
+        assert isinstance(results[1], dict)  # Read result should be dict
+        print("✅ Batch operations test passed")
+        
+        # Test parallel reads
+        print("Testing parallel reads...")
+        test_files = []
+        for i in range(3):
+            f = test_file.parent / f"parallel_test_{i}.json"
+            safe_json_write(str(f), {'file_id': i})
+            test_files.append(str(f))
+        
+        parallel_results = parallel_json_reads(test_files)
+        assert len(parallel_results) == 3
+        assert all('file_id' in result for result in parallel_results.values())
+        print("✅ Parallel reads test passed")
         
         print("All tests completed successfully!")
 
