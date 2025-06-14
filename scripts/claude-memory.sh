@@ -28,7 +28,7 @@ import sys
 from datetime import datetime, timezone
 
 try:
-    with open("/home/nullrunner/claude-workspace/.claude/memory/workspace-memory.json", "r") as f:
+    with open(os.path.expanduser("~/claude-workspace/.claude/memory/workspace-memory.json"), "r") as f:
         memory = json.load(f)
     
     # Header info
@@ -133,12 +133,12 @@ clean_memory() {
             python3 << 'EOF'
 import json
 try:
-    with open("/home/nullrunner/claude-workspace/.claude/memory/workspace-memory.json", "r") as f:
+    with open(os.path.expanduser("~/claude-workspace/.claude/memory/workspace-memory.json"), "r") as f:
         memory = json.load(f)
     
     memory["session_history"] = []
     
-    with open("/home/nullrunner/claude-workspace/.claude/memory/workspace-memory.json", "w") as f:
+    with open(os.path.expanduser("~/claude-workspace/.claude/memory/workspace-memory.json"), "w") as f:
         json.dump(memory, f, indent=2)
     
     print("✅ Storico sessioni pulito")
@@ -151,12 +151,12 @@ EOF
             python3 << 'EOF'
 import json
 try:
-    with open("/home/nullrunner/claude-workspace/.claude/memory/workspace-memory.json", "r") as f:
+    with open(os.path.expanduser("~/claude-workspace/.claude/memory/workspace-memory.json"), "r") as f:
         memory = json.load(f)
     
     memory["recent_projects"] = []
     
-    with open("/home/nullrunner/claude-workspace/.claude/memory/workspace-memory.json", "w") as f:
+    with open(os.path.expanduser("~/claude-workspace/.claude/memory/workspace-memory.json"), "w") as f:
         json.dump(memory, f, indent=2)
     
     print("✅ Lista progetti recenti pulita")

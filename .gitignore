@@ -56,3 +56,11 @@ logs/*.log
 .claude/autonomous/service-status.json
 .claude/intelligence/extraction.log
 .claude/intelligence/last-extraction.json
+
+# Security-sensitive files (NEVER commit)
+.claude/settings.local.json
+.claude/**/*.pid
+.claude/**/*.log
+.claude/sync-coordination/
+.claude/context/auto-context.log
+.claude/logs/auto-push.log
