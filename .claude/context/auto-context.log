@@ -1394,3 +1394,28 @@ Commands:
 [2025-06-14 18:41:32] [DEBUG] [PROJECT] Project detection completed
 [2025-06-14 18:42:03] [DEBUG] [PROJECT] Checking project changes
 [2025-06-14 18:42:03] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:42:34] [DEBUG] [CONTEXT] Starting auto-save check
+[2025-06-14 18:42:34] [ERROR] [CONTEXT] Auto-save failed: Usage: /home/nullrunner/claude-workspace/scripts/claude-simplified-memory.sh {save|load|stats} [args...]
+
+Commands:
+  save [reason] [summary] [issues] [actions] - Save context
+  load                                       - Load and display context
+  stats                                      - Show performance statistics
+[2025-06-14 18:42:34] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:42:34] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:43:05] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:43:05] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:43:36] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:43:36] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:44:07] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:44:07] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:44:38] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:44:38] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:45:08] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:45:08] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:45:39] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:45:39] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:46:10] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:46:10] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:46:41] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:46:41] [DEBUG] [PROJECT] Project detection completed
