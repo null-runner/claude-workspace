@@ -1473,3 +1473,14 @@ Commands:
 [2025-06-14 18:56:31] [DEBUG] [PROJECT] Project detection completed
 [2025-06-14 18:57:02] [DEBUG] [PROJECT] Checking project changes
 [2025-06-14 18:57:02] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:57:33] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:57:33] [DEBUG] [PROJECT] Project detection completed
+[2025-06-14 18:58:04] [DEBUG] [CONTEXT] Starting auto-save check
+[2025-06-14 18:58:04] [ERROR] [CONTEXT] Auto-save failed: Usage: /home/nullrunner/claude-workspace/scripts/claude-simplified-memory.sh {save|load|stats} [args...]
+
+Commands:
+  save [reason] [summary] [issues] [actions] - Save context
+  load                                       - Load and display context
+  stats                                      - Show performance statistics
+[2025-06-14 18:58:04] [DEBUG] [PROJECT] Checking project changes
+[2025-06-14 18:58:04] [DEBUG] [PROJECT] Project detection completed
