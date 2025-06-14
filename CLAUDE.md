@@ -70,6 +70,15 @@ Il workspace ora è **completamente autonomo** e **enterprise-stable**:
 - **Smart Sync**: `./scripts/claude-smart-sync.sh start/stop/status` (auto-sync intelligente)
 - **Sync Manual**: `./scripts/sync-now.sh` (backup remoto manuale)
 
+## Migration Tool
+**Sistema complesso → Sistema semplificato**:
+- `./scripts/claude-migrate.sh backup` - crea backup completo
+- `./scripts/claude-migrate.sh migrate` - migrazione full (65 script → 8 script)
+- `./scripts/claude-migrate.sh test` - test sistema simplified
+- `./scripts/claude-migrate.sh rollback` - rollback automatico
+- `./scripts/claude-migrate.sh status` - stato migrazione
+- **Alias**: `./scripts/cmigrate` - shortcut per migrazione
+
 ## Comandi Debug
 - `./scripts/claude-auto-project-detector.sh test` - test detection progetti
 - `./scripts/claude-intelligence-extractor.sh summary` - mostra insights estratti

@@ -1,6 +1,57 @@
 {
   "sessions": [
     {
+      "id": "2025-06-14T12:18:21.693568Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T12:18:21.693568Z",
+      "save_type": "simplified",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "Testing",
+      "changes_count": 18
+    },
+    {
+      "id": "2025-06-14T12:17:58.285350Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T12:17:58.285350Z",
+      "save_type": "simplified",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "Testing",
+      "changes_count": 17
+    },
+    {
+      "id": "2025-06-14T12:17:40.502545Z-claude-memory-coordinator",
+      "timestamp": "2025-06-14T12:17:40.502545Z",
+      "save_type": "simplified",
+      "caller": "claude-memory-coordinator",
+      "project": {
+        "name": "claude-workspace-development",
+        "type": "meta",
+        "path": "/home/nullrunner/claude-workspace",
+        "relative_path": ".",
+        "depth": 0,
+        "full_path": "/home/nullrunner/claude-workspace",
+        "meta_context": "root_workspace_management"
+      },
+      "summary": "Testing",
+      "changes_count": 11
+    },
+    {
       "id": "2025-06-14T10:00:03Z-clean",
       "timestamp": "2025-06-14T10:00:03Z",
       "save_reason": "clean",
@@ -210,5 +261,5 @@
     }
   ],
   "version": "unified-v1",
-  "last_update": "2025-06-14T10:00:03Z"
+  "last_update": "2025-06-14T12:18:21.693568Z"
 }
