@@ -1,0 +1,194 @@
+[
+  {
+    "id": "1",
+    "content": "Fix startup script - risolvi path error per error-handling-library.sh",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "2",
+    "content": "Fix memory migration error nel startup",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "3",
+    "content": "Commit path fixes applicati",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "4",
+    "content": "Test sistema completo con startup fix",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "5",
+    "content": "Update TODO.md workspace con lista aggiornata",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "6",
+    "content": "Analisi completa sistema: percorso di tutti i sistemi e file",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "7",
+    "content": "DOCUMENTARE processo aggiornamento TODO persistente tra sessioni",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "8",
+    "content": "Implementare parsing TODO.md \u2192 TodoWrite completo",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "9",
+    "content": "Implementare TodoWrite \u2192 TODO.md sync automatico",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "10",
+    "content": "Integrazione sync TODO con startup script",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "11",
+    "content": "Test completo sistema TODO persistente",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "12",
+    "content": "SISTEMA TODO PERSISTENTE COMPLETATO AL 100%",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "13",
+    "content": "Fix Memory Coordinator deadlock per sub-agent concorrenti",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "14",
+    "content": "IMPLEMENTAZIONE TODO PERSISTENTE COMPLETATA",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "15",
+    "content": "Test completo sistema TODO persistente",
+    "status": "in_progress",
+    "priority": "medium"
+  },
+  {
+    "id": "16",
+    "content": "Fix Memory Coordinator deadlock per sub-agent concorrenti",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "17",
+    "content": "Test sync automatico",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "18",
+    "content": "Implementazione parser",
+    "status": "in_progress",
+    "priority": "medium"
+  },
+  {
+    "id": "19",
+    "content": "Test parser completo",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "20",
+    "content": "1. Fix Memory Coordinator per Sub-Agent Usage",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "21",
+    "content": "1. Fix GitHub Template Button",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "22",
+    "content": "2. Fix Startup Script Path Detection",
+    "status": "completed",
+    "priority": "medium"
+  },
+  {
+    "id": "23",
+    "content": "3. Analisi Completa Sistema e Architettura",
+    "status": "in_progress",
+    "priority": "medium"
+  },
+  {
+    "id": "24",
+    "content": "4. DOCUMENTARE e IMPLEMENTARE TODO Persistenza",
+    "status": "in_progress",
+    "priority": "medium"
+  },
+  {
+    "id": "25",
+    "content": "5. Design Sistema Conoscenza Claude",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "26",
+    "content": "5. Fix cexit Command",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "27",
+    "content": "6. Fix One-Command Installer",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "28",
+    "content": "4. Intelligence System Analysis",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "29",
+    "content": "5. Autonomous System Analysis",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "30",
+    "content": "6. Context Management Optimization",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "31",
+    "content": "7. Script Cleanup Analysis",
+    "status": "pending",
+    "priority": "medium"
+  },
+  {
+    "id": "32",
+    "content": "\u2705 Memory System Analysis (2025-06-15)",
+    "status": "pending",
+    "priority": "medium"
+  }
+]

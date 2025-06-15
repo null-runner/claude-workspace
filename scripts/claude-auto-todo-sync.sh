@@ -5,8 +5,21 @@
 set -euo pipefail
 
 WORKSPACE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-TEMP_TODO_FILE="$WORKSPACE_DIR/.claude/temp-todos-from-md.json"
 SYNC_SCRIPT="$WORKSPACE_DIR/scripts/sync-todo-workspace.sh"
+
+# Dynamic temp file based on current project
+get_temp_todo_file() {
+    local project_json="$WORKSPACE_DIR/.claude/auto-projects/current.json"
+    local project_name="workspace"
+    
+    if [[ -f "$project_json" ]]; then
+        project_name=$(python3 -c "import json; print(json.load(open('$project_json'))['name'])" 2>/dev/null || echo "workspace")
+    fi
+    
+    echo "$WORKSPACE_DIR/.claude/temp-todos-${project_name}.json"
+}
+
+TEMP_TODO_FILE=$(get_temp_todo_file)
 
 # Colori
 GREEN='\033[0;32m'

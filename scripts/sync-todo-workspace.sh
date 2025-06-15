@@ -5,13 +5,54 @@
 set -euo pipefail
 
 WORKSPACE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-TODO_FILE="$WORKSPACE_DIR/TODO.md"
+
+# Detect current project and use appropriate TODO file
+detect_todo_file() {
+    local project_json="$WORKSPACE_DIR/.claude/auto-projects/current.json"
+    
+    # Default to workspace meta-project
+    local todo_path="$WORKSPACE_DIR/meta-projects/claude-workspace/TODO.md"
+    
+    if [[ -f "$project_json" ]]; then
+        # Extract project info
+        local project_name=$(python3 -c "import json; print(json.load(open('$project_json'))['name'])" 2>/dev/null || echo "")
+        local project_type=$(python3 -c "import json; print(json.load(open('$project_json'))['type'])" 2>/dev/null || echo "")
+        local project_path=$(python3 -c "import json; print(json.load(open('$project_json'))['path'])" 2>/dev/null || echo "")
+        
+        if [[ "$project_type" == "meta" ]]; then
+            # Meta project - use meta-projects directory
+            todo_path="$WORKSPACE_DIR/meta-projects/$project_name/TODO.md"
+        elif [[ -n "$project_path" && "$project_path" != "." ]]; then
+            # Regular project - use project directory
+            todo_path="$project_path/TODO.md"
+        fi
+        
+        echo -e "${BLUE}📁 Project: $project_name (type: $project_type)${NC}" >&2
+        echo -e "${BLUE}📋 TODO file: $todo_path${NC}" >&2
+    else
+        echo -e "${YELLOW}⚠️  No project detected, using workspace TODO${NC}" >&2
+    fi
+    
+    # Create TODO file if doesn't exist
+    if [[ ! -f "$todo_path" ]]; then
+        mkdir -p "$(dirname "$todo_path")"
+        echo "# TODO List - $project_name" > "$todo_path"
+        echo "" >> "$todo_path"
+        echo -e "${GREEN}✅ Created new TODO file: $todo_path${NC}" >&2
+    fi
+    
+    echo "$todo_path"
+}
 
 # Colori
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
+BLUE='\033[0;34m'
 NC='\033[0m'
+
+# Dynamic TODO file detection
+TODO_FILE=$(detect_todo_file)
 
 # Funzione per parsare TODO.md e creare TodoWrite format
 parse_todo_md() {
