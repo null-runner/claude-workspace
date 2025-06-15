@@ -4,14 +4,15 @@
 
 set -euo pipefail  # Strict error handling
 
-# Environment validation
-WORKSPACE_DIR="${WORKSPACE_DIR:-$HOME/claude-workspace}"
+# Environment validation - auto-detect workspace
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WORKSPACE_DIR="$(dirname "$SCRIPT_DIR")"
 
 # Source error handling library
 if [[ -f "$WORKSPACE_DIR/scripts/error-handling-library.sh" ]]; then
     source "$WORKSPACE_DIR/scripts/error-handling-library.sh"
 else
-    echo "ERROR: error-handling-library.sh not found" >&2
+    echo "ERROR: error-handling-library.sh not found in $WORKSPACE_DIR/scripts/" >&2
     exit 3
 fi
 

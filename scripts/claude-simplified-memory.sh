@@ -2,7 +2,9 @@
 # Claude Simplified Memory - Optimized Version
 # Riduce overhead Python usando memory-operations.py persistente
 
-WORKSPACE_DIR="$HOME/claude-workspace"
+# Auto-detect workspace directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WORKSPACE_DIR="$(dirname "$SCRIPT_DIR")"
 MEMORY_DIR="$WORKSPACE_DIR/.claude/memory"
 CONTEXT_FILE="$MEMORY_DIR/enhanced-context.json"
 
