@@ -173,3 +173,18 @@ To github.com:null-runner/claude-workspace.git
    eeba183..955f813  HEAD -> main
 [2025-06-15 16:27:32] [SUCCESS] ✅ Auto-push completed successfully
 [2025-06-15 16:27:32] [SUCCESS] Commit 955f813a76e93bf00482bcb0cb05dcb3cf86a266 pushed to remote
+[2025-06-15 16:55:14] [INFO] Post-commit hook triggered for df2628788eeb1c42c6b07697713299be4597dacb
+[2025-06-15 16:55:14] [INFO] Changed files: .claude/logs/auto-push.log
+.claude/temp-todos-from-md.json
+TODO.md.old-global
+meta-projects/claude-workspace-development/TODO.md
+meta-projects/claude-workspace/TODO.md
+projects/test-app/TODO.md
+scripts/claude-auto-todo-sync.sh
+scripts/sync-todo-workspace.sh
+[2025-06-15 16:55:14] [INFO] Repository whitelisted for auto-push: null-runner/claude-workspace
+[2025-06-15 16:55:14] [INFO] Attempting auto-push to origin...
+To github.com:null-runner/claude-workspace.git
+   955f813..df26287  HEAD -> main
+[2025-06-15 16:55:16] [SUCCESS] ✅ Auto-push completed successfully
+[2025-06-15 16:55:16] [SUCCESS] Commit df2628788eeb1c42c6b07697713299be4597dacb pushed to remote
