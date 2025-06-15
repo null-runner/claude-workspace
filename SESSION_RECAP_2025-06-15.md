@@ -91,6 +91,77 @@ Analizzare e semplificare il Claude Workspace per eliminare complessità inutile
 2. Script cleanup identificazione
 3. Context management optimization
 
+## 🤖 SUB-AGENT METHODOLOGY NOTES
+
+### **Pianificazione Sub-Agent Execution**
+
+**REGOLA CRITICA**: Prima di creare sub-agent, SEMPRE pianificare dependencies e execution order
+
+#### **Dependency Analysis Framework**:
+1. **Identificare Input Dependencies**: Ogni sub-agent ha bisogno di output di altri?
+2. **Categorizzare Execution Type**:
+   - **PARALLEL**: Sub-agent indipendenti, possono girare simultaneamente
+   - **SEQUENTIAL**: Sub-agent dipendenti, devono attendere risultati precedenti
+   - **HYBRID**: Mix di parallel + sequential phases
+
+#### **Execution Planning Process**:
+```
+STEP 1: Analisi Dependencies
+- Sub-Agent A dipende da B? 
+- Sub-Agent C può girare mentre A/B lavorano?
+- Quali risultati sono prerequisites per altri?
+
+STEP 2: Design Execution Plan
+- PHASE 1: Launch parallel independent agents
+- PHASE 2: Wait for completion, launch dependent agents
+- PHASE 3: Consolidate results
+
+STEP 3: Validate Plan
+- Verificare che nessun agent attenda indefinitamente
+- Assicurare che tutti i prerequisiti siano soddisfatti
+- Ottimizzare per performance (max parallelization)
+```
+
+#### **Best Practices Sub-Agent**:
+- **Parallel quando possibile**: Massimizzare efficiency
+- **Clear input/output contracts**: Ogni agent sa cosa riceve/produce
+- **Timeout handling**: Gestire agent che non completano
+- **Result aggregation strategy**: Come combinare risultati multipli
+
+#### **Example - Memory System Analysis**:
+```
+✅ PARALLEL EXECUTION (4 agents simultaneously):
+- Agent A: Coordinator analysis (independent)
+- Agent B: Simplified analysis (independent) 
+- Agent C: Python backend (independent)
+- Agent D: Usage patterns (independent)
+
+❌ SEQUENTIAL would be slower:
+- Agent A → wait → Agent B → wait → Agent C → wait → Agent D
+```
+
+#### **Example - Hypothetical Complex System**:
+```
+🔄 HYBRID EXECUTION:
+PHASE 1 (Parallel): 
+- Agent A: Current state analysis
+- Agent B: Performance benchmarks
+- Agent C: User requirements gathering
+
+PHASE 2 (Sequential - waits for Phase 1):
+- Agent D: Gap analysis (needs A + C results)
+- Agent E: Recommendations (needs all previous results)
+```
+
+### **Sub-Agent Concurrent Operations Impact**
+Con 10-20 sub-agent concorrenti, il memory/sync system deve supportare:
+- Burst operations (tutti salvano risultati simultaneamente)
+- Queue management per evitare I/O overload
+- Conflict resolution per concurrent writes
+- Performance sotto heavy concurrent load
+
+**Implicazione**: Memory Coordinator diventa CRITICO per sub-agent usage
+
 ## 🔧 Stato Workspace
 
 ### Working Directory
