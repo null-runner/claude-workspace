@@ -112,3 +112,6 @@ and the repository exists.
 [2025-06-14 20:30:25] [ERROR] ❌ Auto-push failed (exit code: 128)
 [2025-06-14 20:30:25] [ERROR] Will retry on next commit or manual push
 [2025-06-14 20:30:26] [WARN] Remote not accessible - likely network issue
+[2025-06-15 12:52:17] [INFO] Post-commit hook triggered for 54071635234e0ac3b18124c267c0195a9b88cea7
+[2025-06-15 12:52:17] [INFO] Changed files: TODO.md
+[2025-06-15 12:52:17] [WARN] Git operation in progress - skipping auto-push

@@ -1,0 +1,16 @@
+{
+  "git_status": {
+    "branch": "main",
+    "has_changes": true,
+    "dirty_files_count": 4,
+    "dirty_files": [
+      "M .claude/logs/auto-push.log",
+      "?? .claude/memory/git-status-cache.json",
+      "?? scripts/backend_performance_test.py",
+      "?? scripts/concurrent_stress_test.py"
+    ],
+    "last_commit": "5407163 Add workspace TODO list",
+    "is_git_repo": true
+  },
+  "timestamp": 1749989038.630578
+}
