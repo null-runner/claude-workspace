@@ -144,3 +144,14 @@ To github.com:null-runner/claude-workspace.git
    aa35028..06d2bed  HEAD -> main
 [2025-06-15 14:20:50] [SUCCESS] ✅ Auto-push completed successfully
 [2025-06-15 14:20:50] [SUCCESS] Commit 06d2bedcec40e40213f16979c885b2b2a64d0e32 pushed to remote
+[2025-06-15 14:31:51] [INFO] Post-commit hook triggered for eeba1833f138c305260c8fbda0bdb08b47dc4d0e
+[2025-06-15 14:31:51] [INFO] Changed files: .claude/integrity/manifest.json
+.claude/logs/auto-push.log
+scripts/claude-simplified-memory.sh
+scripts/claude-startup.sh
+[2025-06-15 14:31:51] [INFO] Repository whitelisted for auto-push: null-runner/claude-workspace
+[2025-06-15 14:31:51] [INFO] Attempting auto-push to origin...
+To github.com:null-runner/claude-workspace.git
+   06d2bed..eeba183  HEAD -> main
+[2025-06-15 14:31:53] [SUCCESS] ✅ Auto-push completed successfully
+[2025-06-15 14:31:53] [SUCCESS] Commit eeba1833f138c305260c8fbda0bdb08b47dc4d0e pushed to remote

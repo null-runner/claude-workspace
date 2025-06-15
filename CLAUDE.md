@@ -56,7 +56,10 @@ Il workspace ora è **completamente autonomo** e **enterprise-stable**:
 - **Backup Intelligence**: Retention policies, cleanup automatico, recovery strategies
 - **Master Daemon**: Sistema unificato che gestisce tutti i servizi in background
 
-## Regole
+## Regole CRITICHE
+- **TODO SYNC OBBLIGATORIO**: SEMPRE aggiornare TODO.md quando user dà task
+- **Startup TODO Check**: SEMPRE leggere TODO.md all'avvio sessione
+- **Dual Update**: TodoWrite + TODO.md file ENTRAMBI aggiornati
 - **Bilingue**: OGNI modifica doc in EN e IT 
 - README max 200 righe + sezione neofiti
 - Usare TodoWrite per task complessi

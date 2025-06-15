@@ -419,6 +419,16 @@ main_startup() {
     
     echo ""
     
+    # Step 8: Load TODO.md into memory for Claude session
+    echo -e "${BLUE}📥 Step 8: Loading TODO persistence for Claude${NC}"
+    if [[ -f "$WORKSPACE_DIR/scripts/sync-todo-workspace.sh" ]]; then
+        error_log "INFO" "Loading TODO.md for Claude session persistence"
+        "$WORKSPACE_DIR/scripts/sync-todo-workspace.sh" load
+    else
+        error_log "WARN" "TODO sync script not found - Claude TODO persistence disabled"
+    fi
+    echo ""
+    
     # Report startup status
     if [[ $startup_errors -eq 0 ]]; then
         error_log "SUCCESS" "Claude Workspace startup completed successfully"
